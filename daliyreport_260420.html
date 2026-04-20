@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>오늘 장 요약 · 4월 20일</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', BlinkMacSystemFont, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a1a;
+    font-size: 15px;
+    line-height: 1.6;
+    padding-bottom: 56px;
+  }
+
+  /* ── 히어로 ── */
+  .hero {
+    background: #1a1a2e;
+    padding: 44px 20px 36px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .hero-tag { font-size: 11px; color: #7f77dd; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+  .hero-date { font-size: 13px; color: rgba(255,255,255,0.4); }
+  .hero-title { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.3; margin-top: 4px; }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .hero-chip { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+
+  /* ── 섹션 공통 ── */
+  .section { padding: 24px 16px 0; }
+  .section-label { font-size: 11px; color: #888; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
+
+  /* ── 테마 클러스터 ── */
+  .theme-card { background: #fff; border-radius: 16px; padding: 4px 0; border: 1px solid rgba(0,0,0,0.06); overflow: hidden; }
+  .theme-row { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .theme-row:last-child { border-bottom: none; }
+  .theme-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .theme-content { flex: 1; }
+  .theme-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+  .theme-name { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+  .theme-badge { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; }
+  .badge-real { background: #dcfce7; color: #166534; }
+  .badge-event { background: #dbeafe; color: #1e40af; }
+  .badge-noise { background: #f1f5f9; color: #64748b; }
+  .theme-tickers { font-size: 12px; color: #666; margin-bottom: 2px; }
+  .theme-desc { font-size: 12px; color: #888; line-height: 1.5; }
+
+  /* ── 1차 분리 박스 ── */
+  .split-box { background: #fff; border-radius: 16px; padding: 16px; border: 1px solid rgba(0,0,0,0.06); }
+  .split-row { display: flex; gap: 10px; margin-bottom: 10px; }
+  .split-row:last-child { margin-bottom: 0; }
+  .split-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+  .split-label { font-size: 11px; font-weight: 600; color: #aaa; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 5px; }
+  .split-names { font-size: 13px; color: #333; line-height: 1.7; }
+  .split-divider { height: 1px; background: rgba(0,0,0,0.05); margin: 10px 0; }
+
+  /* ── 상위 5 선정 이유 ── */
+  .pick-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
+  .pick-row { display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .pick-row:last-child { border-bottom: none; }
+  .pick-num { font-size: 13px; font-weight: 700; color: #7f77dd; min-width: 18px; margin-top: 1px; }
+  .pick-name { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
+  .pick-reason { font-size: 12px; color: #666; line-height: 1.5; }
+
+  /* ── 종목 상세 카드 ── */
+  .stock-card { background: #fff; border-radius: 16px; padding: 18px 16px; margin-bottom: 12px; border: 1px solid rgba(0,0,0,0.06); }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .card-rank-name { display: flex; align-items: center; gap: 8px; }
+  .rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .rank-1 { background: #fef3c7; color: #92400e; }
+  .rank-2 { background: #e0e7ff; color: #3730a3; }
+  .rank-3 { background: #fce7f3; color: #831843; }
+  .rank-4 { background: #f0fdf4; color: #166534; }
+  .rank-5 { background: #fff7ed; color: #9a3412; }
+  .card-name { font-size: 18px; font-weight: 700; color: #1a1a1a; }
+  .card-sector { font-size: 12px; color: #888; margin-top: 2px; }
+  .card-pct { font-size: 14px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .pct-up { color: #c0392b; background: #fdf0ef; }
+  .pct-warn { color: #b7770d; background: #fef9ec; }
+  .card-body { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 12px; }
+  .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 12px; }
+  .metric { background: #f8f7f4; border-radius: 10px; padding: 10px 12px; }
+  .metric-label { font-size: 10px; color: #aaa; margin-bottom: 3px; letter-spacing: 0.04em; }
+  .metric-val { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+  .metric-val.up { color: #1a7a45; }
+  .metric-val.warn { color: #c0392b; }
+  .metric-val.caution { color: #b7770d; }
+  .verdict { border-left: 3px solid #7f77dd; padding: 10px 12px; background: #f5f4fc; border-radius: 0 10px 10px 0; margin-bottom: 10px; }
+  .verdict-label { font-size: 10px; color: #7f77dd; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 3px; font-weight: 600; }
+  .verdict-text { font-size: 13px; color: #333; line-height: 1.55; }
+  .signal-box { background: #fff9f9; border-radius: 10px; padding: 10px 12px; border: 1px solid #fee2e2; }
+  .signal-label { font-size: 10px; color: #ef4444; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 5px; font-weight: 600; }
+  .signal-item { font-size: 12px; color: #555; line-height: 1.6; padding-left: 10px; position: relative; }
+  .signal-item::before { content: "·"; position: absolute; left: 0; color: #ef4444; }
+
+  /* ── 간략 종목 ── */
+  .brief-card { background: #fff; border-radius: 14px; padding: 14px 16px; margin-bottom: 8px; border: 1px solid rgba(0,0,0,0.06); }
+  .brief-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .brief-name { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+  .brief-pct { font-size: 13px; font-weight: 600; color: #c0392b; }
+  .brief-meta { font-size: 12px; color: #888; margin-bottom: 6px; }
+  .brief-reason { font-size: 13px; color: #444; line-height: 1.55; margin-bottom: 6px; }
+  .brief-verdict { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 10px; }
+  .bv-watch { background: #dbeafe; color: #1e40af; }
+  .bv-pass { background: #f1f5f9; color: #475569; }
+  .bv-danger { background: #fee2e2; color: #991b1b; }
+  .bv-small { background: #fef3c7; color: #92400e; }
+
+  /* ── 모니터링 ── */
+  .monitor-card { background: #1a1a2e; border-radius: 16px; padding: 18px 16px; margin-bottom: 8px; }
+  .monitor-rank { font-size: 11px; color: #7f77dd; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 6px; font-weight: 500; }
+  .monitor-name { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+  .monitor-reason { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ── 면책 ── */
+  .disclaimer { margin: 24px 16px 0; padding: 14px 16px; background: #fff; border-radius: 12px; font-size: 12px; color: #aaa; line-height: 1.7; border: 1px solid rgba(0,0,0,0.05); text-align: center; }
+
+  .divider { height: 1px; background: rgba(0,0,0,0.06); margin: 12px 0; }
+  .spacer { height: 24px; }
+</style>
+</head>
+<body>
+
+<!-- ── 히어로 ── -->
+<div class="hero">
+  <div class="hero-tag">오늘의 급등주 분석</div>
+  <div class="hero-date">2026년 4월 20일</div>
+  <div class="hero-title">코스피·코스닥 30종목,<br>재무까지 다 뜯어봤어</div>
+  <div class="hero-sub">급등 이유가 진짜인지 루머인지<br>재무 + 토론방으로 교차 확인</div>
+  <div class="hero-chips">
+    <span class="hero-chip">코스피 Top 10</span>
+    <span class="hero-chip">코스닥 Top 20</span>
+    <span class="hero-chip">DART 재무데이터</span>
+    <span class="hero-chip">네이버 토론방</span>
+  </div>
+</div>
+
+<!-- ── 1. 오늘 장의 테마 ── -->
+<div class="section">
+  <div class="section-label">오늘 장을 지배한 테마</div>
+  <div class="theme-card">
+    <div class="theme-row">
+      <div class="theme-icon" style="background:#dcfce7;">📡</div>
+      <div class="theme-content">
+        <div class="theme-top">
+          <div class="theme-name">반도체 사이클 반등</div>
+          <div class="theme-badge badge-real">실체형</div>
+        </div>
+        <div class="theme-tickers">DB하이텍 · 주성엔지니어링</div>
+        <div class="theme-desc">실적 기반 재평가. 외국인 수급 유입 확인. 사이클 전환 가시화 중.</div>
+      </div>
+    </div>
+    <div class="theme-row">
+      <div class="theme-icon" style="background:#f0fdf4;">🏗</div>
+      <div class="theme-content">
+        <div class="theme-top">
+          <div class="theme-name">에너지 인프라</div>
+          <div class="theme-badge badge-real">실체형</div>
+        </div>
+        <div class="theme-tickers">혜인 · 퍼스텍 · 한국정보통신</div>
+        <div class="theme-desc">실적 개선 종목과 테마 편승이 혼재. 혜인은 데이터센터 발전기 수요가 실체.</div>
+      </div>
+    </div>
+    <div class="theme-row">
+      <div class="theme-icon" style="background:#dbeafe;">⚛</div>
+      <div class="theme-content">
+        <div class="theme-top">
+          <div class="theme-name">양자컴퓨팅 정책</div>
+          <div class="theme-badge badge-event">이벤트형</div>
+        </div>
+        <div class="theme-tickers">로지시스 · 파인텍 · SGA솔루션즈 · 드림시큐리티</div>
+        <div class="theme-desc">정부 30조 육성책이 촉매. 토론방엔 같은 글이 여러 종목에 복붙으로 도배됨. 수혜 경로 불명확.</div>
+      </div>
+    </div>
+    <div class="theme-row">
+      <div class="theme-icon" style="background:#fef2f2;">🤖</div>
+      <div class="theme-content">
+        <div class="theme-top">
+          <div class="theme-name">AI 에코시스템</div>
+          <div class="theme-badge badge-event">이벤트형</div>
+        </div>
+        <div class="theme-tickers">씨이랩 · 벨로크</div>
+        <div class="theme-desc">엔비디아 파트너십·로봇 인수 등 구체적 재료는 있으나 재무 기반 부재.</div>
+      </div>
+    </div>
+    <div class="theme-row">
+      <div class="theme-icon" style="background:#f1f5f9;">🚫</div>
+      <div class="theme-content">
+        <div class="theme-top">
+          <div class="theme-name">분석 제외</div>
+          <div class="theme-badge badge-noise">노이즈형</div>
+        </div>
+        <div class="theme-tickers">진원생명과학 · 에스아이리소스</div>
+        <div class="theme-desc">4년 연속 적자 또는 상폐 리스크. 재무 하방 없음. 분석 가치 없음.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 2. 1차 분리 ── -->
+<div class="section">
+  <div class="section-label">30종목 중 1차 분리</div>
+  <div class="split-box">
+    <div class="split-label" style="color:#166534;">분석 가치 있음 (7종목)</div>
+    <div class="split-names">DB하이텍 · 혜인 · 퍼스텍 · 한국정보통신 · 주성엔지니어링 · 드림시큐리티 · SGA솔루션즈</div>
+    <div class="split-divider"></div>
+    <div class="split-label" style="color:#991b1b;">제외 (8종목 이상)</div>
+    <div class="split-names" style="color:#888;">진원생명과학 (관리종목·적자) · 에스아이리소스 (상폐위험) · 씨이랩 (4년 연속 적자) · 파인텍 (적자 재진입) · 벨로크 (루머 중심) · 로지시스 (양자 연관 불명확) · 삼천리자전거 (재료 불명확) · DB (후광 효과)</div>
+  </div>
+</div>
+
+<!-- ── 3. 상위 5 선정 이유 ── -->
+<div class="section">
+  <div class="section-label">상위 5종목 선정 이유</div>
+  <div class="pick-card">
+    <div class="pick-row">
+      <div class="pick-num">1</div>
+      <div><div class="pick-name">DB하이텍</div><div class="pick-reason">실적 기반 재평가. PER 저평가 인식 + 외인 수급 유입. 반도체 사이클 전환 가시성 가장 높음.</div></div>
+    </div>
+    <div class="pick-row">
+      <div class="pick-num">2</div>
+      <div><div class="pick-name">혜인</div><div class="pick-reason">캐터필러 딜러십 + 데이터센터 수요라는 검증 가능한 실체 재료. 실적 4년 연속 개선.</div></div>
+    </div>
+    <div class="pick-row">
+      <div class="pick-num">3</div>
+      <div><div class="pick-name">퍼스텍</div><div class="pick-reason">방산 수주 사이클 가속. 영업이익 4년간 4배 증가. 실질 성장 확인.</div></div>
+    </div>
+    <div class="pick-row">
+      <div class="pick-num">4</div>
+      <div><div class="pick-name">한국정보통신</div><div class="pick-reason">안정적 매출 성장 + NXT 거래소 편입 이슈. 수익성 견고하고 재무 하방 명확.</div></div>
+    </div>
+    <div class="pick-row">
+      <div class="pick-num">5</div>
+      <div><div class="pick-name">드림시큐리티</div><div class="pick-reason">양자 테마 종목 중 유일하게 매출 3,000억대 기업. 이익 감소 추세가 관건.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 4. 상세 리포트 5종목 ── -->
+<div class="section">
+  <div class="section-label">상위 5종목 상세 분석</div>
+
+  <!-- 혜인 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-1">1</span>
+          <span class="card-name">혜인</span>
+        </div>
+        <div class="card-sector">캐터필러 공식 딜러 · 코스피</div>
+      </div>
+      <span class="card-pct pct-up">+29.9%</span>
+    </div>
+    <div class="card-body">
+      캐터필러(세계 1위 중장비 브랜드) 국내 독점 딜러예요. 요즘 데이터센터가 전국에 들어서면서 대형 가스발전기 수요가 사상 최고를 기록 중이고, 그걸 공급하는 게 바로 혜인이에요. 실적도 2022년 영업이익 27억에서 2025년 176억으로 4년 연속 계속 올라가고 있어요.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 영업이익</div><div class="metric-val">176억</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">1,020억</div></div>
+      <div class="metric"><div class="metric-label">PER (주가/이익)</div><div class="metric-val up">약 7배</div></div>
+      <div class="metric"><div class="metric-label">이익 방향</div><div class="metric-val up">4년째 ↑</div></div>
+    </div>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">급등 후에도 PER 7배는 저렴한 편이에요. 데이터센터 수주 공시가 추가로 나오면 코어 편입 근거 완성.</div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">주의 신호</div>
+      <div class="signal-item">오늘 투자주의 종목 지정 — 단기 수급 교란 가능</div>
+      <div class="signal-item">방산 테마 편승 시도 글도 섞여있음 — 실체 재료와 구분 필요</div>
+    </div>
+  </div>
+
+  <!-- DB하이텍 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-2">2</span>
+          <span class="card-name">DB하이텍</span>
+        </div>
+        <div class="card-sector">8인치 반도체 파운드리 · 코스피</div>
+      </div>
+      <span class="card-pct pct-up">+18.5%</span>
+    </div>
+    <div class="card-body">
+      전기차·AI에 들어가는 전력반도체를 위탁 생산하는 회사예요. 국내에서 이런 역할을 하는 독립 기업이 여기뿐이에요. 2022년 엄청 벌다가 주춤했는데, 2025년 매출이 다시 1.4조로 올라오면서 사이클 바닥을 통과하는 것처럼 보여요. 외국인·기관이 오늘 같이 사들였어요.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 매출</div><div class="metric-val">1.4조</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">5.5조</div></div>
+      <div class="metric"><div class="metric-label">영업이익률</div><div class="metric-val">19.9%</div></div>
+      <div class="metric"><div class="metric-label">사이클 위치</div><div class="metric-val up">회복 중</div></div>
+    </div>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">사이클 전환 방향은 맞아요. 오늘 급등으로 기대치가 이미 많이 반영됐으니, 1분기 실적 확인 후 진입이 더 안전해요.</div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">주의 신호</div>
+      <div class="signal-item">"PER 4배" 내러티브는 2022년 피크 이익 기준 — 현재 이익 기준은 약 20배로 저렴하지 않음</div>
+      <div class="signal-item">사이클 반등 속도가 예상보다 느리면 현 가격 지지 어려울 수 있음</div>
+    </div>
+  </div>
+
+  <!-- 퍼스텍 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-3">3</span>
+          <span class="card-name">퍼스텍</span>
+        </div>
+        <div class="card-sector">방산 부품·시스템 · 코스피</div>
+      </div>
+      <span class="card-pct pct-warn">+16.5%</span>
+    </div>
+    <div class="card-body">
+      항공기·미사일 부품을 만드는 방산 업체예요. 한국이 최근 무기 수출을 많이 하면서 매출이 4년 만에 1,600억 → 2,900억으로 거의 2배 늘었어요. 성장 스토리 자체는 진짜예요. 문제는 가격이에요.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 영업이익</div><div class="metric-val">107억</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">7,657억</div></div>
+      <div class="metric"><div class="metric-label">PER</div><div class="metric-val warn">약 52배</div></div>
+      <div class="metric"><div class="metric-label">수급 상태</div><div class="metric-val caution">투자경고</div></div>
+    </div>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">성장하는 건 맞는데, PER 52배는 앞으로 몇 년치 성장을 이미 가격에 다 넣은 거예요. 지금 따라 사기엔 리스크가 너무 커요.</div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">주의 신호</div>
+      <div class="signal-item">투자경고 발동 — 향후 7거래일 조정 횡보 가능성</div>
+      <div class="signal-item">신규 방산 수주 공시가 끊기면 성장 스토리 단절</div>
+    </div>
+  </div>
+
+  <!-- 한국정보통신 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-4">4</span>
+          <span class="card-name">한국정보통신</span>
+        </div>
+        <div class="card-sector">결제 VAN · IT서비스 · 코스닥</div>
+      </div>
+      <span class="card-pct pct-up">+29.9%</span>
+    </div>
+    <div class="card-body">
+      신용카드 결제망(VAN)이랑 IT서비스 하는 회사예요. 매출이 2022년 5,900억에서 2025년 8,300억으로 4년간 꾸준히 늘었어요. 오늘 오른 이유는 NXT라는 새로운 주식 거래소에 종목이 편입됐기 때문이에요 — 유동성이 늘어날 거라는 기대감이에요.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 매출</div><div class="metric-val">8,363억</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">5,957억</div></div>
+      <div class="metric"><div class="metric-label">영업이익률</div><div class="metric-val">5.4%</div></div>
+      <div class="metric"><div class="metric-label">이익 방향</div><div class="metric-val up">4년째 ↑</div></div>
+    </div>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">재무 안정성은 5종목 중 가장 높아요. 다만 기대수익이 크지 않아서 소규모 안전판 역할 정도.</div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">주의 신호</div>
+      <div class="signal-item">NXT 편입 효과가 단발성으로 끝나면 거래량 급감 가능</div>
+      <div class="signal-item">간편결제(카카오페이·네이버페이) 성장으로 VAN 마진 압박 중</div>
+    </div>
+  </div>
+
+  <!-- 드림시큐리티 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-5">5</span>
+          <span class="card-name">드림시큐리티</span>
+        </div>
+        <div class="card-sector">전자인증·보안 솔루션 · 코스닥</div>
+      </div>
+      <span class="card-pct pct-up">+29.9%</span>
+    </div>
+    <div class="card-body">
+      공공·금융기관 전자인증 솔루션 전문 회사예요. 양자컴퓨팅이 보급되면 기존 암호체계가 뚫릴 수 있는데, 그때 필요한 새로운 보안 기술 수요가 이 회사에 올 수 있어요. 양자 테마 종목 중 유일하게 매출이 3,000억대예요.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 매출</div><div class="metric-val">3,189억</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">3,710억</div></div>
+      <div class="metric"><div class="metric-label">영업이익률</div><div class="metric-val warn">7.1%↓</div></div>
+      <div class="metric"><div class="metric-label">PER</div><div class="metric-val warn">약 50배</div></div>
+    </div>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">매출은 늘고 있는데 이익률이 계속 떨어지는 게 문제예요. 양자 정책이 실적으로 이어지는 걸 확인하기 전까진 소규모로만.</div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">주의 신호</div>
+      <div class="signal-item">토론방 게시글이 다른 양자 종목들과 동일 — 조직적 유포 가능성</div>
+      <div class="signal-item">영업이익률 2022년 11% → 2025년 7%로 하락 추세 지속 중</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 5. 나머지 종목 간략 ── -->
+<div class="section">
+  <div class="section-label">나머지 종목 한 줄 정리</div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">주성엔지니어링</div><div class="brief-pct">+30.0%</div></div>
+    <div class="brief-meta">시총 4.2조 · 반도체 장비 · 코스닥</div>
+    <div class="brief-reason">삼성·하이닉스·마이크론에 반도체 장비 납품. 외인 매집 + AI 사이클 기대. 매출은 2025년 다시 줄어든 게 아쉬움.</div>
+    <span class="brief-verdict bv-pass">시총 대비 이익이 작아 PER 119배 — 패스</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">SGA솔루션즈</div><div class="brief-pct">+29.9%</div></div>
+    <div class="brief-meta">시총 956억 · 보안 솔루션 · 코스닥</div>
+    <div class="brief-reason">양자 테마 + 2025년 실적 대반전 (적자→영업이익률 24%). 이 숫자가 진짜인지가 핵심 — 일회성 이익일 가능성 체크 필요.</div>
+    <span class="brief-verdict bv-small">다음 분기 실적 확인 후 재판단</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">로지시스</div><div class="brief-pct">+30.0%</div></div>
+    <div class="brief-meta">시총 385억 · IT서비스 · 코스닥</div>
+    <div class="brief-reason">양자컴퓨팅·CBDC 테마 편승. 재무는 준수하지만 양자와의 직접 연관성이 불명확.</div>
+    <span class="brief-verdict bv-pass">테마 소멸 시 원위치 — 패스</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">삼천리자전거</div><div class="brief-pct">+29.9%</div></div>
+    <div class="brief-meta">시총 763억 · 자전거 제조 · 코스닥</div>
+    <div class="brief-reason">2025년 영업이익 124억으로 실적 개선은 진짜. 하지만 오늘 급등 재료가 "신사업 쉿" 수준의 루머 — 실체 확인 불가.</div>
+    <span class="brief-verdict bv-pass">재료 불명확 — 관망</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">DB</div><div class="brief-pct">+15.5%</div></div>
+    <div class="brief-meta">시총 4,073억 · 지주회사 · 코스피</div>
+    <div class="brief-reason">DB하이텍 그룹사 동반 상승. 실적 자체는 괜찮지만 오늘 독자 재료 없음.</div>
+    <span class="brief-verdict bv-pass">DB하이텍 후광 — 독자 진입 근거 없음</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">씨이랩</div><div class="brief-pct">+30.0%</div></div>
+    <div class="brief-meta">시총 646억 · AI 솔루션 · 코스닥</div>
+    <div class="brief-reason">엔비디아 파트너 네트워크 엘리트 등급 승격 — 재료는 진짜. 하지만 4년 연속 적자 기업. 기술력이 매출로 이어질 때까지 기다려야.</div>
+    <span class="brief-verdict bv-watch">재료는 진짜, 재무가 문제 — 관망</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">파인텍</div><div class="brief-pct">+30.0%</div></div>
+    <div class="brief-meta">시총 683억 · 디스플레이 부품 · 코스닥</div>
+    <div class="brief-reason">양자 테마 편승. 2025년 다시 적자(-29억)로 전환.</div>
+    <span class="brief-verdict bv-danger">적자 재진입 — 제외</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">벨로크</div><div class="brief-pct">+30.0%</div></div>
+    <div class="brief-meta">시총 360억 · IT 서비스 · 코스닥</div>
+    <div class="brief-reason">Figure AI(엔비디아·MS 투자 로봇 회사) 인수 루머. 토론방에서도 "삼성·현대가 패스한 걸 시총 300억짜리가?"라는 반론이 더 설득력 있음.</div>
+    <span class="brief-verdict bv-danger">루머 중심 — 제외</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">진원생명과학</div><div class="brief-pct">+30.0%</div></div>
+    <div class="brief-meta">시총 1,201억 · 바이오 · 코스피</div>
+    <div class="brief-reason">관리종목 + 로봇 우선주 테마. 4년 연속 영업손실 심화 (2025년 -440억).</div>
+    <span class="brief-verdict bv-danger">즉시 제외</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">에스아이리소스</div><div class="brief-pct">+30.0%</div></div>
+    <div class="brief-meta">시총 214억 · IT서비스 · 코스닥</div>
+    <div class="brief-reason">외인 대량 매수. 토론방에 "상폐 전 정리" 의심 글도 혼재. 4년 연속 적자.</div>
+    <span class="brief-verdict bv-danger">상폐 리스크 — 즉시 제외</span>
+  </div>
+</div>
+
+<!-- ── 6. 모니터링 우선순위 ── -->
+<div class="section">
+  <div class="section-label">앞으로 주시할 종목 TOP 3</div>
+  <div class="monitor-card">
+    <div class="monitor-rank">1순위</div>
+    <div class="monitor-name">DB하이텍</div>
+    <div class="monitor-reason">반도체 사이클 전환점에 가장 근접. 1분기 실적 발표에서 영업이익 증가가 확인되면 코어 편입 가능. 외인 수급 지속 여부가 방향성의 키.</div>
+  </div>
+  <div class="monitor-card">
+    <div class="monitor-rank">2순위</div>
+    <div class="monitor-name">혜인</div>
+    <div class="monitor-reason">데이터센터 수주 공시 하나면 코어 편입 근거 완성. 오늘 투자주의 지정이 단기 교란 요인 — 해제 후 수급 복귀 타이밍이 진짜 진입 포인트.</div>
+  </div>
+  <div class="monitor-card">
+    <div class="monitor-rank">3순위</div>
+    <div class="monitor-name">SGA솔루션즈</div>
+    <div class="monitor-reason">2025년 OPM 24%가 구조적이면 재평가 여지 큼. 일회성이면 즉각 붕괴. 다음 분기 실적이 탈락 or 편입의 분기점.</div>
+  </div>
+</div>
+
+<!-- ── 7. 오늘의 한 줄 ── -->
+<div class="section">
+  <div class="section-label">오늘의 결론</div>
+  <div style="background:#1a1a2e; border-radius:16px; padding:20px 18px;">
+    <div style="font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:8px;">포트폴리오 관점에서 핵심 한 문장</div>
+    <div style="font-size:16px; color:#fff; line-height:1.6; font-weight:500;">오늘 30종목 중 "지금 이익이 나고, 개선 방향이 명확하고, 가격도 합리적인" 세 조건을 동시에 충족하는 건 <span style="color:#a5b4fc;">혜인 하나</span>였고, 나머지는 모두 무언가를 기다려야 한다.</div>
+  </div>
+</div>
+
+<div class="disclaimer">
+  이 내용은 공부 목적으로 정리한 거예요.<br>투자 추천이 아니며, 최종 판단은 본인이 하셔야 해요.<br>DART 재무데이터 + 네이버 토론방 기준 · 2026.04.20
+</div>
+
+</body>
+</html>
