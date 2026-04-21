@@ -2,1712 +2,578 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026.04.21 급등주 분석 리포트</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>오늘 장 요약 · 4월 21일</title>
 <style>
-  :root {
-    --bg: #0d0f12;
-    --surface: #13161a;
-    --surface2: #1a1e24;
-    --border: #252a32;
-    --border2: #2e3540;
-    --text-primary: #e8eaf0;
-    --text-secondary: #8a92a0;
-    --text-muted: #4a5260;
-    --accent-green: #00e5a0;
-    --accent-red: #ff4d6d;
-    --accent-blue: #4d9fff;
-    --accent-yellow: #ffd166;
-    --accent-orange: #ff9a3c;
-    --mono: 'IBM Plex Mono', monospace;
-    --sans: 'Noto Sans KR', sans-serif;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body {
-    background: var(--bg);
-    color: var(--text-primary);
-    font-family: var(--sans);
-    font-size: 14px;
-    line-height: 1.7;
-    min-height: 100vh;
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', BlinkMacSystemFont, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a1a;
+    font-size: 15px;
+    line-height: 1.6;
+    padding-bottom: 56px;
   }
 
-  /* HEADER */
-  .site-header {
-    border-bottom: 1px solid var(--border);
-    padding: 24px 0;
-    position: sticky;
-    top: 0;
-    background: rgba(13, 15, 18, 0.95);
-    backdrop-filter: blur(12px);
-    z-index: 100;
-  }
-
-  .header-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .header-logo {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--text-muted);
-    letter-spacing: 0.08em;
-  }
-
-  .header-date {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent-green);
-    letter-spacing: 0.1em;
-  }
-
-  /* HERO */
   .hero {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 64px 32px 48px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent-green);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: inline-block;
-    width: 24px;
-    height: 1px;
-    background: var(--accent-green);
-  }
-
-  .hero-title {
-    font-family: var(--mono);
-    font-size: clamp(28px, 4vw, 44px);
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    margin-bottom: 12px;
-  }
-
-  .hero-title span {
-    color: var(--accent-green);
-  }
-
-  .hero-sub {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-bottom: 32px;
-  }
-
-  .hero-meta {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-
-  .hero-meta-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .hero-meta-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .hero-meta-value {
-    font-family: var(--mono);
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-
-  /* LAYOUT */
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
-  .section {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  .section-title {
-    font-family: var(--mono);
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 32px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* THEME CLUSTER TABLE */
-  .cluster-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 32px;
-    font-family: var(--mono);
-    font-size: 13px;
-  }
-
-  .cluster-table th {
-    text-align: left;
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    padding: 8px 16px;
-    border-bottom: 1px solid var(--border);
-    font-weight: 400;
-  }
-
-  .cluster-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-  }
-
-  .cluster-table tr:last-child td { border-bottom: none; }
-  .cluster-table tr:hover td { background: var(--surface2); }
-
-  .badge {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    padding: 2px 8px;
-    border-radius: 3px;
-    font-weight: 500;
-  }
-
-  .badge-real { background: rgba(0, 229, 160, 0.12); color: var(--accent-green); border: 1px solid rgba(0,229,160,0.3); }
-  .badge-event { background: rgba(77, 159, 255, 0.12); color: var(--accent-blue); border: 1px solid rgba(77,159,255,0.3); }
-  .badge-noise { background: rgba(255, 77, 109, 0.08); color: var(--accent-red); border: 1px solid rgba(255,77,109,0.25); }
-
-  /* TOP5 GRID */
-  .top5-grid { display: flex; flex-direction: column; gap: 1px; background: var(--border); }
-
-  /* STOCK CARD */
-  .stock-card {
-    background: var(--surface);
-    overflow: hidden;
-  }
-
-  .card-header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 20px;
-    padding: 24px 28px;
-    cursor: pointer;
-    transition: background 0.15s;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .card-header:hover { background: var(--surface2); }
-
-  .card-rank {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    width: 28px;
-  }
-
-  .card-name {
-    font-family: var(--mono);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: -0.01em;
-  }
-
-  .card-name-sub {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 2px;
-    font-family: var(--mono);
-    font-weight: 400;
-  }
-
-  .card-right {
-    text-align: right;
-  }
-
-  .card-change {
-    font-family: var(--mono);
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--accent-red);
-  }
-
-  .card-price {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-secondary);
-    margin-top: 2px;
-  }
-
-  .card-body {
-    padding: 28px;
-    display: none;
-  }
-
-  .card-body.open { display: block; }
-
-  /* CARD SECTIONS */
-  .card-section {
-    margin-bottom: 28px;
-  }
-
-  .card-section:last-child { margin-bottom: 0; }
-
-  .card-section-title {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    color: var(--accent-blue);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .card-type-tag {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 3px;
-    background: rgba(77,159,255,0.1);
-    color: var(--accent-blue);
-    border: 1px solid rgba(77,159,255,0.25);
-    margin-bottom: 12px;
-  }
-
-  .summary-text {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.8;
-  }
-
-  /* METRICS ROW */
-  .metrics-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-
-  .metric-box {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 12px 14px;
-  }
-
-  .metric-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    margin-bottom: 4px;
-  }
-
-  .metric-value {
-    font-family: var(--mono);
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-
-  .metric-value.green { color: var(--accent-green); }
-  .metric-value.red { color: var(--accent-red); }
-  .metric-value.yellow { color: var(--accent-yellow); }
-
-  /* TABLE */
-  .data-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: var(--mono);
-    font-size: 13px;
-  }
-
-  .data-table th {
-    text-align: right;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    color: var(--text-muted);
-    padding: 8px 12px;
-    border-bottom: 1px solid var(--border);
-    font-weight: 400;
-  }
-
-  .data-table th:first-child { text-align: left; }
-
-  .data-table td {
-    text-align: right;
-    padding: 10px 12px;
-    border-bottom: 1px solid var(--border);
-    color: var(--text-secondary);
-  }
-
-  .data-table td:first-child { text-align: left; color: var(--text-primary); }
-  .data-table tr:last-child td { border-bottom: none; }
-  .data-table tr:hover td { background: var(--surface2); }
-
-  .td-negative { color: var(--accent-red) !important; }
-  .td-positive { color: var(--accent-green) !important; }
-
-  /* SCENARIO TABLE */
-  .scenario-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-
-  .scenario-table th {
-    text-align: left;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    padding: 8px 12px;
-    border-bottom: 1px solid var(--border);
-    font-weight: 400;
-    letter-spacing: 0.08em;
-  }
-
-  .scenario-table td {
-    padding: 12px;
-    border-bottom: 1px solid var(--border);
-    vertical-align: top;
-    color: var(--text-secondary);
-    font-size: 13px;
-  }
-
-  .scenario-table tr:last-child td { border-bottom: none; }
-
-  .scenario-bull td:first-child { color: var(--accent-green); font-weight: 600; }
-  .scenario-base td:first-child { color: var(--text-secondary); font-weight: 600; }
-  .scenario-bear td:first-child { color: var(--accent-red); font-weight: 600; }
-
-  /* RISK LIST */
-  .risk-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .risk-list li {
-    display: flex;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  .risk-list li::before {
-    content: attr(data-n);
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--accent-red);
-    min-width: 16px;
-    margin-top: 2px;
-  }
-
-  .check-list li::before {
-    content: '→';
-    color: var(--accent-blue);
-  }
-
-  /* SIGNAL BOX */
-  .signal-box {
-    background: rgba(255,77,109,0.05);
-    border: 1px solid rgba(255,77,109,0.2);
-    border-radius: 4px;
-    padding: 14px 16px;
-  }
-
-  /* WEIGHT ROW */
-  .weight-row {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .weight-item {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 10px 16px;
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-
-  .weight-item span {
-    color: var(--text-primary);
-    font-weight: 500;
-  }
-
-  /* CORE FIT */
-  .core-fit {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 4px;
-    margin-bottom: 12px;
-  }
-
-  .core-fit.no { background: rgba(255,77,109,0.08); color: var(--accent-red); border: 1px solid rgba(255,77,109,0.25); }
-  .core-fit.yes { background: rgba(0,229,160,0.08); color: var(--accent-green); border: 1px solid rgba(0,229,160,0.25); }
-
-  /* MONITORING SECTION */
-  .monitoring-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-  }
-
-  .monitoring-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .monitoring-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 3px; height: 100%;
-  }
-
-  .monitoring-card.rank-1::before { background: var(--accent-green); }
-  .monitoring-card.rank-2::before { background: var(--accent-yellow); }
-  .monitoring-card.rank-3::before { background: var(--accent-orange); }
-
-  .monitoring-rank {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    margin-bottom: 6px;
-  }
-
-  .monitoring-name {
-    font-family: var(--mono);
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
-  .monitoring-card.rank-1 .monitoring-name { color: var(--accent-green); }
-  .monitoring-card.rank-2 .monitoring-name { color: var(--accent-yellow); }
-  .monitoring-card.rank-3 .monitoring-name { color: var(--accent-orange); }
-
-  .monitoring-reason {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-
-  /* COMPARISON SECTION */
-  .compare-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    margin-bottom: 32px;
-  }
-
-  .compare-col {
-    background: var(--surface);
-    padding: 20px;
-  }
-
-  .compare-col-header {
-    font-family: var(--mono);
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .compare-col:nth-child(1) .compare-col-header { color: var(--accent-green); }
-  .compare-col:nth-child(2) .compare-col-header { color: var(--accent-blue); }
-  .compare-col:nth-child(3) .compare-col-header { color: var(--accent-yellow); }
-
-  .compare-row-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-    margin-top: 14px;
-  }
-
-  .compare-row-label:first-of-type { margin-top: 0; }
-
-  .compare-value {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
-
-  /* RANK ORDER */
-  .rank-order {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-
-  .rank-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 16px 20px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 16px;
-  }
-
-  .rank-num {
-    font-family: var(--mono);
-    font-size: 28px;
-    font-weight: 600;
-    line-height: 1;
-    color: var(--border2);
-  }
-
-  .rank-content {}
-
-  .rank-name {
-    font-family: var(--mono);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-  }
-
-  .rank-sub {
-    font-size: 11px;
-    color: var(--text-muted);
-    font-family: var(--mono);
-    margin-bottom: 8px;
-  }
-
-  .rank-reason {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-  }
-
-  /* FINAL LINE */
-  .final-line {
-    background: var(--surface2);
-    border: 1px solid var(--border2);
-    border-left: 3px solid var(--accent-green);
-    padding: 16px 20px;
-    font-family: var(--mono);
-    font-size: 14px;
-    color: var(--text-primary);
-    line-height: 1.7;
-    border-radius: 0 4px 4px 0;
-  }
-
-  /* OTHERS (remaining stocks) */
-  .others-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: var(--border);
-  }
-
-  .other-row {
-    background: var(--surface);
-    padding: 16px 20px;
-    display: grid;
-    grid-template-columns: 140px 1fr auto;
-    gap: 20px;
-    align-items: start;
-  }
-
-  .other-name {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-
-  .other-cap {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 3px;
-  }
-
-  .other-financials {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.8;
-  }
-
-  .other-judgment {
-    text-align: right;
-  }
-
-  .other-reason {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 6px;
-    text-align: right;
-    line-height: 1.5;
-  }
-
-  /* FOOTER */
-  .site-footer {
-    padding: 40px 32px;
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: gap;
-  }
-
-  .footer-note {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-muted);
-    line-height: 1.6;
-  }
-
-  /* TOGGLE ICON */
-  .toggle-icon {
-    font-family: var(--mono);
-    font-size: 16px;
-    color: var(--text-muted);
-    transition: transform 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-  }
-
-  .card-header.open .toggle-icon { transform: rotate(180deg); color: var(--accent-blue); }
-
-  /* RESPONSIVE */
-  @media (max-width: 700px) {
-    .compare-grid { grid-template-columns: 1fr; }
-    .hero-meta { gap: 20px; }
-    .other-row { grid-template-columns: 1fr; }
-    .other-judgment { text-align: left; }
-    .other-reason { text-align: left; }
-  }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 24px 0;
-  }
-
-  .text-muted { color: var(--text-muted); font-size: 12px; }
-  .text-secondary { color: var(--text-secondary); }
-  .font-mono { font-family: var(--mono); }
-  .highlight-green { color: var(--accent-green); }
-  .highlight-red { color: var(--accent-red); }
-  .highlight-blue { color: var(--accent-blue); }
-  .highlight-yellow { color: var(--accent-yellow); }
-
-  /* ANIMATE */
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .section { animation: fadeIn 0.4s ease both; }
+    background: #1a1a2e;
+    padding: 44px 20px 36px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .hero-tag { font-size: 11px; color: #7f77dd; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500; }
+  .hero-date { font-size: 13px; color: rgba(255,255,255,0.4); }
+  .hero-title { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.3; margin-top: 4px; }
+  .hero-sub { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+  .hero-chip { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); }
+
+  .section { padding: 24px 16px 0; }
+  .section-label { font-size: 11px; color: #888; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
+
+  .theme-card { background: #fff; border-radius: 16px; padding: 4px 0; border: 1px solid rgba(0,0,0,0.06); overflow: hidden; }
+  .theme-row { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .theme-row:last-child { border-bottom: none; }
+  .theme-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .theme-content { flex: 1; }
+  .theme-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+  .theme-name { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+  .theme-badge { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 10px; }
+  .badge-real { background: #dcfce7; color: #166534; }
+  .badge-event { background: #dbeafe; color: #1e40af; }
+  .badge-noise { background: #f1f5f9; color: #64748b; }
+  .theme-tickers { font-size: 12px; color: #666; margin-bottom: 2px; }
+  .theme-desc { font-size: 12px; color: #888; line-height: 1.5; }
+
+  .split-box { background: #fff; border-radius: 16px; padding: 16px; border: 1px solid rgba(0,0,0,0.06); }
+  .split-label { font-size: 11px; font-weight: 600; color: #aaa; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 5px; }
+  .split-names { font-size: 13px; color: #333; line-height: 1.7; }
+  .split-divider { height: 1px; background: rgba(0,0,0,0.05); margin: 10px 0; }
+
+  .pick-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
+  .pick-row { display: flex; align-items: flex-start; gap: 12px; padding: 13px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .pick-row:last-child { border-bottom: none; }
+  .pick-num { font-size: 13px; font-weight: 700; color: #7f77dd; min-width: 18px; margin-top: 1px; }
+  .pick-name { font-size: 14px; font-weight: 600; color: #1a1a1a; margin-bottom: 2px; }
+  .pick-reason { font-size: 12px; color: #666; line-height: 1.5; }
+
+  .stock-card { background: #fff; border-radius: 16px; padding: 18px 16px; margin-bottom: 12px; border: 1px solid rgba(0,0,0,0.06); }
+  .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+  .card-rank-name { display: flex; align-items: center; gap: 8px; }
+  .rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .rank-1 { background: #fef3c7; color: #92400e; }
+  .rank-2 { background: #e0e7ff; color: #3730a3; }
+  .rank-3 { background: #fce7f3; color: #831843; }
+  .rank-4 { background: #f0fdf4; color: #166534; }
+  .rank-5 { background: #fff7ed; color: #9a3412; }
+  .card-name { font-size: 18px; font-weight: 700; color: #1a1a1a; }
+  .card-sector { font-size: 12px; color: #888; margin-top: 2px; }
+  .card-pct { font-size: 14px; font-weight: 600; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .pct-up { color: #c0392b; background: #fdf0ef; }
+  .pct-warn { color: #b7770d; background: #fef9ec; }
+  .card-body { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 12px; }
+  .metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 12px; }
+  .metric { background: #f8f7f4; border-radius: 10px; padding: 10px 12px; }
+  .metric-label { font-size: 10px; color: #aaa; margin-bottom: 3px; letter-spacing: 0.04em; }
+  .metric-val { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+  .metric-val.up { color: #1a7a45; }
+  .metric-val.warn { color: #c0392b; }
+  .metric-val.caution { color: #b7770d; }
+  .verdict { border-left: 3px solid #7f77dd; padding: 10px 12px; background: #f5f4fc; border-radius: 0 10px 10px 0; margin-bottom: 10px; }
+  .verdict-label { font-size: 10px; color: #7f77dd; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 3px; font-weight: 600; }
+  .verdict-text { font-size: 13px; color: #333; line-height: 1.55; }
+  .signal-box { background: #fff9f9; border-radius: 10px; padding: 10px 12px; border: 1px solid #fee2e2; }
+  .signal-label { font-size: 10px; color: #ef4444; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 5px; font-weight: 600; }
+  .signal-item { font-size: 12px; color: #555; line-height: 1.6; padding-left: 10px; position: relative; }
+  .signal-item::before { content: "·"; position: absolute; left: 0; color: #ef4444; }
+
+  .perf-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 12px; }
+  .perf-table th { font-size: 10px; color: #aaa; font-weight: 500; text-align: right; padding: 6px 8px; border-bottom: 1px solid rgba(0,0,0,0.07); }
+  .perf-table th:first-child { text-align: left; }
+  .perf-table td { text-align: right; padding: 8px 8px; border-bottom: 1px solid rgba(0,0,0,0.05); color: #444; }
+  .perf-table td:first-child { text-align: left; color: #1a1a1a; font-weight: 600; }
+  .perf-table tr:last-child td { border-bottom: none; }
+  .td-neg { color: #c0392b; }
+  .td-pos { color: #1a7a45; }
+
+  .scenario-box { border-radius: 10px; overflow: hidden; margin-bottom: 12px; border: 1px solid rgba(0,0,0,0.06); }
+  .scenario-row { display: flex; gap: 10px; padding: 10px 14px; font-size: 13px; border-bottom: 1px solid rgba(0,0,0,0.05); align-items: flex-start; }
+  .scenario-row:last-child { border-bottom: none; }
+  .scenario-label { font-size: 13px; min-width: 24px; }
+  .s-bull { background: #f0fdf4; }
+  .s-base { background: #f8f7f4; }
+  .s-bear { background: #fff9f9; }
+  .scenario-text { color: #444; line-height: 1.5; flex: 1; }
+  .scenario-val { font-size: 12px; font-weight: 600; white-space: nowrap; color: #888; }
+  .s-bull .scenario-val { color: #1a7a45; }
+  .s-bear .scenario-val { color: #c0392b; }
+
+  .brief-card { background: #fff; border-radius: 14px; padding: 14px 16px; margin-bottom: 8px; border: 1px solid rgba(0,0,0,0.06); }
+  .brief-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+  .brief-name { font-size: 15px; font-weight: 600; color: #1a1a1a; }
+  .brief-pct { font-size: 13px; font-weight: 600; color: #c0392b; }
+  .brief-meta { font-size: 12px; color: #888; margin-bottom: 6px; }
+  .brief-reason { font-size: 13px; color: #444; line-height: 1.55; margin-bottom: 6px; }
+  .brief-verdict { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 10px; }
+  .bv-watch { background: #dbeafe; color: #1e40af; }
+  .bv-pass { background: #f1f5f9; color: #475569; }
+  .bv-danger { background: #fee2e2; color: #991b1b; }
+  .bv-small { background: #fef3c7; color: #92400e; }
+
+  .monitor-card { background: #1a1a2e; border-radius: 16px; padding: 18px 16px; margin-bottom: 8px; }
+  .monitor-rank { font-size: 11px; color: #7f77dd; letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 6px; font-weight: 500; }
+  .monitor-name { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+  .monitor-reason { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  .divider { height: 1px; background: rgba(0,0,0,0.06); margin: 12px 0; }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="header-logo">STOCK_ANALYSIS // CPA_VALUE_INVESTOR</div>
-    <div class="header-date">2026.04.21</div>
-  </div>
-</header>
-
-<!-- HERO -->
+<!-- 히어로 -->
 <div class="hero">
-  <div class="hero-tag">Daily Surge Report</div>
-  <h1 class="hero-title">급등주 분석<span>_</span><br>2026.04.21</h1>
-  <div class="hero-sub">KOSPI Top 10 + KOSDAQ Top 20 | DART 재무 + 네이버 토론방 이슈 종합</div>
-  <div class="hero-meta">
-    <div class="hero-meta-item">
-      <div class="hero-meta-label">Total Stocks</div>
-      <div class="hero-meta-value">30</div>
-    </div>
-    <div class="hero-meta-item">
-      <div class="hero-meta-label">Analysis Target</div>
-      <div class="hero-meta-value">7</div>
-    </div>
-    <div class="hero-meta-item">
-      <div class="hero-meta-label">Top 5 Detail</div>
-      <div class="hero-meta-value">5</div>
-    </div>
-    <div class="hero-meta-item">
-      <div class="hero-meta-label">Dominant Theme</div>
-      <div class="hero-meta-value font-mono" style="font-size:14px; color: var(--accent-yellow);">2차전지 업황</div>
-    </div>
+  <div class="hero-tag">오늘의 급등주 분석</div>
+  <div class="hero-date">2026년 4월 21일</div>
+  <div class="hero-title">2차전지가 돌아왔나,<br>아니면 하루짜리 반등인가</div>
+  <div class="hero-sub">삼성SDI +20% 앵커로 장비·소재까지 불이 붙었어요.<br>재무 + 토론방으로 실체 확인해봤어요</div>
+  <div class="hero-chips">
+    <span class="hero-chip">코스피 Top 10</span>
+    <span class="hero-chip">코스닥 Top 20</span>
+    <span class="hero-chip">DART 재무데이터</span>
+    <span class="hero-chip">네이버 토론방</span>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════ -->
-<!-- 1단계: 전체 조감 -->
-<!-- ══════════════════════════════════════════ -->
+<!-- 1. 테마 -->
 <div class="section">
-<div class="container">
-  <div class="section-label">Step 01</div>
-  <div class="section-title">전체 조감</div>
-
-  <table class="cluster-table">
-    <thead>
-      <tr>
-        <th>클러스터</th>
-        <th>종목</th>
-        <th>성격</th>
-        <th>요약</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="font-mono highlight-green" style="font-weight:600;">2차전지 업황 회복<br><span class="text-muted">(대형·장비)</span></td>
-        <td class="font-mono" style="font-size:12px; color: var(--text-secondary);">삼성SDI, 씨아이에스<br>주성엔지니어링<br>한중엔시에스, 솔루스첨단소재</td>
-        <td><span class="badge badge-real">실체형</span></td>
-        <td style="font-size:12px; color: var(--text-secondary);">CATL 실적·전고체 기대감. 확인 가능한 수급.</td>
-      </tr>
-      <tr>
-        <td class="font-mono highlight-red" style="font-weight:600;">2차전지 테마 편승<br><span class="text-muted">(무관·저가)</span></td>
-        <td class="font-mono" style="font-size:12px; color: var(--text-secondary);">리튬포어스, 에이에프더블류<br>정원엔시스, 화인써키트</td>
-        <td><span class="badge badge-noise">노이즈형</span></td>
-        <td style="font-size:12px; color: var(--text-secondary);">사업 연관성 없거나 극히 미미.</td>
-      </tr>
-      <tr>
-        <td class="font-mono highlight-blue" style="font-weight:600;">2차전지 레버리지 파생</td>
-        <td class="font-mono" style="font-size:12px; color: var(--text-secondary);">KB ETN, 삼성ETN, 키움ETN</td>
-        <td><span class="badge badge-event">이벤트형</span></td>
-        <td style="font-size:12px; color: var(--text-secondary);">개별 분석 의미 없음.</td>
-      </tr>
-      <tr>
-        <td class="font-mono highlight-blue" style="font-weight:600;">벨로크 단독 이벤트</td>
-        <td class="font-mono" style="font-size:12px; color: var(--text-secondary);">벨로크</td>
-        <td><span class="badge badge-event">이벤트형</span></td>
-        <td style="font-size:12px; color: var(--text-secondary);">Figure AI 인수, 거래정지 예정.</td>
-      </tr>
-      <tr>
-        <td class="font-mono highlight-red" style="font-weight:600;">씨이랩 / 애머릿지</td>
-        <td class="font-mono" style="font-size:12px; color: var(--text-secondary);">씨이랩, 애머릿지</td>
-        <td><span class="badge badge-noise">노이즈형</span></td>
-        <td style="font-size:12px; color: var(--text-secondary);">재료 불명·실질 매출 0. 즉시 제외.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div style="background: var(--surface2); border-left: 3px solid var(--accent-yellow); padding: 14px 18px; margin-bottom: 28px; font-size: 13px; color: var(--text-secondary); line-height: 1.8;">
-    <span class="highlight-yellow font-mono" style="font-size:11px; letter-spacing:0.1em;">STRUCTURE_NOTE</span><br>
-    오늘 장은 사실상 <strong class="highlight-yellow">2차전지 업황 회복 기대감의 단일 테마</strong>가 지배. CATL 실적 서프라이즈 or 전고체 관련 뉴스가 방아쇠. 대형주(삼성SDI)가 앵커가 되고, 장비주 → 소재주 → 테마편승 저가주 순으로 불이 붙은 전형적 확산 구조.
+  <div class="section-label">오늘 장을 지배한 테마</div>
+  <div class="theme-card">
+    <div class="theme-row">
+      <div class="theme-icon" style="background:#dcfce7;">🔋</div>
+      <div class="theme-content">
+        <div class="theme-top">
+          <div class="theme-name">2차전지 업황 회복</div>
+          <div class="theme-badge badge-real">실체형</div>
+        </div>
+        <div class="theme-tickers">삼성SDI · 씨아이에스 · 주성엔지니어링 · 한중엔시에스 · 솔루스첨단소재</div>
+        <div class="theme-desc">CATL 실적·전고체 기대·미중 관세 협상이 복합 작용. 대형주가 앵커가 되고 장비→소재 순으로 불이 붙은 전형적 확산 구조.</div>
+      </div>
+    </div>
+    <div class="theme-row">
+      <div class="theme-icon" style="background:#fef2f2;">🚫</div>
+      <div class="theme-content">
+        <div class="theme-top">
+          <div class="theme-name">2차전지 테마 편승</div>
+          <div class="theme-badge badge-noise">노이즈형</div>
+        </div>
+        <div class="theme-tickers">리튬포어스 · 에이에프더블류 · 정원엔시스 · 화인써키트</div>
+        <div class="theme-desc">사업 연관성 없거나 극히 미미. 리튬포어스는 토론방에서 직접 "리튬사업 0.0%"라고 지적됨.</div>
+      </div>
+    </div>
+    <div class="theme-row">
+      <div class="theme-icon" style="background:#dbeafe;">📊</div>
+      <div class="theme-content">
+        <div class="theme-top">
+          <div class="theme-name">레버리지 파생 / 단독 이벤트</div>
+          <div class="theme-badge badge-event">이벤트형</div>
+        </div>
+        <div class="theme-tickers">KB·삼성·키움 ETN · 벨로크(Figure AI 인수)</div>
+        <div class="theme-desc">ETN은 지수 추종 파생상품. 벨로크는 거래정지 예정 공시 확인 — 진입 불가.</div>
+      </div>
+    </div>
+    <div class="theme-row">
+      <div class="theme-icon" style="background:#f1f5f9;">⚠️</div>
+      <div class="theme-content">
+        <div class="theme-top">
+          <div class="theme-name">분석 제외</div>
+          <div class="theme-badge badge-noise">노이즈형</div>
+        </div>
+        <div class="theme-tickers">씨이랩 · 애머릿지</div>
+        <div class="theme-desc">씨이랩은 재료 불명 세력성 급등. 애머릿지는 실질 매출 0 + 감사보고서 이슈.</div>
+      </div>
+    </div>
   </div>
-
-  <div class="section-title" style="font-size:16px;">상위 5종목 선정 이유</div>
-  <table class="cluster-table">
-    <thead>
-      <tr><th>#</th><th>종목</th><th>선정 근거 (1줄)</th></tr>
-    </thead>
-    <tbody>
-      <tr><td class="font-mono highlight-green">01</td><td class="font-mono">씨아이에스</td><td style="font-size:13px; color:var(--text-secondary);">2차전지 장비 실질 대장 — 사이클 하강 중 반등 시점이 가장 중요한 변곡점</td></tr>
-      <tr><td class="font-mono highlight-green">02</td><td class="font-mono">주성엔지니어링</td><td style="font-size:13px; color:var(--text-secondary);">반도체·2차전지 이중 축 + 공매도 잔고 압박 숏커버링 촉매 확인</td></tr>
-      <tr><td class="font-mono highlight-green">03</td><td class="font-mono">한중엔시에스</td><td style="font-size:13px; color:var(--text-secondary);">2024년 흑자 전환 직후 2025년 이익 급락 — 재평가 갭이 가장 크게 열린 구간</td></tr>
-      <tr><td class="font-mono highlight-green">04</td><td class="font-mono">삼성SDI</td><td style="font-size:13px; color:var(--text-secondary);">코스피 앵커 — 2025년 대규모 적자 후 업황 회복 여부가 전체 테마 지속성 결정</td></tr>
-      <tr><td class="font-mono highlight-green">05</td><td class="font-mono">솔루스첨단소재</td><td style="font-size:13px; color:var(--text-secondary);">4년 연속 영업적자이나 시총 9,746억 유지 — 하방 리스크 최대이나 독립 재료 존재</td></tr>
-    </tbody>
-  </table>
-</div>
 </div>
 
-<!-- ══════════════════════════════════════════ -->
-<!-- 상위 5종목 리포트 -->
-<!-- ══════════════════════════════════════════ -->
+<!-- 2. 1차 분리 -->
 <div class="section">
-<div class="container">
-  <div class="section-label">Step 01 — Detail</div>
-  <div class="section-title">상위 5종목 상세 리포트</div>
-
-  <div class="top5-grid">
-
-    <!-- ── 씨아이에스 ── -->
-    <div class="stock-card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-rank">01</div>
-        <div>
-          <div class="card-name">씨아이에스</div>
-          <div class="card-name-sub">222080 | 코스닥 | 시총 12,685억</div>
-        </div>
-        <div class="card-right">
-          <div class="card-change">+29.96%</div>
-          <div class="card-price">16,310원</div>
-          <div class="toggle-icon">▾</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-section">
-          <div class="card-section-title">종목 분류</div>
-          <div class="card-type-tag">트레이딩·사이클형 — 2차전지 장비</div>
-          <div class="summary-text">2차전지 전공정 장비(롤프레스·슬리터·코터) 국내 1위. 2022~2024년 급성장 후 2025년 업황 냉각으로 30%+ 역성장. 오늘 급등은 CATL 실적 기대 + 전고체 장비 수주 기대감 복합 작용이며, 재무 체력이 있어 테마 소멸 시에도 하방이 존재한다.</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">정량 평가</div>
-          <div class="metrics-row">
-            <div class="metric-box">
-              <div class="metric-label">이익 구조</div>
-              <div class="metric-value yellow">사이클형</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">시총</div>
-              <div class="metric-value">12,685억</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">2025 OPM</div>
-              <div class="metric-value yellow">8.2%</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">PER (2025순이익)</div>
-              <div class="metric-value red">44x</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">PER (2024고점)</div>
-              <div class="metric-value yellow">23x</div>
-            </div>
-          </div>
-          <table class="data-table">
-            <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>ROE</th></tr></thead>
-            <tbody>
-              <tr><td>2022</td><td>1,594</td><td>78</td><td>4.9%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2023</td><td>3,102</td><td class="td-positive">389</td><td class="td-positive">12.5%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2024</td><td>5,085</td><td class="td-positive">593</td><td class="td-positive">11.7%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2025</td><td>4,072</td><td>335</td><td>8.2%</td><td class="text-muted">정보부족</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">밸류에이션 시나리오 | 현재 시총 12,685억</div>
-          <table class="scenario-table">
-            <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
-            <tbody>
-              <tr class="scenario-bull"><td>🟢 Bull</td><td>2027년 이익 2024년 수준 회복 (OI 550억+), PER 25x</td><td>13,750억+</td><td class="td-positive">+8%</td></tr>
-              <tr class="scenario-base"><td>⚪ Base</td><td>2025년 이익 수준 지속, PER 20x</td><td>5,740억</td><td class="td-negative">-55%</td></tr>
-              <tr class="scenario-bear"><td>🔴 Bear</td><td>추가 감익, OI 150억, PER 15x</td><td>2,250억</td><td class="td-negative">-82%</td></tr>
-            </tbody>
-          </table>
-          <div style="margin-top:10px; font-size:12px; color:var(--text-muted);">※ Bull 시나리오조차 +8%만 상회 — 현재가에는 회복 기대 거의 전량 반영</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">코어 적합성</div>
-          <div class="core-fit no">✕ 부적합</div>
-          <div class="text-secondary" style="font-size:13px;">이익 재현성: 고객사 CAPEX 의존 / 해자: 중국 경쟁사 추격 리스크 / 밸류에이션: 현재가 회복 시나리오 선반영</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">탈락 신호</div>
-          <div class="signal-box">
-            <ul class="risk-list">
-              <li data-n="1">삼성SDI 2026년 CAPEX 가이던스 하향 또는 투자 지연 발표</li>
-              <li data-n="2">시간외에서 하한가 전환 (토론방에 이미 언급 — 실제 확인 필요)</li>
-              <li data-n="3">수주잔고 추가 공시 없이 주가만 2연상 이상 지속</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">추천 비중</div>
-          <div class="weight-row">
-            <div class="weight-item">코어 <span>0%</span></div>
-            <div class="weight-item">트레이딩 <span style="color:var(--accent-yellow);">조건부</span> — 삼성SDI CAPEX 재개 공시 확인 후 진입, 현재가 추격 비권장</div>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">핵심 리스크</div>
-          <ul class="risk-list">
-            <li data-n="1">현재가(시총 12,685억)는 2025년 이익 기준 PER 44배 — 회복 기대 전량 반영</li>
-            <li data-n="2">토론방에 "시외 하한가" 언급 → 당일 급등 후 차익실현 압박 실재</li>
-            <li data-n="3">전고체 배터리 장비 수주는 아직 루머 단계 — 공시 미확인</li>
-          </ul>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">다음 확인 포인트</div>
-          <ul class="risk-list check-list">
-            <li data-n="">삼성SDI의 2026년 설비투자 계획 공식 발표 여부</li>
-            <li data-n="">씨아이에스 수주잔고 공시 (DART)</li>
-            <li data-n="">시외단일가 하한가 여부 — 토론방 신호 실현 시 재진입 기회</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 주성엔지니어링 ── -->
-    <div class="stock-card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-rank">02</div>
-        <div>
-          <div class="card-name">주성엔지니어링</div>
-          <div class="card-name-sub">036930 | 코스닥 | 시총 55,266억</div>
-        </div>
-        <div class="card-right">
-          <div class="card-change">+29.95%</div>
-          <div class="card-price">118,900원</div>
-          <div class="toggle-icon">▾</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-section">
-          <div class="card-section-title">종목 분류</div>
-          <div class="card-type-tag">트레이딩·사이클형 — 반도체+2차전지 장비</div>
-          <div class="summary-text">반도체 박막증착장비(ALD·CVD) 주력, 2차전지 장비로 사업 확장 중. 2025년 반도체 사이클 둔화로 이익 급감했으나 구조적 흑자 능력 유지. 오늘 상한가는 공매도 잔고 10%+ + 2차전지 테마 + 전고체 기대감의 복합 숏스퀴즈. 재료의 지속성보다 수급 압박 해소 속도가 주가를 결정한다.</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">정량 평가</div>
-          <div class="metrics-row">
-            <div class="metric-box">
-              <div class="metric-label">이익 구조</div>
-              <div class="metric-value yellow">사이클형</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">시총</div>
-              <div class="metric-value">55,266억</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">2025 OPM</div>
-              <div class="metric-value yellow">10.1%</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">PER (2025)</div>
-              <div class="metric-value red">155x (!)</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">PER (2024고점)</div>
-              <div class="metric-value red">52x</div>
-            </div>
-          </div>
-          <table class="data-table">
-            <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>ROE</th></tr></thead>
-            <tbody>
-              <tr><td>2022</td><td>4,379</td><td class="td-positive">1,239</td><td class="td-positive">28.3%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2023</td><td>2,847</td><td>289</td><td>10.1%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2024</td><td>4,094</td><td class="td-positive">972</td><td class="td-positive">23.7%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2025</td><td>3,107</td><td>313</td><td>10.1%</td><td class="text-muted">정보부족</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">밸류에이션 시나리오 | 현재 시총 55,266억</div>
-          <table class="scenario-table">
-            <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
-            <tbody>
-              <tr class="scenario-bull"><td>🟢 Bull</td><td>반도체+전고체 동시 사이클 업, OI 1,200억, PER 30x</td><td>36,000억</td><td class="td-negative">-35%</td></tr>
-              <tr class="scenario-base"><td>⚪ Base</td><td>2025년 이익 수준 유지, PER 25x</td><td>8,925억</td><td class="td-negative">-84%</td></tr>
-              <tr class="scenario-bear"><td>🔴 Bear</td><td>추가 감익, OPM 5%, PER 20x</td><td>3,100억</td><td class="td-negative">-94%</td></tr>
-            </tbody>
-          </table>
-          <div style="margin-top:10px; font-size:12px; color:var(--accent-red);">※ Base조차 -84%. 시총 55,266억은 어떤 합리적 시나리오로도 정당화 불가.</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">코어 적합성</div>
-          <div class="core-fit no">✕ 부적합</div>
-          <div class="text-secondary" style="font-size:13px;">사이클 변동성 과대 / PER 155배 허용 불가 / 어떤 시나리오로도 현재가 지지 안 됨</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">탈락 신호</div>
-          <div class="signal-box">
-            <ul class="risk-list">
-              <li data-n="1">공매도 잔고 실제 청산 완료 확인 → 숏스퀴즈 동력 소멸</li>
-              <li data-n="2">전고체 관련 공식 수주 공시 없이 2~3일 경과</li>
-              <li data-n="3">반도체 고객사 CAPEX 추가 삭감 발표</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">추천 비중</div>
-          <div class="weight-row">
-            <div class="weight-item">코어 <span>0%</span></div>
-            <div class="weight-item">트레이딩 <span class="highlight-red">0%</span> — 현재가 진입 금지. 시총 정당화 불가. 숏스퀴즈 수혜 이미 발생.</div>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">핵심 리스크</div>
-          <ul class="risk-list">
-            <li data-n="1">PER 155배 — 숏스퀴즈 해소 후 밸류에이션 부담 즉각 가시화</li>
-            <li data-n="2">토론방 스캠 채널 광고 다수 — 세력성 급등 패턴과 유사</li>
-            <li data-n="3">반도체+2차전지 사이클 동시 회복 없이는 이익 근거 없음</li>
-          </ul>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">다음 확인 포인트</div>
-          <ul class="risk-list check-list">
-            <li data-n="">공매도 잔고 실시간 변화 (한국거래소)</li>
-            <li data-n="">삼성전자/SK하이닉스 CAPEX 공식 발표</li>
-            <li data-n="">시간외 가격 — 하한가 전환 시 숏스퀴즈 완료 신호</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 한중엔시에스 ── -->
-    <div class="stock-card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-rank">03</div>
-        <div>
-          <div class="card-name">한중엔시에스</div>
-          <div class="card-name-sub">107640 | 코스닥 | 시총 6,572억</div>
-        </div>
-        <div class="card-right">
-          <div class="card-change">+29.93%</div>
-          <div class="card-price">72,500원</div>
-          <div class="toggle-icon">▾</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-section">
-          <div class="card-section-title">종목 분류</div>
-          <div class="card-type-tag">트레이딩·전환형 — 2차전지 냉각·열관리 시스템</div>
-          <div class="summary-text">2차전지 팩 냉각 시스템(Liquid Cooling Plate 등) 전문 제조사. 2022~2023년 영업적자에서 2024년 96억 흑자 전환했으나 2025년 40억으로 급감. 오늘 상한가는 ESS 수혜주 대장 언급 + 유안타증권 목표가 재부각. 재무 개선 궤적은 실재하나 사이클 위치 파악이 핵심.</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">정량 평가</div>
-          <div class="metrics-row">
-            <div class="metric-box">
-              <div class="metric-label">이익 구조</div>
-              <div class="metric-value yellow">사이클 개선형</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">시총</div>
-              <div class="metric-value">6,572억</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">2025 OPM</div>
-              <div class="metric-value yellow">2.3%</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">PER (2025)</div>
-              <div class="metric-value red">134x</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">PER (2024)</div>
-              <div class="metric-value red">43x</div>
-            </div>
-          </div>
-          <table class="data-table">
-            <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>ROE</th></tr></thead>
-            <tbody>
-              <tr><td>2022</td><td>885</td><td class="td-negative">-139</td><td>—</td><td>—</td></tr>
-              <tr><td>2023</td><td>1,216</td><td class="td-negative">-127</td><td>—</td><td>—</td></tr>
-              <tr><td>2024</td><td>1,773</td><td class="td-positive">96</td><td class="td-positive">5.4%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2025</td><td>1,753</td><td>40</td><td>2.3%</td><td class="text-muted">정보부족</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">밸류에이션 시나리오 | 현재 시총 6,572억</div>
-          <table class="scenario-table">
-            <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
-            <tbody>
-              <tr class="scenario-bull"><td>🟢 Bull</td><td>ESS 수주 확대, OI 200억 회복, PER 30x</td><td>6,000억</td><td class="td-negative">-8%</td></tr>
-              <tr class="scenario-base"><td>⚪ Base</td><td>2025년 수준 이익 유지, PER 20x</td><td>980억</td><td class="td-negative">-85%</td></tr>
-              <tr class="scenario-bear"><td>🔴 Bear</td><td>재적자 전환</td><td>N/A</td><td class="td-negative">추가 하방</td></tr>
-            </tbody>
-          </table>
-          <div style="margin-top:10px; font-size:12px; color:var(--accent-red);">※ Bull조차 -8%. 리스크 대비 기대수익 셋 중 최악.</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">코어 적합성</div>
-          <div class="core-fit no">✕ 부적합</div>
-          <div class="text-secondary" style="font-size:13px;">흑자 전환 1년 만에 재감익으로 이익 재현성 미검증 / PER 134배 허용 불가 / ESS 수혜 구조적 여부 미확인</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">탈락 신호</div>
-          <div class="signal-box">
-            <ul class="risk-list">
-              <li data-n="1">2026년 1분기 영업이익 추가 감소 공시</li>
-              <li data-n="2">유안타 목표가 근거(수주잔고·고객사 공시) 미확인 시</li>
-              <li data-n="3">삼성SDI ESS 투자 지연 발표</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">추천 비중</div>
-          <div class="weight-row">
-            <div class="weight-item">코어 <span>0%</span></div>
-            <div class="weight-item">트레이딩 <span style="color:var(--accent-yellow);">소량·조건부</span> — ESS 구체적 수주 공시 확인 후. 현재가 추격 비권장.</div>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">다음 확인 포인트</div>
-          <ul class="risk-list check-list">
-            <li data-n="">유안타증권 리포트 원문 확인 (목표가 125,000원 근거)</li>
-            <li data-n="">ESS 관련 수주 공시 (DART)</li>
-            <li data-n="">2026년 1분기 실적 가이던스</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 삼성SDI ── -->
-    <div class="stock-card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-rank">04</div>
-        <div>
-          <div class="card-name">삼성SDI</div>
-          <div class="card-name-sub">006400 | 코스피 | 시총 519,776억</div>
-        </div>
-        <div class="card-right">
-          <div class="card-change">+19.89%</div>
-          <div class="card-price">645,000원</div>
-          <div class="toggle-icon">▾</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-section">
-          <div class="card-section-title">종목 분류</div>
-          <div class="card-type-tag">코어 후보형 — 코스피 대형 2차전지 앵커</div>
-          <div class="summary-text">배터리(원통형·각형·ESS) + 전자재료. 2025년 영업손실 17,224억이라는 창사 이래급 적자 기록. 오늘 19.89% 급등은 CATL 실적 기대·전고체 기대·미중 관세 협상 기대감의 복합 작용. 업황 바닥 서사가 시장에서 받아들여지기 시작했다는 신호이나, 재무 기반 회복 확인까지 변동성은 극도로 크다.</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">정량 평가</div>
-          <div class="metrics-row">
-            <div class="metric-box">
-              <div class="metric-label">이익 구조</div>
-              <div class="metric-value yellow">사이클형</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">시총</div>
-              <div class="metric-value">519,776억</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">2025 OPM</div>
-              <div class="metric-value red">적자</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">PER</div>
-              <div class="metric-value red">산출불가</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">EV/EBIT (2022기준)</div>
-              <div class="metric-value red">~29x</div>
-            </div>
-          </div>
-          <table class="data-table">
-            <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>ROE</th></tr></thead>
-            <tbody>
-              <tr><td>2022</td><td>201,241</td><td class="td-positive">18,080</td><td class="td-positive">9.0%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2023</td><td>227,083</td><td class="td-positive">16,334</td><td class="td-positive">7.2%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2024</td><td>165,922</td><td>3,633</td><td>2.2%</td><td class="text-muted">정보부족</td></tr>
-              <tr><td>2025</td><td>132,667</td><td class="td-negative">-17,224</td><td>—</td><td class="text-muted">정보부족</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">밸류에이션 시나리오 | 현재 시총 519,776억</div>
-          <table class="scenario-table">
-            <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
-            <tbody>
-              <tr class="scenario-bull"><td>🟢 Bull</td><td>2027년 OI 15,000억 회복, PER 20x</td><td>300,000억+</td><td class="td-negative">-42%</td></tr>
-              <tr class="scenario-base"><td>⚪ Base</td><td>2027년 OI 8,000억, PER 18x</td><td>144,000억</td><td class="td-negative">-72%</td></tr>
-              <tr class="scenario-bear"><td>🔴 Bear</td><td>적자 지속 2년+</td><td>산출불가</td><td class="td-negative">하방 무한</td></tr>
-            </tbody>
-          </table>
-          <div style="margin-top:10px; font-size:12px; color:var(--accent-red);">※ Bull조차 -42%. 순수 밸류에이션으로는 매수 근거 없음. 업황 바닥 베팅의 옵션 성격.</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">코어 적합성</div>
-          <div class="core-fit no">✕ 현재 부적합 (조건부 재검토)</div>
-          <div class="text-secondary" style="font-size:13px;">이익 재현성: 1~2분기 흑자 전환 공시 없으면 불가 / 해자: 글로벌 Top 3 브랜드·기술력 존재 / 밸류에이션: 현재가 어떤 시나리오로도 지지 불가</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">탈락 신호</div>
-          <div class="signal-box">
-            <ul class="risk-list">
-              <li data-n="1">2026년 1분기 적자 지속 공시</li>
-              <li data-n="2">전고체 양산 타임라인 추가 지연 발표</li>
-              <li data-n="3">삼성전자 그룹 차원의 SDI 지원 약화 신호</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">추천 비중</div>
-          <div class="weight-row">
-            <div class="weight-item">코어 <span>0%</span> (2분기 흑자 전환 확인 후 재검토)</div>
-            <div class="weight-item">트레이딩 <span class="highlight-red">0%</span> — 19.89% 급등 후 추격매수 비권장</div>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">다음 확인 포인트</div>
-          <ul class="risk-list check-list">
-            <li data-n="">2026년 1분기 잠정실적 (4월 말~5월 초)</li>
-            <li data-n="">전고체 파일럿 양산 관련 공식 발표</li>
-            <li data-n="">CATL 1분기 실적 공시 내용 (비교 기준)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── 솔루스첨단소재 ── -->
-    <div class="stock-card">
-      <div class="card-header" onclick="toggleCard(this)">
-        <div class="card-rank">05</div>
-        <div>
-          <div class="card-name">솔루스첨단소재</div>
-          <div class="card-name-sub">336370 | 코스피 | 시총 9,746억</div>
-        </div>
-        <div class="card-right">
-          <div class="card-change">+26.07%</div>
-          <div class="card-price">13,880원</div>
-          <div class="toggle-icon">▾</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="card-section">
-          <div class="card-section-title">종목 분류</div>
-          <div class="card-type-tag">트레이딩·회생기대형 — 전지박·OLED 소재</div>
-          <div class="summary-text">2차전지용 전지박(구리 호일) + OLED 소재 사업. 시총 9,746억이지만 4년 연속 영업적자(-452→-732→-544→-733억), 2025년 순손실 1,384억. 오늘 26.07% 급등은 2차전지 업황 회복 기대의 소재주 파급. 매출은 성장 중이나 이익 전환 시점이 계속 지연 — 현재가는 거의 전량 기대감으로 구성된 위험 구조.</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">정량 평가</div>
-          <div class="metrics-row">
-            <div class="metric-box">
-              <div class="metric-label">이익 구조</div>
-              <div class="metric-value red">불안정</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">시총</div>
-              <div class="metric-value">9,746억</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">4년 영업 누적 적자</div>
-              <div class="metric-value red">-2,461억</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">PER</div>
-              <div class="metric-value red">산출불가</div>
-            </div>
-            <div class="metric-box">
-              <div class="metric-label">PSR (매출대비)</div>
-              <div class="metric-value red">~1.6x</div>
-            </div>
-          </div>
-          <table class="data-table">
-            <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>순이익(억)</th></tr></thead>
-            <tbody>
-              <tr><td>2022</td><td>4,612</td><td class="td-negative">-452</td><td>—</td><td class="td-negative">-472</td></tr>
-              <tr><td>2023</td><td>4,294</td><td class="td-negative">-732</td><td>—</td><td class="td-positive">1,268 *</td></tr>
-              <tr><td>2024</td><td>5,709</td><td class="td-negative">-544</td><td>—</td><td class="td-negative">-427</td></tr>
-              <tr><td>2025</td><td>6,161</td><td class="td-negative">-733</td><td>—</td><td class="td-negative">-1,384</td></tr>
-            </tbody>
-          </table>
-          <div class="text-muted" style="font-size:11px; margin-top:6px;">* 2023년 순이익 특이값: 자산 매각 등 영업외 요인 추정</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">밸류에이션 시나리오 | 현재 시총 9,746억</div>
-          <table class="scenario-table">
-            <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
-            <tbody>
-              <tr class="scenario-bull"><td>🟢 Bull</td><td>2027년 흑자 전환 OI 500억, PER 20x</td><td>10,000억</td><td class="td-positive">+2.6%</td></tr>
-              <tr class="scenario-base"><td>⚪ Base</td><td>적자 지속, PSR 0.8x</td><td>4,929억</td><td class="td-negative">-49%</td></tr>
-              <tr class="scenario-bear"><td>🔴 Bear</td><td>자본 잠식 가속, 유상증자 발표</td><td>N/A</td><td class="td-negative">추가 하방</td></tr>
-            </tbody>
-          </table>
-          <div style="margin-top:10px; font-size:12px; color:var(--accent-red);">※ Bull조차 +2.6%만 상회 — 리스크 대비 기대수익 최악.</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">코어 적합성</div>
-          <div class="core-fit no">✕ 부적합</div>
-          <div class="text-secondary" style="font-size:13px;">4년 연속 영업적자 — 이익 재현성 없음 / 동박 과잉공급 구조 — 해자 미약 / 회복 기대 전량 반영</div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">탈락 신호</div>
-          <div class="signal-box">
-            <ul class="risk-list">
-              <li data-n="1">2026년 상반기도 영업적자 지속 공시</li>
-              <li data-n="2">추가 유상증자 또는 CB 발행 공시</li>
-              <li data-n="3">동박 가격 추가 하락 (글로벌 수급)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">추천 비중</div>
-          <div class="weight-row">
-            <div class="weight-item">코어 <span>0%</span></div>
-            <div class="weight-item">트레이딩 <span class="highlight-red">0%</span> — 재무 하방 없는 순수 기대감 종목</div>
-          </div>
-        </div>
-
-        <div class="card-section">
-          <div class="card-section-title">다음 확인 포인트</div>
-          <ul class="risk-list check-list">
-            <li data-n="">동박 스팟 가격 추이 (글로벌 구리 호일 시장)</li>
-            <li data-n="">2026년 1분기 매출원가율 변화 — 이익 개선 징후 탐색</li>
-            <li data-n="">유상증자/CB 발행 여부 (DART 모니터링)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
+  <div class="section-label">30종목 중 1차 분리</div>
+  <div class="split-box">
+    <div class="split-label" style="color:#166534;">분석 가치 있음 (7종목)</div>
+    <div class="split-names">삼성SDI · 씨아이에스 · 주성엔지니어링 · 한중엔시에스 · 솔루스첨단소재 · 화인써키트 · 벨로크</div>
+    <div class="split-divider"></div>
+    <div class="split-label" style="color:#991b1b;">제외 (8종목 이상)</div>
+    <div class="split-names" style="color:#888;">KB·삼성·키움 ETN (파생) · 리튬포어스 (리튬사업 0%) · 에이에프더블류 (4년 연속 적자) · 애머릿지 (실질 매출 0) · 씨이랩 (재료 불명) · 정원엔시스 (테마 무관) · 벨로크 (거래정지 예정)</div>
   </div>
 </div>
-</div>
 
-<!-- ══════════════════════════════════════════ -->
-<!-- 나머지 종목 간략 요약 -->
-<!-- ══════════════════════════════════════════ -->
+<!-- 3. 상위 5 선정 이유 -->
 <div class="section">
-<div class="container">
-  <div class="section-label">Step 01 — Remaining</div>
-  <div class="section-title">나머지 종목 간략 요약</div>
-  <div class="others-grid">
-
-    <div class="other-row">
-      <div>
-        <div class="other-name">KB/삼성/키움 레버리지 2차전지 ETN</div>
-        <div class="other-cap">시총 조회불가 | 파생상품</div>
-      </div>
-      <div class="other-financials">DART 데이터 없음<br>2차전지 지수 레버리지 추종</div>
-      <div class="other-judgment">
-        <div class="other-reason">2차전지 구성 종목 전반 급등에 연동</div>
-        <span class="badge badge-noise">분석 불필요</span>
-      </div>
+  <div class="section-label">상위 5종목 선정 이유</div>
+  <div class="pick-card">
+    <div class="pick-row">
+      <div class="pick-num">1</div>
+      <div><div class="pick-name">씨아이에스</div><div class="pick-reason">2차전지 장비 실질 대장 — 사이클 하강 중 반등 시점이 가장 중요한 변곡점.</div></div>
     </div>
-
-    <div class="other-row">
-      <div>
-        <div class="other-name">정원엔시스</div>
-        <div class="other-cap">시총 417억 | 코스닥</div>
-      </div>
-      <div class="other-financials">매출 2,009억 / 영업이익 19억<br>OPM 0.9% / ROE 정보부족</div>
-      <div class="other-judgment">
-        <div class="other-reason">2차전지 테마 편승 추정. 토론방 재료 불명확.</div>
-        <span class="badge badge-noise">초저마진 유통 — 즉시 제외</span>
-      </div>
+    <div class="pick-row">
+      <div class="pick-num">2</div>
+      <div><div class="pick-name">주성엔지니어링</div><div class="pick-reason">반도체·2차전지 이중 축 + 공매도 잔고 압박으로 숏커버링 촉매 확인.</div></div>
     </div>
-
-    <div class="other-row">
-      <div>
-        <div class="other-name">에이에프더블류</div>
-        <div class="other-cap">시총 288억 | 코스닥</div>
-      </div>
-      <div class="other-financials">매출 137억 / 영업이익 -95억<br>OPM — / ROE —</div>
-      <div class="other-judgment">
-        <div class="other-reason">2차전지 테마 편승. 연관성 없음 토론방 공개 반박.</div>
-        <span class="badge badge-noise">4년 연속 적자 확대 — 즉시 제외</span>
-      </div>
+    <div class="pick-row">
+      <div class="pick-num">3</div>
+      <div><div class="pick-name">한중엔시에스</div><div class="pick-reason">2024년 흑자 전환 직후 2025년 이익 급락 — 재평가 갭이 가장 크게 열린 구간.</div></div>
     </div>
-
-    <div class="other-row">
-      <div>
-        <div class="other-name">애머릿지</div>
-        <div class="other-cap">시총 268억 | 코스닥</div>
-      </div>
-      <div class="other-financials">매출 실질 0 / 영업이익 0<br>OPM — / ROE —</div>
-      <div class="other-judgment">
-        <div class="other-reason">실질 매출 제로 + 감사보고서 이슈 공방</div>
-        <span class="badge badge-noise">투기성 최고 등급 — 즉시 제외</span>
-      </div>
+    <div class="pick-row">
+      <div class="pick-num">4</div>
+      <div><div class="pick-name">삼성SDI</div><div class="pick-reason">코스피 앵커 — 2025년 대규모 적자 후 업황 회복 여부가 전체 테마 지속성 결정.</div></div>
     </div>
-
-    <div class="other-row">
-      <div>
-        <div class="other-name">리튬포어스</div>
-        <div class="other-cap">시총 455억 | 코스닥</div>
-      </div>
-      <div class="other-financials">매출 107억 / 영업이익 -45억<br>OPM — / ROE —</div>
-      <div class="other-judgment">
-        <div class="other-reason">IP사업 98.5%, 리튬사업 0.0%. 반복 테마 편승.</div>
-        <span class="badge badge-noise">무관 종목 — 분석 불필요</span>
-      </div>
+    <div class="pick-row">
+      <div class="pick-num">5</div>
+      <div><div class="pick-name">솔루스첨단소재</div><div class="pick-reason">4년 연속 영업적자에 시총 9,746억 — 하방 리스크 최대지만 테마 내 독립 재료 존재.</div></div>
     </div>
-
-    <div class="other-row">
-      <div>
-        <div class="other-name">씨이랩</div>
-        <div class="other-cap">시총 839억 | 코스닥</div>
-      </div>
-      <div class="other-financials">매출 103억 / 영업이익 -32억<br>OPM — / ROE —</div>
-      <div class="other-judgment">
-        <div class="other-reason">재료 불명확. "주포 세력" 언급 다수. 10연상 기대.</div>
-        <span class="badge badge-noise">세력성 급등 전형 — 분석 불필요</span>
-      </div>
-    </div>
-
-    <div class="other-row">
-      <div>
-        <div class="other-name">벨로크</div>
-        <div class="other-cap">시총 468억 | 코스닥</div>
-      </div>
-      <div class="other-financials">매출 354억 / 영업이익 9억<br>OPM 2.5% / ROE 정보부족</div>
-      <div class="other-judgment">
-        <div class="other-reason">Figure AI 인수 + 주권매매거래정지 예정 공시</div>
-        <span class="badge badge-event">거래정지 예정 — 진입 금지</span>
-      </div>
-    </div>
-
-    <div class="other-row">
-      <div>
-        <div class="other-name">화인써키트</div>
-        <div class="other-cap">시총 808억 | 코스닥</div>
-      </div>
-      <div class="other-financials">매출 818억 / 영업이익 -15억<br>OPM — / ROE —</div>
-      <div class="other-judgment">
-        <div class="other-reason">AI 데이터센터 내러티브 + 2차전지 편승 스팸 혼재</div>
-        <span class="badge badge-noise">2025년 흑자→적자 전환 — 재료 미확인</span>
-      </div>
-    </div>
-
   </div>
 </div>
-</div>
 
-<!-- ══════════════════════════════════════════ -->
-<!-- 2단계: 모니터링 우선순위 -->
-<!-- ══════════════════════════════════════════ -->
+<!-- 4. 상세 5종목 -->
 <div class="section">
-<div class="container">
-  <div class="section-label">Step 02</div>
-  <div class="section-title">모니터링 우선순위</div>
-  <div class="monitoring-cards">
+  <div class="section-label">상위 5종목 상세 분석</div>
 
-    <div class="monitoring-card rank-1">
-      <div class="monitoring-rank">🔍 1순위</div>
-      <div class="monitoring-name">씨아이에스</div>
-      <div class="monitoring-reason">시간외 하한가 신호가 토론방에서 나왔다. 실제 시간외 하한가 전환 여부에 따라 — 진짜 매수 기회인지, 2연상 붕괴 신호인지를 다음 거래일 오전 수급으로 판별할 수 있다. 삼성SDI CAPEX 재개 여부와 맞물려 2차전지 장비 사이클 전환점의 핵심 지표 종목.</div>
+  <!-- 씨아이에스 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-1">1</span>
+          <span class="card-name">씨아이에스</span>
+        </div>
+        <div class="card-sector">2차전지 전공정 장비 · 코스닥</div>
+      </div>
+      <span class="card-pct pct-up">+29.96%</span>
     </div>
-
-    <div class="monitoring-card rank-2">
-      <div class="monitoring-rank">🔍 2순위</div>
-      <div class="monitoring-name">삼성SDI</div>
-      <div class="monitoring-reason">오늘 급등이 업황 반전의 시작인지 단순 기술적 반등인지를 판별하는 앵커. 다음 1~2거래일 방향이 나머지 테마 종목들의 생존 기간을 결정한다. 1분기 잠정실적(4월 말 예정)이 임박한 구간이기도 하다.</div>
+    <div class="card-body">
+      2차전지 전공정 장비(롤프레스·슬리터·코터) 국내 1위 회사예요. 2022~2024년 매출이 3배 넘게 폭발했다가 2025년 배터리 업황 냉각으로 30% 역성장했어요. 오늘 상한가는 CATL 실적 기대 + 전고체 수주 기대의 복합 작용이에요. 장비주 중 재무 체력이 가장 튼튼해서 테마 소멸 시에도 하방이 어느 정도 받쳐줘요.
     </div>
-
-    <div class="monitoring-card rank-3">
-      <div class="monitoring-rank">🔍 3순위</div>
-      <div class="monitoring-name">한중엔시에스</div>
-      <div class="monitoring-reason">셋 중 밸류에이션 부담이 가장 크고, ESS 수혜 서사가 구체적 공시로 뒷받침되는지 미확인. 유안타 리포트 근거가 실재한다면 재평가 여지가 있고, 없다면 가장 먼저 탈락할 종목.</div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 영업이익</div><div class="metric-val">335억</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">12,685억</div></div>
+      <div class="metric"><div class="metric-label">영업이익률</div><div class="metric-val caution">8.2%↓</div></div>
+      <div class="metric"><div class="metric-label">PER (2025)</div><div class="metric-val warn">약 44배</div></div>
     </div>
+    <table class="perf-table">
+      <thead><tr><th>연도</th><th>매출</th><th>영업이익</th><th>OPM</th></tr></thead>
+      <tbody>
+        <tr><td>2022</td><td>1,594억</td><td>78억</td><td>4.9%</td></tr>
+        <tr><td>2023</td><td>3,102억</td><td class="td-pos">389억</td><td class="td-pos">12.5%</td></tr>
+        <tr><td>2024</td><td>5,085억</td><td class="td-pos">593억</td><td class="td-pos">11.7%</td></tr>
+        <tr><td>2025</td><td>4,072억</td><td>335억</td><td>8.2%</td></tr>
+      </tbody>
+    </table>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">방향은 맞는데 현재 시총은 회복 기대를 이미 상당 부분 반영한 가격이에요. Bull 시나리오(적정 13,750억)도 현재가 대비 +8%예요. "지금 사는 게 아니라 다음 눌림에서 가장 먼저 사는 종목"이에요.</div>
+    </div>
+    <div class="scenario-box">
+      <div class="scenario-row s-bull"><div class="scenario-label">🟢</div><div class="scenario-text">2027년 이익 2024년 수준 회복, PER 25배</div><div class="scenario-val">13,750억 (+8%)</div></div>
+      <div class="scenario-row s-base"><div class="scenario-label">⚪</div><div class="scenario-text">2025년 이익 수준 유지, PER 20배</div><div class="scenario-val">5,740억 (-55%)</div></div>
+      <div class="scenario-row s-bear"><div class="scenario-label">🔴</div><div class="scenario-text">추가 감익, OI 150억, PER 15배</div><div class="scenario-val">2,250억 (-82%)</div></div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">탈락 신호</div>
+      <div class="signal-item">삼성SDI 2026년 CAPEX 가이던스 하향 또는 지연 발표</div>
+      <div class="signal-item">시간외 하한가 전환 — 토론방에 이미 언급, 실제 확인 필요</div>
+      <div class="signal-item">수주잔고 공시 없이 주가만 2연상 이상 지속</div>
+    </div>
+  </div>
 
+  <!-- 주성엔지니어링 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-2">2</span>
+          <span class="card-name">주성엔지니어링</span>
+        </div>
+        <div class="card-sector">반도체·2차전지 장비 · 코스닥</div>
+      </div>
+      <span class="card-pct pct-up">+29.95%</span>
+    </div>
+    <div class="card-body">
+      반도체 박막증착장비(ALD·CVD) 주력에 2차전지 장비를 추가 중인 회사예요. 2025년 반도체 사이클 둔화로 이익이 급감했지만 구조적 흑자 능력은 유지하고 있어요. 오늘 상한가의 핵심은 2차전지 테마보다 <strong>공매도 잔고 10% 이상</strong>에서 나온 숏스퀴즈예요. 재료보다 수급 압박 해소가 오늘 급등의 진짜 이유예요.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 영업이익</div><div class="metric-val">313억</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">55,266억</div></div>
+      <div class="metric"><div class="metric-label">영업이익률</div><div class="metric-val">10.1%</div></div>
+      <div class="metric"><div class="metric-label">PER (2025)</div><div class="metric-val warn">약 155배</div></div>
+    </div>
+    <table class="perf-table">
+      <thead><tr><th>연도</th><th>매출</th><th>영업이익</th><th>OPM</th></tr></thead>
+      <tbody>
+        <tr><td>2022</td><td>4,379억</td><td class="td-pos">1,239억</td><td class="td-pos">28.3%</td></tr>
+        <tr><td>2023</td><td>2,847억</td><td>289억</td><td>10.1%</td></tr>
+        <tr><td>2024</td><td>4,094억</td><td class="td-pos">972억</td><td class="td-pos">23.7%</td></tr>
+        <tr><td>2025</td><td>3,107억</td><td>313억</td><td>10.1%</td></tr>
+      </tbody>
+    </table>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">PER 155배는 어떤 시나리오로도 정당화가 안 돼요. Base 시나리오 적정가 대비 -84%예요. 숏스퀴즈 수혜는 이미 발생한 이후 — 지금 진입은 추격이에요.</div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">탈락 신호</div>
+      <div class="signal-item">공매도 잔고 실제 청산 완료 → 숏스퀴즈 동력 소멸</div>
+      <div class="signal-item">전고체 공식 수주 공시 없이 2~3일 경과</div>
+      <div class="signal-item">반도체 고객사 CAPEX 추가 삭감 발표</div>
+    </div>
+  </div>
+
+  <!-- 한중엔시에스 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-3">3</span>
+          <span class="card-name">한중엔시에스</span>
+        </div>
+        <div class="card-sector">2차전지 냉각·열관리 시스템 · 코스닥</div>
+      </div>
+      <span class="card-pct pct-up">+29.93%</span>
+    </div>
+    <div class="card-body">
+      배터리 팩 냉각 시스템(Liquid Cooling Plate 등)을 만드는 회사예요. 2022~2023년 영업 적자에서 2024년 96억 흑자로 전환했는데 2025년에 다시 40억으로 급감했어요. 오늘 급등은 ESS 수혜주 대장 포지셔닝 + 유안타증권 목표가 125,000원 재부각이에요. 이 목표가 근거가 실재하는지가 핵심이에요.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 영업이익</div><div class="metric-val caution">40억↓</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">6,572억</div></div>
+      <div class="metric"><div class="metric-label">영업이익률</div><div class="metric-val caution">2.3%</div></div>
+      <div class="metric"><div class="metric-label">PER (2025)</div><div class="metric-val warn">약 134배</div></div>
+    </div>
+    <table class="perf-table">
+      <thead><tr><th>연도</th><th>매출</th><th>영업이익</th><th>OPM</th></tr></thead>
+      <tbody>
+        <tr><td>2022</td><td>885억</td><td class="td-neg">-139억</td><td>—</td></tr>
+        <tr><td>2023</td><td>1,216억</td><td class="td-neg">-127억</td><td>—</td></tr>
+        <tr><td>2024</td><td>1,773억</td><td class="td-pos">96억</td><td class="td-pos">5.4%</td></tr>
+        <tr><td>2025</td><td>1,753억</td><td>40억</td><td>2.3%</td></tr>
+      </tbody>
+    </table>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">흑자 전환 1년 만에 재감익이 나왔어요. ESS 수주 공시가 나오면 재평가 여지가 있고, 없으면 셋 중 가장 먼저 탈락할 종목이에요. Bull 시나리오(6,000억)도 현재가 대비 -8%예요.</div>
+    </div>
+    <div class="scenario-box">
+      <div class="scenario-row s-bull"><div class="scenario-label">🟢</div><div class="scenario-text">ESS 수주 확대, OI 200억 회복, PER 30배</div><div class="scenario-val">6,000억 (-8%)</div></div>
+      <div class="scenario-row s-base"><div class="scenario-label">⚪</div><div class="scenario-text">2025년 수준 유지, PER 20배</div><div class="scenario-val">980억 (-85%)</div></div>
+      <div class="scenario-row s-bear"><div class="scenario-label">🔴</div><div class="scenario-text">재적자 전환</div><div class="scenario-val">추가 하방</div></div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">탈락 신호</div>
+      <div class="signal-item">유안타 목표가 근거(ESS 수주 공시) 미확인 시</div>
+      <div class="signal-item">2026년 1분기 영업이익 추가 감소 공시</div>
+      <div class="signal-item">삼성SDI ESS 투자 지연 발표</div>
+    </div>
+  </div>
+
+  <!-- 삼성SDI -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-4">4</span>
+          <span class="card-name">삼성SDI</span>
+        </div>
+        <div class="card-sector">배터리·전자재료 · 코스피</div>
+      </div>
+      <span class="card-pct pct-up">+19.89%</span>
+    </div>
+    <div class="card-body">
+      배터리(원통형·각형·ESS)와 전자재료를 만드는 코스피 대형주예요. 2025년 영업손실 17,224억이라는 창사 이래급 적자를 기록했어요. 오늘 급등은 CATL 실적 기대·전고체 기대·미중 관세 완화 기대의 복합 작용이에요. 업황 바닥이라는 서사가 시장에서 받아들여지기 시작한 신호지만, 이익이 확인되기 전까진 변동성이 극도로 클 거예요.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 영업이익</div><div class="metric-val warn">-17,224억</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">519,776억</div></div>
+      <div class="metric"><div class="metric-label">2022년 피크 OPM</div><div class="metric-val">9.0%</div></div>
+      <div class="metric"><div class="metric-label">PER</div><div class="metric-val warn">산출 불가</div></div>
+    </div>
+    <table class="perf-table">
+      <thead><tr><th>연도</th><th>매출</th><th>영업이익</th><th>OPM</th></tr></thead>
+      <tbody>
+        <tr><td>2022</td><td>20.1조</td><td class="td-pos">18,080억</td><td class="td-pos">9.0%</td></tr>
+        <tr><td>2023</td><td>22.7조</td><td class="td-pos">16,334억</td><td class="td-pos">7.2%</td></tr>
+        <tr><td>2024</td><td>16.6조</td><td>3,633억</td><td>2.2%</td></tr>
+        <tr><td>2025</td><td>13.3조</td><td class="td-neg">-17,224억</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">Bull 시나리오(2027년 OI 15,000억)에서도 현재 시총 대비 -42%예요. 순수 밸류에이션으로는 매수 근거가 없어요. 지금은 "업황 바닥 방향성 베팅"이고, 1분기 잠정실적 흑자 전환 확인 후 비중 고려가 맞아요.</div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">탈락 신호</div>
+      <div class="signal-item">2026년 1분기 적자 지속 공시 (4월 말 발표 예정)</div>
+      <div class="signal-item">전고체 양산 타임라인 추가 지연 발표</div>
+      <div class="signal-item">CATL과의 경쟁 구조 심화 확인 시</div>
+    </div>
+  </div>
+
+  <!-- 솔루스첨단소재 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div>
+        <div class="card-rank-name">
+          <span class="rank-badge rank-5">5</span>
+          <span class="card-name">솔루스첨단소재</span>
+        </div>
+        <div class="card-sector">전지박·OLED 소재 · 코스피</div>
+      </div>
+      <span class="card-pct pct-up">+26.07%</span>
+    </div>
+    <div class="card-body">
+      2차전지용 전지박(구리 호일)과 OLED 소재를 만드는 회사예요. 시총이 9,746억인데 4년 연속 영업 적자예요. 매출은 4,612억→6,161억으로 꾸준히 늘고 있는데 이익 전환 시점이 계속 밀리고 있어요. 현재 가격은 거의 전량 기대감으로 구성된 구조예요.
+    </div>
+    <div class="metrics">
+      <div class="metric"><div class="metric-label">2025년 영업이익</div><div class="metric-val warn">-733억</div></div>
+      <div class="metric"><div class="metric-label">시가총액</div><div class="metric-val">9,746억</div></div>
+      <div class="metric"><div class="metric-label">4년 누적 영업적자</div><div class="metric-val warn">-2,461억</div></div>
+      <div class="metric"><div class="metric-label">Bull 시나리오 괴리</div><div class="metric-val caution">+2.6%</div></div>
+    </div>
+    <table class="perf-table">
+      <thead><tr><th>연도</th><th>매출</th><th>영업이익</th><th>순이익</th></tr></thead>
+      <tbody>
+        <tr><td>2022</td><td>4,612억</td><td class="td-neg">-452억</td><td class="td-neg">-472억</td></tr>
+        <tr><td>2023</td><td>4,294억</td><td class="td-neg">-732억</td><td class="td-pos">1,268억*</td></tr>
+        <tr><td>2024</td><td>5,709억</td><td class="td-neg">-544억</td><td class="td-neg">-427억</td></tr>
+        <tr><td>2025</td><td>6,161억</td><td class="td-neg">-733억</td><td class="td-neg">-1,384억</td></tr>
+      </tbody>
+    </table>
+    <div style="font-size:11px; color:#aaa; margin-bottom:12px;">* 2023년 순이익은 자산 매각 등 영업외 요인 추정</div>
+    <div class="verdict">
+      <div class="verdict-label">핵심 판단</div>
+      <div class="verdict-text">Bull 시나리오(2027년 흑자 전환 500억)에서도 적정 시총이 10,000억으로 현재가 대비 +2.6%예요. 리스크 대비 기대수익이 5종목 중 최악이에요.</div>
+    </div>
+    <div class="signal-box">
+      <div class="signal-label">탈락 신호</div>
+      <div class="signal-item">2026년 상반기 영업적자 지속 공시</div>
+      <div class="signal-item">추가 유상증자 또는 CB 발행 공시</div>
+      <div class="signal-item">동박 가격 추가 하락 (글로벌 수급)</div>
+    </div>
   </div>
 </div>
-</div>
 
-<!-- ══════════════════════════════════════════ -->
-<!-- 3단계: 비교 분석 -->
-<!-- ══════════════════════════════════════════ -->
+<!-- 5. 나머지 종목 -->
 <div class="section">
-<div class="container">
-  <div class="section-label">Step 03</div>
-  <div class="section-title">씨아이에스 vs 삼성SDI vs 한중엔시에스</div>
+  <div class="section-label">나머지 종목 한 줄 정리</div>
 
-  <div class="compare-grid" style="margin-bottom: 32px;">
-    <div class="compare-col">
-      <div class="compare-col-header">씨아이에스</div>
-      <div class="compare-row-label">이익 구조 재현성</div>
-      <div class="compare-value">사이클형 흑자 — 재현 가능하나 고객사 CAPEX 100% 의존</div>
-      <div class="compare-row-label">시간 경과 유리성</div>
-      <div class="compare-value">장비 수주잔고 → 실적 가시화 가능. 확인 경로 존재.</div>
-      <div class="compare-row-label">변동성 견딜 이유</div>
-      <div class="compare-value">흑자 기반 + 장비 대장 지위. 셋 중 재무 기반 최강.</div>
-    </div>
-    <div class="compare-col">
-      <div class="compare-col-header">삼성SDI</div>
-      <div class="compare-row-label">이익 구조 재현성</div>
-      <div class="compare-value">사이클형 — 현재 대규모 적자로 재현 미확인. 가장 훼손.</div>
-      <div class="compare-row-label">시간 경과 유리성</div>
-      <div class="compare-value">업황 회복 시 가장 큰 레버리지. 방향이 맞으면 최대 수익.</div>
-      <div class="compare-row-label">변동성 견딜 이유</div>
-      <div class="compare-value">코스피 대형주 — 소멸 리스크 없음. 단 적자 지속 시 급락 가능.</div>
-    </div>
-    <div class="compare-col">
-      <div class="compare-col-header">한중엔시에스</div>
-      <div class="compare-row-label">이익 구조 재현성</div>
-      <div class="compare-value">흑자 전환 1년차 → 재감익. 재현성 셋 중 가장 불안.</div>
-      <div class="compare-row-label">시간 경과 유리성</div>
-      <div class="compare-value">ESS 시장 성장 수혜 가능하나 공시 미뒷받침. 불확실.</div>
-      <div class="compare-row-label">변동성 견딜 이유</div>
-      <div class="compare-value">시총 6,572억 대비 이익 기반 최약. 셋 중 리스크 대비 기대수익 최악.</div>
-    </div>
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">KB·삼성·키움 레버리지 2차전지 ETN</div><div class="brief-pct">+20~24%</div></div>
+    <div class="brief-meta">파생상품 · DART 데이터 없음</div>
+    <div class="brief-reason">2차전지 지수 구성 종목 급등에 연동된 레버리지 추종 파생상품.</div>
+    <span class="brief-verdict bv-pass">개별 분석 대상 아님</span>
   </div>
 
-  <div style="background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 20px; margin-bottom: 28px;">
-    <div class="section-title" style="font-size:15px; margin-bottom:16px;">본질적 차이</div>
-    <div class="text-secondary" style="font-size:13px; line-height:1.9;">
-      <strong class="highlight-green">씨아이에스</strong>는 "사이클 회복 베팅"인데 재무 체력이 받쳐준다. 문제는 현재 시총 12,685억이 이미 회복을 상당 부분 반영한 가격이라는 것 — "맞는 방향이지만 이미 늦었을 가능성"이 있다.<br><br>
-      <strong class="highlight-blue">삼성SDI</strong>는 "업황 바닥 옵션 매수"의 성격이다. 상승 시 가장 크게 오르지만, 기초 재무가 현재 가장 훼손되어 있고 시총 51조는 어떤 이익 시나리오로도 지지가 안 된다. 순수 방향성 베팅이며 가치투자 프레임과 가장 멀다.<br><br>
-      <strong class="highlight-yellow">한중엔시에스</strong>는 셋 중 스토리는 가장 좁고 재무 검증은 가장 부족하다. "ESS 대장"이라는 포지셔닝이 실제 수주 공시로 뒷받침되어야만 의미가 있으며, 그것이 없으면 주성엔지니어링과 마찬가지로 테마 편승 종목과 구분이 어렵다.
-    </div>
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">정원엔시스</div><div class="brief-pct">+29.96%</div></div>
+    <div class="brief-meta">시총 417억 · 유통·건설 · 코스닥 · 매출 2,009억 / OPM 0.9%</div>
+    <div class="brief-reason">초저마진 유통사. 2차전지 연관성 없고 토론방 재료도 불명확.</div>
+    <span class="brief-verdict bv-danger">테마 무관 — 제외</span>
   </div>
 
-  <div class="section-title" style="font-size:15px; margin-bottom:16px;">선호도 및 비중 배분 근거</div>
-  <div class="rank-order">
-    <div class="rank-item">
-      <div class="rank-num" style="color: rgba(0,229,160,0.3);">1</div>
-      <div class="rank-content">
-        <div class="rank-name">씨아이에스</div>
-        <div class="rank-sub">"셋 중 가장 먼저 채울 것 — 단, 조건부"</div>
-        <div class="rank-reason">재무 체력이 있고, 업종 내 지위가 확인되며, 이익 사이클이 가시적이다. 문제는 현재가가 비싸다는 것. 삼성SDI CAPEX 재개 공시 + 시간외 하한가 이후 주가 조정 구간이 진입 조건. "지금 사는 게 아니라 다음 번 눌림에서 가장 먼저 사는 종목."</div>
-      </div>
-    </div>
-    <div class="rank-item">
-      <div class="rank-num" style="color: rgba(77,159,255,0.3);">2</div>
-      <div class="rank-content">
-        <div class="rank-name">삼성SDI</div>
-        <div class="rank-sub">"확인 후 추가할 것"</div>
-        <div class="rank-reason">방향이 맞으면 수익이 가장 크다. 그러나 1분기 실적이 적자 지속이면 급락 위험. 1분기 잠정실적 흑자 전환 확인 후 비중 고려. 지금 추격은 투기.</div>
-      </div>
-    </div>
-    <div class="rank-item">
-      <div class="rank-num" style="color: rgba(255,209,102,0.3);">3</div>
-      <div class="rank-content">
-        <div class="rank-name">한중엔시에스</div>
-        <div class="rank-sub">"소규모로만 / 보류"</div>
-        <div class="rank-reason">ESS 수주 구체적 공시 없으면 보류. 있어도 PER 134배는 부담. 셋 중 리스크 대비 기대수익이 가장 나쁘다.</div>
-      </div>
-    </div>
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">에이에프더블류</div><div class="brief-pct">+29.93%</div></div>
+    <div class="brief-meta">시총 288억 · 알루미늄 다이캐스팅 · 코스닥 · 매출 137억 / 영업이익 -95억</div>
+    <div class="brief-reason">토론방에서 직접 "삼성SDI·LG이노텍 거래 파기, 2차전지 연관 없다"는 주주 반박이 더 설득력 있음.</div>
+    <span class="brief-verdict bv-danger">4년 연속 적자 확대 — 제외</span>
   </div>
 
-  <div class="section-title" style="font-size:15px; margin-bottom:16px;">탈락 신호 비교</div>
-  <table class="cluster-table" style="margin-bottom: 24px;">
-    <thead><tr><th>종목</th><th>주요 탈락 조건</th><th>임박도</th></tr></thead>
-    <tbody>
-      <tr><td class="font-mono highlight-green">씨아이에스</td><td style="font-size:13px; color:var(--text-secondary);">삼성SDI CAPEX 동결 + 시외 하한가 확인</td><td><span class="badge badge-event">중</span></td></tr>
-      <tr><td class="font-mono highlight-blue">삼성SDI</td><td style="font-size:13px; color:var(--text-secondary);">1분기 적자 지속 공시 (4월 말 임박)</td><td><span class="badge badge-event">중</span></td></tr>
-      <tr><td class="font-mono highlight-yellow">한중엔시에스</td><td style="font-size:13px; color:var(--text-secondary);">ESS 수주 공시 미확인 (이미 현재 상태로 탈락 조건 존재)</td><td><span class="badge badge-noise">임박</span></td></tr>
-    </tbody>
-  </table>
-
-  <div class="final-line">
-    오늘 급등은 사이클 바닥 신호일 수 있으나, 세 종목 모두 현재가에서는 기대가 실적을 앞질러 있다 — 방향보다 진입 타이밍과 실적 확인이 수익을 결정한다.
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">애머릿지</div><div class="brief-pct">+29.92%</div></div>
+    <div class="brief-meta">시총 268억 · 실질 매출 0 · 코스닥</div>
+    <div class="brief-reason">4년간 실질 매출이 사실상 0. 토론방에 감사보고서 관련 공방 진행 중.</div>
+    <span class="brief-verdict bv-danger">실질 매출 0 — 즉시 제외</span>
   </div>
 
-</div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-<div class="site-footer">
-  <div class="footer-note">
-    분석 기준일: 2026.04.21 | 재무 데이터: DART 공시 기반 | 토론방: 네이버 금융 기반<br>
-    본 분석은 투자자 직관 대조 도구이며 최종 판단은 투자자 본인에게 있습니다.
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">리튬포어스</div><div class="brief-pct">+29.9%</div></div>
+    <div class="brief-meta">시총 455억 · IP사업 98.5% · 코스닥 · 매출 107억 / 영업이익 -45억</div>
+    <div class="brief-reason">토론방에서 직접 "리튬사업 0.0%"라고 지적됨. 반복적으로 리튬 테마에 편승하는 무관 종목.</div>
+    <span class="brief-verdict bv-danger">테마 편승 반복 — 즉시 제외</span>
   </div>
-  <div class="footer-note" style="text-align:right;">
-    KOSPI Top 10 + KOSDAQ Top 20<br>
-    <span class="font-mono" style="color: var(--accent-green);">github // 20260421.html</span>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">씨이랩</div><div class="brief-pct">+29.9%</div></div>
+    <div class="brief-meta">시총 839억 · AI 솔루션 · 코스닥 · 매출 103억 / 영업이익 -32억</div>
+    <div class="brief-reason">재료 불명확. "주포 빠꾸없다" 등 세력성 글 다수. 4년 연속 적자.</div>
+    <span class="brief-verdict bv-danger">세력성 급등 전형 — 제외</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">벨로크</div><div class="brief-pct">+29.86%</div></div>
+    <div class="brief-meta">시총 468억 · IT서비스 · 코스닥 · 매출 354억 / 영업이익 9억</div>
+    <div class="brief-reason">Figure AI 인수 이슈 + 2025년 첫 흑자 전환(OI 9억). 단 주권매매거래정지 예정 공시 확인됨.</div>
+    <span class="brief-verdict bv-danger">거래정지 예정 — 진입 금지</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-header"><div class="brief-name">화인써키트</div><div class="brief-pct">+29.85%</div></div>
+    <div class="brief-meta">시총 808억 · PCB · 코스닥 · 매출 818억 / 영업이익 -15억</div>
+    <div class="brief-reason">AI 데이터센터 내러티브 언급. 2025년 흑자→적자 전환, 토론방에 타 종목 공시 복붙 스팸 확인.</div>
+    <span class="brief-verdict bv-pass">재료 미확인 + 적자 전환 — 관망</span>
   </div>
 </div>
-</footer>
 
-<script>
-function toggleCard(header) {
-  const body = header.nextElementSibling;
-  const isOpen = body.classList.contains('open');
-  // close all
-  document.querySelectorAll('.card-body').forEach(b => b.classList.remove('open'));
-  document.querySelectorAll('.card-header').forEach(h => h.classList.remove('open'));
-  if (!isOpen) {
-    body.classList.add('open');
-    header.classList.add('open');
-    setTimeout(() => header.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-  }
-}
-</script>
+<!-- 6. 모니터링 -->
+<div class="section">
+  <div class="section-label">앞으로 주시할 종목 TOP 3</div>
+  <div class="monitor-card">
+    <div class="monitor-rank">1순위</div>
+    <div class="monitor-name">씨아이에스</div>
+    <div class="monitor-reason">시간외 하한가 신호가 나왔어요. 실제 전환 여부에 따라 진짜 매수 기회인지, 2연상 붕괴 신호인지를 다음 거래일 오전 수급으로 판별할 수 있어요. 삼성SDI CAPEX 재개 공시와 맞물려 사이클 전환점의 핵심 지표예요.</div>
+  </div>
+  <div class="monitor-card">
+    <div class="monitor-rank">2순위</div>
+    <div class="monitor-name">삼성SDI</div>
+    <div class="monitor-reason">오늘 급등이 업황 반전의 시작인지 단순 기술적 반등인지를 판별하는 앵커예요. 다음 1~2거래일 방향이 나머지 2차전지 종목들의 생존 기간을 결정해요. 1분기 잠정실적이 4월 말에 나와요.</div>
+  </div>
+  <div class="monitor-card">
+    <div class="monitor-rank">3순위</div>
+    <div class="monitor-name">한중엔시에스</div>
+    <div class="monitor-reason">ESS 수혜 서사가 공시로 뒷받침되는지가 미확인이에요. 유안타 리포트 근거가 실재하면 재평가 여지가 있고, 없으면 셋 중 가장 먼저 탈락해요.</div>
+  </div>
+</div>
+
+<!-- 7. 비교 분석 -->
+<div class="section">
+  <div class="section-label">모니터링 3종목 최종 비교</div>
+  <div style="background:#1a1a2e; border-radius:16px; padding:20px 18px; margin-bottom:12px;">
+    <div style="font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:14px;">셋 중 순위를 정하면</div>
+
+    <div style="margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:11px; color:#7f77dd; letter-spacing:0.07em; text-transform:uppercase; margin-bottom:4px;">1순위 — 가장 먼저 채울 것 (조건부)</div>
+      <div style="font-size:16px; font-weight:700; color:#fff; margin-bottom:4px;">씨아이에스</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.55); line-height:1.6;">재무 체력 있고 업종 내 지위 확인돼요. 삼성SDI CAPEX 공시 + 눌림 구간에서 가장 먼저 사는 종목이에요.</div>
+    </div>
+
+    <div style="margin-bottom:14px; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.08);">
+      <div style="font-size:11px; color:#7f77dd; letter-spacing:0.07em; text-transform:uppercase; margin-bottom:4px;">2순위 — 확인 후 추가할 것</div>
+      <div style="font-size:16px; font-weight:700; color:#fff; margin-bottom:4px;">삼성SDI</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.55); line-height:1.6;">방향이 맞으면 수익이 가장 커요. 1분기 잠정실적 흑자 전환 확인 후 비중 고려해요. 지금 추격은 투기예요.</div>
+    </div>
+
+    <div>
+      <div style="font-size:11px; color:#7f77dd; letter-spacing:0.07em; text-transform:uppercase; margin-bottom:4px;">3순위 — 소규모로만 / 보류</div>
+      <div style="font-size:16px; font-weight:700; color:#fff; margin-bottom:4px;">한중엔시에스</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.55); line-height:1.6;">ESS 수주 공시 없으면 보류예요. 있어도 PER 134배는 부담이에요. 셋 중 탈락 신호가 가장 가까워요.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. 결론 -->
+<div class="section">
+  <div class="section-label">오늘의 결론</div>
+  <div style="background:#1a1a2e; border-radius:16px; padding:20px 18px;">
+    <div style="font-size:13px; color:rgba(255,255,255,0.4); margin-bottom:8px;">포트폴리오 관점에서 핵심 한 문장</div>
+    <div style="font-size:16px; color:#fff; line-height:1.6; font-weight:500;">오늘 30종목 중 기대가 실적을 앞질러 있지 않은 종목이 없었다 — <span style="color:#a5b4fc;">방향보다 진입 타이밍과 실적 확인이 수익을 결정한다.</span></div>
+  </div>
+</div>
 
 </body>
 </html>
