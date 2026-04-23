@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>2026.04.22 급등주 분석</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    background: #f5f4f0;
+    color: #1a1a1a;
+    padding-bottom: 56px;
+  }
+
+  /* ① 히어로 헤더 */
+  .hero {
+    background: #1a1a2e;
+    padding: 44px 20px 36px;
+    color: #fff;
+  }
+  .hero-date {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: #7f77dd;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .hero-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 16px;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+  .hero-chip {
+    background: rgba(127,119,221,0.2);
+    border: 1px solid rgba(127,119,221,0.4);
+    color: #b8b4f0;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .hero-disclaimer {
+    font-size: 11px;
+    color: #666;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 14px;
+  }
+
+  /* 공통 컨테이너 */
+  .container { padding: 0 16px; }
+
+  /* section-label */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    color: #888;
+    text-transform: uppercase;
+    padding-top: 28px;
+    padding-bottom: 10px;
+    padding-left: 16px;
+  }
+
+  /* ② 테마 클러스터 */
+  .theme-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 14px 16px;
+    margin: 0 16px 10px;
+  }
+  .theme-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .theme-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .badge-real { background: #dcfce7; color: #166534; }
+  .badge-event { background: #dbeafe; color: #1e40af; }
+  .badge-noise { background: #f1f5f9; color: #64748b; }
+  .theme-tickers {
+    font-size: 11px;
+    color: #7f77dd;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .theme-desc {
+    font-size: 13px;
+    color: #555;
+  }
+
+  /* ③ 1차 분리 */
+  .split-box {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 16px;
+    margin: 0 16px 8px;
+  }
+  .split-title {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .split-title.yes { color: #1a7a45; }
+  .split-title.no { color: #888; }
+  .split-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .split-item {
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .split-item.yes { background: #dcfce7; color: #166534; }
+  .split-item.no { background: #f1f5f9; color: #888; }
+
+  /* ④ 선정 이유 */
+  .reason-item {
+    display: flex;
+    gap: 10px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 12px 14px;
+    margin: 0 16px 8px;
+    align-items: flex-start;
+  }
+  .reason-num {
+    background: #7f77dd;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .reason-text {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.5;
+  }
+  .reason-name {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  /* ⑤ 상세 리포트 카드 */
+  .detail-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 20px 16px;
+    margin: 0 16px 12px;
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+  }
+  .card-left { flex: 1; }
+  .rank-badge {
+    background: #7f77dd;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .stock-name {
+    font-size: 18px;
+    font-weight: 700;
+    display: inline;
+    vertical-align: middle;
+  }
+  .sector {
+    font-size: 12px;
+    color: #888;
+    margin-top: 3px;
+    margin-left: 28px;
+  }
+  .pct-chip {
+    background: #fff5f5;
+    color: #c0392b;
+    border: 1px solid #fecaca;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-left: 8px;
+    flex-shrink: 0;
+  }
+
+  .card-body {
+    font-size: 14px;
+    color: #444;
+    line-height: 1.7;
+    margin: 12px 0;
+  }
+
+  /* 지표 그리드 */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .metric-cell {
+    background: #f8f7f4;
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .metric-label {
+    font-size: 10px;
+    color: #aaa;
+    letter-spacing: 0.05em;
+    margin-bottom: 3px;
+    text-transform: uppercase;
+  }
+  .metric-val {
+    font-size: 15px;
+    font-weight: 700;
+  }
+  .val-pos { color: #1a7a45; }
+  .val-neg { color: #c0392b; }
+  .val-warn { color: #b7770d; }
+  .val-neutral { color: #1a1a1a; }
+
+  /* 핵심 판단 박스 */
+  .judge-box {
+    border-left: 3px solid #7f77dd;
+    background: #f5f4fc;
+    border-radius: 0 10px 10px 0;
+    padding: 12px 14px;
+    margin: 12px 0;
+  }
+  .judge-label {
+    font-size: 10px;
+    color: #7f77dd;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .judge-text {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  /* 밸류에이션 테이블 */
+  .val-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 12px 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .val-table th {
+    background: #f8f7f4;
+    color: #888;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 10px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .val-table td {
+    padding: 9px 10px;
+    border-top: 1px solid #f0ede8;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .row-bull td { background: #f0fdf4; }
+  .row-base td { background: #fff; }
+  .row-bear td { background: #fff9f9; }
+  .bear-note {
+    font-size: 11px;
+    color: #888;
+    padding: 6px 10px 10px;
+    font-style: italic;
+  }
+
+  /* 실적 테이블 */
+  .perf-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 12px 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .perf-table th {
+    background: #f8f7f4;
+    color: #888;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 7px 8px;
+    text-align: right;
+    font-weight: 600;
+  }
+  .perf-table th:first-child { text-align: left; }
+  .perf-table td {
+    padding: 8px 8px;
+    border-top: 1px solid #f0ede8;
+    text-align: right;
+    color: #333;
+  }
+  .perf-table td:first-child { text-align: left; color: #666; }
+  .perf-table tr.latest td {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .perf-neg { color: #c0392b !important; }
+  .perf-pos { color: #1a7a45 !important; }
+
+  /* 주의 신호 박스 */
+  .warn-box {
+    background: #fff9f9;
+    border: 1px solid #fee2e2;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin: 12px 0;
+  }
+  .warn-label {
+    font-size: 10px;
+    color: #ef4444;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 7px;
+  }
+  .warn-items {
+    list-style: none;
+  }
+  .warn-items li {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.6;
+    padding: 2px 0;
+  }
+  .warn-items li::before { content: "· "; color: #ef4444; font-weight: 700; }
+
+  /* 섹션 내부 소제목 */
+  .sub-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #555;
+    margin: 14px 0 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ⑥ 간략 카드 */
+  .brief-card {
+    background: #fff;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 14px 16px;
+    margin: 0 16px 8px;
+  }
+  .brief-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .brief-name { font-size: 15px; font-weight: 700; }
+  .brief-pct { font-size: 13px; color: #c0392b; font-weight: 700; }
+  .brief-meta { font-size: 12px; color: #888; margin-bottom: 6px; }
+  .brief-reason { font-size: 13px; color: #444; margin-bottom: 8px; line-height: 1.5; }
+  .judge-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .jb-watch { background: #dbeafe; color: #1e40af; }
+  .jb-exclude { background: #f1f5f9; color: #475569; }
+  .jb-danger { background: #fee2e2; color: #991b1b; }
+  .jb-caution { background: #fef3c7; color: #92400e; }
+
+  /* ⑦ 모니터링 */
+  .monitor-card {
+    background: #1a1a2e;
+    border-radius: 14px;
+    padding: 16px;
+    margin: 0 16px 10px;
+    color: #fff;
+  }
+  .monitor-rank {
+    font-size: 11px;
+    color: #7f77dd;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .monitor-name {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .monitor-reason {
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.6;
+  }
+
+  /* ⑧ 비교 분석 */
+  .compare-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 20px 16px;
+    margin: 0 16px 12px;
+  }
+  .compare-header {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #1a1a1a;
+  }
+
+  /* 3조건 비교 테이블 */
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .cmp-table th {
+    background: #f8f7f4;
+    padding: 8px 6px;
+    font-size: 11px;
+    color: #666;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 1px solid #ede;
+  }
+  .cmp-table th:first-child { text-align: left; }
+  .cmp-table td {
+    padding: 9px 6px;
+    border-top: 1px solid #f0ede8;
+    text-align: center;
+    line-height: 1.4;
+    vertical-align: top;
+    font-size: 11px;
+    color: #444;
+  }
+  .cmp-table td:first-child {
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    text-align: left;
+  }
+
+  /* 순위 카드 */
+  .rank-cards { display: flex; flex-direction: column; gap: 8px; margin: 12px 0; }
+  .rank-card {
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.06);
+    padding: 14px;
+    background: #fff;
+  }
+  .rank-card.first {
+    border-left: 3px solid #7f77dd;
+    background: #fcfbff;
+  }
+  .rank-badge-sm {
+    background: #7f77dd;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 5px;
+  }
+  .rank-card-name {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .rank-card-reason {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* 탈락 비교 */
+  .drop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .drop-cell {
+    background: #f8f7f4;
+    border-radius: 10px;
+    padding: 10px 8px;
+  }
+  .drop-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 4px;
+  }
+  .drop-text {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.4;
+  }
+  .drop-danger .drop-text { color: #c0392b; font-weight: 600; }
+
+  /* 최종 한 줄 */
+  .final-line {
+    background: #1a1a2e;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  /* ⑨ 면책 */
+  .disclaimer {
+    font-size: 12px;
+    color: #aaa;
+    text-align: center;
+    padding: 20px 16px 8px;
+  }
+
+  /* 구분선 */
+  .divider {
+    height: 1px;
+    background: rgba(0,0,0,0.06);
+    margin: 14px 0;
+  }
+
+  /* 코어 적합성 */
+  .core-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .core-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .core-fit { background: #dcfce7; color: #166534; }
+  .core-unfit { background: #fee2e2; color: #991b1b; }
+  .core-cond { background: #fef3c7; color: #92400e; }
+  .core-reason { font-size: 13px; color: #555; line-height: 1.5; }
+
+  /* 비중 */
+  .weight-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+  }
+  .weight-chip {
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .w-core { background: #dbeafe; color: #1e40af; }
+  .w-trade { background: #fef3c7; color: #92400e; }
+</style>
+</head>
+<body>
+
+<!-- ① 히어로 헤더 -->
+<div class="hero">
+  <div class="hero-date">2026.04.22 · 급등주 분석 리포트</div>
+  <div class="hero-title">코스피 Top 10 · 코스닥 Top 10<br>당일 급등주 전종목 분석</div>
+  <div class="hero-sub">재무 + 토론방 + 테마 정성 평가 통합</div>
+  <div class="hero-chips">
+    <span class="hero-chip">DART 재무데이터</span>
+    <span class="hero-chip">네이버 토론방</span>
+    <span class="hero-chip">총 20종목</span>
+    <span class="hero-chip">상세분석 5종목</span>
+  </div>
+  <div class="hero-disclaimer">본 자료는 투자 참고용이며 판단의 책임은 본인에게 있습니다.</div>
+</div>
+
+<!-- ② 테마 클러스터 -->
+<div class="section-label">오늘 장을 지배한 테마</div>
+
+<div class="theme-card">
+  <div class="theme-header">
+    <span>⚡</span>
+    <span class="theme-name">엔비디아 800V DC 전력</span>
+    <span class="badge badge-real">실체형</span>
+  </div>
+  <div class="theme-tickers">KEC · 나노캠텍(일부)</div>
+  <div class="theme-desc">엔비디아 데이터센터 직류 800V 전송 채택 뉴스로 관련 부품주 동반 상한가. 당일 중기이코노미 기사 확인 가능.</div>
+</div>
+
+<div class="theme-card">
+  <div class="theme-header">
+    <span>✈️</span>
+    <span class="theme-name">폐유·SAF·바이오연료</span>
+    <span class="badge badge-event">이벤트형</span>
+  </div>
+  <div class="theme-tickers">DS단석 · 애경케미칼 · 라이온켐텍</div>
+  <div class="theme-desc">한국 항공유 세계 1위 수출 + SAF 의무혼합 규제 강화 기대. 실체 사업 있으나 이익 회복 시점이 관건.</div>
+</div>
+
+<div class="theme-card">
+  <div class="theme-header">
+    <span>⛏️</span>
+    <span class="theme-name">일라이트 광산 협약</span>
+    <span class="badge badge-event">이벤트형</span>
+  </div>
+  <div class="theme-tickers">라이온켐텍 · 정원엔시스</div>
+  <div class="theme-desc">일라이트 광산 업무협약 발표로 광물 테마 편입. 수익화 경로 불확실하나 협약 자체는 실체.</div>
+</div>
+
+<div class="theme-card">
+  <div class="theme-header">
+    <span>💰</span>
+    <span class="theme-name">스테이블코인·디지털달러</span>
+    <span class="badge badge-event">이벤트형</span>
+  </div>
+  <div class="theme-tickers">핑거</div>
+  <div class="theme-desc">글로벌 디지털달러 인프라 확장 기대 + 핀테크 플랫폼 재부각. 직접 수혜 경로는 루머 수준.</div>
+</div>
+
+<div class="theme-card">
+  <div class="theme-header">
+    <span>🔮</span>
+    <span class="theme-name">양자컴퓨터·보안 순환매</span>
+    <span class="badge badge-noise">노이즈형</span>
+  </div>
+  <div class="theme-tickers">나노캠텍 · 포톤</div>
+  <div class="theme-desc">뚜렷한 신규 재료 없이 보안주 순환매 편승. 재무 기반 없는 상한가 — 지속성 낮음.</div>
+</div>
+
+<div class="theme-card">
+  <div class="theme-header">
+    <span>☀️</span>
+    <span class="theme-name">태양광·화학 사이클 반등</span>
+    <span class="badge badge-event">이벤트형</span>
+  </div>
+  <div class="theme-tickers">OCI · 삼아알미늄 · 애경케미칼</div>
+  <div class="theme-desc">트럼프 2차 협상 기대 + 폴리실리콘 가격 반등 기대. 실적 회복 미확인 상태에서 선반영.</div>
+</div>
+
+<!-- ③ 1차 분리 -->
+<div class="section-label">종목 1차 분리</div>
+
+<div class="split-box">
+  <div class="split-title yes">✅ 분석 가치 있음 (7종목)</div>
+  <div class="split-items">
+    <span class="split-item yes">DS단석</span>
+    <span class="split-item yes">라이온켐텍</span>
+    <span class="split-item yes">핑거</span>
+    <span class="split-item yes">OCI</span>
+    <span class="split-item yes">정원엔시스</span>
+    <span class="split-item yes">KEC</span>
+    <span class="split-item yes">애경케미칼</span>
+  </div>
+</div>
+
+<div class="split-box">
+  <div class="split-title no">❌ 분석 제외 (재무 하방 없음)</div>
+  <div class="split-items">
+    <span class="split-item no">애머릿지</span>
+    <span class="split-item no">바이젠셀</span>
+    <span class="split-item no">플루토스</span>
+    <span class="split-item no">에이에프더블류</span>
+    <span class="split-item no">나노캠텍</span>
+    <span class="split-item no">포톤</span>
+    <span class="split-item no">동일스틸럭스</span>
+    <span class="split-item no">삼아알미늄</span>
+  </div>
+</div>
+
+<!-- ④ 선정 이유 -->
+<div class="section-label">상위 5종목 선정 이유</div>
+
+<div class="reason-item">
+  <div class="reason-num">1</div>
+  <div class="reason-text"><span class="reason-name">DS단석</span> — SAF 첨가제 국내 유일 포지션, 항공유 수출 1위 수혜 구조로 테마와 사업 본질 일치</div>
+</div>
+<div class="reason-item">
+  <div class="reason-num">2</div>
+  <div class="reason-text"><span class="reason-name">라이온켐텍</span> — 4년 연속 흑자(유일), 광산 이벤트 + 탄탄한 기존 실적이 하방 지지</div>
+</div>
+<div class="reason-item">
+  <div class="reason-num">3</div>
+  <div class="reason-text"><span class="reason-name">핑거</span> — 스테이블코인 테마 + 2025년 흑자 전환, 핀테크 사업 실체 존재</div>
+</div>
+<div class="reason-item">
+  <div class="reason-num">4</div>
+  <div class="reason-text"><span class="reason-name">OCI</span> — 폴리실리콘 사이클 바닥 + 태양광 업황 전환 기대, 시총 대비 사업 규모 명확</div>
+</div>
+<div class="reason-item">
+  <div class="reason-num">5</div>
+  <div class="reason-text"><span class="reason-name">정원엔시스</span> — 매출 2,000억대 안정적 사업체 + 연속 상한가는 세력 수급 신호</div>
+</div>
+
+<!-- ⑤ 상세 리포트 -->
+<div class="section-label">상위 5종목 상세 분석</div>
+
+<!-- DS단석 -->
+<div class="detail-card">
+  <div class="card-header">
+    <div class="card-left">
+      <span class="rank-badge">1</span>
+      <span class="stock-name">DS단석</span>
+      <div class="sector">코스피 | 017860 | 폐유정제·SAF | 시총 4,615억</div>
+    </div>
+    <span class="pct-chip">+29.95%</span>
+  </div>
+
+  <div class="badge badge-event" style="margin-bottom:10px;">트레이딩·이벤트드리븐형</div>
+
+  <div class="card-body">
+    국내 최대 폐유 정제·SAF(지속가능 항공유) 첨가제 사업자예요. 한국이 세계 항공유 물동량의 35%를 수출하는 1위 국가라는 구조적 포지션이 있고, 유럽 SAF 혼합 의무화 로드맵(2025년 2% → 2030년 6%)도 실체가 있는 재료예요. 다만 지금 실적이 이 기대를 따라가지 못하고 있어서 현재 시총 4,615억은 턴어라운드 프리미엄이 많이 들어간 가격이에요.
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-cell">
+      <div class="metric-label">시가총액</div>
+      <div class="metric-val val-neutral">4,615억</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">주가 (04.22)</div>
+      <div class="metric-val val-neg">26,250원</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">2025 영업이익</div>
+      <div class="metric-val val-warn">80억</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">이익 구조</div>
+      <div class="metric-val val-warn" style="font-size:13px;">사이클형</div>
+    </div>
+  </div>
+
+  <div class="sub-title">연도별 실적</div>
+  <table class="perf-table">
+    <thead>
+      <tr>
+        <th>연도</th>
+        <th>매출(억)</th>
+        <th>영업이익(억)</th>
+        <th>OPM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2023</td>
+        <td>10,704</td>
+        <td class="perf-pos">762</td>
+        <td class="perf-pos">7.1%</td>
+      </tr>
+      <tr>
+        <td>2024</td>
+        <td>9,617</td>
+        <td class="perf-warn" style="color:#b7770d">122</td>
+        <td class="perf-warn" style="color:#b7770d">1.3%</td>
+      </tr>
+      <tr class="latest">
+        <td>2025</td>
+        <td>9,549</td>
+        <td class="perf-warn" style="color:#b7770d">80</td>
+        <td class="perf-warn" style="color:#b7770d">0.8%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sub-title">밸류에이션 시나리오</div>
+  <table class="val-table">
+    <thead>
+      <tr>
+        <th>시나리오</th>
+        <th>가정</th>
+        <th>적정 시총</th>
+        <th>현재 대비</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-bull">
+        <td>🟢 Bull</td>
+        <td>영업이익 500억 + SAF 리레이팅 PER 12배</td>
+        <td>6,000억</td>
+        <td style="color:#1a7a45;font-weight:700">+30%</td>
+      </tr>
+      <tr class="row-base">
+        <td>⚪ Base</td>
+        <td>영업이익 200억 + PER 10배</td>
+        <td>2,000억</td>
+        <td style="color:#c0392b;font-weight:700">-57%</td>
+      </tr>
+      <tr class="row-bear">
+        <td>🔴 Bear</td>
+        <td>이익 회복 지연, 정제마진 압박</td>
+        <td>800~1,000억</td>
+        <td style="color:#c0392b;font-weight:700">-80%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bear-note">※ 테마 소멸 시 하방: PBR 0.5배 기준 시총 약 1,500억 추정</div>
+
+  <div class="judge-box">
+    <div class="judge-label">핵심 판단</div>
+    <div class="judge-text">SAF 방향성은 옳다. 하지만 지금 시총은 턴어라운드 완성 전 프리미엄을 선반영 중. 2026년 1Q 흑자 전환 확인이 진입의 전제조건이다. 토론방에서 낚시 링크가 발견됐다 — 세력 개입 경계 필요.</div>
+  </div>
+
+  <div class="core-row">
+    <span class="core-badge core-unfit">코어 부적합</span>
+    <div class="core-reason">이익 재현성 불안정 / 사이클 바닥 탈출 미확인 / 현재 시총이 이익 기반 아님</div>
+  </div>
+
+  <div class="weight-row">
+    <span class="weight-chip w-core">코어 0%</span>
+    <span class="weight-chip w-trade">트레이딩 소형 (1Q 흑자 확인 후)</span>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">주의 신호</div>
+    <ul class="warn-items">
+      <li>SAF 가격·정제마진 추가 하락 뉴스</li>
+      <li>2026년 1Q 실적에서 흑자 전환 미확인</li>
+      <li>토론방 낚시 링크 등장 — 세력 개입 경계</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 라이온켐텍 -->
+<div class="detail-card">
+  <div class="card-header">
+    <div class="card-left">
+      <span class="rank-badge">2</span>
+      <span class="stock-name">라이온켐텍</span>
+      <div class="sector">코스닥 | 171120 | 정밀화학·윤활유 첨가제 | 시총 1,050억</div>
+    </div>
+    <span class="pct-chip">+30.0%</span>
+  </div>
+
+  <div class="badge badge-real" style="margin-bottom:10px;">실체 기반 / 이벤트드리븐 복합</div>
+
+  <div class="card-body">
+    윤활유 첨가제·정밀화학 원료 제조사예요. 오늘 급등은 일라이트 광산 업무협약 이슈지만, 이 종목이 다른 급등주와 결정적으로 다른 건 <strong>4년 연속 영업흑자</strong>라는 점이에요. 시총 1,050억에 영업이익 114억이면 PER 9배 수준 — 테마가 꺼져도 하방이 있어요. 20종목 중 재무 하방을 가진 가장 유일한 종목입니다.
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-cell">
+      <div class="metric-label">시가총액</div>
+      <div class="metric-val val-neutral">1,050억</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">2025 OPM</div>
+      <div class="metric-val val-pos">8.7%</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">2025 영업이익</div>
+      <div class="metric-val val-pos">114억</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">이익 구조</div>
+      <div class="metric-val val-pos" style="font-size:13px;">4년 흑자</div>
+    </div>
+  </div>
+
+  <div class="sub-title">연도별 실적</div>
+  <table class="perf-table">
+    <thead>
+      <tr>
+        <th>연도</th>
+        <th>매출(억)</th>
+        <th>영업이익(억)</th>
+        <th>OPM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2022</td>
+        <td>1,520</td>
+        <td class="perf-pos">110</td>
+        <td class="perf-pos">7.2%</td>
+      </tr>
+      <tr>
+        <td>2023</td>
+        <td>1,308</td>
+        <td class="perf-pos">78</td>
+        <td class="perf-pos">6.0%</td>
+      </tr>
+      <tr>
+        <td>2024</td>
+        <td>1,418</td>
+        <td class="perf-pos">94</td>
+        <td class="perf-pos">6.6%</td>
+      </tr>
+      <tr class="latest">
+        <td>2025</td>
+        <td>1,303</td>
+        <td class="perf-pos">114</td>
+        <td class="perf-pos">8.7%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sub-title">밸류에이션 시나리오</div>
+  <table class="val-table">
+    <thead>
+      <tr>
+        <th>시나리오</th>
+        <th>가정</th>
+        <th>적정 시총</th>
+        <th>현재 대비</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-bull">
+        <td>🟢 Bull</td>
+        <td>광산 이벤트 현실화 + OPM 10% + PER 15배</td>
+        <td>1,950억</td>
+        <td style="color:#1a7a45;font-weight:700">+86%</td>
+      </tr>
+      <tr class="row-base">
+        <td>⚪ Base</td>
+        <td>기존 사업 OPM 8~9% + PER 10배</td>
+        <td>1,140억</td>
+        <td style="color:#555;font-weight:700">+9%</td>
+      </tr>
+      <tr class="row-bear">
+        <td>🔴 Bear</td>
+        <td>광산 협약 무산 + 업황 하락</td>
+        <td>700억</td>
+        <td style="color:#c0392b;font-weight:700">-33%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bear-note">※ 테마 소멸 시 하방: 기존 실적 PER 6배 기준 약 700억 (현재 대비 -33% — 상대적으로 방어적)</div>
+
+  <div class="judge-box">
+    <div class="judge-label">핵심 판단</div>
+    <div class="judge-text">20종목 중 유일하게 테마가 꺼져도 사업이 돌아가는 회사. 광산 이벤트는 부가 수익이지 전제조건이 아니다. 현재 PER 9배는 합리적이며, Base 시나리오 기준으로도 현재 시총은 거의 적정가다. 단기 트레이딩이면서도 코어 전환 가능성이 열려 있는 유일한 종목.</div>
+  </div>
+
+  <div class="core-row">
+    <span class="core-badge core-cond">코어 조건부 적합</span>
+    <div class="core-reason">이익 재현성 ✅ / 해자 제한적 ⚠️ / 밸류에이션 적정 ✅ — 광산 테마 변동성 주의</div>
+  </div>
+
+  <div class="weight-row">
+    <span class="weight-chip w-core">코어 5~10%</span>
+    <span class="weight-chip w-trade">트레이딩 소형 (광산 모멘텀 구간)</span>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">주의 신호</div>
+    <ul class="warn-items">
+      <li>일라이트 협약 파트너사 신뢰성 문제 또는 계약 해제</li>
+      <li>영업이익 100억 하회 (분기 기준 25억 이하)</li>
+      <li>광산 테마 대장 교체 (혜인 vs 라이온 경쟁 구도 주시)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 핑거 -->
+<div class="detail-card">
+  <div class="card-header">
+    <div class="card-left">
+      <span class="rank-badge">3</span>
+      <span class="stock-name">핑거</span>
+      <div class="sector">코스닥 | 163730 | 핀테크·금융IT | 시총 1,699억</div>
+    </div>
+    <span class="pct-chip">+30.0%</span>
+  </div>
+
+  <div class="badge badge-event" style="margin-bottom:10px;">트레이딩·테마형 / 핀테크 실체 기반</div>
+
+  <div class="card-body">
+    금융 IT 플랫폼 사업자(인증, 모바일뱅킹, 핀테크 솔루션)예요. 오늘 급등은 스테이블코인·디지털달러 테마 + "1,100억 현금 운용" 루머성 게시글 결합이에요. 2025년 흑자 재전환은 긍정적이지만 영업이익 15억에 시총 1,699억은 PER 113배 — 지금 가격은 이익이 아니라 테마가 전부 받치는 구조예요.
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-cell">
+      <div class="metric-label">시가총액</div>
+      <div class="metric-val val-neutral">1,699억</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">2025 영업이익</div>
+      <div class="metric-val val-warn">15억</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">PER (현재)</div>
+      <div class="metric-val val-neg">~113배</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">이익 구조</div>
+      <div class="metric-val val-warn" style="font-size:13px;">불안정</div>
+    </div>
+  </div>
+
+  <div class="sub-title">연도별 실적</div>
+  <table class="perf-table">
+    <thead>
+      <tr>
+        <th>연도</th>
+        <th>매출(억)</th>
+        <th>영업이익(억)</th>
+        <th>OPM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2022</td>
+        <td>901</td>
+        <td class="perf-pos">54</td>
+        <td class="perf-pos">6.0%</td>
+      </tr>
+      <tr>
+        <td>2023</td>
+        <td>831</td>
+        <td class="perf-pos">37</td>
+        <td class="perf-pos">4.5%</td>
+      </tr>
+      <tr>
+        <td>2024</td>
+        <td>716</td>
+        <td class="perf-neg">-5</td>
+        <td class="perf-neg">-0.7%</td>
+      </tr>
+      <tr class="latest">
+        <td>2025</td>
+        <td>916</td>
+        <td class="perf-warn" style="color:#b7770d">15</td>
+        <td class="perf-warn" style="color:#b7770d">1.6%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sub-title">밸류에이션 시나리오</div>
+  <table class="val-table">
+    <thead>
+      <tr>
+        <th>시나리오</th>
+        <th>가정</th>
+        <th>적정 시총</th>
+        <th>현재 대비</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-bull">
+        <td>🟢 Bull</td>
+        <td>스테이블코인 수혜 + 영업이익 100억 + PER 20배</td>
+        <td>2,000억</td>
+        <td style="color:#1a7a45;font-weight:700">+18%</td>
+      </tr>
+      <tr class="row-base">
+        <td>⚪ Base</td>
+        <td>영업이익 50억 + PER 15배</td>
+        <td>750억</td>
+        <td style="color:#c0392b;font-weight:700">-56%</td>
+      </tr>
+      <tr class="row-bear">
+        <td>🔴 Bear</td>
+        <td>테마 소멸 + 이익 박함 유지</td>
+        <td>300~400억</td>
+        <td style="color:#c0392b;font-weight:700">-80%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bear-note">※ 테마 소멸 시: 이익 15억 기준 적정가 150~225억 — 현재 대비 최대 -87% 낙폭 이론상 가능</div>
+
+  <div class="judge-box">
+    <div class="judge-label">핵심 판단</div>
+    <div class="judge-text">방향성(스테이블코인)은 2026년 빅 테마가 맞다. 하지만 핑거의 직접 수혜 경로는 아직 루머 수준이고, 이익 15억이 시총 1,699억을 받치지 못한다. 공시가 나오기 전에는 진입하지 않는다.</div>
+  </div>
+
+  <div class="core-row">
+    <span class="core-badge core-unfit">코어 부적합</span>
+    <div class="core-reason">이익 규모가 시총 대비 극히 얇음 / 수혜 경로 불명확 / 테마 의존도 과도</div>
+  </div>
+
+  <div class="weight-row">
+    <span class="weight-chip w-core">코어 0%</span>
+    <span class="weight-chip w-trade">트레이딩 소형 (스테이블코인 공시 확인 후)</span>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">주의 신호</div>
+    <ul class="warn-items">
+      <li>스테이블코인 규제 뉴스 또는 테마 냉각</li>
+      <li>2026년 1Q 영업이익 미개선 (30억 미만)</li>
+      <li>거래량 급감 + 토론방 침묵</li>
+    </ul>
+  </div>
+</div>
+
+<!-- OCI -->
+<div class="detail-card">
+  <div class="card-header">
+    <div class="card-left">
+      <span class="rank-badge">4</span>
+      <span class="stock-name">OCI</span>
+      <div class="sector">코스피 | 456040 | 폴리실리콘·화학 | 시총 10,868억</div>
+    </div>
+    <span class="pct-chip">+23.63%</span>
+  </div>
+
+  <div class="badge badge-event" style="margin-bottom:10px;">트레이딩형 / 사이클 반등 기대</div>
+
+  <div class="card-body">
+    폴리실리콘(태양광 소재) + 카본블랙 대기업이에요. 2025년 영업이익 4억(사실상 0)으로 바닥을 확인했고, 오늘은 트럼프 2차 협상 기대 + 태양광 업황 회복 기대가 동시에 들어온 구조예요. 폴리실리콘 가격 반등 여부가 실적 레버리지의 전부입니다. 시총 1조원 규모라 단기 트레이딩 실익은 제한적이에요.
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-cell">
+      <div class="metric-label">시가총액</div>
+      <div class="metric-val val-neutral">10,868억</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">2025 영업이익</div>
+      <div class="metric-val val-warn">4억 (사실상 0)</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">매출 규모</div>
+      <div class="metric-val val-neutral">2조원대</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">이익 구조</div>
+      <div class="metric-val val-warn" style="font-size:13px;">사이클형</div>
+    </div>
+  </div>
+
+  <div class="sub-title">연도별 실적</div>
+  <table class="perf-table">
+    <thead>
+      <tr>
+        <th>연도</th>
+        <th>매출(억)</th>
+        <th>영업이익(억)</th>
+        <th>OPM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2024</td>
+        <td>22,153</td>
+        <td class="perf-pos">1,105</td>
+        <td class="perf-pos">5.0%</td>
+      </tr>
+      <tr class="latest">
+        <td>2025</td>
+        <td>20,094</td>
+        <td class="perf-warn" style="color:#b7770d">4</td>
+        <td class="perf-warn" style="color:#b7770d">0.02%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sub-title">밸류에이션 시나리오</div>
+  <table class="val-table">
+    <thead>
+      <tr>
+        <th>시나리오</th>
+        <th>가정</th>
+        <th>적정 시총</th>
+        <th>현재 대비</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-bull">
+        <td>🟢 Bull</td>
+        <td>영업이익 1,000억 회복 + PER 12배</td>
+        <td>12,000억</td>
+        <td style="color:#1a7a45;font-weight:700">+10%</td>
+      </tr>
+      <tr class="row-base">
+        <td>⚪ Base</td>
+        <td>영업이익 300억 + PER 10배</td>
+        <td>3,000억</td>
+        <td style="color:#c0392b;font-weight:700">-72%</td>
+      </tr>
+      <tr class="row-bear">
+        <td>🔴 Bear</td>
+        <td>업황 장기 침체 + PBR 0.5배</td>
+        <td>2,000~3,000억</td>
+        <td style="color:#c0392b;font-weight:700">-75%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bear-note">※ 테마 소멸 시: PBR 기반 하방 3,000~4,000억 추정</div>
+
+  <div class="judge-box">
+    <div class="judge-label">핵심 판단</div>
+    <div class="judge-text">Bull 시나리오에서도 업사이드가 +10%밖에 안 된다. 반면 Base 시나리오 하방은 -72%. 비대칭이 너무 나쁘다. 폴리실리콘 가격 반등 실제 확인 전까지는 들어갈 이유가 없다.</div>
+  </div>
+
+  <div class="core-row">
+    <span class="core-badge core-unfit">코어 부적합 (현재 국면)</span>
+    <div class="core-reason">사이클 바닥 탈출 미확인 / 시총 대비 이익 회복 여지 비대칭 / 중국 공급 과잉 구조적 압박</div>
+  </div>
+
+  <div class="weight-row">
+    <span class="weight-chip w-core">코어 0%</span>
+    <span class="weight-chip w-trade">트레이딩 소형 (폴리실리콘 가격 반등 확인 시)</span>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">주의 신호</div>
+    <ul class="warn-items">
+      <li>폴리실리콘 현물 가격 추가 하락</li>
+      <li>트럼프 협상 기대 실망 (관세 지속)</li>
+      <li>2026년 1Q 영업이익 미개선</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 정원엔시스 -->
+<div class="detail-card">
+  <div class="card-header">
+    <div class="card-left">
+      <span class="rank-badge">5</span>
+      <span class="stock-name">정원엔시스</span>
+      <div class="sector">코스닥 | 045510 | 전자제품 ODM | 시총 543억</div>
+    </div>
+    <span class="pct-chip">+29.99%</span>
+  </div>
+
+  <div class="badge badge-noise" style="margin-bottom:10px;">트레이딩형 / 세력 수급 주도</div>
+
+  <div class="card-body">
+    전자제품 ODM·소형 가전 제조사예요. 매출 2,000억대로 사업 자체는 있지만 OPM이 1% 수준으로 이익이 극히 얇아요. 오늘 급등 이유는 토론방에서도 불명확 — "상폐 우려 쇼" 주장과 "로봇 관련주" 루머가 혼재해요. 투자주의 예고 상태에서 연속 상한가는 세력 수급 신호이긴 하지만, 근거 없는 모멘텀은 언제든 무너질 수 있어요.
+  </div>
+
+  <div class="metric-grid">
+    <div class="metric-cell">
+      <div class="metric-label">시가총액</div>
+      <div class="metric-val val-neutral">543억</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">2025 OPM</div>
+      <div class="metric-val val-warn">0.9%</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">PER (현재)</div>
+      <div class="metric-val val-neg">~29배</div>
+    </div>
+    <div class="metric-cell">
+      <div class="metric-label">투자주의</div>
+      <div class="metric-val val-neg" style="font-size:13px;">예고 중</div>
+    </div>
+  </div>
+
+  <div class="sub-title">연도별 실적</div>
+  <table class="perf-table">
+    <thead>
+      <tr>
+        <th>연도</th>
+        <th>매출(억)</th>
+        <th>영업이익(억)</th>
+        <th>OPM</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>2022</td>
+        <td>1,663</td>
+        <td class="perf-warn" style="color:#b7770d">7</td>
+        <td class="perf-warn" style="color:#b7770d">0.4%</td>
+      </tr>
+      <tr>
+        <td>2023</td>
+        <td>1,798</td>
+        <td class="perf-pos">28</td>
+        <td class="perf-pos">1.6%</td>
+      </tr>
+      <tr>
+        <td>2024</td>
+        <td>1,945</td>
+        <td class="perf-warn" style="color:#b7770d">16</td>
+        <td class="perf-warn" style="color:#b7770d">0.8%</td>
+      </tr>
+      <tr class="latest">
+        <td>2025</td>
+        <td>2,009</td>
+        <td class="perf-warn" style="color:#b7770d">19</td>
+        <td class="perf-warn" style="color:#b7770d">0.9%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="sub-title">밸류에이션 시나리오</div>
+  <table class="val-table">
+    <thead>
+      <tr>
+        <th>시나리오</th>
+        <th>가정</th>
+        <th>적정 시총</th>
+        <th>현재 대비</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="row-bull">
+        <td>🟢 Bull</td>
+        <td>이익 개선 + OPM 3% + PER 15배</td>
+        <td>900억</td>
+        <td style="color:#1a7a45;font-weight:700">+66%</td>
+      </tr>
+      <tr class="row-base">
+        <td>⚪ Base</td>
+        <td>현 이익 유지 + PER 10배</td>
+        <td>190억</td>
+        <td style="color:#c0392b;font-weight:700">-65%</td>
+      </tr>
+      <tr class="row-bear">
+        <td>🔴 Bear</td>
+        <td>테마 소멸 + 투주 제재</td>
+        <td>80~100억</td>
+        <td style="color:#c0392b;font-weight:700">-82%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="bear-note">※ 테마 소멸 시: 이익 기반 하방 80~150억 — 현재 대비 최대 -85%</div>
+
+  <div class="judge-box">
+    <div class="judge-label">핵심 판단</div>
+    <div class="judge-text">재무 하방이 극히 얇고 투주 예고까지 겹쳐 있다. 세력 수급 신호는 있으나 모멘텀이 언제든 꺼질 수 있다. 코어 편입 절대 불가. 단기 트레이딩도 소규모, 손절 기준 명확히 설정 후에만 접근.</div>
+  </div>
+
+  <div class="core-row">
+    <span class="core-badge core-unfit">코어 부적합</span>
+    <div class="core-reason">OPM 1% 미만 = 이익 재현성 없음 / 해자 전무 / 투주 예고 리스크</div>
+  </div>
+
+  <div class="weight-row">
+    <span class="weight-chip w-core">코어 0%</span>
+    <span class="weight-chip w-trade">트레이딩 극소형 (손절 기준 필수)</span>
+  </div>
+
+  <div class="warn-box">
+    <div class="warn-label">주의 신호</div>
+    <ul class="warn-items">
+      <li>투자경고 실제 지정 (거래 위축)</li>
+      <li>거래량 급감 + 세력 이탈 패턴</li>
+      <li>재료 없는 연속 상한가 이후 갭다운</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ⑥ 간략 요약 -->
+<div class="section-label">나머지 종목 간략 요약</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">KEC</span>
+    <span class="brief-pct">+29.97%</span>
+  </div>
+  <div class="brief-meta">시총 3,700억 | 매출 2,296억 / 영업이익 -218억 / OPM -9.5% / ROE 적자</div>
+  <div class="brief-reason">급등 이유: 엔비디아 800V DC 전력 전송 채택 뉴스 — 와이엠텍과 동반 상한가. 당일 언론 보도 실체 확인</div>
+  <span class="judge-badge jb-caution">소형 주의 · 재무 하방 없음</span>
+</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">애경케미칼</span>
+    <span class="brief-pct">+24.35%</span>
+  </div>
+  <div class="brief-meta">시총 9,291억 | 매출 14,523억 / 영업이익 -102억 / OPM -0.7% / ROE 적자</div>
+  <div class="brief-reason">급등 이유: TPC 신사업 성장성 + 하드카본 + 폐유 재활용 테마 합류. 토론방 "최소 2조 간다" 과도한 낙관론</div>
+  <span class="judge-badge jb-exclude">관심 제외 · 2조원 매출에 적자</span>
+</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">삼아알미늄</span>
+    <span class="brief-pct">+21.88%</span>
+  </div>
+  <div class="brief-meta">시총 10,783억 | 매출 2,715억 / 영업이익 -176억 / OPM -6.5% / ROE 적자</div>
+  <div class="brief-reason">급등 이유: 재료 불명확. 투자경고 후 NXT 거래 관련 글 활성. 순환매 추종 의심</div>
+  <span class="judge-badge jb-exclude">관심 제외 · 적자 심화</span>
+</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">에이에프더블류</span>
+    <span class="brief-pct">+29.99%</span>
+  </div>
+  <div class="brief-meta">시총 374억 | 매출 137억 / 영업이익 -95억 / OPM -69% / ROE 적자</div>
+  <div class="brief-reason">급등 이유: 삼성SDI 2차전지 부품 납품 재부각. 투자경고 + 단기과열 이중 지정 상태</div>
+  <span class="judge-badge jb-danger">위험 · 4년 연속 적자 심화</span>
+</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">동일스틸럭스</span>
+    <span class="brief-pct">+29.98%</span>
+  </div>
+  <div class="brief-meta">시총 341억 | 매출 240억 / 영업이익 -26억 / OPM -10.8% / ROE 적자</div>
+  <div class="brief-reason">급등 이유: KDDX(한국형 구축함) 관련주 루머 + 방산 순환매 편승</div>
+  <span class="judge-badge jb-exclude">관심 제외 · 방산 재료 루머 수준</span>
+</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">포톤</span>
+    <span class="brief-pct">+29.98%</span>
+  </div>
+  <div class="brief-meta">시총 459억 | 매출 1,287억 / 영업이익 0억 / OPM 0% / ROE 적자</div>
+  <div class="brief-reason">급등 이유: 양자컴·보안주 순환매 대장. 나노캠텍과 동반 상한가</div>
+  <span class="judge-badge jb-exclude">관심 제외 · 4년 연속 적자 후 손익분기 겨우 도달</span>
+</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">나노캠텍</span>
+    <span class="brief-pct">+29.95%</span>
+  </div>
+  <div class="brief-meta">시총 294억 | 매출 501억 / 영업이익 -3억 / OPM -0.6% / ROE 적자</div>
+  <div class="brief-reason">급등 이유: 양자컴 관련주 + 최대주주 장내매수 + 사명변경(LSK AI로봇) 기대감</div>
+  <span class="judge-badge jb-danger">위험 · 사명변경 = 실체 변화 없음</span>
+</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">애머릿지</span>
+    <span class="brief-pct">+29.92%</span>
+  </div>
+  <div class="brief-meta">시총 348억 | 매출 0억 / 영업이익 0억 / OPM N/A / ROE N/A</div>
+  <div class="brief-reason">급등 이유: 재료 전혀 불명확. 토론방 자체가 시세 조종에 가까운 패턴</div>
+  <span class="judge-badge jb-danger">위험 · 사업 실체 없음, 절대 배제</span>
+</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">바이젠셀</span>
+    <span class="brief-pct">+29.88%</span>
+  </div>
+  <div class="brief-meta">시총 1,514억 | 매출 3억 / 영업이익 -153억 / OPM N/A / ROE N/A</div>
+  <div class="brief-reason">급등 이유: ASCO(미국 암학회) 발표 전 기대감. 토론방서 "5월 29일 전 매도" 자체 탈출 신호 공유</div>
+  <span class="judge-badge jb-danger">위험 · 순수 파이프라인 베팅, 재무 하방 전무</span>
+</div>
+
+<div class="brief-card">
+  <div class="brief-header">
+    <span class="brief-name">플루토스</span>
+    <span class="brief-pct">+29.8%</span>
+  </div>
+  <div class="brief-meta">시총 356억 | 매출 103억 / 영업이익 33억(2025) / OPM 확인필요 / ROE 확인필요</div>
+  <div class="brief-reason">급등 이유: 재료 불명확. 액면병합+감자 이후 수급 개선 기대. 토론방 "감"으로 찬티 다수</div>
+  <span class="judge-badge jb-caution">소형 주의 · 2025년 흑자 전환은 긍정적, 근거 불명확</span>
+</div>
+
+<!-- ⑦ 모니터링 우선순위 -->
+<div class="section-label">모니터링 우선순위</div>
+
+<div class="monitor-card">
+  <div class="monitor-rank">🔍 1순위</div>
+  <div class="monitor-name">라이온켐텍</div>
+  <div class="monitor-reason">4년 연속 흑자로 테마 소멸 시 하방이 제한되며 광산 협약 실체가 존재한다. 다음 날 갭상 후 주도주 지속 여부가 전체 광산 테마의 지속성을 판가름하는 리트머스다.</div>
+</div>
+
+<div class="monitor-card">
+  <div class="monitor-rank">🔍 2순위</div>
+  <div class="monitor-name">DS단석</div>
+  <div class="monitor-reason">SAF 테마 실체는 있고 독과점 포지션이지만 현재 시총이 실적 대비 과도하다. 주가 조정 후 2026년 1Q 실적 확인 시 본격 진입 기회가 열릴 수 있는 구조.</div>
+</div>
+
+<div class="monitor-card">
+  <div class="monitor-rank">🔍 3순위</div>
+  <div class="monitor-name">핑거</div>
+  <div class="monitor-reason">스테이블코인·디지털달러 테마가 2026년 지속 빅 테마로 자리잡을 경우, 핀테크 플랫폼 실체를 가진 핑거가 재평가될 가능성. 다음 공시와 1Q 실적이 결정적.</div>
+</div>
+
+<!-- ⑧ 비교 분석 -->
+<div class="section-label">모니터링 3종목 비교</div>
+
+<div class="compare-card">
+  <div class="compare-header">⚖️ 라이온켐텍 vs DS단석 vs 핑거</div>
+
+  <div class="sub-title">코어 3조건 비교</div>
+  <table class="cmp-table">
+    <thead>
+      <tr>
+        <th>조건</th>
+        <th>라이온켐텍</th>
+        <th>DS단석</th>
+        <th>핑거</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>이익 재현성</td>
+        <td>✅<br><span style="color:#1a7a45;font-size:10px;">4년 흑자<br>OPM 8%</span></td>
+        <td>⚠️<br><span style="color:#b7770d;font-size:10px;">2년 적자근접<br>사이클 바닥</span></td>
+        <td>⚠️<br><span style="color:#b7770d;font-size:10px;">2024년 적자<br>15억 턴</span></td>
+      </tr>
+      <tr>
+        <td>시간 우위</td>
+        <td>⚠️<br><span style="color:#b7770d;font-size:10px;">광산 현실화<br>되면 Yes</span></td>
+        <td>✅<br><span style="color:#1a7a45;font-size:10px;">SAF 의무화<br>로드맵 확정</span></td>
+        <td>⚠️<br><span style="color:#b7770d;font-size:10px;">스테이블코인<br>규제 불확실</span></td>
+      </tr>
+      <tr>
+        <td>변동성 근거</td>
+        <td>✅<br><span style="color:#1a7a45;font-size:10px;">하방 있음<br>PER 9배</span></td>
+        <td>❌<br><span style="color:#c0392b;font-size:10px;">현 시총이<br>이익 기반 아님</span></td>
+        <td>❌<br><span style="color:#c0392b;font-size:10px;">이익 15억<br>vs 시총 1,699억</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="judge-box">
+    <div class="judge-label">본질적 차이</div>
+    <div class="judge-text">단독으로 보면 셋 다 "테마가 있는 종목"으로 묶이지만, 나란히 놓으면 성격이 완전히 다르다. 라이온켐텍은 테마가 없어도 사업이 돌아가는 회사고, DS단석은 방향성은 맞지만 지금 실적이 그 방향을 따라가지 못하며, 핑거는 테마가 꺼지면 이익 기반이 너무 얇아 지지선이 거의 없다. 리스크의 종류도 다르다 — 라이온은 테마 소멸 리스크, DS단석은 사이클 타이밍 리스크, 핑거는 이익 실체 리스크다.</div>
+  </div>
+
+  <div class="sub-title">선호도 및 비중 배분</div>
+  <div class="rank-cards">
+    <div class="rank-card first">
+      <span class="rank-badge-sm">1순위</span>
+      <div class="rank-card-name">라이온켐텍 — "셋 중 가장 먼저 채울 것"</div>
+      <div class="rank-card-reason">이익이 실제로 나고 있다. PER 9배는 현 시장에서 합리적이며 광산 테마가 꺼져도 700억 이상 하방이 있다. 단기 트레이딩이면서도 코어 전환 가능성이 열려 있는 유일한 종목.</div>
+    </div>
+    <div class="rank-card">
+      <span class="rank-badge-sm">2순위</span>
+      <div class="rank-card-name">DS단석 — "실적 확인 후 추가할 것"</div>
+      <div class="rank-card-reason">방향성은 옳지만 지금은 비싸다. 2026년 1Q 흑자 전환 확인 후 진입이 맞다. 선취매는 사이클 타이밍을 맞추는 도박이다.</div>
+    </div>
+    <div class="rank-card">
+      <span class="rank-badge-sm">3순위</span>
+      <div class="rank-card-name">핑거 — "공시 확인 전까지 보류"</div>
+      <div class="rank-card-reason">스테이블코인 정책 구체화 공시가 나오면 재검토. 현재는 루머 기반 상승이며 이익이 시총을 지지하지 못한다.</div>
+    </div>
+  </div>
+
+  <div class="sub-title">탈락 신호 비교</div>
+  <div class="drop-grid">
+    <div class="drop-cell">
+      <div class="drop-name">라이온켐텍</div>
+      <div class="drop-text">광산 협약 무산 또는 영업이익 100억 하회</div>
+    </div>
+    <div class="drop-cell">
+      <div class="drop-name">DS단석</div>
+      <div class="drop-text">2026 1Q 적자 지속 + 정제마진 추가 하락</div>
+    </div>
+    <div class="drop-cell drop-danger">
+      <div class="drop-name" style="color:#c0392b">⚠️ 핑거</div>
+      <div class="drop-text">스테이블코인 테마 냉각 + 거래량 급감<br>→ 탈락 신호 가장 근접</div>
+    </div>
+  </div>
+
+  <div class="final-line">
+    라이온켐텍을 기준점으로 삼되, DS단석은 실적 확인을 기다리고, 핑거는 공시 없이는 들어가지 않는다.
+  </div>
+</div>
+
+<!-- ⑨ 면책 -->
+<div class="disclaimer">
+  본 자료는 투자 참고용입니다. 최종 투자 판단의 책임은 투자자 본인에게 있습니다.
+</div>
+
+</body>
+</html>
