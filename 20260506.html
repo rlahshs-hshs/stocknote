@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026.05.06 급등주 분석 리포트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            background: #f5f4f0;
+            color: #1a1a1a;
+            padding-bottom: 40px;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            color: #ffffff;
+            padding: 28px 20px 24px;
+            margin-bottom: 20px;
+        }
+        .hero-date {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-bottom: 8px;
+        }
+        .hero-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .hero-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .chip {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            background: rgba(255,255,255,0.15);
+        }
+        .hero-disclaimer {
+            font-size: 12px;
+            opacity: 0.6;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 12px;
+            margin-top: 12px;
+        }
+        .section {
+            background: #ffffff;
+            margin: 0 16px 16px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+        .cluster {
+            background: #f8f8f6;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .cluster-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .cluster-emoji {
+            font-size: 20px;
+        }
+        .cluster-name {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .cluster-badge {
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .badge-strong {
+            background: #c0392b;
+            color: #fff;
+        }
+        .badge-event {
+            background: #b7770d;
+            color: #fff;
+        }
+        .badge-noise {
+            background: #999;
+            color: #fff;
+        }
+        .cluster-stocks {
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 6px;
+        }
+        .cluster-desc {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+        .divider-list {
+            padding-left: 20px;
+            margin: 12px 0;
+        }
+        .divider-list li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .stock-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            margin: 0 16px 20px;
+            overflow: hidden;
+        }
+        .stock-header {
+            background: linear-gradient(135deg, #7f77dd 0%, #9d95eb 100%);
+            color: #fff;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .rank-badge {
+            background: #fff;
+            color: #7f77dd;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+        }
+        .stock-name {
+            font-size: 18px;
+            font-weight: 700;
+            flex: 1;
+        }
+        .stock-sector {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        .stock-change {
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .stock-body {
+            padding: 16px;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .metric {
+            background: #f8f8f6;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+        .metric-value {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        .judgment-box {
+            background: #fffbf0;
+            border-left: 4px solid #b7770d;
+            padding: 12px;
+            margin-bottom: 16px;
+        }
+        .judgment-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #b7770d;
+            margin-bottom: 6px;
+        }
+        .judgment-text {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 13px;
+        }
+        th {
+            background: #f0f0f0;
+            padding: 8px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #ddd;
+        }
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+        }
+        .warning-box {
+            background: #fff5f5;
+            border-left: 4px solid #c0392b;
+            padding: 12px;
+            margin: 16px 0;
+        }
+        .warning-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #c0392b;
+            margin-bottom: 6px;
+        }
+        .warning-list {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .weight-box {
+            background: #f0f8ff;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 16px;
+        }
+        .weight-label {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .weight-value {
+            font-size: 14px;
+        }
+        .brief-item {
+            background: #f8f8f6;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .brief-header {
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .brief-body {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .monitor-card {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        .monitor-rank {
+            color: #7f77dd;
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+        .monitor-name {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .monitor-reason {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        .compare-table {
+            margin: 16px 0;
+        }
+        .rank-card {
+            background: #f8f8f6;
+            padding: 14px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .rank-num {
+            font-weight: 700;
+            color: #7f77dd;
+            margin-bottom: 4px;
+        }
+        .final-box {
+            background: #e8f5e9;
+            border-left: 4px solid #1a7a45;
+            padding: 14px;
+            margin-top: 16px;
+        }
+        .final-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1a7a45;
+            margin-bottom: 6px;
+        }
+        .red { color: #c0392b; }
+        .blue { color: #2563eb; }
+        .green { color: #1a7a45; }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-date">분석일: 2026.05.06</div>
+        <div class="hero-title">📊 당일 급등주 종합 분석 리포트</div>
+        <div class="hero-chips">
+            <span class="chip">코스피 5종목</span>
+            <span class="chip">코스닥 15종목</span>
+            <span class="chip">총 20종목</span>
+        </div>
+        <div class="hero-disclaimer">
+            본 분석은 투자 권유가 아닌 정보 제공 목적입니다. 최종 투자 판단은 본인 책임 하에 진행하시기 바랍니다.
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🔍 전체 조감</div>
+        
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-emoji">💎</span>
+                <span class="cluster-name">유리기판 테마</span>
+                <span class="cluster-badge badge-strong">실체형</span>
+            </div>
+            <div class="cluster-stocks">
+                관련 종목: SKC, HB테크놀러지, 필옵틱스, 워트
+            </div>
+            <div class="cluster-desc">
+                애플 차세대 칩 유리기판 채택 가능성 보도로 촉발. SKC는 세계 최대 유리기판 생산능력 보유. HB테크놀러지는 자회사 HPSP 지분(시가 4,200억 상당) 통한 간접 노출. 미국 코닝(시총 200조) 장중 +18% 폭등이 동조 모멘텀. 실체 있는 산업 재료이나 단기 과열 경계 필요.
+            </div>
+        </div>
+
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-emoji">📈</span>
+                <span class="cluster-name">증권주 랠리</span>
+                <span class="cluster-badge badge-strong">실체형</span>
+            </div>
+            <div class="cluster-stocks">
+                관련 종목: 유안타증권, 미래에셋증권
+            </div>
+            <div class="cluster-desc">
+                코스피 사상 최고치 경신 + 외국인 자금 유입 본격화. 유안타는 외국인 통합계좌 직접 수혜 구조(범중화권 네트워크), 외인 보유 65.95%로 압도적. 미래에셋은 2025년 순이익 1.5조 달성, ROE 11.7%로 수익성 개선. 지수 상승 시 자연스러운 이익 증가 구조. 양사 모두 고배당 매력(유안타 5.96%).
+            </div>
+        </div>
+
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-emoji">⚡</span>
+                <span class="cluster-name">AI 전력 인프라</span>
+                <span class="cluster-badge badge-event">이벤트형</span>
+            </div>
+            <div class="cluster-stocks">
+                관련 종목: 가온전선, KBI메탈, 파워넷, 서전기전
+            </div>
+            <div class="cluster-desc">
+                AI 데이터센터 증설 → 전력망·변압기·케이블 수요 급증 테마. 가온전선은 2025년 실적 호조(매출 2.5조, 순이익 514억), 어닝서프라이즈 기대감. KBI메탈은 미국 AI 전력망 핵심주 포지셔닝, 자회사 통한 변압기·전선 수직계열화 완성. 파워넷은 AI 인프라 수요 본격 반영 시작. 단, 토론방 활성도 대비 재무 기반 확인 필요.
+            </div>
+        </div>
+
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-emoji">🔐</span>
+                <span class="cluster-name">양자컴퓨팅 / 양자보안</span>
+                <span class="cluster-badge badge-event">이벤트형</span>
+            </div>
+            <div class="cluster-stocks">
+                관련 종목: 드림시큐리티, 엑스게이트
+            </div>
+            <div class="cluster-desc">
+                미국 양자컴퓨팅 주식 급등(아이온큐 등) 동조. 드림시큐리티는 양자보안 대장주 포지셔닝, 엑스게이트는 엔비디아·구글 연계 재료 부각. 양사 모두 투자경고 예고 상태이나 투자자들은 "투경 무시" 분위기. 고위험·고변동성 순수 테마 종목. 재무 안정성 낮음.
+            </div>
+        </div>
+
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-emoji">🔴</span>
+                <span class="cluster-name">노이즈 / 작전성</span>
+                <span class="cluster-badge badge-noise">노이즈형</span>
+            </div>
+            <div class="cluster-stocks">
+                관련 종목: 두산퓨얼셀, 루멘스, 파인디앤씨, 해성옵틱스, 젠큐릭스, 케스피온, 한울앤제주, 뉴인텍
+            </div>
+            <div class="cluster-desc">
+                명확한 재료 없이 토론방 투기 심리로 급등. 두산퓨얼셀은 LNG 발전 직거래 차단 이슈 발생, 루멘스는 재무 적자 전환, 파인디앤씨·한울앤제주는 4년 연속 적자·감자 이력, 케스피온은 스페이스X 연관 루머(근거 불명), 젠큐릭스는 진단키트 40개 판매로 상한가. 재무 하방 없음. 단기 투기 이외 접근 금지.
+            </div>
+        </div>
+
+        <div style="margin-top:20px; padding-top:16px; border-top:1px solid #e0e0e0;">
+            <div style="font-weight:700; margin-bottom:12px;">테마별 성격 요약</div>
+            <ul class="divider-list">
+                <li><strong>실체형 (유리기판, 증권):</strong> 검증 가능한 뉴스·실적 기반. 단기 과열 경계하되 중기 모니터링 가치 있음.</li>
+                <li><strong>이벤트형 (전력 인프라, 양자):</strong> 산업 추세는 실재하나 개별 기업 수혜는 불확실. 투자경고 리스크 존재.</li>
+                <li><strong>노이즈형 (작전성 의심 종목):</strong> 재료 루머 수준, 재무 적자 심각. 분석 가치 없음.</li>
+            </ul>
+        </div>
+
+        <div style="margin-top:20px; padding-top:16px; border-top:1px solid #e0e0e0;">
+            <div style="font-weight:700; margin-bottom:12px;">1차 분리 결과</div>
+            <div style="background:#e8f5e9; padding:12px; border-radius:6px; margin-bottom:10px;">
+                <div style="font-weight:700; color:#1a7a45; margin-bottom:6px;">분석 가치 있음 (10종목)</div>
+                <div style="font-size:14px;">유안타증권, 미래에셋증권, SKC, 가온전선, HB테크놀러지, 필옵틱스, 파워넷, KBI메탈, 드림시큐리티, 엑스게이트</div>
+            </div>
+            <div style="background:#fff5f5; padding:12px; border-radius:6px;">
+                <div style="font-weight:700; color:#c0392b; margin-bottom:6px;">분석 제외 (10종목)</div>
+                <div style="font-size:14px;">두산퓨얼셀, 루멘스, 파인디앤씨, 해성옵틱스, 젠큐릭스, 케스피온, 한울앤제주, 뉴인텍, 워트, 서전기전<br>
+                <span style="font-size:13px; color:#666;">(이유: 명확한 재료 부재, 4년 이상 적자 지속, 부채비율 200% 초과, 순수 루머 의존)</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">⭐ 상위 5종목 선정 이유</div>
+        <ol class="divider-list" style="padding-left:24px;">
+            <li><strong>유안타증권:</strong> 외인 통합계좌 직접 수혜 + 외인 보유 65.95% + PBR 0.65배 저평가 + 배당 5.96%</li>
+            <li><strong>미래에셋증권:</strong> 2025년 순이익 1.5조(전년비 +70%) + ROE 11.7% 개선 + 증시 사상 최고치 직접 수혜</li>
+            <li><strong>HB테크놀러지:</strong> 유리기판 테마 최순수 + HPSP 지분가치 4,200억(현 시총의 100% 상당) + 부채비율 34.1%로 안정</li>
+            <li><strong>가온전선:</strong> 2025년 어닝서프라이즈(매출 2.5조, 순이익 514억) + ROE 10.6% + AI 전력 인프라 실수요 종목</li>
+            <li><strong>파워넷:</strong> AI 인프라 수혜주 + 2025년 매출 4,470억(+38%) + 부채비율 74.5%로 안정 + 토론방 기관 매수 신호 포착</li>
+        </ol>
+    </div>
+
+    <div class="stock-card">
+        <div class="stock-header">
+            <span class="rank-badge">1위</span>
+            <div style="flex:1;">
+                <div class="stock-name">유안타증권</div>
+                <div class="stock-sector">증권 | 코스피</div>
+            </div>
+            <div class="stock-change">+29.85%</div>
+        </div>
+        <div class="stock-body">
+            <div style="font-weight:700; font-size:16px; margin-bottom:12px;">트레이딩·코어 겸용형 (외인 수혜 + 배당주)</div>
+            
+            <div class="judgment-box">
+                <div class="judgment-title">핵심 판단</div>
+                <div class="judgment-text">
+                    외국인 통합계좌 직접 수혜주. 외인 보유 65.95%는 타 증권사 대비 압도적. 범중화권 네트워크 강점으로 실질 외인 자금 유입 구조 마련. 2025년 실적(순이익 956억) 견조, 배당수익률 5.96%는 증권주 중 최상위. PBR 0.65배는 청산가치 대비 35% 할인. 코스피 사상 최고치 경신 시 자연 이익 증가. 단기 과열 있으나 중기 코어 편입 검토 가능.
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">15,628억</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">2025 순이익</div>
+                    <div class="metric-value">956억</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">ROE</div>
+                    <div class="metric-value" style="color:#1a7a45;">5.0%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">PBR</div>
+                    <div class="metric-value" style="color:#2563eb;">0.65배</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">부채비율</div>
+                    <div class="metric-value" style="color:#c0392b;">950.9%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">배당수익률</div>
+                    <div class="metric-value" style="color:#1a7a45;">5.96%</div>
+                </div>
+            </div>
+
+            <div style="font-weight:700; margin:16px 0 8px;">정량 평가</div>
+            <ul style="font-size:14px; line-height:1.7; padding-left:20px;">
+                <li><strong>이익 구조:</strong> 안정형. 증권업 사이클이나 3개년 흑자 지속, OPM 2.9%로 방어적.</li>
+                <li><strong>재무 건전성:</strong> 부채비율 950.9%는 증권업 특성상 정상 범위. 자본 1.9조, 유동성 문제 없음.</li>
+                <li><strong>성장성:</strong> 2025년 매출 3.5조(+27%), 순이익 956억(+31%). 외국인 통합계좌 본격 가동 시 추가 성장.</li>
+                <li><strong>밸류에이션:</strong> PER 16.3배(지배주주귀속 기준), PBR 0.65배. 증권업 평균 PBR 0.8배 대비 저평가.</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>연도</th>
+                        <th>매출(억)</th>
+                        <th>순이익(억)</th>
+                        <th>OPM(%)</th>
+                        <th>ROE(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023</td>
+                        <td>28,550</td>
+                        <td>644</td>
+                        <td>4.5</td>
+                        <td>3.4</td>
+                    </tr>
+                    <tr>
+                        <td>2024</td>
+                        <td>27,127</td>
+                        <td>730</td>
+                        <td>3.5</td>
+                        <td>3.8</td>
+                    </tr>
+                    <tr>
+                        <td>2025</td>
+                        <td>34,613</td>
+                        <td>956</td>
+                        <td>2.9</td>
+                        <td>5.0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="font-weight:700; margin:16px 0 8px;">정성 평가</div>
+            <ul style="font-size:14px; line-height:1.7; padding-left:20px;">
+                <li><strong>이벤트드리븐:</strong> 중. 외국인 통합계좌 본격 가동(2026년 1월~) + 코스피 신고치 경신이 직접 수혜.</li>
+                <li><strong>토론방 신호:</strong> 5월 6일 활성화. "외인 통합계좌 직접 수혜", "PBR 0.65배 저평가", "고배당 5.96%" 반복 언급.</li>
+                <li><strong>산업 위치:</strong> 대만 유안타 최대주주, 범중화권 네트워크 차별화. 국내 증권사 중 외인 보유 비중 1위.</li>
+            </ul>
+
+            <div style="font-weight:700; margin:16px 0 8px;">밸류에이션 시나리오</div>
+            <div style="font-size:13px; color:#666; margin-bottom:8px;">현재 시총: 15,628억 (2026.05.06 기준)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>시나리오</th>
+                        <th>가정</th>
+                        <th>적정 시총</th>
+                        <th>현재 대비</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🟢 Bull</td>
+                        <td>PBR 0.9배 + 외인 자금 본격 유입</td>
+                        <td>21,600억</td>
+                        <td>+38%</td>
+                    </tr>
+                    <tr>
+                        <td>⚪ Base</td>
+                        <td>PBR 0.75배 (업종 평균 하단)</td>
+                        <td>18,000억</td>
+                        <td>+15%</td>
+                    </tr>
+                    <tr>
+                        <td>🔴 Bear</td>
+                        <td>지수 조정 시 PBR 0.6배 유지</td>
+                        <td>14,400억</td>
+                        <td>-8%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="font-size:13px; color:#666; margin-top:8px;">
+                ※ 테마 소멸 시에도 순자산 1.9조 + 연간 이익 900억 이상 기반 존재. 하방은 PBR 0.5배(12,000억) 수준으로 제한적.
+            </div>
+
+            <div style="font-weight:700; margin:16px 0 8px;">코어 적합성</div>
+            <div style="background:#e8f5e9; padding:12px; border-radius:6px;">
+                <div style="font-weight:700; color:#1a7a45; margin-bottom:6px;">조건부 적합</div>
+                <div style="font-size:14px; line-height:1.6;">
+                    <strong>이유:</strong><br>
+                    1. 이익 재현성 ○ — 증권업 구조적 이익, 외인 계좌 추가 성장 동력<br>
+                    2. 해자 △ — 범중화권 네트워크는 차별화 요소이나 진입장벽 약함<br>
+                    3. 밸류에이션 ○ — PBR 0.65배 + 배당 5.96%는 충분한 안전마진<br>
+                    <strong>결론:</strong> 코스피 상승 지속 시 코어 편입 검토. 단기 과열 시 일부 차익실현 후 재진입 전략 유효.
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">⚠️ 탈락 신호</div>
+                <div class="warning-list">
+                    1. 외국인 순매도 전환 + 거래대금 3일 연속 100억 미만<br>
+                    2. 코스피 3,500 이하 하락 시 증권주 섹터 전체 약세<br>
+                    3. 중국·대만 금융시장 불안 발생 시 네트워크 효과 역풍
+                </div>
+            </div>
+
+            <div class="weight-box">
+                <div class="weight-label">📌 추천 비중</div>
+                <div class="weight-value">
+                    <strong>코어 30%</strong> (코스피 3,500 이상 지속 조건) / <strong>트레이딩 20%</strong> (단기 과열 시 일부 차익)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stock-card">
+        <div class="stock-header">
+            <span class="rank-badge">2위</span>
+            <div style="flex:1;">
+                <div class="stock-name">미래에셋증권</div>
+                <div class="stock-sector">증권 | 코스피</div>
+            </div>
+            <div class="stock-change">+19.2%</div>
+        </div>
+        <div class="stock-body">
+            <div style="font-weight:700; font-size:16px; margin-bottom:12px;">코어형 (대형 증권주 / 수익성 개선)</div>
+            
+            <div class="judgment-box">
+                <div class="judgment-title">핵심 판단</div>
+                <div class="judgment-text">
+                    국내 1위 증권사. 2025년 순이익 1.57조(+70%)는 업계 최대 실적. ROE 11.7%로 자본 효율성 개선. 지수 상승 시 자연 이익 증가 구조이며, 글로벌 자산운용(미래에셋자산운용 등) 통한 안정적 수익 기반 보유. 현재 PER 29.8배는 고평가 수준이나, 연결 순이익 기준 실질 PER은 낮음(비지배지분 0.8%로 미미). 단기 과열 있으나 코스피 신고치 행진 지속 시 중기 상승 여력.
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">468,917억</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">2025 순이익</div>
+                    <div class="metric-value">15,695억</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">ROE</div>
+                    <div class="metric-value" style="color:#1a7a45;">11.8%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">PER (지배)</div>
+                    <div class="metric-value">29.9배</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">부채비율</div>
+                    <div class="metric-value" style="color:#c0392b;">1015.0%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">OPM</div>
+                    <div class="metric-value">6.5%</div>
+                </div>
+            </div>
+
+            <div style="font-weight:700; margin:16px 0 8px;">정량 평가</div>
+            <ul style="font-size:14px; line-height:1.7; padding-left:20px;">
+                <li><strong>이익 구조:</strong> 안정형. 증권업 사이클 있으나 자산운용 통한 수익 다변화. 2025년 대폭 개선.</li>
+                <li><strong>재무 건전성:</strong> 부채비율 1015.0%는 증권업 정상 범위. 자본 13.5조, 자산 150조로 대형사 안정성.</li>
+                <li><strong>성장성:</strong> 2025년 매출 29.3조(+31%), 순이익 1.57조(+70%). 글로벌 자산운용 확대 중.</li>
+                <li><strong>밸류에이션:</strong> PER 29.9배(지배주주 기준), PBR 3.5배. 증권업 평균 대비 고평가이나 수익성 프리미엄 반영.</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>연도</th>
+                        <th>매출(억)</th>
+                        <th>순이익(억)</th>
+                        <th>OPM(%)</th>
+                        <th>ROE(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2023</td>
+                        <td>203,595</td>
+                        <td>3,270</td>
+                        <td>2.6</td>
+                        <td>2.5</td>
+                    </tr>
+                    <tr>
+                        <td>2024</td>
+                        <td>222,423</td>
+                        <td>9,216</td>
+                        <td>5.3</td>
+                        <td>6.8</td>
+                    </tr>
+                    <tr>
+                        <td>2025</td>
+                        <td>292,830</td>
+                        <td>15,695</td>
+                        <td>6.5</td>
+                        <td>11.8</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="font-weight:700; margin:16px 0 8px;">정성 평가</div>
+            <ul style="font-size:14px; line-height:1.7; padding-left:20px;">
+                <li><strong>이벤트드리븐:</strong> 중. 코스피 사상 최고치 + 외인 자금 유입 + 코인 자금 유입 기대감.</li>
+                <li><strong>토론방 신호:</strong> 5월 6일 활성화. "코인 자금 코스피 유입", "10만원 돌파", "반도체 → 증권 수급 이동" 언급.</li>
+                <li><strong>산업 위치:</strong> 국내 1위 증권사, 글로벌 자산운용 네트워크 보유. 브랜드 파워 강함.</li>
+            </ul>
+
+            <div style="font-weight:700; margin:16px 0 8px;">밸류에이션 시나리오</div>
+            <div style="font-size:13px; color:#666; margin-bottom:8px;">현재 시총: 468,917억 (2026.05.06 기준)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>시나리오</th>
+                        <th>가정</th>
+                        <th>적정 시총</th>
+                        <th>현재 대비</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🟢 Bull</td>
+                        <td>PER 35배 + 코스피 4,000 돌파</td>
+                        <td>549,325억</td>
+                        <td>+17%</td>
+                    </tr>
+                    <tr>
+                        <td>⚪ Base</td>
+                        <td>PER 30배 (현재 수준 유지)</td>
+                        <td>470,850억</td>
+                        <td>±0%</td>
+                    </tr>
+                    <tr>
+                        <td>🔴 Bear</td>
+                        <td>지수 조정 시 PER 20배</td>
+                        <td>313,900억</td>
+                        <td>-33%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="font-size:13px; color:#666; margin-top:8px;">
+                ※ 테마 소멸 시에도 연간 순이익 1조 이상 기반 존재. 자본 13.5조, PBR 3.5배 고려 시 하방은 PBR 2.5배(33만억) 수준.
+            </div>
+
+            <div style="font-weight:700; margin:16px 0 8px;">코어 적합성</div>
+            <div style="background:#e8f5e9; padding:12px; border-radius:6px;">
+                <div style="font-weight:700; color:#1a7a45; margin-bottom:6px;">적합</div>
+                <div style="font-size:14px; line-height:1.6;">
+                    <strong>이유:</strong><br>
+                    1. 이익 재현성 ○ — 증권업 1위 + 글로벌 자산운용 안정적 수익 구조<br>
+                    2. 해자 ○ — 브랜드 파워 + 네트워크 + 자본력으로 진입장벽 높음<br>
+                    3. 밸류에이션 △ — PER 30배는 고평가이나 ROE 11.8% 감안 시 합리적 프리미엄<br>
+                    <strong>결론:</strong> 코스피 상승 지속 시 중기 코어 편입 적합. 단, PER 35배 초과 시 일부 차익실현 고려.
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">⚠️ 탈락 신호</div>
+                <div class="warning-list">
+                    1. 코스피 3,300 하회 시 지수 민감도 높음<br>
+                    2. 미국 금리 급등 시 글로벌 자산운용 수익 감소<br>
+                    3. PER 40배 초과 시 밸류에이션 부담 급증
+                </div>
+            </div>
+
+            <div class="weight-box">
+                <div class="weight-label">📌 추천 비중</div>
+                <div class="weight-value">
+                    <strong>코어 40%</strong> (코스피 3,500 이상 지속 조건) / <strong>트레이딩 10%</strong> (단기 과열 시 일부 익절)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stock-card">
+        <div class="stock-header">
+            <span class="rank-badge">3위</span>
+            <div style="flex:1;">
+                <div class="stock-name">HB테크놀러지</div>
+                <div class="stock-sector">전자부품 | 코스닥</div>
+            </div>
+            <div class="stock-change">+29.89%</div>
+        </div>
+        <div class="stock-body">
+            <div style="font-weight:700; font-size:16px; margin-bottom:12px;">트레이딩형 (유리기판 테마 최순수 + 자산가치)</div>
+            
+            <div class="judgment-box">
+                <div class="judgment-title">핵심 판단</div>
+                <div class="judgment-text">
+                    유리기판 테마 최순수주. HPSP(한국판유리기판) 지분 10.1% 보유, 시가 기준 4,200억 가치. 현재 시총 3,727억 대비 지분가치만으로 상회. 2025년 흑자전환(순이익 284억), 부채비율 34.1%로 재무 안정. 미국 코닝(시총 200조) +18% 폭등이 동조 모멘텀. 단, 2024년 -516억 적자 이력 있어 이익 재현성 불확실. 단기 테마 트레이딩 적합, 1만원 돌파 시 일부 차익 권장.
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">3,727억</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">2025 순이익</div>
+                    <div class="metric-value">284억</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">ROE</div>
+                    <div class="metric-value" style="color:#1a7a45;">10.0%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">PER</div>
+                    <div class="metric-value">13.1배</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">부채비율</div>
+                    <div class="metric-value" style="color:#1a7a45;">34.1%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">HPSP 지분가치</div>
+                    <div class="metric-value" style="color:#2563eb;">4,200억</div>
+                </div>
+            </div>
+
+            <div style="font-weight:700; margin:16px 0 8px;">정량 평가</div>
+            <ul style="font-size:14px; line-height:1.7; padding-left:20px;">
+                <li><strong>이익 구조:</strong> 사이클형. 2024년 -516억 적자 후 2025년 284억 흑전. 디스플레이 부품 사이클 민감.</li>
+                <li><strong>재무 건전성:</strong> 부채비율 34.1%, 자본 2,851억. 재무 안정성 양호.</li>
+                <li><strong>성장성:</strong> 2025년 매출 1,603억(전년 수준). HPSP 지분가치가 성장 동력.</li>
+                <li><strong>밸류에이션:</strong> PER 13.1배는 저평가. HPSP 지분가치 4,200억 고려 시 현 시총 3,727억은 할인 상태.</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>연도</th>
+                        <th>매출(억)</th>
+                        <th>순이익(억)</th>
+                        <th>OPM(%)</th>
+                        <th>ROE(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2022</td>
+                        <td>1,481</td>
+                        <td>272</td>
+                        <td>18.4</td>
+                        <td>9.5</td>
+                    </tr>
+                    <tr>
+                        <td>2023</td>
+                        <td>1,116</td>
+                        <td>793</td>
+                        <td>71.1</td>
+                        <td>27.8</td>
+                    </tr>
+                    <tr>
+                        <td>2024</td>
+                        <td>1,624</td>
+                        <td>-516</td>
+                        <td>-31.8</td>
+                        <td>-18.1</td>
+                    </tr>
+                    <tr>
+                        <td>2025</td>
+                        <td>1,603</td>
+                        <td>284</td>
+                        <td>3.9</td>
+                        <td>10.0</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="font-weight:700; margin:16px 0 8px;">정성 평가</div>
+            <ul style="font-size:14px; line-height:1.7; padding-left:20px;">
+                <li><strong>이벤트드리븐:</strong> 강. 애플 유리기판 채택 루머 + 코닝 폭등 + HPSP 지분가치 재평가.</li>
+                <li><strong>토론방 신호:</strong> 5월 6일 폭발적 활성화. "HPSP 지분 4,200억", "1만원 돌파", "시총 1조 목표" 반복.</li>
+                <li><strong>산업 위치:</strong> HPSP 통한 간접 노출. 자체 유리기판 생산 없음. 지분가치 의존도 높음.</li>
+            </ul>
+
+            <div style="font-weight:700; margin:16px 0 8px;">밸류에이션 시나리오</div>
+            <div style="font-size:13px; color:#666; margin-bottom:8px;">현재 시총: 3,727억 (2026.05.06 기준)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>시나리오</th>
+                        <th>가정</th>
+                        <th>적정 시총</th>
+                        <th>현재 대비</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>🟢 Bull</td>
+                        <td>HPSP 상장 시 지분가치 6,000억 반영</td>
+                        <td>7,000억</td>
+                        <td>+88%</td>
+                    </tr>
+                    <tr>
+                        <td>⚪ Base</td>
+                        <td>HPSP 지분가치 4,200억 + 본업 PER 10배</td>
+                        <td>5,000억</td>
+                        <td>+34%</td>
+                    </tr>
+                    <tr>
+                        <td>🔴 Bear</td>
+                        <td>테마 소멸 시 본업만 평가 (PER 8배)</td>
+                        <td>2,272억</td>
+                        <td>-39%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="font-size:13px; color:#666; margin-top:8px;">
+                ※ HPSP 지분가치는 유동성 할인 고려 필요. 상장 전까지 실현 불가능한 자산. 테마 소멸 시 본업(2025년 순이익 284억)만으로는 현 시총 정당화 곤란.
+            </div>
+
+            <div style="font-weight:700; margin:16px 0 8px;">코어 적합성</div>
+            <div style="background:#fff5f5; padding:12px; border-radius:6px;">
+                <div style="font-weight:700; color:#c0392b; margin-bottom:6px;">부적합</div>
+                <div style="font-size:14px; line-height:1.6;">
+                    <strong>이유:</strong><br>
+                    1. 이익 재현성 × — 2024년 -516억 적자, 본업 수익성 불안정<br>
+                    2. 해자 × — HPSP 지분 외 차별화 요소 없음<br>
+                    3. 밸류에이션 △ — HPSP 지분가치는 매력적이나 유동성 할인 리스크<br>
+                    <strong>결론:</strong> 단기 트레이딩 전용. 1만원 돌파 시 50% 익절, 테마 소멸 전 전량 청산 권장.
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">⚠️ 탈락 신호</div>
+                <div class="warning-list">
+                    1. 유리기판 테마 냉각 (SKC·필옵틱스 조정 시 동반 하락)<br>
+                    2. HPSP 상장 지연 또는 무산 시 지분가치 재평가 리스크<br>
+                    3. 본업 실적 부진 지속 시 (2Q 실적 발표 주목)
+                </div>
+            </div>
+
+            <div class="weight-box">
+                <div class="weight-label">📌 추천 비중</div>
+                <div class="weight-value">
+                    <strong>코어 0%</strong> / <strong>트레이딩 30%</strong> (1만원 도달 시 50% 익절, 1.2만원 이상 시 전량 청산)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="stock-card">
+        <div class="stock-header">
+            <span class="rank-badge">4위</span>
+            <div style="flex:1;">
+                <div class="stock-name">가온전선</div>
+                <div class="stock-sector">전선 | 코스피</div>
+            </div>
+            <div class="stock-change">+27.21%</div>
+        </div>
+        <div class="stock-body">
+            <div style="font-weight:700; font-size:16px; margin-bottom:12px;">트레이딩·코어 겸용형 (실적 개선 + AI 인프라 수혜)</div>
+            
+            <div class="judgment-box">
+                <div class="judgment-title">핵심 판단</div>
+                <div class="judgment-text">
+                    AI 데이터센터 전력 인프라 수혜 대장. 2025년 매출 2.5조(+47%), 순이익 514억(+102%) 어닝서프라이즈. ROE 10.6%로 수익성 개선. 전선업 특성상 매출 증가 시 고정비 효과로 이익률 상승. 부채비율 184.8%는 전선업 정상 범위. 토론방 어닝서프라이즈 기대감 + 투자경고 예고 무시 분위기. 단, 시총 6조는 전선업 기준 고평가. 1Q 실적 확인 필수.
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">60,713억</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">2025 순이익</div>
+                    <div class="metric-value">514억</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">ROE</div>
+                    <div class="metric-value" style="color:#1a7a45;">10.6%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">PER</div>
+                    <div class="metric-value" style="color:#c0392b;">118.1배</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">부채비율</div>
+                    <div class="metric-value">184.8%</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">OPM</div>
+                    <div class="metric-value">3.1%</div>
+                </div>
+            </div>
+
+            <div style="font-weight:700; margin:16px 0 8px;">정량 평가</div>
+            <ul style="font-size:14px; line-height:1.7; padding-left:20px;">
+                <li><strong>이익 구조:</strong> 사이클형. 전선업 경기 민감. 2025년 대폭 개선은 AI 인프라 수요 반영.</li>
+                <li><strong>재무 건전성:</strong> 부채비율 184.8%, 자본 4,838억. 전선업 특성상 정상 범위.</li>
+                <li><strong>성장성:</strong> 2025년 매출 2.5조(+47%), 순이익 514억(+102%). 3개년 연속 성장.</li>
+                <li><strong>밸류에이션:</strong> PER 118.1배는 극단적 고평가. 2026년 순이익 800억 가정 시에도 PER 75배 수준.</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>연도</th>
+                        <th>매출(억)</th>
+                        <th>순이익(억)</th>
+                        <th>OPM(%)</th>
+                        <th>ROE(%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2022</td>
+                        <td>14,165</td>
+                        <td>105</td>
+                        <td>0.7</td>
+                        <td>2.2</td>
+                    </tr>
+                    <tr>
+                        <td>2023</td>
+                        <td>14,986</td>
+                        <td>179</td>
+                        <td>1.2</td>
+                        <td>3.7</td>
+                    </tr>
+                    <tr>
+                        <td>2024</td>
+                        <td>17,271</td>
+                        <td>254</td>
+                        <td>1.5</td>
+                        <td>5.2</td>
+                    </tr>
+                    <tr>
+                        <td>2025</td>
+                        <td>25,457</td>
+                        <td>514</td>
+                        <td>3.1</td>
+                        <td>10.6</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div style="font-weight:700; margin:16px 0 8px;">정성 평가</div>
+            <ul style="font-size:14px; line-height:1.7; padding-left:20px;">
+                <li><strong>이벤트드리븐:</strong> 중. AI 데이터센터 전력 인프라 수요 본격화 + 대원전선 동반 급등.</li>
+                <li><strong>토론방 신호:</strong> 5월 6일 활성화. "어닝서프라이즈", "1Q 실적 기대", "투경 무시" 언급.</li>
+                <li><strong>산업 위치:</strong> 국내 전선업 2위권. AI 인프라 수요 직접 수혜. 대원전선과 쌍두마차.</li>
+            </ul>
+
+            <div style="font-weight:700; margin:16px 0 8px;">밸류에이션 시나리오</div>
+            <div style="font-size:13px; color:#666; margin-bottom:8px;">현재 시총: 60,713억 (2026.05.06 기준)</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>시나리오</th>
+                        <th>가정</th>
+                        <th
