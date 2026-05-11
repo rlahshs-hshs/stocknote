@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026.05.11 급등주 분석</title>
+    <title>2026.05.11 급등주 분석 리포트</title>
     <style>
         * {
             margin: 0;
@@ -12,170 +12,172 @@
         }
         body {
             font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+            background: #f5f4f0;
+            color: #1a1a1a;
             font-size: 15px;
             line-height: 1.6;
-            color: #1a1a1a;
-            background: #f5f4f0;
             padding-bottom: 40px;
         }
         .hero {
             background: #1a1a2e;
             color: #ffffff;
-            padding: 32px 20px;
-            text-align: center;
+            padding: 28px 20px;
+            margin-bottom: 24px;
         }
         .hero h1 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             margin-bottom: 8px;
         }
         .hero-date {
-            font-size: 14px;
+            font-size: 13px;
             opacity: 0.7;
             margin-bottom: 16px;
         }
-        .chip-container {
+        .chip-group {
             display: flex;
             gap: 8px;
-            justify-content: center;
             flex-wrap: wrap;
             margin-bottom: 16px;
         }
         .chip {
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.15);
             padding: 6px 12px;
             border-radius: 16px;
-            font-size: 13px;
-        }
-        .disclaimer-mini {
             font-size: 12px;
+            font-weight: 500;
+        }
+        .disclaimer-hero {
+            font-size: 11px;
             opacity: 0.6;
+            line-height: 1.4;
             margin-top: 12px;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
         .section {
-            background: #ffffff;
-            border-radius: 12px;
-            padding: 24px 20px;
-            margin: 20px 0;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            margin: 0 16px 20px;
         }
         .section-title {
             font-size: 18px;
             font-weight: 700;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 12px;
+            color: #1a1a1a;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
         .theme-cluster {
-            background: #f9f9f9;
-            border-left: 4px solid #7f77dd;
+            background: #ffffff;
+            border-radius: 12px;
             padding: 16px;
             margin-bottom: 12px;
-            border-radius: 4px;
         }
         .theme-header {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .theme-emoji {
+            font-size: 24px;
+        }
+        .theme-title {
+            font-size: 16px;
+            font-weight: 700;
+            flex: 1;
         }
         .badge {
-            display: inline-block;
             padding: 4px 10px;
             border-radius: 12px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
         }
-        .badge-real { background: #1a7a45; color: white; }
-        .badge-event { background: #b7770d; color: white; }
-        .badge-noise { background: #999; color: white; }
+        .badge-real { background: #1a7a45; color: #fff; }
+        .badge-event { background: #b7770d; color: #fff; }
+        .badge-noise { background: #888; color: #fff; }
         .theme-stocks {
-            font-size: 14px;
-            color: #555;
-            margin: 8px 0;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
         }
         .theme-desc {
             font-size: 14px;
-            color: #333;
             line-height: 1.5;
+            color: #333;
         }
-        .divider {
-            margin: 16px 0;
+        .split-box {
             display: flex;
             gap: 12px;
+            margin-bottom: 12px;
         }
-        .div-col {
+        .split-item {
             flex: 1;
-        }
-        .div-title {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #7f77dd;
-        }
-        .div-content {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .stock-card {
             background: #ffffff;
-            border: 1px solid #e0e0e0;
             border-radius: 12px;
-            padding: 20px;
-            margin: 16px 0;
+            padding: 16px;
         }
-        .stock-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #f0f0f0;
+        .split-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 8px;
         }
-        .stock-title-area {
-            flex: 1;
+        .split-content {
+            font-size: 14px;
+            line-height: 1.5;
         }
         .rank-badge {
             display: inline-block;
             background: #7f77dd;
-            color: white;
-            font-size: 12px;
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 14px;
             font-weight: 700;
-            padding: 4px 10px;
+            margin-right: 8px;
+        }
+        .stock-card {
+            background: #ffffff;
             border-radius: 12px;
-            margin-bottom: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .stock-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
         }
         .stock-name {
             font-size: 20px;
             font-weight: 700;
-            margin-bottom: 4px;
+            flex: 1;
         }
         .stock-sector {
-            font-size: 13px;
+            font-size: 12px;
             color: #666;
+            margin-right: 12px;
         }
         .stock-change {
-            text-align: right;
-            font-size: 22px;
+            font-size: 16px;
             font-weight: 700;
             color: #c0392b;
         }
-        .grid-2 {
+        .metrics-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin: 16px 0;
+            margin-bottom: 16px;
         }
-        .metric-box {
-            background: #f9f9f9;
+        .metric-item {
+            background: #f8f8f8;
             padding: 12px;
             border-radius: 8px;
         }
@@ -186,30 +188,32 @@
         }
         .metric-value {
             font-size: 15px;
-            font-weight: 700;
-            color: #1a1a1a;
+            font-weight: 600;
         }
-        .judge-box {
-            background: #f0f0f0;
+        .judgment-box {
+            background: #f0eef9;
             border-left: 4px solid #7f77dd;
             padding: 14px;
-            margin: 16px 0;
-            border-radius: 4px;
+            margin-bottom: 16px;
+            border-radius: 6px;
         }
-        .judge-title {
+        .judgment-title {
             font-size: 13px;
             font-weight: 700;
             color: #7f77dd;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
-        .judge-content {
+        .judgment-text {
             font-size: 14px;
-            line-height: 1.6;
+            line-height: 1.5;
+        }
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 16px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 16px 0;
             font-size: 13px;
         }
         th, td {
@@ -218,85 +222,85 @@
             border-bottom: 1px solid #e0e0e0;
         }
         th {
-            background: #f9f9f9;
-            font-weight: 700;
-            color: #333;
+            background: #f8f8f8;
+            font-weight: 600;
+            color: #666;
         }
         td:first-child, th:first-child {
             text-align: left;
         }
+        .scenario-table td {
+            text-align: center;
+        }
+        .scenario-table td:first-child {
+            text-align: left;
+            font-weight: 600;
+        }
         .warning-box {
-            background: #fff9e6;
-            border: 1px solid #f0e0b0;
-            border-radius: 8px;
-            padding: 14px;
-            margin: 16px 0;
+            background: #fff8f0;
+            border-left: 4px solid #b7770d;
+            padding: 12px;
+            margin-bottom: 16px;
+            border-radius: 6px;
         }
         .warning-title {
             font-size: 13px;
             font-weight: 700;
             color: #b7770d;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            margin-bottom: 6px;
         }
         .warning-list {
-            font-size: 14px;
-            color: #333;
-            padding-left: 20px;
-        }
-        .warning-list li {
-            margin-bottom: 4px;
-        }
-        .recommend-box {
-            background: #e8f5e9;
-            border-radius: 8px;
-            padding: 14px;
-            margin: 16px 0;
-            text-align: center;
-        }
-        .recommend-title {
             font-size: 13px;
-            color: #1a7a45;
-            margin-bottom: 8px;
+            line-height: 1.6;
+            padding-left: 16px;
         }
-        .recommend-value {
-            font-size: 16px;
-            font-weight: 700;
+        .allocation-box {
+            background: #f0f8f4;
+            padding: 14px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .allocation-label {
+            font-size: 12px;
+            font-weight: 600;
             color: #1a7a45;
+            margin-bottom: 6px;
+        }
+        .allocation-text {
+            font-size: 14px;
+            font-weight: 600;
         }
         .simple-stock {
-            background: #f9f9f9;
+            background: #ffffff;
             border-radius: 8px;
             padding: 14px;
-            margin: 12px 0;
+            margin-bottom: 10px;
         }
         .simple-header {
             font-size: 15px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .simple-content {
-            font-size: 14px;
-            color: #333;
+            font-size: 13px;
             line-height: 1.5;
+            color: #333;
         }
         .monitor-card {
             background: #1a1a2e;
-            color: white;
+            color: #ffffff;
             border-radius: 12px;
             padding: 18px;
-            margin: 12px 0;
+            margin-bottom: 12px;
         }
         .monitor-rank {
             font-size: 13px;
-            color: #7f77dd;
-            font-weight: 700;
+            font-weight: 600;
+            opacity: 0.7;
             margin-bottom: 6px;
         }
         .monitor-name {
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 700;
             margin-bottom: 10px;
         }
@@ -306,1189 +310,1128 @@
             opacity: 0.9;
         }
         .compare-table {
-            margin: 16px 0;
-        }
-        .compare-row {
-            display: flex;
+            width: 100%;
             margin-bottom: 16px;
-            background: #f9f9f9;
-            border-radius: 8px;
-            padding: 14px;
         }
-        .compare-label {
-            flex: 0 0 100px;
-            font-size: 13px;
-            font-weight: 700;
-            color: #666;
-        }
-        .compare-content {
-            flex: 1;
-            font-size: 14px;
-            line-height: 1.5;
+        .compare-table th {
+            background: #1a1a2e;
+            color: #fff;
         }
         .rank-card {
-            background: white;
-            border: 2px solid #7f77dd;
-            border-radius: 12px;
-            padding: 16px;
-            margin: 12px 0;
-        }
-        .rank-header {
-            font-size: 15px;
-            font-weight: 700;
-            color: #7f77dd;
-            margin-bottom: 8px;
-        }
-        .rank-content {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        .final-box {
-            background: #1a1a2e;
-            color: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 16px 0;
-            text-align: center;
-        }
-        .final-title {
-            font-size: 14px;
-            opacity: 0.7;
+            background: #f8f8f8;
+            padding: 14px;
+            border-radius: 8px;
             margin-bottom: 10px;
         }
-        .final-content {
-            font-size: 16px;
-            font-weight: 700;
-            line-height: 1.6;
-        }
-        .footer {
-            background: #f9f9f9;
-            padding: 24px 20px;
-            margin-top: 40px;
+        .rank-number {
+            display: inline-block;
+            background: #7f77dd;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
             text-align: center;
+            line-height: 24px;
             font-size: 13px;
-            color: #666;
-            line-height: 1.8;
+            font-weight: 700;
+            margin-right: 8px;
         }
+        .rank-text {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .final-box {
+            background: #7f77dd;
+            color: #ffffff;
+            padding: 16px;
+            border-radius: 10px;
+            margin-top: 16px;
+        }
+        .final-label {
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.9;
+            margin-bottom: 6px;
+        }
+        .final-text {
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+        .footer-disclaimer {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 0 16px;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #666;
+        }
+        .core-fit {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .core-fit.yes { background: #e6f4ed; color: #1a7a45; }
+        .core-fit.no { background: #ffeaea; color: #c0392b; }
     </style>
 </head>
 <body>
-
-<div class="hero">
-    <div class="hero-date">2026년 5월 11일</div>
-    <h1>📊 당일 급등주 종합 분석</h1>
-    <div class="chip-container">
-        <div class="chip">DART 재무데이터</div>
-        <div class="chip">네이버 토론방</div>
-        <div class="chip">코스피 Top10 + 코스닥 Top20</div>
-    </div>
-    <div class="disclaimer-mini">본 분석은 사용자 직관 대조용 도구이며, 투자 판단 책임은 본인에게 있습니다.</div>
-</div>
-
-<div class="container">
-
-<div class="section">
-    <div class="section-title">🔍 전체 조감</div>
-    
-    <div class="theme-cluster">
-        <div class="theme-header">
-            🔌 반도체·전자부품 집중 급등
-            <span class="badge badge-event">이벤트형</span>
+    <div class="hero">
+        <div class="hero-date">2026.05.11 분석</div>
+        <h1>📊 당일 급등주 심층 분석</h1>
+        <div class="chip-group">
+            <span class="chip">코스피 Top 10</span>
+            <span class="chip">코스닥 Top 20</span>
+            <span class="chip">DART 재무</span>
+            <span class="chip">토론방 수급</span>
         </div>
-        <div class="theme-stocks">
-            <strong>관련 종목:</strong> 선도전기, 한솔테크닉스, 경인전자, 광전자, 미래반도체, 한울반도체, 이노인스트루먼트, 유니트론텍
-        </div>
-        <div class="theme-desc">
-            반도체 장비·부품 섹터가 전일 대비 대거 급등. 미국 관세 완화 기대감 또는 AI 반도체 수요 재점화 루머 추정. 다만 토론방에 구체적 재료 부재, 단기 수급 중심 흐름으로 판단됨.
+        <div class="disclaimer-hero">
+            본 리포트는 사용자의 직관 대조용 도구입니다. 최종 판단은 투자자 본인의 책임입니다.
         </div>
     </div>
 
-    <div class="theme-cluster">
-        <div class="theme-header">
-            🤖 코스모로보틱스 단독 폭등
-            <span class="badge badge-noise">노이즈형</span>
+    <div class="section">
+        <h2 class="section-title">■ 전체 조감</h2>
+        
+        <div class="theme-cluster">
+            <div class="theme-header">
+                <span class="theme-emoji">🔌</span>
+                <span class="theme-title">반도체·전자부품 테마</span>
+                <span class="badge badge-event">이벤트형</span>
+            </div>
+            <div class="theme-stocks">
+                선도전기, 경인전자, 광전자, 미래반도체, 한울반도체, 이노인스트루먼트, 티플랙스, 유니트론텍
+            </div>
+            <div class="theme-desc">
+                반도체·전자부품 관련주 집단 급등. 특정 공급계약이나 수주 발표 없이 동반 상승한 패턴으로, 섹터 로테이션 또는 단기 수급 쏠림으로 판단됨. 일부 종목은 적자 전환 중이나 테마성에 편승한 것으로 보임.
+            </div>
         </div>
-        <div class="theme-stocks">
-            <strong>관련 종목:</strong> 코스모로보틱스
+
+        <div class="theme-cluster">
+            <div class="theme-header">
+                <span class="theme-emoji">🤖</span>
+                <span class="theme-title">로보틱스 초급등</span>
+                <span class="badge badge-noise">노이즈형</span>
+            </div>
+            <div class="theme-stocks">
+                코스모로보틱스 (+300%)
+            </div>
+            <div class="theme-desc">
+                재무 데이터 부재 상태에서 300% 급등. DART 매칭 실패는 상장 초기 또는 합병/사명변경 등 구조적 이슈 가능성. 토론방 정보 부족으로 재료 확인 불가. 극도의 투기성 종목으로 분류.
+            </div>
         </div>
-        <div class="theme-desc">
-            상한가(+300%) 달성. DART 재무 매칭 실패로 실체 확인 불가. 신규 상장 또는 초저유동성 종목으로 추정. 루머성 단기 이슈 가능성 높음. 분석 제외.
+
+        <div class="theme-cluster">
+            <div class="theme-header">
+                <span class="theme-emoji">🚗</span>
+                <span class="theme-title">자동차부품 반등</span>
+                <span class="badge badge-event">이벤트형</span>
+            </div>
+            <div class="theme-stocks">
+                한온시스템
+            </div>
+            <div class="theme-desc">
+                2년 연속 적자 중 영업이익은 양전환했으나 순손실 지속. 대형 시총(5.8조원)에도 20% 급등은 산업 사이클 전환 기대감 또는 대주주 이슈, 구조조정 완료 기대 등이 반영된 것으로 추정.
+            </div>
+        </div>
+
+        <div class="theme-cluster">
+            <div class="theme-header">
+                <span class="theme-emoji">💊</span>
+                <span class="theme-title">바이오·화장품 혼조</span>
+                <span class="badge badge-noise">노이즈형</span>
+            </div>
+            <div class="theme-stocks">
+                민테크, 큐로홀딩스, 뷰티스킨, 에스비비테크
+            </div>
+            <div class="theme-desc">
+                모두 영업적자 지속 중. 민테크·큐로홀딩스는 바이오, 뷰티스킨은 화장품 ODM, 에스비비테크는 바이오 장비. 재무 기반 없이 루머 또는 특정 임상/제품 소식에 반응한 것으로 추정. 실체 확인 필수.
+            </div>
+        </div>
+
+        <div class="theme-cluster">
+            <div class="theme-header">
+                <span class="theme-emoji">🏢</span>
+                <span class="theme-title">기타 산업재</span>
+                <span class="badge badge-real">실체형</span>
+            </div>
+            <div class="theme-stocks">
+                지오엘리먼트, 한국가구, 가온그룹, 피델릭스, 대한광통신
+            </div>
+            <div class="theme-desc">
+                지오엘리먼트(드론부품), 한국가구(가구제조), 가온그룹(전자재료), 피델릭스(IT유통), 대한광통신(광케이블) 등 섹터 무관 개별 이슈 가능성. 일부는 흑자 안정화, 일부는 적자 턴어라운드 국면.
+            </div>
         </div>
     </div>
 
-    <div class="theme-cluster">
-        <div class="theme-header">
-            🏭 자동차·산업재 개별 이벤트
-            <span class="badge badge-real">실체형</span>
-        </div>
-        <div class="theme-stocks">
-            <strong>관련 종목:</strong> 한온시스템, 한국가구, 티플랙스
-        </div>
-        <div class="theme-desc">
-            한온시스템은 전장 부품 업황 전환 기대, 한국가구는 안정적 실적 기반 리레이팅, 티플랙스는 PCB 소재 실적 개선 신호. 각각 개별 재무 기반 존재.
-        </div>
-    </div>
-
-    <div class="theme-cluster">
-        <div class="theme-header">
-            ⚠️ 만성 적자 저가주 투기
-            <span class="badge badge-noise">노이즈형</span>
-        </div>
-        <div class="theme-stocks">
-            <strong>관련 종목:</strong> 민테크, 큐로홀딩스, 한울반도체, 이노인스트루먼트, 에스비비테크, 대한광통신, 뷰티스킨, 피델릭스
-        </div>
-        <div class="theme-desc">
-            3년 연속 영업적자 + ROE -30% 이하 종목 다수 포함. 토론방 활성 없이 저가 변동성 노림 수급으로 추정. 재무 하방 없어 분석 제외.
-        </div>
-    </div>
-
-    <div class="divider">
-        <div class="div-col">
-            <div class="div-title">✅ 분석 가치 있음 (8종목)</div>
-            <div class="div-content">
-                한온시스템, 미래반도체, 유니트론텍, 지오엘리먼트, 한국가구, 가온그룹, 티플랙스, 경인전자
+    <div class="section">
+        <div class="split-box">
+            <div class="split-item">
+                <div class="split-label">✅ 분석 가치 있음 (15종목)</div>
+                <div class="split-content">
+                    선도전기, 경인전자, 한온시스템, 광전자, 미래반도체, 유니트론텍, 지오엘리먼트, 한국가구, 가온그룹, 티플랙스, 한솔테크닉스, 피델릭스, 대한광통신, 뷰티스킨, 한울반도체
+                </div>
             </div>
-        </div>
-        <div class="div-col">
-            <div class="div-title">❌ 제외 (22종목)</div>
-            <div class="div-content">
-                코스모로보틱스, 민테크, 큐로홀딩스, 한울반도체, 이노인스트루먼트, 피델릭스, 에스비비테크, 대한광통신, 뷰티스킨, 선도전기, 한솔테크닉스, 광전자 등 12종목 추가
+            <div class="split-item">
+                <div class="split-label">❌ 분석 제외 (5종목)</div>
+                <div class="split-content">
+                    코스모로보틱스(재무 없음), 민테크(지속 적자), 큐로홀딩스(부채비율 340%), 이노인스트루먼트(3년 연속 대규모 적자), 에스비비테크(영업이익률 -95%)
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="section">
-    <div class="section-title">🏆 상위 5종목 선정 이유</div>
-    <ol style="padding-left: 20px; line-height: 1.8;">
-        <li><strong>한온시스템</strong> — 시총 5.9조 대형주, 영업이익 턴어라운드 + 전장 부품 수혜 기대</li>
-        <li><strong>미래반도체</strong> — 반도체 후공정 장비, 사이클 바닥 통과 신호 + PER 114배 재평가 여지</li>
-        <li><strong>유니트론텍</strong> — 연 7,690억 매출, 안정적 이익 구조 + 전장 부품 모멘텀</li>
-        <li><strong>한국가구</strong> — OPM 12.4%, ROE 7.3%, 부채비율 26% 내재가치 저평가</li>
-        <li><strong>티플랙스</strong> — PCB 소재, 2년 연속 흑자전환 완료 + 저PER 34.9배</li>
-    </ol>
-</div>
+    <div class="section">
+        <h2 class="section-title">■ 상위 5종목 선정 이유</h2>
+        <div class="card">
+            <div style="margin-bottom:12px;"><span class="rank-badge">1</span><strong>유니트론텍</strong> — 흑자 안정 + 낮은 PER(12.4배) + 매출 7천억 규모의 전자부품 사업 실체</div>
+            <div style="margin-bottom:12px;"><span class="rank-badge">2</span><strong>한국가구</strong> — 3년 연속 흑자, PER 8.4배, 영업이익률 12%, 부채비율 26%로 재무 건전</div>
+            <div style="margin-bottom:12px;"><span class="rank-badge">3</span><strong>지오엘리먼트</strong> — 드론부품 사업, 영업이익률 8%, 부채비율 24%, 흑자 전환 후 안정화</div>
+            <div style="margin-bottom:12px;"><span class="rank-badge">4</span><strong>가온그룹</strong> — 2년 적자 후 2025년 흑자 전환, 영업이익 125억 회복, 턴어라운드 초입</div>
+            <div style="margin-bottom:12px;"><span class="rank-badge">5</span><strong>선도전기</strong> — 2024~2025년 흑자 전환, 부채비율 101% 수준, 전기·전자 제조업 실체</div>
+        </div>
+    </div>
 
-<div class="section">
-    <div class="section-title">📈 상위 5종목 상세 리포트</div>
+    <div class="section">
+        <h2 class="section-title">■ 상위 5종목 상세 리포트</h2>
 
-    <div class="stock-card">
-        <div class="stock-header">
-            <div class="stock-title-area">
-                <div class="rank-badge">1순위</div>
-                <div class="stock-name">한온시스템</div>
-                <div class="stock-sector">자동차 부품 | 코스피 | 시총 5.9조원</div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="rank-badge">1</span>
+                <div>
+                    <div class="stock-name">유니트론텍</div>
+                    <div class="stock-sector">전자부품 제조 | 코스닥</div>
+                </div>
+                <div class="stock-change">+21.6%</div>
             </div>
-            <div class="stock-change">+20.13%</div>
+
+            <div class="core-fit yes">코어 적합</div>
+
+            <div class="judgment-box">
+                <div class="judgment-title">핵심 판단</div>
+                <div class="judgment-text">
+                    반도체·전자부품 수탁제조(EMS) 업체로 매출 7,690억 규모. 영업이익 300억대 유지 중이며 PER 12.4배는 섹터 대비 저평가. 2025년 순이익 감소는 일회성 비용 가능성 있으나 영업 기조는 안정적. 단기 테마 편승보다는 펀더멘털 기반 매수 기회로 판단.
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">1,577억원</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">PER (지배기준)</div>
+                    <div class="metric-value">12.4배</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">부채비율</div>
+                    <div class="metric-value">134.2%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">ROE (지배기준)</div>
+                    <div class="metric-value">9.1%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">영업이익률 (2025)</div>
+                    <div class="metric-value">4.2%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">이익 구조</div>
+                    <div class="metric-value">안정형</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>연도</th>
+                            <th>매출(억)</th>
+                            <th>영업이익(억)</th>
+                            <th>지배순이익(억)</th>
+                            <th>OPM</th>
+                            <th>ROE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2023</td>
+                            <td>5,981</td>
+                            <td>309</td>
+                            <td>187</td>
+                            <td>5.2%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2024</td>
+                            <td>7,123</td>
+                            <td>361</td>
+                            <td>209</td>
+                            <td>5.1%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2025</td>
+                            <td>7,690</td>
+                            <td>323</td>
+                            <td>127</td>
+                            <td>4.2%</td>
+                            <td>9.1%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">정성 평가</strong>
+                <div style="font-size:13px; line-height:1.6;">
+                    <strong>이벤트드리븐:</strong> 약 — 테마 편승으로 보이나 재무 기반 있음<br>
+                    <strong>토론방 신호:</strong> 당일 게시글 10건, 반도체 섹터 급등 언급<br>
+                    <strong>산업 위치:</strong> EMS 업종 내 중소형, 고객 다변화 필요, 경쟁 치열
+                </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">밸류에이션 시나리오</strong>
+                <div style="font-size:12px; color:#666; margin-bottom:8px;">현재 시총: 1,577억원 (2026.05.11 기준)</div>
+                <table class="scenario-table">
+                    <thead>
+                        <tr>
+                            <th>시나리오</th>
+                            <th>가정</th>
+                            <th>적정 시총</th>
+                            <th>현재 대비</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🟢 Bull</td>
+                            <td>순이익 200억 회복, PER 15배</td>
+                            <td>3,000억</td>
+                            <td>+90%</td>
+                        </tr>
+                        <tr>
+                            <td>⚪ Base</td>
+                            <td>순이익 150억 유지, PER 13배</td>
+                            <td>1,950억</td>
+                            <td>+24%</td>
+                        </tr>
+                        <tr>
+                            <td>🔴 Bear</td>
+                            <td>순이익 100억 감소, PER 10배</td>
+                            <td>1,000억</td>
+                            <td>-37%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="font-size:12px; color:#666; margin-top:8px;">※ 테마 소멸 시에도 PER 10배 기준 1,000억 하방 지지 예상</div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">탈락 신호</div>
+                <ul class="warning-list">
+                    <li>분기 영업이익 100억 이하 연속 2분기</li>
+                    <li>주요 고객사 수주 취소 공시</li>
+                    <li>부채비율 200% 돌파</li>
+                </ul>
+            </div>
+
+            <div class="allocation-box">
+                <div class="allocation-label">추천 비중</div>
+                <div class="allocation-text">
+                    코어 30% / 트레이딩 70% (단, 7,000원 이하 진입 시 코어 비중 확대 검토)
+                </div>
+            </div>
         </div>
 
-        <div class="judge-box">
-            <div class="judge-title">종목 분류</div>
-            <div class="judge-content">트레이딩·옵션형 (사이클 전환점) / 코어 후보 (이익 정상화 시)</div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="rank-badge">2</span>
+                <div>
+                    <div class="stock-name">한국가구</div>
+                    <div class="stock-sector">가구 제조 | 코스닥</div>
+                </div>
+                <div class="stock-change">+20.18%</div>
+            </div>
+
+            <div class="core-fit yes">코어 적합</div>
+
+            <div class="judgment-box">
+                <div class="judgment-title">핵심 판단</div>
+                <div class="judgment-text">
+                    가구 제조업체로 3년 연속 흑자, 영업이익률 12%, 부채비율 26%로 재무 매우 건전. PER 8.4배는 업종 대비 극도로 저평가. 급등 원인은 부동산 경기 회복 기대 또는 오피스 가구 수주 등 추정. 배당 여력 충분하며 저PBR(추정) 관점에서도 매력적.
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">1,197억원</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">PER (지배기준)</div>
+                    <div class="metric-value">8.4배</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">부채비율</div>
+                    <div class="metric-value">26.4%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">ROE (지배기준)</div>
+                    <div class="metric-value">7.3%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">영업이익률 (2025)</div>
+                    <div class="metric-value">12.4%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">이익 구조</div>
+                    <div class="metric-value">안정형</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>연도</th>
+                            <th>매출(억)</th>
+                            <th>영업이익(억)</th>
+                            <th>지배순이익(억)</th>
+                            <th>OPM</th>
+                            <th>ROE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2023</td>
+                            <td>1,029</td>
+                            <td>124</td>
+                            <td>-0</td>
+                            <td>12.0%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2024</td>
+                            <td>1,287</td>
+                            <td>178</td>
+                            <td>160</td>
+                            <td>13.8%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2025</td>
+                            <td>1,416</td>
+                            <td>175</td>
+                            <td>143</td>
+                            <td>12.4%</td>
+                            <td>7.3%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">정성 평가</strong>
+                <div style="font-size:13px; line-height:1.6;">
+                    <strong>이벤트드리븐:</strong> 중 — 부동산 경기 회복 기대 반영 가능성<br>
+                    <strong>토론방 신호:</strong> 당일 게시글 10건, 오피스 가구 수주설 언급<br>
+                    <strong>산업 위치:</strong> 중소형 가구업체, 오피스·주거 가구 혼합, 브랜드 해자 약함
+                </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">밸류에이션 시나리오</strong>
+                <div style="font-size:12px; color:#666; margin-bottom:8px;">현재 시총: 1,197억원 (2026.05.11 기준)</div>
+                <table class="scenario-table">
+                    <thead>
+                        <tr>
+                            <th>시나리오</th>
+                            <th>가정</th>
+                            <th>적정 시총</th>
+                            <th>현재 대비</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🟢 Bull</td>
+                            <td>순이익 180억, PER 12배</td>
+                            <td>2,160억</td>
+                            <td>+80%</td>
+                        </tr>
+                        <tr>
+                            <td>⚪ Base</td>
+                            <td>순이익 150억 유지, PER 10배</td>
+                            <td>1,500억</td>
+                            <td>+25%</td>
+                        </tr>
+                        <tr>
+                            <td>🔴 Bear</td>
+                            <td>순이익 100억 감소, PER 8배</td>
+                            <td>800억</td>
+                            <td>-33%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="font-size:12px; color:#666; margin-top:8px;">※ 순자산 2,000억 기준 PBR 0.6배 수준으로 하방 제한적</div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">탈락 신호</div>
+                <ul class="warning-list">
+                    <li>분기 영업이익률 10% 이하 연속 2분기</li>
+                    <li>부동산 경기 급랭 지표 (분양율 50% 이하 지속)</li>
+                    <li>주요 고객사(대기업 계열 오피스) 발주 중단</li>
+                </ul>
+            </div>
+
+            <div class="allocation-box">
+                <div class="allocation-label">추천 비중</div>
+                <div class="allocation-text">
+                    코어 50% / 트레이딩 50% (저PER·저부채 관점에서 코어 비중 우위)
+                </div>
+            </div>
         </div>
 
-        <div class="judge-box">
-            <div class="judge-title">핵심 요약</div>
-            <div class="judge-content">
-                글로벌 1위 자동차 열관리 시스템 제조사. 2024~2025년 대규모 적자 기록 후 2025년 영업이익 2,704억 회복. 전기차 전장 부품 수혜 + 북미 자동차 업황 회복 기대감이 급등 배경. 단, 순이익은 아직 적자 지속으로 밸류에이션 불가능. 이익 정상화 시점 포착이 핵심.
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="rank-badge">3</span>
+                <div>
+                    <div class="stock-name">지오엘리먼트</div>
+                    <div class="stock-sector">드론 부품 제조 | 코스닥</div>
+                </div>
+                <div class="stock-change">+20.85%</div>
+            </div>
+
+            <div class="core-fit yes">코어 적합 (조건부)</div>
+
+            <div class="judgment-box">
+                <div class="judgment-title">핵심 판단</div>
+                <div class="judgment-text">
+                    드론 부품 제조업체로 2024년 흑자 전환 후 2025년 안정화. 영업이익률 8%, 부채비율 24%로 재무 건전. PER 24.2배는 성장주 프리미엄 반영된 수준. 드론 산업 성장성은 높으나 고객 집중도·수주 변동성 확인 필요. 단기 테마보다는 산업 성장 수혜 관점.
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">1,323억원</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">PER (지배기준)</div>
+                    <div class="metric-value">24.2배</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">부채비율</div>
+                    <div class="metric-value">23.9%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">ROE (지배기준)</div>
+                    <div class="metric-value">9.3%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">영업이익률 (2025)</div>
+                    <div class="metric-value">8.1%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">이익 구조</div>
+                    <div class="metric-value">성장형</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>연도</th>
+                            <th>매출(억)</th>
+                            <th>영업이익(억)</th>
+                            <th>지배순이익(억)</th>
+                            <th>OPM</th>
+                            <th>ROE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2024</td>
+                            <td>448</td>
+                            <td>53</td>
+                            <td>33</td>
+                            <td>11.8%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2025</td>
+                            <td>546</td>
+                            <td>44</td>
+                            <td>55</td>
+                            <td>8.1%</td>
+                            <td>9.3%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">정성 평가</strong>
+                <div style="font-size:13px; line-height:1.6;">
+                    <strong>이벤트드리븐:</strong> 중 — 드론 산업 정책·수주 이슈 가능성<br>
+                    <strong>토론방 신호:</strong> 당일 게시글 10건, 방산 드론 수출설 언급<br>
+                    <strong>산업 위치:</strong> 드론 부품 전문, 고객 집중도 높음, 수주 변동성 존재
+                </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">밸류에이션 시나리오</strong>
+                <div style="font-size:12px; color:#666; margin-bottom:8px;">현재 시총: 1,323억원 (2026.05.11 기준)</div>
+                <table class="scenario-table">
+                    <thead>
+                        <tr>
+                            <th>시나리오</th>
+                            <th>가정</th>
+                            <th>적정 시총</th>
+                            <th>현재 대비</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🟢 Bull</td>
+                            <td>순이익 80억, PER 30배</td>
+                            <td>2,400억</td>
+                            <td>+81%</td>
+                        </tr>
+                        <tr>
+                            <td>⚪ Base</td>
+                            <td>순이익 60억 유지, PER 25배</td>
+                            <td>1,500억</td>
+                            <td>+13%</td>
+                        </tr>
+                        <tr>
+                            <td>🔴 Bear</td>
+                            <td>순이익 40억 감소, PER 18배</td>
+                            <td>720억</td>
+                            <td>-46%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="font-size:12px; color:#666; margin-top:8px;">※ 드론 테마 소멸 시 PER 15배 기준 900억 하방 가능</div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">탈락 신호</div>
+                <ul class="warning-list">
+                    <li>분기 영업이익 10억 이하 연속 2분기</li>
+                    <li>주요 고객사(방산·물류) 수주 취소 공시</li>
+                    <li>드론 규제 강화 또는 산업 성장 둔화 신호</li>
+                </ul>
+            </div>
+
+            <div class="allocation-box">
+                <div class="allocation-label">추천 비중</div>
+                <div class="allocation-text">
+                    코어 20% / 트레이딩 80% (고객 집중도 리스크 감안, 수주 공시 확인 후 코어 비중 확대)
+                </div>
             </div>
         </div>
 
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정량 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이익 구조</div>
-                <div class="metric-value">사이클형 (회복 초입)</div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="rank-badge">4</span>
+                <div>
+                    <div class="stock-name">가온그룹</div>
+                    <div class="stock-sector">전자재료 제조 | 코스닥</div>
+                </div>
+                <div class="stock-change">+19.43%</div>
             </div>
-            <div class="metric-box">
-                <div class="metric-label">재무 건전성</div>
-                <div class="metric-value">부채비율 168% ⚠️</div>
+
+            <div class="core-fit no">코어 부적합 (현 시점)</div>
+
+            <div class="judgment-box">
+                <div class="judgment-title">핵심 판단</div>
+                <div class="judgment-text">
+                    전자재료 제조업체로 2023~2024년 대규모 적자 후 2025년 흑자 전환. 영업이익 125억 회복은 긍정적이나 부채비율 227%로 재무 부담 큼. PER 28.8배는 턴어라운드 프리미엄 반영. 흑자 지속성 확인 필요하며 현 시점에서는 트레이딩 전용 종목.
+                </div>
             </div>
-            <div class="metric-box">
-                <div class="metric-label">성장성</div>
-                <div class="metric-value">매출 +9% YoY</div>
+
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">1,914억원</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">PER (지배기준)</div>
+                    <div class="metric-value">28.8배</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">부채비율</div>
+                    <div class="metric-value">226.7%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">ROE (지배기준)</div>
+                    <div class="metric-value">5.2%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">영업이익률 (2025)</div>
+                    <div class="metric-value">2.4%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">이익 구조</div>
+                    <div class="metric-value">사이클형</div>
+                </div>
             </div>
-            <div class="metric-box">
-                <div class="metric-label">밸류에이션</div>
-                <div class="metric-value">PER 산출 불가 (적자)</div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>연도</th>
+                            <th>매출(억)</th>
+                            <th>영업이익(억)</th>
+                            <th>지배순이익(억)</th>
+                            <th>OPM</th>
+                            <th>ROE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2023</td>
+                            <td>5,364</td>
+                            <td>-189</td>
+                            <td>-174</td>
+                            <td>-3.5%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2024</td>
+                            <td>4,893</td>
+                            <td>-419</td>
+                            <td>-541</td>
+                            <td>-8.6%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2025</td>
+                            <td>5,175</td>
+                            <td>125</td>
+                            <td>67</td>
+                            <td>2.4%</td>
+                            <td>5.2%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">정성 평가</strong>
+                <div style="font-size:13px; line-height:1.6;">
+                    <strong>이벤트드리븐:</strong> 강 — 턴어라운드 초입, 구조조정 완료 기대<br>
+                    <strong>토론방 신호:</strong> 당일 게시글 10건, 흑자 전환 언급<br>
+                    <strong>산업 위치:</strong> 전자재료 중소형, 고객 다변화 중, 경쟁 심화
+                </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">밸류에이션 시나리오</strong>
+                <div style="font-size:12px; color:#666; margin-bottom:8px;">현재 시총: 1,914억원 (2026.05.11 기준)</div>
+                <table class="scenario-table">
+                    <thead>
+                        <tr>
+                            <th>시나리오</th>
+                            <th>가정</th>
+                            <th>적정 시총</th>
+                            <th>현재 대비</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🟢 Bull</td>
+                            <td>순이익 150억, PER 20배</td>
+                            <td>3,000억</td>
+                            <td>+57%</td>
+                        </tr>
+                        <tr>
+                            <td>⚪ Base</td>
+                            <td>순이익 80억 유지, PER 18배</td>
+                            <td>1,440억</td>
+                            <td>-25%</td>
+                        </tr>
+                        <tr>
+                            <td>🔴 Bear</td>
+                            <td>적자 재전환, PBR 0.8배</td>
+                            <td>980억</td>
+                            <td>-49%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="font-size:12px; color:#666; margin-top:8px;">※ 순자산 1,226억 기준 PBR 0.8배 하방 지지선 추정</div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">탈락 신호</div>
+                <ul class="warning-list">
+                    <li>분기 영업적자 재발생</li>
+                    <li>부채비율 250% 초과</li>
+                    <li>주요 고객사 거래 중단 또는 대금 회수 지연 공시</li>
+                </ul>
+            </div>
+
+            <div class="allocation-box">
+                <div class="allocation-label">추천 비중</div>
+                <div class="allocation-text">
+                    코어 0% / 트레이딩 100% (2분기 연속 흑자 확인 후 코어 재검토)
+                </div>
             </div>
         </div>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>연도</th>
-                    <th>매출(억)</th>
-                    <th>영업이익(억)</th>
-                    <th>지배순이익(억)</th>
-                    <th>영업이익률</th>
-                    <th>ROE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2023</td>
-                    <td>95,593</td>
-                    <td>2,773</td>
-                    <td>510</td>
-                    <td>2.9%</td>
-                    <td>1.5%</td>
-                </tr>
-                <tr>
-                    <td>2024</td>
-                    <td>99,987</td>
-                    <td>955</td>
-                    <td>-3,633</td>
-                    <td>1.0%</td>
-                    <td>-10.7%</td>
-                </tr>
-                <tr>
-                    <td>2025</td>
-                    <td>108,837</td>
-                    <td>2,704</td>
-                    <td>-1,985</td>
-                    <td>2.5%</td>
-                    <td>-5.3%</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정성 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이벤트드리븐 강도</div>
-                <div class="metric-value">중 (업황 회복 기대)</div>
+        <div class="stock-card">
+            <div class="stock-header">
+                <span class="rank-badge">5</span>
+                <div>
+                    <div class="stock-name">선도전기</div>
+                    <div class="stock-sector">전기·전자 제조 | 코스피</div>
+                </div>
+                <div class="stock-change">+30.0%</div>
             </div>
-            <div class="metric-box">
-                <div class="metric-label">토론방 신호</div>
-                <div class="metric-value">2026.05.11 | 구체 이슈 없음</div>
+
+            <div class="core-fit no">코어 부적합 (현 시점)</div>
+
+            <div class="judgment-box">
+                <div class="judgment-title">핵심 판단</div>
+                <div class="judgment-text">
+                    전기·전자 제조업체로 2024년 흑자 전환 후 2025년 소폭 흑자 유지. 영업이익률 3.3%로 낮고 PER 43.8배는 과도. 부채비율 101%는 중립적. 2023년 대규모 적자(-164억) 후 회복 중이나 이익 안정성 미확인. 단기 테마성 급등으로 판단.
+                </div>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-label">시가총액</div>
+                    <div class="metric-value">2,316억원</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">PER (지배기준)</div>
+                    <div class="metric-value">43.8배</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">부채비율</div>
+                    <div class="metric-value">101.5%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">ROE (지배기준)</div>
+                    <div class="metric-value">14.8%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">영업이익률 (2025)</div>
+                    <div class="metric-value">3.3%</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-label">이익 구조</div>
+                    <div class="metric-value">불안정</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>연도</th>
+                            <th>매출(억)</th>
+                            <th>영업이익(억)</th>
+                            <th>지배순이익(억)</th>
+                            <th>OPM</th>
+                            <th>ROE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2023</td>
+                            <td>416</td>
+                            <td>-72</td>
+                            <td>-164</td>
+                            <td>-17.3%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2024</td>
+                            <td>240</td>
+                            <td>-57</td>
+                            <td>98</td>
+                            <td>-23.8%</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2025</td>
+                            <td>382</td>
+                            <td>12</td>
+                            <td>53</td>
+                            <td>3.3%</td>
+                            <td>14.8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">정성 평가</strong>
+                <div style="font-size:13px; line-height:1.6;">
+                    <strong>이벤트드리븐:</strong> 약 — 전기·전자 섹터 편승으로 추정<br>
+                    <strong>토론방 신호:</strong> 당일 게시글 10건, 재료 불명확<br>
+                    <strong>산업 위치:</strong> 중소형 전기제조, 사업 구조 불투명, 고객 집중도 확인 필요
+                </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <strong style="font-size:14px; display:block; margin-bottom:8px;">밸류에이션 시나리오</strong>
+                <div style="font-size:12px; color:#666; margin-bottom:8px;">현재 시총: 2,316억원 (2026.05.11 기준)</div>
+                <table class="scenario-table">
+                    <thead>
+                        <tr>
+                            <th>시나리오</th>
+                            <th>가정</th>
+                            <th>적정 시총</th>
+                            <th>현재 대비</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🟢 Bull</td>
+                            <td>순이익 80억, PER 25배</td>
+                            <td>2,000억</td>
+                            <td>-14%</td>
+                        </tr>
+                        <tr>
+                            <td>⚪ Base</td>
+                            <td>순이익 50억 유지, PER 20배</td>
+                            <td>1,000억</td>
+                            <td>-57%</td>
+                        </tr>
+                        <tr>
+                            <td>🔴 Bear</td>
+                            <td>적자 재전환, PBR 0.6배</td>
+                            <td>220억</td>
+                            <td>-90%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="font-size:12px; color:#666; margin-top:8px;">※ 순자산 366억 기준 PBR 0.6배 하방 가능, 급등 후 낙폭 클 수 있음</div>
+            </div>
+
+            <div class="warning-box">
+                <div class="warning-title">탈락 신호</div>
+                <ul class="warning-list">
+                    <li>분기 영업적자 재발생</li>
+                    <li>매출 300억 이하 감소</li>
+                    <li>부채비율 150% 초과 또는 단기차입금 급증</li>
+                </ul>
+            </div>
+
+            <div class="allocation-box">
+                <div class="allocation-label">추천 비중</div>
+                <div class="allocation-text">
+                    코어 0% / 트레이딩 100% (단기 차익 목적 한정, 손절 기준 엄격 적용)
+                </div>
             </div>
         </div>
-        <div style="margin-top: 12px; font-size: 14px; line-height: 1.6;">
-            <strong>산업 위치:</strong> 글로벌 Top3 내 위치, 현대차·GM 등 OEM 고객 집중도 높음. 전기차 전환으로 열관리 복잡도 증가 = 해자 유지. 단, 완성차 경기 민감형 사이클주.
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">■ 나머지 종목 간략 요약</h2>
+
+        <div class="simple-stock">
+            <div class="simple-header">경인전자 (+29.81%)</div>
+            <div class="simple-content">
+                시총 472억 / 2025년 매출 361억·영업이익 10억·OPM 2.8%·ROE 4.8% / PER 12.3배 / 전자부품 제조업체로 소폭 흑자 유지 중. 부채비율 8.6%로 매우 건전하나 이익 규모 작아 급등은 섹터 테마 편승으로 판단. 코어 부적합.
+            </div>
         </div>
 
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">밸류에이션 시나리오</div>
-        <div style="font-size: 14px; margin-bottom: 8px;"><strong>현재 시총:</strong> 58,804억 (2026.05.11 기준)</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>시나리오</th>
-                    <th>가정</th>
-                    <th>적정 시총</th>
-                    <th>현재 대비</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>🟢 Bull</td>
-                    <td>2026년 순이익 3,000억 회복, PER 15배</td>
-                    <td>45,000억</td>
-                    <td>-23%</td>
-                </tr>
-                <tr>
-                    <td>⚪ Base</td>
-                    <td>2026년 순이익 1,500억, PER 20배</td>
-                    <td>30,000억</td>
-                    <td>-49%</td>
-                </tr>
-                <tr>
-                    <td>🔴 Bear</td>
-                    <td>적자 지속, 자산가치 기준 PBR 0.8배</td>
-                    <td>31,000억</td>
-                    <td>-47%</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="font-size: 13px; color: #666; margin-top: 8px;">
-            ※ 현재 주가는 이익 정상화 선반영. 테마 소멸 시 PBR 0.8배 수준(31,000억) 하방 예상.
+        <div class="simple-stock">
+            <div class="simple-header">광전자 (+17.75%)</div>
+            <div class="simple-content">
+                시총 7,648억 / 2025년 매출 1,327억·영업이익 12억·OPM 0.9%·ROE 1.8% / PER 179.7배 / 광학렌즈 제조업체로 영업이익률 1% 미만. PER 180배는 극도로 고평가. 부채비율 7%로 건전하나 수익성 낮음. 트레이딩 전용.
+            </div>
         </div>
 
-        <div class="judge-box" style="background: #fff3e0; border-color: #f57c00;">
-            <div class="judge-title" style="color: #f57c00;">코어 적합성</div>
-            <div class="judge-content">
-                <strong>부적합 (현 시점)</strong><br>
-                - 이익 재현성: ❌ 2년 연속 적자, 정상화 미확인<br>
-                - 해자: ⭕ 기술력·고객 종속성 있으나 경기 민감<br>
-                - 밸류에이션: ❌ 적자 구간으로 판단 불가<br>
-                → 이익 정상화 2분기 연속 확인 후 재평가 필요
+        <div class="simple-stock">
+            <div class="simple-header">한솔테크닉스 (+29.96%)</div>
+            <div class="simple-content">
+                시총 4,495억 / 2025년 매출 12,524억·영업이익 204억·OPM 1.6%·ROE-지배 -4.5% / ⚠️ 비지배지분 2573% — 연결순이익 6억이나 지배순손실 -137억. PER 계산 불가. 복잡한 지배구조 경고. 투자 제외 권고.
+            </div>
+        </div>
+
+        <div class="simple-stock">
+            <div class="simple-header">한온시스템 (+20.13%)</div>
+            <div class="simple-content">
+                시총 58,804억 / 2025년 매출 108,837억·영업이익 2,704억·OPM 2.5%·ROE-지배 -5.3% / 자동차 공조 시스템 대형주. 영업이익 양전환했으나 순손실 -1,985억 지속. 부채비율 168%. 턴어라운드 기대감 반영이나 현 시점 코어 부적합. 모니터링 대상.
+            </div>
+        </div>
+
+        <div class="simple-stock">
+            <div class="simple-header">미래반도체 (+29.98%)</div>
+            <div class="simple-content">
+                시총 5,789억 / 2023년 매출 3,805억·영업이익 94억·OPM 2.5%·ROE 6.3% / PER 114.3배 / 반도체 유통업체. 2022년 대비 2023년 매출 급감. PER 114배는 과도. 재무 데이터 2023년 이후 없음. 확인 필요.
+            </div>
+        </div>
+
+        <div class="simple-stock">
+            <div class="simple-header">티플랙스 (+29.94%)</div>
+            <div class="simple-content">
+                시총 1,116억 / 2025년 매출 2,092억·영업이익 52억·OPM 2.5%·ROE 2.0% / PER 34.9배 / 전자제품 유통업체. 흑자 전환 후 안정화 중. 부채비율 49%로 건전. PER 35배는 다소 높음. 트레이딩 전용.
+            </div>
+        </div>
+
+        <div class="simple-stock">
+            <div class="simple-header">피델릭스 (+29.94%)</div>
+            <div class="simple-content">
+                시총 629억 / 2025년 매출 536억·영업이익 -21억·OPM -3.9%·ROE -6.6% / IT유통업체. 2023년 소폭 흑자 후 2024~2025년 적자 재전환. 부채비율 28%로 건전하나 수익성 악화. 코어 부적합.
+            </div>
+        </div>
+
+        <div class="simple-stock">
+            <div class="simple-header">대한광통신 (+25.06%)</div>
+            <div class="simple-content">
+                시총 43,458억 / 2025년 매출 1,394억·영업이익 -214억·OPM -15.4%·ROE-지배 -42.0% / 3년 연속 대규모 적자. 부채비율 229%. 광케이블 제조업체로 산업 침체 반영. 대형 시총에도 불구 재무 극히 악화. 투자 제외 권고.
+            </div>
+        </div>
+
+        <div class="simple-stock">
+            <div class="simple-header">뷰티스킨 (+24.1%)</div>
+            <div class="simple-content">
+                시총 509억 / 2025년 매출 549억·영업이익 -32억·OPM -5.8%·ROE-지배 -5.4% / 화장품 ODM업체. 3년 연속 적자. 2025년 적자폭 축소 중. 부채비율 169%. 턴어라운드 초입이나 재무 부담 큼. 트레이딩 전용.
+            </div>
+        </div>
+
+        <div class="simple-stock">
+            <div class="simple-header">한울반도체 (+29.99%)</div>
+            <div class="simple-content">
+                시총 864억 / 2025년 매출 115억·영업이익 -50억·OPM -44.0%·ROE-지배 -66.7% / 반도체 후공정 업체. 대규모 적자(-219억) 지속. 부채비율 186%. 재무 극히 악화. 투자 제외 권고.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">■ 모니터링 우선순위 3종목</h2>
+
+        <div class="monitor-card">
+            <div class="monitor-rank">🥇 1순위</div>
+            <div class="monitor-name">유니트론텍</div>
+            <div class="monitor-reason">
+                흑자 안정 + 저PER(12.4배) + 전자부품 실체 사업. 단기 급등 후 조정 시 진입 기회. 분기 실적 공시 모니터링하며 영업이익 100억 이상 유지 시 코어 전환 검토.
+            </div>
+        </div>
+
+        <div class="monitor-card">
+            <div class="monitor-rank">🥈 2순위</div>
+            <div class="monitor-name">한국가구</div>
+            <div class="monitor-reason">
+                저PER(8.4배) + 고OPM(12.4%) + 초저부채(26%). 부동산 경기 회복 시 수혜 확실. 단기 급등 후 조정 시 7,000원 이하 진입 목표.
+            </div>
+        </div>
+
+        <div class="monitor-card">
+            <div class="monitor-rank">🥉 3순위</div>
+            <div class="monitor-name">가온그룹</div>
+            <div class="monitor-reason">
+                턴어라운드 초입 단계. 2분기 연속 흑자 확인 시 코어 재검토. 부채비율 227% 개선 여부가 핵심. 분기 실적 공시 및 부채 감축 공시 모니터링 필요.
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">■ 종목 간 비교 분석 (모니터링 3종목)</h2>
+
+        <div class="table-container">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>평가 항목</th>
+                        <th>유니트론텍</th>
+                        <th>한국가구</th>
+                        <th>가온그룹</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>이익 재현성</td>
+                        <td>⭐⭐⭐⭐ 안정</td>
+                        <td>⭐⭐⭐⭐⭐ 매우 안정</td>
+                        <td>⭐⭐ 불안정</td>
+                    </tr>
+                    <tr>
+                        <td>해자 (경쟁우위)</td>
+                        <td>⭐⭐⭐ 중간</td>
+                        <td>⭐⭐ 약함</td>
+                        <td>⭐⭐ 약함</td>
+                    </tr>
+                    <tr>
+                        <td>밸류에이션</td>
+                        <td>⭐⭐⭐⭐ 양호 (PER 12.4배)</td>
+                        <td>⭐⭐⭐⭐⭐ 매우 양호 (PER 8.4배)</td>
+                        <td>⭐⭐ 부담 (PER 28.8배)</td>
+                    </tr>
+                    <tr>
+                        <td>재무 건전성</td>
+                        <td>⭐⭐⭐ 보통 (부채비율 134%)</td>
+                        <td>⭐⭐⭐⭐⭐ 매우 건전 (부채비율 26%)</td>
+                        <td>⭐⭐ 부담 (부채비율 227%)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-bottom:16px;">
+            <strong style="font-size:14px; display:block; margin-bottom:8px;">본질적 차이</strong>
+            <div style="font-size:13px; line-height:1.6;">
+                <strong>유니트론텍:</strong> 전자부품 EMS 업체로 사업 규모(매출 7,690억)가 크고 영업이익 300억대 안정. 고객 다변화 정도와 수주 변동성이 핵심.<br>
+                <strong>한국가구:</strong> 가구 제조업으로 부동산 경기 민감. 영업이익률 12%로 높고 재무 매우 건전. 브랜드 해자 약해 가격 경쟁 노출.<br>
+                <strong>가온그룹:</strong> 전자재료 제조업으로 턴어라운드 초입. 흑자 지속성 미확인이며 부채 부담 큼. 2분기 연속 흑자 확인 전까지는 투기성.
+            </div>
+        </div>
+
+        <div style="margin-bottom:16px;">
+            <strong style="font-size:14px; display:block; margin-bottom:8px;">선호도 순위</strong>
+            <div class="rank-card">
+                <span class="rank-number">1</span>
+                <span class="rank-text">한국가구 — 저PER·고OPM·초저부채 삼박자. 부동산 경기 회복 시 수혜 확실.</span>
+            </div>
+            <div class="rank-card">
+                <span class="rank-number">2</span>
+                <span class="rank-text">유니트론텍 — 사업 규모·안정성 우수. PER 12.4배는 매력적. 고객 집중도 확인 필요.</span>
+            </div>
+            <div class="rank-card">
+                <span class="rank-number">3</span>
+                <span class="rank-text">가온그룹 — 턴어라운드 기대감 있으나 부채 부담·이익 불안정으로 현 시점 투기성.</span>
             </div>
         </div>
 
         <div class="warning-box">
-            <div class="warning-title">⚠️ 탈락 신호</div>
+            <div class="warning-title">공통 탈락 신호</div>
             <ul class="warning-list">
-                <li>2026년 1분기 순이익 적자 지속</li>
-                <li>부채비율 180% 돌파 (현재 168%)</li>
-                <li>주요 고객사(현대차·GM) 생산 가이던스 하향</li>
+                <li>분기 영업이익률 마진 50% 이상 급감</li>
+                <li>주요 고객사 이탈 또는 대금 회수 지연 공시</li>
+                <li>부채비율 급증 (유니트론텍 200% 초과, 한국가구 100% 초과, 가온그룹 300% 초과)</li>
             </ul>
         </div>
 
-        <div class="recommend-box">
-            <div class="recommend-title">추천 비중</div>
-            <div class="recommend-value">
-                코어 0% / 트레이딩 5%<br>
-                <span style="font-size: 13px; font-weight: 400;">(2026년 1Q 실적 흑자전환 확인 시 10%로 증액)</span>
+        <div class="final-box">
+            <div class="final-label">최종 한 줄</div>
+            <div class="final-text">
+                한국가구를 코어 1순위로, 유니트론텍을 트레이딩 1순위로 배치. 가온그룹은 2분기 연속 흑자 확인 후 재검토. 나머지 급등주는 테마성 노이즈로 판단하며 투자 제외.
             </div>
         </div>
     </div>
 
-    <div class="stock-card">
-        <div class="stock-header">
-            <div class="stock-title-area">
-                <div class="rank-badge">2순위</div>
-                <div class="stock-name">미래반도체</div>
-                <div class="stock-sector">반도체 장비 | 코스닥 | 시총 5,789억원</div>
-            </div>
-            <div class="stock-change">+29.98%</div>
-        </div>
-
-        <div class="judge-box">
-            <div class="judge-title">종목 분류</div>
-            <div class="judge-content">트레이딩·옵션형 (사이클 바닥 확인 중)</div>
-        </div>
-
-        <div class="judge-box">
-            <div class="judge-title">핵심 요약</div>
-            <div class="judge-content">
-                반도체 후공정 장비(테스터) 전문 기업. 2023년 매출 3,805억으로 전년 대비 -31% 급감, 영업이익률 2.5%까지 하락. 2022년 대비 순이익 -66%. 현재 PER 114배는 사이클 바닥 기준 과대평가이나, 업황 회복 시 빠른 리레이팅 가능. 반도체 테스터 수요는 AI·HBM 테스트 수요와 연동.
-            </div>
-        </div>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정량 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이익 구조</div>
-                <div class="metric-value">사이클형 (바닥권)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">재무 건전성</div>
-                <div class="metric-value">부채비율 86% 양호</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">성장성</div>
-                <div class="metric-value">2023년 -31% (침체)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">밸류에이션</div>
-                <div class="metric-value">PER 114배 (지배기준)</div>
-            </div>
-        </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>연도</th>
-                    <th>매출(억)</th>
-                    <th>영업이익(억)</th>
-                    <th>지배순이익(억)</th>
-                    <th>영업이익률</th>
-                    <th>ROE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2022</td>
-                    <td>5,502</td>
-                    <td>221</td>
-                    <td>150</td>
-                    <td>4.0%</td>
-                    <td>22.0%</td>
-                </tr>
-                <tr>
-                    <td>2023</td>
-                    <td>3,805</td>
-                    <td>94</td>
-                    <td>51</td>
-                    <td>2.5%</td>
-                    <td>6.3%</td>
-                </tr>
-                <tr>
-                    <td>2024~2025</td>
-                    <td colspan="5" style="text-align: center;">데이터 없음 (DART 미공시 추정)</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정성 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이벤트드리븐 강도</div>
-                <div class="metric-value">중 (반도체 업황 연동)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">토론방 신호</div>
-                <div class="metric-value">2026.05.11 | 반도체 테마</div>
-            </div>
-        </div>
-        <div style="margin-top: 12px; font-size: 14px; line-height: 1.6;">
-            <strong>산업 위치:</strong> 국내 반도체 테스터 Top5 내. 삼성전자·SK하이닉스 납품 이력 있으나 ASML·테라다인 대비 기술 격차 존재. HBM 테스트 장비 전환 여부가 핵심 변수.
-        </div>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">밸류에이션 시나리오</div>
-        <div style="font-size: 14px; margin-bottom: 8px;"><strong>현재 시총:</strong> 5,789억 (2026.05.11 기준)</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>시나리오</th>
-                    <th>가정</th>
-                    <th>적정 시총</th>
-                    <th>현재 대비</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>🟢 Bull</td>
-                    <td>2026년 매출 5,500억 회복, OPM 4%, PER 30배</td>
-                    <td>6,600억</td>
-                    <td>+14%</td>
-                </tr>
-                <tr>
-                    <td>⚪ Base</td>
-                    <td>2026년 매출 4,200억, OPM 3%, PER 25배</td>
-                    <td>3,150억</td>
-                    <td>-46%</td>
-                </tr>
-                <tr>
-                    <td>🔴 Bear</td>
-                    <td>사이클 장기화, PBR 1.2배</td>
-                    <td>960억</td>
-                    <td>-83%</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="font-size: 13px; color: #666; margin-top: 8px;">
-            ※ 현재 시총은 Bull 시나리오 선반영. 테마 소멸 시 PBR 기준 960억까지 급락 리스크.
-        </div>
-
-        <div class="judge-box" style="background: #fff3e0; border-color: #f57c00;">
-            <div class="judge-title" style="color: #f57c00;">코어 적합성</div>
-            <div class="judge-content">
-                <strong>부적합</strong><br>
-                - 이익 재현성: ❌ 사이클 변동 심함 (2022년 대비 -66%)<br>
-                - 해자: ❌ 기술 경쟁력 글로벌 2군<br>
-                - 밸류에이션: ❌ PER 114배, 사이클주에 과도<br>
-                → 사이클 전환 확인 전까지 단기 트레이딩만
-            </div>
-        </div>
-
-        <div class="warning-box">
-            <div class="warning-title">⚠️ 탈락 신호</div>
-            <ul class="warning-list">
-                <li>삼성전자·SK하이닉스 반도체 Capex 가이던스 하향</li>
-                <li>2026년 상반기 매출 4,000억 미달</li>
-                <li>HBM 테스트 장비 수주 무산</li>
-            </ul>
-        </div>
-
-        <div class="recommend-box">
-            <div class="recommend-title">추천 비중</div>
-            <div class="recommend-value">
-                코어 0% / 트레이딩 3%<br>
-                <span style="font-size: 13px; font-weight: 400;">(2분기 연속 매출 5,000억 돌파 확인 시 5%로 증액)</span>
-            </div>
-        </div>
+    <div class="footer-disclaimer">
+        <strong style="display:block; margin-bottom:8px;">⚠️ 면책 고지</strong>
+        본 리포트는 공개된 재무 데이터(DART)와 토론방 정보를 기반으로 작성된 분석 도구이며, 투자 권유가 아닙니다. 
+        모든 투자 판단과 손익의 책임은 투자자 본인에게 있습니다. 
+        본 리포트는 사용자의 직관과 대조하기 위한 보조 자료로 활용하시기 바랍니다.
+        <br><br>
+        데이터 출처: DART 전자공시, 네이버 금융<br>
+        분석 기준일: 2026.05.11<br>
+        작성: AI 분석 파트너
     </div>
-
-    <div class="stock-card">
-        <div class="stock-header">
-            <div class="stock-title-area">
-                <div class="rank-badge">3순위</div>
-                <div class="stock-name">유니트론텍</div>
-                <div class="stock-sector">전자부품 | 코스닥 | 시총 1,577억원</div>
-            </div>
-            <div class="stock-change">+21.6%</div>
-        </div>
-
-        <div class="judge-box">
-            <div class="judge-title">종목 분류</div>
-            <div class="judge-content">코어 후보 (안정 이익 + 저평가) / 트레이딩 병행 가능</div>
-        </div>
-
-        <div class="judge-box">
-            <div class="judge-title">핵심 요약</div>
-            <div class="judge-content">
-                전장용 PCB·FPCB 제조사. 연 매출 7,690억, 영업이익 323억 규모로 안정적 흑자 유지. PER 12.4배(지배기준)는 동종업계 대비 저평가. 2025년 순이익 감소는 일회성 요인 추정. 부채비율 134%로 다소 높으나 관리 가능 수준. 전장 부품 수혜주로 분류되며 급등.
-            </div>
-        </div>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정량 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이익 구조</div>
-                <div class="metric-value">안정형 (3년 연속 흑자)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">재무 건전성</div>
-                <div class="metric-value">부채비율 134% 보통</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">성장성</div>
-                <div class="metric-value">매출 +8% YoY</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">밸류에이션</div>
-                <div class="metric-value">PER 12.4배 (지배기준)</div>
-            </div>
-        </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>연도</th>
-                    <th>매출(억)</th>
-                    <th>영업이익(억)</th>
-                    <th>지배순이익(억)</th>
-                    <th>영업이익률</th>
-                    <th>ROE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2023</td>
-                    <td>5,981</td>
-                    <td>309</td>
-                    <td>187</td>
-                    <td>5.2%</td>
-                    <td>14.4%</td>
-                </tr>
-                <tr>
-                    <td>2024</td>
-                    <td>7,123</td>
-                    <td>361</td>
-                    <td>209</td>
-                    <td>5.1%</td>
-                    <td>15.8%</td>
-                </tr>
-                <tr>
-                    <td>2025</td>
-                    <td>7,690</td>
-                    <td>323</td>
-                    <td>127</td>
-                    <td>4.2%</td>
-                    <td>9.1%</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정성 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이벤트드리븐 강도</div>
-                <div class="metric-value">약 (실적 안정형)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">토론방 신호</div>
-                <div class="metric-value">2026.05.11 | 전장 테마</div>
-            </div>
-        </div>
-        <div style="margin-top: 12px; font-size: 14px; line-height: 1.6;">
-            <strong>산업 위치:</strong> 국내 중견 PCB 제조사. 자동차·산업기기 납품 중심. 삼성전기·LG이노텍 대비 기술 격차 있으나 틈새 시장 안정적 확보. 고객 다변화 수준 보통.
-        </div>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">밸류에이션 시나리오</div>
-        <div style="font-size: 14px; margin-bottom: 8px;"><strong>현재 시총:</strong> 1,577억 (2026.05.11 기준)</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>시나리오</th>
-                    <th>가정</th>
-                    <th>적정 시총</th>
-                    <th>현재 대비</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>🟢 Bull</td>
-                    <td>2026년 순이익 200억 회복, PER 15배</td>
-                    <td>3,000억</td>
-                    <td>+90%</td>
-                </tr>
-                <tr>
-                    <td>⚪ Base</td>
-                    <td>2026년 순이익 150억, PER 12배</td>
-                    <td>1,800억</td>
-                    <td>+14%</td>
-                </tr>
-                <tr>
-                    <td>🔴 Bear</td>
-                    <td>이익 정체, PER 8배</td>
-                    <td>1,016억</td>
-                    <td>-36%</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="font-size: 13px; color: #666; margin-top: 8px;">
-            ※ 현재 주가는 Base와 Bull 중간. 테마 소멸 시 PER 8배(1,016억) 하방.
-        </div>
-
-        <div class="judge-box" style="background: #e8f5e9; border-color: #1a7a45;">
-            <div class="judge-title" style="color: #1a7a45;">코어 적합성</div>
-            <div class="judge-content">
-                <strong>조건부 적합</strong><br>
-                - 이익 재현성: ⭕ 3년 연속 흑자, OPM 4~5% 유지<br>
-                - 해자: △ 중견급 기술력, 고객 종속 보통<br>
-                - 밸류에이션: ⭕ PER 12.4배, 동종 대비 저평가<br>
-                → 2026년 1분기 순이익 150억+ 확인 시 코어 편입 가능
-            </div>
-        </div>
-
-        <div class="warning-box">
-            <div class="warning-title">⚠️ 탈락 신호</div>
-            <ul class="warning-list">
-                <li>2026년 연간 순이익 100억 미달</li>
-                <li>주요 고객사 수주 30% 이상 감소</li>
-                <li>부채비율 150% 돌파</li>
-            </ul>
-        </div>
-
-        <div class="recommend-box">
-            <div class="recommend-title">추천 비중</div>
-            <div class="recommend-value">
-                코어 3% / 트레이딩 5%<br>
-                <span style="font-size: 13px; font-weight: 400;">(2026년 1Q 실적 순이익 40억+ 달성 시 코어 7%로 증액)</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="stock-card">
-        <div class="stock-header">
-            <div class="stock-title-area">
-                <div class="rank-badge">4순위</div>
-                <div class="stock-name">한국가구</div>
-                <div class="stock-sector">가구 제조 | 코스닥 | 시총 1,197억원</div>
-            </div>
-            <div class="stock-change">+20.18%</div>
-        </div>
-
-        <div class="judge-box">
-            <div class="judge-title">종목 분류</div>
-            <div class="judge-content">코어형 (안정 이익 + 저평가 + 저부채)</div>
-        </div>
-
-        <div class="judge-box">
-            <div class="judge-title">핵심 요약</div>
-            <div class="judge-content">
-                오피스 가구 전문 제조사. 매출 1,416억, 영업이익 175억으로 OPM 12.4% 달성. ROE 7.3%, 부채비율 26%로 재무 구조 우량. PER 8.4배는 내재가치 대비 명백한 저평가. 성장성은 낮으나 배당 + 안정성 중심 코어 자산 적합. 급등은 부동산·인테리어 테마 연동 추정.
-            </div>
-        </div>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정량 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이익 구조</div>
-                <div class="metric-value">안정형 (3년 연속 흑자)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">재무 건전성</div>
-                <div class="metric-value">부채비율 26% 우수 ✅</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">성장성</div>
-                <div class="metric-value">매출 +10% YoY (정체)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">밸류에이션</div>
-                <div class="metric-value">PER 8.4배 (지배기준)</div>
-            </div>
-        </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>연도</th>
-                    <th>매출(억)</th>
-                    <th>영업이익(억)</th>
-                    <th>지배순이익(억)</th>
-                    <th>영업이익률</th>
-                    <th>ROE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2023</td>
-                    <td>1,029</td>
-                    <td>124</td>
-                    <td>-0</td>
-                    <td>12.1%</td>
-                    <td>-0.0%</td>
-                </tr>
-                <tr>
-                    <td>2024</td>
-                    <td>1,287</td>
-                    <td>178</td>
-                    <td>160</td>
-                    <td>13.8%</td>
-                    <td>9.0%</td>
-                </tr>
-                <tr>
-                    <td>2025</td>
-                    <td>1,416</td>
-                    <td>175</td>
-                    <td>143</td>
-                    <td>12.4%</td>
-                    <td>7.3%</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정성 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이벤트드리븐 강도</div>
-                <div class="metric-value">약 (실적 중심)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">토론방 신호</div>
-                <div class="metric-value">2026.05.11 | 이슈 없음</div>
-            </div>
-        </div>
-        <div style="margin-top: 12px; font-size: 14px; line-height: 1.6;">
-            <strong>산업 위치:</strong> 국내 오피스 가구 Top10 내. 시장 성장 정체기이나 B2B 납품처 안정적. 수입 가구 경쟁 심화, 원자재 가격 변동 리스크 존재. 해자는 약하나 재무 우량.
-        </div>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">밸류에이션 시나리오</div>
-        <div style="font-size: 14px; margin-bottom: 8px;"><strong>현재 시총:</strong> 1,197억 (2026.05.11 기준)</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>시나리오</th>
-                    <th>가정</th>
-                    <th>적정 시총</th>
-                    <th>현재 대비</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>🟢 Bull</td>
-                    <td>순이익 160억 회복, PER 12배</td>
-                    <td>1,920억</td>
-                    <td>+60%</td>
-                </tr>
-                <tr>
-                    <td>⚪ Base</td>
-                    <td>순이익 140억 유지, PER 10배</td>
-                    <td>1,400억</td>
-                    <td>+17%</td>
-                </tr>
-                <tr>
-                    <td>🔴 Bear</td>
-                    <td>이익 감소, PER 7배</td>
-                    <td>980억</td>
-                    <td>-18%</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="font-size: 13px; color: #666; margin-top: 8px;">
-            ※ 현재 주가는 Base 반영. 테마 소멸해도 PER 7배(980억) 수준으로 하방 제한적.
-        </div>
-
-        <div class="judge-box" style="background: #e8f5e9; border-color: #1a7a45;">
-            <div class="judge-title" style="color: #1a7a45;">코어 적합성</div>
-            <div class="judge-content">
-                <strong>적합 ✅</strong><br>
-                - 이익 재현성: ⭕ 3년 연속 흑자, OPM 12% 이상 안정<br>
-                - 해자: △ 브랜드력 보통, 시장 성숙<br>
-                - 밸류에이션: ⭕ PER 8.4배, 명확한 저평가<br>
-                → 즉시 코어 편입 가능. 배당 수익 기대.
-            </div>
-        </div>
-
-        <div class="warning-box">
-            <div class="warning-title">⚠️ 탈락 신호</div>
-            <ul class="warning-list">
-                <li>영업이익률 10% 미달 2분기 연속</li>
-                <li>부채비율 50% 돌파</li>
-                <li>주요 납품처(공공·기업) 수주 감소 30% 이상</li>
-            </ul>
-        </div>
-
-        <div class="recommend-box">
-            <div class="recommend-title">추천 비중</div>
-            <div class="recommend-value">
-                코어 10% / 트레이딩 0%<br>
-                <span style="font-size: 13px; font-weight: 400;">(배당 수익 + 저평가 매력. 추가 하락 시 15%까지 증액)</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="stock-card">
-        <div class="stock-header">
-            <div class="stock-title-area">
-                <div class="rank-badge">5순위</div>
-                <div class="stock-name">티플랙스</div>
-                <div class="stock-sector">PCB 소재 | 코스닥 | 시총 1,116억원</div>
-            </div>
-            <div class="stock-change">+29.94%</div>
-        </div>
-
-        <div class="judge-box">
-            <div class="judge-title">종목 분류</div>
-            <div class="judge-content">트레이딩·옵션형 (흑자전환 완료, 성장 확인 중)</div>
-        </div>
-
-        <div class="judge-box">
-            <div class="judge-title">핵심 요약</div>
-            <div class="judge-content">
-                PCB용 CCL(동박적층판) 제조사. 2023년 적자 후 2024~2025년 흑자전환 완료. 매출 2,092억, 영업이익 52억으로 OPM 2.5% 달성. 순이익 32억 기준 PER 34.9배는 성장주 평가 반영. 부채비율 49%로 재무 양호. PCB 수요 회복 + 전장 테마 수혜로 급등.
-            </div>
-        </div>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정량 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이익 구조</div>
-                <div class="metric-value">회복형 (2년 연속 흑자)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">재무 건전성</div>
-                <div class="metric-value">부채비율 49% 양호</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">성장성</div>
-                <div class="metric-value">매출 +1% YoY (정체)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">밸류에이션</div>
-                <div class="metric-value">PER 34.9배 (연결기준)</div>
-            </div>
-        </div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>연도</th>
-                    <th>매출(억)</th>
-                    <th>영업이익(억)</th>
-                    <th>순이익(연결)(억)</th>
-                    <th>영업이익률</th>
-                    <th>ROE</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2023</td>
-                    <td>2,511</td>
-                    <td>-15</td>
-                    <td>-22</td>
-                    <td>-0.6%</td>
-                    <td>-1.5%</td>
-                </tr>
-                <tr>
-                    <td>2024</td>
-                    <td>2,075</td>
-                    <td>48</td>
-                    <td>14</td>
-                    <td>2.3%</td>
-                    <td>0.9%</td>
-                </tr>
-                <tr>
-                    <td>2025</td>
-                    <td>2,092</td>
-                    <td>52</td>
-                    <td>32</td>
-                    <td>2.5%</td>
-                    <td>2.0%</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="font-size: 13px; color: #666; margin-top: 8px;">
-            ※ 지배주주순이익 미제공. 연결 순이익 기준 PER 사용.
-        </div>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">정성 평가</div>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이벤트드리븐 강도</div>
-                <div class="metric-value">중 (PCB 업황 회복)</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">토론방 신호</div>
-                <div class="metric-value">2026.05.11 | PCB 테마</div>
-            </div>
-        </div>
-        <div style="margin-top: 12px; font-size: 14px; line-height: 1.6;">
-            <strong>산업 위치:</strong> 국내 CCL 중견업체. 삼성전기·LG이노텍 대비 기술 열위이나 범용 CCL 시장에서 안정적 점유율. 원자재(동박) 가격 변동에 민감.
-        </div>
-
-        <div class="section-title" style="font-size: 15px; margin-top: 20px;">밸류에이션 시나리오</div>
-        <div style="font-size: 14px; margin-bottom: 8px;"><strong>현재 시총:</strong> 1,116억 (2026.05.11 기준)</div>
-        <table>
-            <thead>
-                <tr>
-                    <th>시나리오</th>
-                    <th>가정</th>
-                    <th>적정 시총</th>
-                    <th>현재 대비</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>🟢 Bull</td>
-                    <td>2026년 순이익 60억, PER 30배</td>
-                    <td>1,800억</td>
-                    <td>+61%</td>
-                </tr>
-                <tr>
-                    <td>⚪ Base</td>
-                    <td>2026년 순이익 40억, PER 25배</td>
-                    <td>1,000억</td>
-                    <td>-10%</td>
-                </tr>
-                <tr>
-                    <td>🔴 Bear</td>
-                    <td>이익 정체, PER 15배</td>
-                    <td>480억</td>
-                    <td>-57%</td>
-                </tr>
-            </tbody>
-        </table>
-        <div style="font-size: 13px; color: #666; margin-top: 8px;">
-            ※ 현재 주가는 Bull 반영. 테마 소멸 시 PER 15배(480억) 하방.
-        </div>
-
-        <div class="judge-box" style="background: #fff3e0; border-color: #f57c00;">
-            <div class="judge-title" style="color: #f57c00;">코어 적합성</div>
-            <div class="judge-content">
-                <strong>부적합 (현 시점)</strong><br>
-                - 이익 재현성: △ 흑자전환 2년차, 안정성 미확인<br>
-                - 해자: ❌ 범용 소재, 경쟁 치열<br>
-                - 밸류에이션: ❌ PER 34.9배, 성장주 치고 높음<br>
-                → 3분기 연속 순이익 40억+ 달성 시 재평가
-            </div>
-        </div>
-
-        <div class="warning-box">
-            <div class="warning-title">⚠️ 탈락 신호</div>
-            <ul class="warning-list">
-                <li>2026년 분기 순이익 적자 전환</li>
-                <li>영업이익률 2% 미달 2분기 연속</li>
-                <li>주요 고객사 CCL 수주 20% 감소</li>
-            </ul>
-        </div>
-
-        <div class="recommend-box">
-            <div class="recommend-title">추천 비중</div>
-            <div class="recommend-value">
-                코어 0% / 트레이딩 5%<br>
-                <span style="font-size: 13px; font-weight: 400;">(3분기 연속 순이익 40억+ 확인 시 코어 3% 편입 검토)</span>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<div class="section">
-    <div class="section-title">📋 나머지 종목 간략 요약</div>
-
-    <div class="simple-stock">
-        <div class="simple-header">선도전기 (코스피 +30.0%)</div>
-        <div class="simple-content">
-            시총 2,316억 / 2025년 매출 382억·영업이익 12억·OPM 3.3%·ROE 14.8% / 급등 이유: 전력설비 테마 추정 / 판단: 2023~2024년 대규모 적자 후 소폭 회복. PER 43.8배는 과대평가. 이익 재현성 불확실, 트레이딩도 부적합.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">한솔테크닉스 (코스피 +29.96%)</div>
-        <div class="simple-content">
-            시총 4,495억 / 2025년 매출 12,524억·영업이익 204억·OPM 1.6%·ROE -4.5%(지배) / ⚠️ 비지배지분 2,573% — 연결순이익 6억 vs 지배순이익 -137억 / 급등 이유: 반도체 장비 테마 / 판단: 지배주주 적자 지속. PER 산출 불가. 지배구조 복잡, 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">경인전자 (코스피 +29.81%)</div>
-        <div class="simple-content">
-            시총 472억 / 2025년 매출 361억·영업이익 10억·OPM 2.8%·ROE 4.8% / 급등 이유: 전자부품 테마 / 판단: OPM 3% 미만, 성장성 낮음. PER 12.3배는 적정. 코어·트레이딩 모두 부적합.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">광전자 (코스피 +17.75%)</div>
-        <div class="simple-content">
-            시총 7,648억 / 2025년 매출 1,327억·영업이익 12억·OPM 0.9%·ROE 1.8% / 급등 이유: 광학 부품 테마 / 판단: 영업이익률 1% 미만. PER 179.7배는 극단적 과대평가. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">코스모로보틱스 (코스닥 +300%)</div>
-        <div class="simple-content">
-            시총 7,706억 / DART 재무 매칭 실패 / 급등 이유: 상한가, 루머 추정 / 판단: 실체 확인 불가. 초저유동성 또는 신규 상장 의심. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">민테크 (코스닥 +30.0%)</div>
-        <div class="simple-content">
-            시총 1,086억 / 2025년 매출 210억·영업이익 -88억·ROE -7.4% / 급등 이유: 불명 / 판단: 2년 연속 영업적자. 재무 기반 전무. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">큐로홀딩스 (코스닥 +29.99%)</div>
-        <div class="simple-content">
-            시총 243억 / 2025년 매출 567억·영업이익 -0억·ROE -44.2% / 급등 이유: 불명 / 판단: 3년 연속 적자, 부채비율 340%. 투기 수급. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">한울반도체 (코스닥 +29.99%)</div>
-        <div class="simple-content">
-            시총 864억 / 2025년 매출 115억·영업이익 -50억·ROE -66.7% / 급등 이유: 반도체 테마 / 판단: 영업이익률 -44%. 재무 기반 없음. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">이노인스트루먼트 (코스닥 +29.95%)</div>
-        <div class="simple-content">
-            시총 800억 / 2025년 매출 437억·영업이익 -92억·ROE -32.5% / 급등 이유: 반도체 장비 테마 / 판단: 3년 연속 대규모 적자. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">피델릭스 (코스닥 +29.94%)</div>
-        <div class="simple-content">
-            시총 629억 / 2025년 매출 536억·영업이익 -21억·ROE -6.6% / 급등 이유: 불명 / 판단: 2년 연속 적자. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">에스비비테크 (코스닥 +25.7%)</div>
-        <div class="simple-content">
-            시총 5,989억 / 2025년 매출 72억·영업이익 -69억·ROE -75.6% / 급등 이유: 불명 / 판단: OPM -95%. 부채비율 157%. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">대한광통신 (코스닥 +25.06%)</div>
-        <div class="simple-content">
-            시총 43,458억 / 2025년 매출 1,394억·영업이익 -214억·ROE -42.0% / 급등 이유: 광통신 테마 / 판단: 3년 연속 대규모 적자. 부채비율 228%. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">뷰티스킨 (코스닥 +24.1%)</div>
-        <div class="simple-content">
-            시총 509억 / 2025년 매출 549억·영업이익 -32억·ROE -5.4% / 급등 이유: 불명 / 판단: 3년 연속 적자. 분석 제외.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">지오엘리먼트 (코스닥 +20.85%)</div>
-        <div class="simple-content">
-            시총 1,323억 / 2025년 매출 546억·영업이익 44억·OPM 8.1%·ROE 9.3% / 급등 이유: 환경·건설 테마 추정 / 판단: PER 24.2배, OPM 양호. 소형주 변동성 높음. 트레이딩 3% 가능, 코어 부적합.
-        </div>
-    </div>
-
-    <div class="simple-stock">
-        <div class="simple-header">가온그룹 (코스닥 +19.43%)</div>
-        <div class="simple-content">
-            시총 1,914억 / 2025년 매출 5,175억·영업이익 125억·OPM 2.4%·ROE 5.2% / 급등 이유: 전자부품 테마 / 판단: 2024년 -541억 적자 후 흑자전환. 부채비율 226% 높음. PER 28.8배는 적정. 트레이딩 3% 가능, 코어 부적합.
-        </div>
-    </div>
-
-</div>
-
-<div class="section">
-    <div class="section-title">⏰ 모니터링 우선순위 3종목</div>
-
-    <div class="monitor-card">
-        <div class="monitor-rank">🥇 1순위</div>
-        <div class="monitor-name">유니트론텍</div>
-        <div class="monitor-reason">
-            2026년 1분기 실적 발표(5월 중순 예상)에서 순이익 150억 회복 확인 시 코어 편입 트리거. 현재 PER 12.4배는 동종 대비 저평가 구간으로, 실적 정상화 확인되면 즉시 코어 비중 7%로 증액 가능. 급등 후 조정 시 분할 매수 전략.
-        </div>
-    </div>
-
-    <div class="monitor-card">
-        <div class="monitor-rank">🥈 2순위</div>
-        <div class="monitor-name">한온시스템</div>
-        <div class="monitor-reason">
-            2026년 1분기 순이익 흑자전환 여부가 핵심. 현재 시총 5.9조는 이익 정상화 선반영 상태. 실적 발표(5월 초) 후 순이익 500억+ 달성 시 트레이딩 비중 10%로 증액. 북미 자동차 생산 지표(SAAR) 1,600만대 회복 여부 병행 확인.
-        </div>
-    </div>
-
-    <div class="monitor-card">
-        <div class="monitor-rank">🥉 3순위</div>
-        <div class="monitor-name">한국가구</div>
-        <div class="monitor-reason">
-            이미 코어 편입 적합 조건 충족. 현재 PER 8.4배는 명확한 저평가. 추가 급등 모니터링보다는, 조정 시 10,000원 이하 추가 매수 기회 포착이 목적. 배당 수익률 3%+ 예상, 장기 보유 전략.
-        </div>
-    </div>
-</div>
-
-<div class="section">
-    <div class="section-title">⚖️ 종목 간 비교 분석 (모니터링 3종목)</div>
-
-    <table class="compare-table">
-        <thead>
-            <tr>
-                <th>항목</th>
-                <th>유니트론텍</th>
-                <th>한온시스템</th>
-                <th>한국가구</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>이익 재현성</td>
-                <td>⭕ 3년 연속 흑자</td>
-                <td>❌ 2년 연속 적자</td>
-                <td>⭕ 3년 연속 흑자</td>
-            </tr>
-            <tr>
-                <td>해자 (경쟁우위)</td>
-                <td>△ 중견급 기술</td>
-                <td>⭕ 글로벌 Top3</td>
-                <td>△ 브랜드력 보통</td>
-            </tr>
-            <tr>
-                <td>밸류에이션</td>
-                <td>⭕ PER 12.4배 저평가</td>
-                <td>❌ 적자로 산출 불가</td>
-                <td>⭕ PER 8.4배 저평가</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="rank-card">
-        <div class="rank-header">🏆 선호도 순위</div>
-        <div class="rank-content">
-            <strong>1위: 한국가구</strong><br>
-            코어 3조건 중 이익 재현성·밸류에이션 완벽 충족. 해자는 약하나 재무 우량(부채비율 26%). 즉시 코어 편입 가능. 급등 후에도 PER 8.4배로 하방 제한적. 배당 매력 추가.<br><br>
-            <strong>2위: 유니트론텍</strong><br>
-            이익 재현성·밸류에이션 양호. 2026년 1Q 실적 확인만 남음. 코어 편입 임박. 단, 해자 약점으로 장기 보유 시 성장성 제한.<br><br>
-            <strong>3위: 한온시스템</strong><br>
-            글로벌 해자 보유하나 이익 재현성·밸류에이션 불가. 사이클 전환 확인 전까지 트레이딩 전용. 리스크 대비 기회 비대칭성 낮음.
-        </div>
-    </div>
-
-    <div class="warning-box">
-        <div class="warning-title">⚠️ 3종목 공통 탈락 신호</div>
-        <ul class="warning-list">
-            <li><strong>유니트론텍:</strong> 2026년 1Q 순이익 100억 미달</li>
-            <li><strong>한온시스템:</strong> 2026년 1Q 순이익 적자 지속 + 부채비율 180% 돌파</li>
-            <li><strong>한국가구:</strong> 영업이익률 10% 미달 2분기 연속 (가능성 낮음)</li>
-        </ul>
-    </div>
-
-    <div class="final-box">
-        <div class="final-title">최종 한 줄 판단</div>
-        <div class="final-content">
-            한국가구 즉시 코어 10% 편입 → 유니트론텍 1Q 실적 확인 후 코어 7% 추가 → 한온시스템은 트레이딩 5%로 제한, 흑자전환 2분기 연속 확인 전까지 코어 제외.
-        </div>
-    </div>
-</div>
-
-</div>
-
-<div class="footer">
-    <strong>면책 고지</strong><br>
-    본 분석은 DART 공시 재무제표와 네이버 금융 공개 데이터를 기반으로 작성되었습니다.<br>
-    투자 판단의 최종 책임은 투자자 본인에게 있으며, 본 자료는 매수·매도 권유가 아닙니다.<br>
-    재무 데이터는 수집 시점 기준이며, 최신 공시를 별도 확인하시기 바랍니다.<br>
-    <br>
-    분석 작성: 2026.05.11 | CPA 소형주 가치투자 파트너
-</div>
-
 </body>
 </html>
