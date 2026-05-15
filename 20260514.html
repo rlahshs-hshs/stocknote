@@ -1,1089 +1,988 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>2026.05.14 급등주 분석 리포트</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-            font-size: 15px;
-            line-height: 1.6;
-            background: #f5f4f0;
-            color: #1a1a1a;
-            padding-bottom: 60px;
-        }
-        
-        .hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
-            color: #fff;
-            padding: 28px 20px 24px;
-            margin-bottom: 20px;
-        }
-        
-        .hero-date {
-            font-size: 13px;
-            opacity: 0.7;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-        
-        .hero-title {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-        
-        .hero-chips {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 16px;
-        }
-        
-        .chip {
-            background: rgba(255,255,255,0.15);
-            padding: 6px 12px;
-            border-radius: 16px;
-            font-size: 12px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .disclaimer {
-            font-size: 12px;
-            opacity: 0.6;
-            line-height: 1.5;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 12px;
-            margin-top: 12px;
-        }
-        
-        .section {
-            background: #fff;
-            margin: 0 16px 16px;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        
-        .section-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .theme-cluster {
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .theme-cluster:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .theme-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-        
-        .theme-emoji {
-            font-size: 24px;
-        }
-        
-        .theme-name {
-            font-size: 16px;
-            font-weight: 700;
-            flex: 1;
-        }
-        
-        .theme-badge {
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        
-        .badge-event { background: #fff4e6; color: #b7770d; }
-        .badge-noise { background: #fee; color: #c0392b; }
-        .badge-real { background: #e8f5e9; color: #1a7a45; }
-        
-        .theme-stocks {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 10px;
-        }
-        
-        .stock-tag {
-            background: #f5f4f0;
-            padding: 5px 10px;
-            border-radius: 8px;
-            font-size: 12px;
-            color: #555;
-        }
-        
-        .theme-desc {
-            font-size: 13px;
-            color: #666;
-            line-height: 1.5;
-        }
-        
-        .divider-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .divider-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 14px;
-        }
-        
-        .divider-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .stock-name {
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-        
-        .stock-reason {
-            color: #666;
-            margin-top: 4px;
-            font-size: 13px;
-        }
-        
-        .stock-card {
-            background: #fff;
-            margin: 0 16px 20px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-        }
-        
-        .card-header {
-            background: linear-gradient(135deg, #7f77dd 0%, #9b94e8 100%);
-            color: #fff;
-            padding: 18px 20px;
-            position: relative;
-        }
-        
-        .rank-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(255,255,255,0.25);
-            backdrop-filter: blur(10px);
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-        
-        .stock-title {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        
-        .stock-meta {
-            font-size: 13px;
-            opacity: 0.9;
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-        
-        .card-body {
-            padding: 20px;
-        }
-        
-        .label {
-            font-size: 12px;
-            font-weight: 600;
-            color: #7f77dd;
-            margin-bottom: 8px;
-            display: block;
-        }
-        
-        .value-large {
-            font-size: 15px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-        
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 20px;
-        }
-        
-        .metric-box {
-            background: #f9f9f9;
-            padding: 12px;
-            border-radius: 8px;
-        }
-        
-        .metric-label {
-            font-size: 11px;
-            color: #888;
-            margin-bottom: 4px;
-        }
-        
-        .metric-value {
-            font-size: 15px;
-            font-weight: 700;
-            color: #1a1a1a;
-        }
-        
-        .judgment-box {
-            background: #fef9e7;
-            border-left: 4px solid #b7770d;
-            padding: 14px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-        
-        .judgment-box p {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #1a1a1a;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            font-size: 13px;
-        }
-        
-        th, td {
-            padding: 10px 8px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        
-        th {
-            background: #f9f9f9;
-            font-weight: 600;
-            font-size: 12px;
-            color: #555;
-        }
-        
-        td {
-            color: #1a1a1a;
-        }
-        
-        .warning-box {
-            background: #feecec;
-            border-left: 4px solid #c0392b;
-            padding: 14px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-        }
-        
-        .warning-box ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .warning-box li {
-            padding: 4px 0;
-            font-size: 13px;
-            color: #1a1a1a;
-        }
-        
-        .warning-box li:before {
-            content: "⚠️ ";
-            margin-right: 6px;
-        }
-        
-        .allocation {
-            display: flex;
-            gap: 12px;
-            margin-top: 16px;
-        }
-        
-        .alloc-item {
-            flex: 1;
-            background: #f9f9f9;
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .alloc-label {
-            font-size: 11px;
-            color: #888;
-            margin-bottom: 4px;
-        }
-        
-        .alloc-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: #7f77dd;
-        }
-        
-        .text-red { color: #c0392b; }
-        .text-blue { color: #1a7a45; }
-        .text-gray { color: #888; }
-        
-        .sub-label {
-            font-size: 11px;
-            color: #888;
-            margin-top: 2px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>2026.05.14 급등주 분석 리포트</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;font-size:15px;line-height:1.6;background:#f5f4f0;color:#1a1a1a;padding-bottom:56px}
+
+/* 히어로 */
+.hero{background:#1a1a2e;color:#fff;padding:44px 20px 36px}
+.hero-date{font-size:12px;opacity:.6;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.hero-title{font-size:22px;font-weight:800;line-height:1.25;margin-bottom:8px;letter-spacing:-.3px}
+.hero-sub{font-size:13px;opacity:.7;margin-bottom:18px}
+.hero-chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.chip{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.15);padding:5px 11px;border-radius:20px;font-size:11px;letter-spacing:.03em}
+.hero-disclaimer{font-size:11px;opacity:.45;border-top:1px solid rgba(255,255,255,.1);padding-top:13px;line-height:1.55}
+
+/* 공통 섹션 */
+.section{padding:24px 16px 0}
+.section-label{font-size:11px;letter-spacing:.07em;color:#888;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+
+/* 테마 클러스터 카드 */
+.cluster-card{background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);padding:16px;margin-bottom:10px}
+.cluster-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cluster-emoji{font-size:22px}
+.cluster-name{font-size:15px;font-weight:700;flex:1}
+.badge{padding:3px 9px;border-radius:10px;font-size:10px;font-weight:700;white-space:nowrap}
+.badge-real{background:#dcfce7;color:#166534}
+.badge-event{background:#dbeafe;color:#1e40af}
+.badge-noise{background:#f1f5f9;color:#64748b}
+.cluster-tickers{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.ticker{background:#f5f4f0;padding:4px 9px;border-radius:7px;font-size:11px;color:#555;font-weight:600}
+.cluster-desc{font-size:12px;color:#666;line-height:1.55}
+
+/* 1차 분리 */
+.divider-group{background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);padding:16px;margin-bottom:10px}
+.divider-head{font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.divider-item{padding:7px 0;border-bottom:1px solid #f0f0f0;font-size:13px;color:#444;display:flex;flex-wrap:wrap;gap:4px;align-items:baseline}
+.divider-item:last-child{border-bottom:none}
+.divider-name{font-weight:700;color:#1a1a1a;min-width:80px}
+.divider-reason{font-size:12px;color:#888}
+
+/* 상위 5 선정이유 */
+.pick-card{background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);padding:15px;margin-bottom:8px;display:flex;gap:12px;align-items:flex-start}
+.pick-rank{width:28px;height:28px;background:#7f77dd;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0}
+.pick-body{}
+.pick-name{font-size:14px;font-weight:700;margin-bottom:3px}
+.pick-reason{font-size:12px;color:#555;line-height:1.5}
+
+/* 상세 종목 카드 */
+.stock-card{background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,.06);margin:0 0 12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.04)}
+.card-header{padding:18px 16px 14px;position:relative}
+.rank-chip{position:absolute;top:12px;right:12px;background:rgba(127,119,221,.15);color:#7f77dd;border:1px solid rgba(127,119,221,.3);padding:3px 9px;border-radius:10px;font-size:11px;font-weight:700}
+.stock-title-row{display:flex;align-items:flex-end;gap:10px;margin-bottom:4px}
+.stock-name{font-size:20px;font-weight:800;letter-spacing:-.3px}
+.stock-rate{font-size:14px;font-weight:700;color:#c0392b}
+.stock-meta{font-size:12px;color:#888}
+.card-body{padding:16px}
+.sub-label{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:#aaa;font-weight:600;margin-bottom:5px}
+.classify-badge{display:inline-flex;align-items:center;gap:5px;background:#f0eefb;color:#7f77dd;padding:5px 11px;border-radius:8px;font-size:12px;font-weight:600;margin-bottom:14px}
+.summary-text{font-size:13px;color:#444;line-height:1.7;margin-bottom:16px}
+
+/* 지표 그리드 */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.metric-box{background:#f8f7f4;border-radius:10px;padding:11px 12px}
+.metric-label{font-size:10px;color:#aaa;margin-bottom:3px;letter-spacing:.03em}
+.metric-value{font-size:15px;font-weight:700;color:#1a1a1a}
+.metric-sub{font-size:10px;color:#888;margin-top:2px}
+.val-green{color:#1a7a45}
+.val-red{color:#c0392b}
+.val-orange{color:#b7770d}
+
+/* 핵심 판단 박스 */
+.judge-box{border-left:3px solid #7f77dd;background:#f5f4fc;padding:12px 13px;border-radius:0 8px 8px 0;margin-bottom:14px}
+.judge-label{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:#7f77dd;font-weight:700;margin-bottom:5px}
+.judge-text{font-size:13px;color:#333;line-height:1.6}
+
+/* 실적 테이블 */
+.perf-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px}
+.perf-table th{background:#f8f7f4;padding:8px 6px;text-align:left;font-size:10px;color:#888;font-weight:600;border-bottom:1px solid #eee}
+.perf-table td{padding:8px 6px;border-bottom:1px solid #f4f4f4;color:#333}
+.perf-table tr:last-child td{font-weight:700;color:#1a1a1a}
+
+/* 밸류에이션 시나리오 테이블 */
+.val-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px;border-radius:10px;overflow:hidden}
+.val-table th{background:#f8f7f4;padding:8px 7px;text-align:left;font-size:10px;color:#888;font-weight:600}
+.val-table td{padding:9px 7px;font-size:12px}
+.val-bull{background:#f0fdf4;color:#166534}
+.val-base{background:#fff;color:#333}
+.val-bear{background:#fff5f5;color:#991b1b}
+.val-note{font-size:11px;color:#888;line-height:1.5;margin-bottom:14px;padding:8px 10px;background:#fafafa;border-radius:7px}
+
+/* 정성 평가 그리드 */
+.qual-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.qual-box{background:#f8f7f4;border-radius:10px;padding:11px 12px}
+
+/* 토론방 테이블 */
+.talk-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px}
+.talk-table td{padding:7px 6px;border-bottom:1px solid #f4f4f4;vertical-align:top}
+.talk-table td:first-child{white-space:nowrap;color:#888;font-size:11px;padding-right:10px}
+
+/* 주의 신호 박스 */
+.warn-box{background:#fff9f9;border:1px solid #fee2e2;border-radius:10px;padding:12px 14px;margin-bottom:14px}
+.warn-label{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:#ef4444;font-weight:700;margin-bottom:7px}
+.warn-item{font-size:12px;color:#555;line-height:1.6;padding:2px 0}
+
+/* 코어 적합성 */
+.core-box{border-radius:10px;padding:10px 13px;margin-bottom:14px;font-size:13px;font-weight:600}
+.core-pass{background:#dcfce7;color:#166534}
+.core-cond{background:#fef9c3;color:#854d0e}
+.core-fail{background:#fee2e2;color:#991b1b}
+
+/* 추천 비중 */
+.alloc-row{display:flex;gap:8px;margin-bottom:14px}
+.alloc-box{flex:1;background:#f8f7f4;border-radius:10px;padding:11px 12px;text-align:center}
+.alloc-label{font-size:10px;color:#aaa;margin-bottom:4px}
+.alloc-value{font-size:20px;font-weight:800;color:#7f77dd}
+.alloc-cond{font-size:11px;color:#888;line-height:1.5;margin-top:6px}
+
+/* 간략 카드 */
+.brief-card{background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);padding:14px;margin-bottom:8px}
+.brief-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.brief-name{font-size:15px;font-weight:700}
+.brief-rate{font-size:13px;color:#c0392b;font-weight:700}
+.brief-meta{font-size:11px;color:#888;margin-bottom:7px}
+.brief-reason{font-size:13px;color:#444;line-height:1.55;margin-bottom:8px}
+.judge-pill{display:inline-block;padding:3px 10px;border-radius:8px;font-size:11px;font-weight:700}
+.pill-watch{background:#dbeafe;color:#1e40af}
+.pill-exclude{background:#f1f5f9;color:#475569}
+.pill-danger{background:#fee2e2;color:#991b1b}
+.pill-caution{background:#fef3c7;color:#92400e}
+
+/* 모니터링 카드 */
+.monitor-card{background:#1a1a2e;border-radius:14px;padding:16px;margin-bottom:8px;color:#fff}
+.monitor-rank{font-size:11px;font-weight:700;color:rgba(255,255,255,.5);letter-spacing:.07em;text-transform:uppercase;margin-bottom:6px}
+.monitor-name{font-size:17px;font-weight:800;margin-bottom:6px}
+.monitor-text{font-size:12px;color:rgba(255,255,255,.7);line-height:1.55}
+
+/* 비교 분석 섹션 */
+.compare-card{background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,.06);overflow:hidden;margin-bottom:12px}
+.compare-head{background:linear-gradient(135deg,#1a1a2e,#2d2b4e);color:#fff;padding:16px;font-size:16px;font-weight:800}
+.compare-body{padding:16px}
+
+.compare-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:12px}
+.compare-table th{background:#f8f7f4;padding:9px 8px;text-align:left;font-size:10px;color:#888;font-weight:600}
+.compare-table th:first-child{width:30%}
+.compare-table td{padding:9px 8px;border-bottom:1px solid #f4f4f4;font-size:12px;color:#333;vertical-align:top;line-height:1.5}
+
+.rank-item{border-radius:12px;border:1px solid rgba(0,0,0,.07);padding:13px 14px;margin-bottom:8px}
+.rank-1{border-left:3px solid #7f77dd}
+.rank-badge-circle{width:22px;height:22px;background:#7f77dd;color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin-right:7px}
+.rank-name{font-size:14px;font-weight:700;display:inline}
+.rank-reason{font-size:12px;color:#555;margin-top:6px;line-height:1.55}
+
+.dropout-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:12px}
+.dropout-table th{background:#f8f7f4;padding:8px 7px;font-size:10px;color:#888;font-weight:600;text-align:left}
+.dropout-table td{padding:9px 7px;border-bottom:1px solid #f4f4f4;font-size:12px;color:#444;line-height:1.5;vertical-align:top}
+.dropout-danger{color:#c0392b;font-weight:700}
+
+.final-box{background:#1a1a2e;color:#fff;padding:16px;text-align:center;font-size:15px;font-weight:600;line-height:1.5}
+
+/* 면책 */
+.footer{padding:24px 16px 8px;text-align:center;font-size:12px;color:#aaa;line-height:1.6}
+</style>
 </head>
 <body>
 
+<!-- ① 히어로 헤더 -->
 <div class="hero">
-    <div class="hero-date">2026.05.14 당일 급등주 분석</div>
-    <div class="hero-title">코스피 Top 10 + 코스닥 Top 20<br>단기 트레이딩 기회 분석</div>
-    <div class="hero-chips">
-        <div class="chip">DART 재무데이터</div>
-        <div class="chip">네이버 토론방 이슈</div>
-        <div class="chip">총 30종목</div>
-    </div>
-    <div class="disclaimer">
-        본 분석은 자동 수집된 공개 데이터를 기반으로 작성되었습니다. 투자 판단의 최종 책임은 투자자 본인에게 있으며, 이 리포트는 사용자의 직관 대조를 위한 보조 도구입니다.
-    </div>
+  <div class="hero-date">2026.05.14 (목) · 급등주 분석 리포트</div>
+  <div class="hero-title">강남 고터 개발, 반도체 실체,<br>제약 테마 버블</div>
+  <div class="hero-sub">KOSPI Top 10 + KOSDAQ Top 20 · 단기 트레이딩 기회 분석</div>
+  <div class="hero-chips">
+    <span class="chip">DART 재무데이터</span>
+    <span class="chip">네이버 토론방 이슈</span>
+    <span class="chip">총 22종목</span>
+    <span class="chip">상위 5종목 상세</span>
+  </div>
+  <div class="hero-disclaimer">본 자료는 투자 참고용이며 판단의 책임은 본인에게 있습니다. 자동 수집된 공개 데이터 기반으로 작성되었으며, 투자 권유가 아닙니다.</div>
 </div>
 
+<!-- ② 테마 클러스터 -->
 <div class="section">
-    <div class="section-title">🔍 전체 조감</div>
-    
-    <div class="theme-cluster">
-        <div class="theme-header">
-            <div class="theme-emoji">🚌</div>
-            <div class="theme-name">운수업 급등</div>
-            <div class="theme-badge badge-event">이벤트형</div>
-        </div>
-        <div class="theme-stocks">
-            <div class="stock-tag">천일고속</div>
-            <div class="stock-tag">동양고속</div>
-        </div>
-        <div class="theme-desc">
-            고속버스·시외버스 업체 동반 급등. 토론방 정보 부족으로 재료 확인 불가. 운수업 특성상 규제·유가·면허 변화 등 정책 이벤트 가능성. 재무는 동양고속이 2025년 흑전했으나 천일고속은 3년 연속 적자. 순수 이벤트 드리븐으로 분류하며 재료 확인 전까지는 접근 유보.
-        </div>
+  <div class="section-label">오늘 장을 지배한 테마</div>
+
+  <div class="cluster-card">
+    <div class="cluster-head">
+      <span class="cluster-emoji">🔌</span>
+      <span class="cluster-name">반도체·전자부품</span>
+      <span class="badge badge-real">실체형</span>
     </div>
-    
-    <div class="theme-cluster">
-        <div class="theme-header">
-            <div class="theme-emoji">🤖</div>
-            <div class="theme-name">로보틱스 클러스터</div>
-            <div class="theme-badge badge-noise">노이즈형</div>
-        </div>
-        <div class="theme-stocks">
-            <div class="stock-tag">TPC로보틱스</div>
-            <div class="stock-tag">코스모로보틱스</div>
-        </div>
-        <div class="theme-desc">
-            로보틱스 테마주 동반 급등. TPC로보틱스는 3년 연속 적자, ROE -6.7%, 부채비율 185%. 코스모로보틱스는 재무 데이터 미확인. 토론방 정보 부재로 구체 재료 없음. 단순 섹터 모멘텀 동조화로 판단. 재무 기반 부재 + 재료 불명확으로 분석 대상에서 제외.
-        </div>
+    <div class="cluster-tickers">
+      <span class="ticker">제주반도체</span>
+      <span class="ticker">한양디지텍</span>
     </div>
-    
-    <div class="theme-cluster">
-        <div class="theme-header">
-            <div class="theme-emoji">💊</div>
-            <div class="theme-name">제약·바이오 급등</div>
-            <div class="theme-badge badge-event">이벤트형</div>
-        </div>
-        <div class="theme-stocks">
-            <div class="stock-tag">삼진제약</div>
-            <div class="stock-tag">안국약품</div>
-            <div class="stock-tag">차백신연구소</div>
-            <div class="stock-tag">라메디텍</div>
-            <div class="stock-tag">한스바이오메드</div>
-            <div class="stock-tag">아이엠바이오로직스</div>
-        </div>
-        <div class="theme-desc">
-            제약·바이오 섹터 전반 급등. 안정 이익형(삼진제약, 안국약품), 연구개발형 적자사(차백신, 라메디텍, 한스바이오메드), 소형 흑자 전환사(아이엠바이오로직스)로 분류. 토론방 정보 부족으로 공통 재료 확인 불가. 일부 종목(삼진제약·안국약품·아이엠바이오로직스)은 재무 기반이 있어 단기 트레이딩 후보로 검토 가능.
-        </div>
+    <div class="cluster-desc">반도체 후공정·부품 유통 업체 동반 급등. 제주반도체 토론방에 2분기 수주잔고(~5,472억)·납품 데이터 분석 게시글 등장. 일본 SSD 가격 300% 폭등 뉴스가 한양디지텍 재료로 링크됨. 오늘 장에서 유일하게 실체 재료가 수급을 이끈 클러스터.</div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-head">
+      <span class="cluster-emoji">💊</span>
+      <span class="cluster-name">제약·바이오</span>
+      <span class="badge badge-event">이벤트형 (혼합)</span>
     </div>
-    
-    <div class="theme-cluster">
-        <div class="theme-header">
-            <div class="theme-emoji">🔌</div>
-            <div class="theme-name">반도체·전자부품</div>
-            <div class="theme-badge badge-real">실체형</div>
-        </div>
-        <div class="theme-stocks">
-            <div class="stock-tag">제주반도체</div>
-            <div class="stock-tag">한양디지텍</div>
-        </div>
-        <div class="theme-desc">
-            반도체 후공정·패키징 관련주. 제주반도체는 2025년 매출 2배, 영업이익률 11.9%, ROE 17.4%로 실적 개선 뚜렷. 한양디지텍도 안정적 흑자 기조. 반도체 업황 호조 반영으로 보이나 PER 65배·36배로 밸류에이션 부담 존재. 업황 사이클 상승 수혜주로 분류.
-        </div>
+    <div class="cluster-tickers">
+      <span class="ticker">삼진제약</span>
+      <span class="ticker">안국약품</span>
+      <span class="ticker">차백신연구소</span>
+      <span class="ticker">라메디텍</span>
+      <span class="ticker">한스바이오메드</span>
+      <span class="ticker">아이엠바이오로직스</span>
     </div>
-    
-    <div class="theme-cluster">
-        <div class="theme-header">
-            <div class="theme-emoji">🏢</div>
-            <div class="theme-name">복합 대형주</div>
-            <div class="theme-badge badge-event">이벤트형</div>
-        </div>
-        <div class="theme-stocks">
-            <div class="stock-tag">SK네트웍스</div>
-            <div class="stock-tag">비에이치</div>
-        </div>
-        <div class="theme-desc">
-            대형 복합 사업 기업. SK네트웍스는 시총 1.5조, 비에이치는 1.2조. 양사 모두 지주사·홀딩스 구조로 비지배지분 이슈는 경미. SK네트웍스는 PER 31배, 비에이치는 40배(지배기준)로 테마 부각 시 단기 모멘텀 가능. 토론방 정보 부재로 구체 재료 미확인.
-        </div>
+    <div class="cluster-desc">소룩스·아리바이오 관련 루머가 제약 섹터 전체를 동조 급등 유발. 안정 이익형(삼진제약·안국약품)과 연구개발 적자형(차백신·라메디텍·한스바이오메드)이 뒤섞인 구조. 안국약품은 화장품 M&A 실체 재료 있음. 아이엠바이오로직스는 마일스톤 75억 수령(일회성).</div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-head">
+      <span class="cluster-emoji">🏗️</span>
+      <span class="cluster-name">강남 고터 개발 수혜</span>
+      <span class="badge badge-event">이벤트형</span>
     </div>
-    
-    <div class="theme-cluster">
-        <div class="theme-header">
-            <div class="theme-emoji">🗑️</div>
-            <div class="theme-name">재무 부실 급등주</div>
-            <div class="theme-badge badge-noise">노이즈형</div>
-        </div>
-        <div class="theme-stocks">
-            <div class="stock-tag">폴레드(+300%)</div>
-            <div class="stock-tag">소룩스</div>
-            <div class="stock-tag">코아시아씨엠</div>
-            <div class="stock-tag">라온텍</div>
-            <div class="stock-tag">에스에너지</div>
-            <div class="stock-tag">메이슨캐피탈</div>
-        </div>
-        <div class="theme-desc">
-            재무 데이터 부재 또는 만성 적자 종목. 폴레드는 재무 미확인에도 +300% 급등(시총 5,036억). 나머지는 영업적자, ROE -30~-135%, 부채비율 150~240% 수준. 토론방 정보 전무. 순수 투기 수급으로 판단되며 분석 가치 없음.
-        </div>
+    <div class="cluster-tickers">
+      <span class="ticker">천일고속</span>
+      <span class="ticker">동양고속</span>
     </div>
+    <div class="cluster-desc">서울시장 후보들의 강남 고속터미널 개발 공약이 직접 재료. 고터 부지를 사용하는 고속버스 운송사가 개발 수혜주로 부각됐어요. 동양고속은 2025년 흑자 전환 실체 있어 이벤트 이후에도 재무 기반이 남음. 천일고속은 3년 연속 적자로 개발 이슈 소멸 시 하방 없음.</div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-head">
+      <span class="cluster-emoji">🏢</span>
+      <span class="cluster-name">복합 대형주</span>
+      <span class="badge badge-event">이벤트형</span>
+    </div>
+    <div class="cluster-tickers">
+      <span class="ticker">SK네트웍스</span>
+      <span class="ticker">비에이치</span>
+    </div>
+    <div class="cluster-desc">SK네트웍스는 "SK에서 유일한 AI주, 업스테이지 지분 12%" 토론방 언급. 비에이치는 미중 정상회담 애플 동행 관련 전자부품 수혜 기대. 양사 모두 재료의 직접성 약함.</div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-head">
+      <span class="cluster-emoji">🤖</span>
+      <span class="cluster-name">로보틱스</span>
+      <span class="badge badge-noise">노이즈형</span>
+    </div>
+    <div class="cluster-tickers">
+      <span class="ticker">TPC로보틱스</span>
+      <span class="ticker">코스모로보틱스</span>
+    </div>
+    <div class="cluster-desc">섹터 모멘텀 동조화. 코스모로보틱스는 GS그룹 계열 프리미엄 있으나 재무 미확인. TPC로보틱스는 3년 연속 적자. 토론방에 스팸성 텔레그램 방 홍보글 다수. 재료 불명확.</div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-head">
+      <span class="cluster-emoji">🗑️</span>
+      <span class="cluster-name">재무 부실 급등주</span>
+      <span class="badge badge-noise">노이즈형</span>
+    </div>
+    <div class="cluster-tickers">
+      <span class="ticker">폴레드 +300%</span>
+      <span class="ticker">소룩스</span>
+      <span class="ticker">코아시아씨엠</span>
+      <span class="ticker">라온텍</span>
+      <span class="ticker">에스에너지</span>
+      <span class="ticker">메이슨캐피탈</span>
+    </div>
+    <div class="cluster-desc">재무 데이터 부재 또는 만성 적자. ROE -30~-135%, 부채비율 150~243%. 토론방 재료 전무. 순수 투기 수급으로 판단. 분석 가치 없음.</div>
+  </div>
 </div>
 
+<!-- ③ 1차 분리 -->
 <div class="section">
-    <div class="section-title">✂️ 1차 분리</div>
-    
-    <div style="margin-bottom: 20px;">
-        <div style="font-size: 14px; font-weight: 600; color: #1a7a45; margin-bottom: 10px;">✅ 분석 가치 있음 (10종목)</div>
-        <ul class="divider-list">
-            <li><span class="stock-name">삼진제약</span><br><span class="stock-reason">안정 제약사, 영업이익률 8.5%, ROE 7.9%, PER 14.1배</span></li>
-            <li><span class="stock-name">안국약품</span><br><span class="stock-reason">2025년 매출 3,069억, 영업이익 98억, 흑자 안정</span></li>
-            <li><span class="stock-name">비에이치</span><br><span class="stock-reason">시총 1.2조, 유통·물류 복합 사업, 재무 건전</span></li>
-            <li><span class="stock-name">SK네트웍스</span><br><span class="stock-reason">시총 1.5조, 대형 복합주, 흑자 전환</span></li>
-            <li><span class="stock-name">제주반도체</span><br><span class="stock-reason">2025년 실적 급등, 영업이익률 11.9%, ROE 17.4%</span></li>
-            <li><span class="stock-name">한양디지텍</span><br><span class="stock-reason">반도체 장비, 안정 흑자, 부채비율 75%</span></li>
-            <li><span class="stock-name">동양고속</span><br><span class="stock-reason">2025년 흑전, 영업이익 51억, 재무 개선 중</span></li>
-            <li><span class="stock-name">아이엠바이오로직스</span><br><span class="stock-reason">소형 흑자 바이오, 부채비율 2.5%, PER 747배는 고평가</span></li>
-            <li><span class="stock-name">천일고속</span><br><span class="stock-reason">만성 적자이나 이벤트 재료 확인 필요</span></li>
-            <li><span class="stock-name">코아시아씨엠</span><br><span class="stock-reason">2025년 흑전, 비지배지분 68%로 밸류에이션 왜곡 큼</span></li>
-        </ul>
-    </div>
-    
-    <div>
-        <div style="font-size: 14px; font-weight: 600; color: #c0392b; margin-bottom: 10px;">❌ 분석 제외 (20종목)</div>
-        <div style="font-size: 13px; color: #666; line-height: 1.6;">
-            폴레드(재무 미확인, +300% 급등), TPC로보틱스(3년 연속 적자), 코스모로보틱스(재무 미확인), 소룩스(3년 연속 적자, ROE -8.5%), 차백신연구소(ROE -135%, 연구개발 단계), 라온텍(3년 연속 적자, ROE -39.3%), 라메디텍(ROE -135%, 부채비율 199%), 메이슨캐피탈(2025년 흑자→적자 전환, 영업이익 -101억), 에스에너지(3년 연속 적자, 부채비율 243%), 한스바이오메드(ROE -94.7%, 부채비율 273%) 등.<br><br>
-            <strong>제외 사유:</strong> 만성 적자 + 재무 부실 + 토론방 재료 없음 + 순수 투기 수급으로 판단. 테마 소멸 시 낙폭 제한 불가.
-        </div>
-    </div>
+  <div class="section-label">종목 1차 분리</div>
+
+  <div class="divider-group">
+    <div class="divider-head"><span>✅</span> 분석 가치 있음 (10종목)</div>
+    <div class="divider-item"><span class="divider-name">삼진제약</span><span class="divider-reason">5년 연속 흑자, OPM 7~14%, PER 14.0배, 부채비율 47%</span></div>
+    <div class="divider-item"><span class="divider-name">안국약품</span><span class="divider-reason">3년 매출 연평균 +14%, 2025년 흑자 안정</span></div>
+    <div class="divider-item"><span class="divider-name">제주반도체</span><span class="divider-reason">2025년 매출 2배, OPM 11.9%, ROE 17.4%</span></div>
+    <div class="divider-item"><span class="divider-name">한양디지텍</span><span class="divider-reason">반도체 부품, 3년 매출 연평균 +16%, 안정 흑자</span></div>
+    <div class="divider-item"><span class="divider-name">비에이치</span><span class="divider-reason">시총 1.2조, 흑자 기조 — 단 수익성 하락 중</span></div>
+    <div class="divider-item"><span class="divider-name">SK네트웍스</span><span class="divider-reason">시총 1.5조, 대형 복합주, 흑자 전환</span></div>
+    <div class="divider-item"><span class="divider-name">동양고속</span><span class="divider-reason">2025년 흑자 전환, 재무 개선 중</span></div>
+    <div class="divider-item"><span class="divider-name">아이엠바이오로직스</span><span class="divider-reason">소형 흑자 바이오, 부채비율 2.5% — PER 747배 과도</span></div>
+    <div class="divider-item"><span class="divider-name">한스바이오메드</span><span class="divider-reason">셀르디엠 매출 성장 가능성, 증설 완료</span></div>
+    <div class="divider-item"><span class="divider-name">천일고속</span><span class="divider-reason">이벤트 재료 확인 필요 — 재무 기반은 없음</span></div>
+  </div>
+
+  <div class="divider-group">
+    <div class="divider-head"><span>❌</span> 분석 제외 (12종목)</div>
+    <div class="divider-item"><span class="divider-reason">폴레드(재무 미확인, +300%), TPC로보틱스(3년 연속 적자, ROE -6.7%), 코스모로보틱스(재무 미확인), 소룩스(3년 적자), 차백신연구소(ROE -135%), 라온텍(3년 적자, ROE -39.3%), 라메디텍(ROE -135%, 부채비율 199%), 메이슨캐피탈(2025년 적자 전환), 에스에너지(3년 적자, 부채비율 243%), 코아시아씨엠(비지배 68%), 한스바이오메드(ROE -94.7%) — 만성 적자·재무 부실·재료 없음</span></div>
+  </div>
 </div>
 
+<!-- ④ 상위 5종목 선정 이유 -->
 <div class="section">
-    <div class="section-title">🏆 상위 5종목 선정 이유</div>
-    <ul class="divider-list">
-        <li><span class="stock-name">1위 — 제주반도체</span><br><span class="stock-reason">2025년 실적 급등(매출 2배, 영업이익 3.7배), 반도체 업황 수혜 명확, ROE 17.4%, 재무 건전. 단 PER 65배 부담.</span></li>
-        <li><span class="stock-name">2위 — 삼진제약</span><br><span class="stock-reason">안정 제약사, 영업이익률 8.5%, PER 14.1배로 밸류에이션 저평가, 부채비율 47%. 제약 테마 부각 시 안전 마진 확보.</span></li>
-        <li><span class="stock-name">3위 — 안국약품</span><br><span class="stock-reason">매출 성장세(3년간 연평균 +14%), 2025년 영업이익 98억, PER 17.8배. 삼진제약 대비 밸류에이션 소폭 높으나 성장성 우위.</span></li>
-        <li><span class="stock-name">4위 — 비에이치</span><br><span class="stock-reason">시총 1.2조 대형주, 유통·물류 복합 사업, 흑자 기조 안정. 단 비지배지분 23.7%로 지배주주 귀속 순이익 기준 PER 40배. 단기 모멘텀형.</span></li>
-        <li><span class="stock-name">5위 — 한양디지텍</span><br><span class="stock-reason">반도체 장비, 매출 성장(3년간 연평균 +16%), 영업이익률 3.7%, 부채비율 75%. PER 36배 부담 있으나 업황 수혜주.</span></li>
-    </ul>
+  <div class="section-label">상위 5종목 선정 이유</div>
+
+  <div class="pick-card">
+    <div class="pick-rank">1</div>
+    <div class="pick-body">
+      <div class="pick-name">제주반도체</div>
+      <div class="pick-reason">2025년 매출 2배·영업이익 3.7배 실적 실체 + 토론방에 2분기 수주잔고(5,472억) 분석 게시. 오늘 장에서 유일하게 실적 근거와 수급이 맞물린 종목.</div>
+    </div>
+  </div>
+
+  <div class="pick-card">
+    <div class="pick-rank">2</div>
+    <div class="pick-body">
+      <div class="pick-name">안국약품</div>
+      <div class="pick-reason">매출 3년 연평균 +14% 성장. 토론방에 "화장품 흡수합병으로 매출 급증" 실체 추론 등장. 삼진제약보다 성장성 명확한 우위. PER 17.8배로 Bull 시나리오 +80% 여력.</div>
+    </div>
+  </div>
+
+  <div class="pick-card">
+    <div class="pick-rank">3</div>
+    <div class="pick-body">
+      <div class="pick-name">삼진제약</div>
+      <div class="pick-reason">5년 연속 흑자, OPM 7~14% 밴드 유지, 부채비율 47%로 제약 테마 급등 시 하방 가장 단단. PER 14.0배로 5종목 중 밸류에이션 최저. 2024년 ROE 15% 달성 후 2025년 소폭 조정(8.3%) — 이익 변동성은 있으나 적자 리스크 없음.</div>
+    </div>
+  </div>
+
+  <div class="pick-card">
+    <div class="pick-rank">4</div>
+    <div class="pick-body">
+      <div class="pick-name">한양디지텍</div>
+      <div class="pick-reason">SSD 가격 300% 폭등 뉴스 토론방 실제 링크 게재. 반도체 업황 실체 재료 + 3년 매출 연평균 +16%. 제주반도체 대비 PER 부담 낮음(36배).</div>
+    </div>
+  </div>
+
+  <div class="pick-card">
+    <div class="pick-rank">5</div>
+    <div class="pick-body">
+      <div class="pick-name">비에이치</div>
+      <div class="pick-reason">시총 1.2조 대형주. 미중 정상회담·애플 동행 전자부품 수혜 기대. 단 수익성 하락(OPM 5%→3%)과 지배기준 PER 40.7배로 5종목 중 투자 매력도 최하위.</div>
+    </div>
+  </div>
 </div>
 
-<div class="stock-card">
+<!-- ⑤ 상세 리포트 -->
+<div class="section">
+  <div class="section-label">상위 5종목 상세 분석</div>
+
+  <!-- 제주반도체 -->
+  <div class="stock-card">
     <div class="card-header">
-        <div class="rank-badge">1위</div>
-        <div class="stock-title">제주반도체</div>
-        <div class="stock-meta">
-            <span>반도체·전자부품</span>
-            <span>+28.35%</span>
-            <span>75,600원</span>
-        </div>
+      <div class="rank-chip">1위</div>
+      <div class="stock-title-row">
+        <div class="stock-name">제주반도체</div>
+        <div class="stock-rate">+28.35%</div>
+      </div>
+      <div class="stock-meta">반도체·전자부품 · 75,600원 · 시총 26,038억</div>
     </div>
     <div class="card-body">
-        <span class="label">종목 분류</span>
-        <div class="value-large">트레이딩·옵션형 — 사이클 상승 수혜주</div>
-        
-        <span class="label">핵심 요약</span>
-        <div class="value-large">반도체 후공정(패키징) 기업. 2025년 실적 급등(매출 2배, 영업이익 3.7배). 반도체 업황 호조 + 고객사 확대 반영. 단 PER 65.9배로 밸류에이션 부담. 단기 업황 모멘텀 트레이딩 대상.</div>
-        
-        <span class="label">정량 평가</span>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이익 구조</div>
-                <div class="metric-value">사이클형</div>
-                <div class="sub-label">반도체 후공정 업황 연동</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">재무 건전성</div>
-                <div class="metric-value">우수</div>
-                <div class="sub-label">부채비율 47.9%</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">성장성</div>
-                <div class="metric-value text-blue">급등</div>
-                <div class="sub-label">2025년 매출 2배</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">밸류에이션</div>
-                <div class="metric-value text-red">PER 65.9배</div>
-                <div class="sub-label">지배기준, 고평가 영역</div>
-            </div>
+      <div class="sub-label">종목 분류</div>
+      <div class="classify-badge">📈 트레이딩·옵션형 — 사이클 상승 수혜주</div>
+
+      <div class="sub-label">핵심 요약</div>
+      <div class="summary-text">반도체 후공정(패키징) 전문기업이에요. 2025년 매출이 전년 대비 86% 늘고 영업이익은 3.7배 급증했어요. 토론방에 2분기 수주잔고(약 5,472억)와 4~5월 초 납품 데이터 분석 글이 실제로 올라와 있어요. 재료의 실체는 있지만 PER 65.9배는 업황 정점을 가정해도 부담스러운 수준이에요.</div>
+
+      <div class="sub-label">정량 평가</div>
+      <div class="grid2">
+        <div class="metric-box">
+          <div class="metric-label">이익 구조</div>
+          <div class="metric-value val-orange">사이클형</div>
+          <div class="metric-sub">후공정 업황 연동</div>
         </div>
-        
-        <div class="judgment-box">
-            <p><strong>핵심 판단:</strong> 실적 급등은 실체 있으나 PER 65배는 업황 정점 가정 시에도 부담. 현 주가는 2026년 이익 400억 이상을 선반영한 수준. 추가 상승은 업황 지속성 + 고객사 확대 뉴스 필요. 단기 트레이딩은 가능하나 코어 편입 부적합.</p>
+        <div class="metric-box">
+          <div class="metric-label">재무 건전성</div>
+          <div class="metric-value val-green">우수</div>
+          <div class="metric-sub">부채비율 47.9%</div>
         </div>
-        
-        <span class="label">연도별 실적</span>
-        <table>
-            <tr>
-                <th>연도</th>
-                <th>매출(억)</th>
-                <th>영업이익(억)</th>
-                <th>지배순이익(억)</th>
-                <th>영업이익률</th>
-                <th>ROE</th>
-            </tr>
-            <tr>
-                <td>2023</td>
-                <td>1,459</td>
-                <td>178</td>
-                <td>167</td>
-                <td>12.2%</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2024</td>
-                <td>1,623</td>
-                <td>96</td>
-                <td>195</td>
-                <td>5.9%</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2025</td>
-                <td class="text-blue">3,022</td>
-                <td class="text-blue">359</td>
-                <td class="text-blue">395</td>
-                <td class="text-blue">11.9%</td>
-                <td class="text-blue">17.4%</td>
-            </tr>
-        </table>
-        
-        <span class="label">정성 평가</span>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이벤트드리븐</div>
-                <div class="metric-value">중</div>
-                <div class="sub-label">업황 사이클 수혜</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">토론방 신호</div>
-                <div class="metric-value text-gray">미확인</div>
-                <div class="sub-label">정보 부족</div>
-            </div>
+        <div class="metric-box">
+          <div class="metric-label">성장성</div>
+          <div class="metric-value val-green">급등</div>
+          <div class="metric-sub">2025년 매출 +86%</div>
         </div>
-        <div style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;">
-            <strong>산업 위치:</strong> 반도체 후공정 전문 기업. 주요 고객은 IDM·파운드리 업체. 2025년 매출 급등은 신규 고객 확보 + 단가 상승 복합 작용. 경쟁사 대비 기술력은 중위권, 고객 종속도 높음. 업황 사이클 하락 시 이익 급감 리스크.
+        <div class="metric-box">
+          <div class="metric-label">밸류에이션</div>
+          <div class="metric-value val-red">PER 65.9배</div>
+          <div class="metric-sub">지배기준, 고평가</div>
         </div>
-        
-        <span class="label">밸류에이션 시나리오</span>
-        <div style="font-size: 13px; color: #666; margin-bottom: 10px;">현재 시총: 26,038억원 (2026.05.14 기준)</div>
-        <table>
-            <tr>
-                <th>시나리오</th>
-                <th>가정</th>
-                <th>적정 시총</th>
-                <th>현재 대비</th>
-            </tr>
-            <tr>
-                <td>🟢 Bull</td>
-                <td>2026년 이익 450억, PER 50배</td>
-                <td>22,500억</td>
-                <td class="text-red">-13.6%</td>
-            </tr>
-            <tr>
-                <td>⚪ Base</td>
-                <td>2026년 이익 350억, PER 45배</td>
-                <td>15,750억</td>
-                <td class="text-red">-39.5%</td>
-            </tr>
-            <tr>
-                <td>🔴 Bear</td>
-                <td>업황 정점 통과, 2026년 이익 200억, PER 30배</td>
-                <td>6,000억</td>
-                <td class="text-red">-76.9%</td>
-            </tr>
-        </table>
-        <div style="font-size: 12px; color: #c0392b; margin-top: 8px;">
-            ※ 테마 소멸 시: 2024년 실적(이익 195억, PER 30배 가정) 기준 시총 5,850억 수준까지 하락 가능. 현 주가는 낙폭 위험 큼.
-        </div>
-        
-        <span class="label">코어 적합성</span>
-        <div class="value-large text-red">부적합 — 이익 재현성 불안정, 밸류에이션 과도, 사이클 정점 리스크</div>
-        
-        <div class="warning-box">
-            <strong style="display: block; margin-bottom: 8px;">탈락 신호</strong>
-            <ul>
-                <li>2026년 1분기 실적 가이던스 하향 또는 QoQ 감익</li>
-                <li>주요 고객사 발주 감소 뉴스</li>
-                <li>반도체 업황 지표(DRAM·NAND 가격, 파운드리 가동률) 하락 전환</li>
-            </ul>
-        </div>
-        
-        <span class="label">추천 비중</span>
-        <div class="allocation">
-            <div class="alloc-item">
-                <div class="alloc-label">코어</div>
-                <div class="alloc-value">0%</div>
-            </div>
-            <div class="alloc-item">
-                <div class="alloc-label">트레이딩</div>
-                <div class="alloc-value">5%</div>
-            </div>
-        </div>
-        <div style="margin-top: 10px; font-size: 13px; color: #666;">
-            조건: 반도체 업황 지표 확인 후 단기 진입. 목표가 85,000원(+12%), 손절가 68,000원(-10%). 2026년 1분기 실적 발표 전 청산.
-        </div>
+      </div>
+
+      <div class="judge-box">
+        <div class="judge-label">핵심 판단</div>
+        <div class="judge-text">실적 급등은 실체이지만 PER 65배는 업황 정점 가정에서도 부담이에요. 현 주가는 2026년 이익 400억 이상을 이미 선반영한 수준이에요. Bull 시나리오에서도 현재 주가 대비 하락(-13.6%)이 나와요. 단기 트레이딩은 가능하지만 코어 편입은 안 돼요.</div>
+      </div>
+
+      <div class="sub-label">연도별 실적</div>
+      <table class="perf-table">
+        <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>ROE</th></tr></thead>
+        <tbody>
+          <tr><td>2023</td><td>1,459</td><td>178</td><td>12.2%</td><td>확인필요</td></tr>
+          <tr><td>2024</td><td>1,623</td><td>96</td><td>5.9%</td><td>확인필요</td></tr>
+          <tr><td>2025</td><td>3,022</td><td>359</td><td>11.9%</td><td>17.4%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">토론방 신호</div>
+      <table class="talk-table">
+        <tbody>
+          <tr><td>05.14</td><td>2분기 수주잔고 5,472억, 4~5월 초 납품액 3,075억 데이터 분석 게시글 등장</td></tr>
+          <tr><td>05.14</td><td>"실적으로 증명된 반도체 주식" — 장기 보유 성향 주주 다수, 단타 경계 글도 병존</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">밸류에이션 시나리오 <small style="color:#888;font-size:10px">(시총 26,038억 기준)</small></div>
+      <table class="val-table">
+        <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
+        <tbody>
+          <tr class="val-bull"><td>🟢 Bull</td><td>2026년 이익 450억, PER 50배</td><td>22,500억</td><td>-13.6%</td></tr>
+          <tr class="val-base"><td>⚪ Base</td><td>2026년 이익 350억, PER 45배</td><td>15,750억</td><td>-39.5%</td></tr>
+          <tr class="val-bear"><td>🔴 Bear</td><td>업황 정점 통과, 이익 200억, PER 30배</td><td>6,000억</td><td>-76.9%</td></tr>
+        </tbody>
+      </table>
+      <div class="val-note">※ 테마 소멸 시: 2024년 이익(195억, PER 30배) 기준 시총 5,850억까지 하락 가능. Bull에서도 현 주가 대비 하락.</div>
+
+      <div class="sub-label">코어 적합성</div>
+      <div class="core-box core-fail">❌ 부적합 — 이익 재현성 불안정(2024년 급감 전례), 밸류에이션 과도, 사이클 정점 리스크</div>
+
+      <div class="sub-label">추천 비중</div>
+      <div class="alloc-row">
+        <div class="alloc-box"><div class="alloc-label">코어</div><div class="alloc-value">0%</div></div>
+        <div class="alloc-box"><div class="alloc-label">트레이딩</div><div class="alloc-value">5%</div></div>
+      </div>
+      <div class="alloc-cond">조건: 1분기 실적 발표 전 단기. 목표가 85,000원, 손절가 68,000원. 수주잔고 데이터 원문 검증 필수.</div>
+
+      <div class="warn-box" style="margin-top:12px">
+        <div class="warn-label">탈락 신호</div>
+        <div class="warn-item">· 2026년 1분기 QoQ 영업이익 감소</div>
+        <div class="warn-item">· 수주잔고 5,472억 소진 후 신규 수주 미확인</div>
+        <div class="warn-item">· DRAM·NAND 가격 지표 하락 전환</div>
+      </div>
     </div>
+  </div>
+
+  <!-- 안국약품 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div class="rank-chip">2위</div>
+      <div class="stock-title-row">
+        <div class="stock-name">안국약품</div>
+        <div class="stock-rate">+29.94%</div>
+      </div>
+      <div class="stock-meta">제약·바이오 · 10,200원 · 시총 1,330억</div>
+    </div>
+    <div class="card-body">
+      <div class="sub-label">종목 분류</div>
+      <div class="classify-badge">📈 트레이딩·옵션형 (코어 조건부 검토 가능) — 성장형 중소 제약주</div>
+
+      <div class="sub-label">핵심 요약</div>
+      <div class="summary-text">중견 제약사예요. 일반의약품·건강기능식품 중심이고 3년간 매출이 연평균 14%씩 성장했어요. 토론방에 "화장품 회사 흡수합병 이후 매출이 이렇게 늘었다"는 실체 있는 추론이 등장했어요. PER 17.8배로 삼진제약(14.0배)보다 소폭 높지만 성장성에서 명확히 앞서요. OPM 3.2%가 지금 상태에서 가장 큰 약점이에요.</div>
+
+      <div class="sub-label">정량 평가</div>
+      <div class="grid2">
+        <div class="metric-box">
+          <div class="metric-label">이익 구조</div>
+          <div class="metric-value val-green">안정형</div>
+          <div class="metric-sub">3년 연속 흑자</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">재무 건전성</div>
+          <div class="metric-value val-green">양호</div>
+          <div class="metric-sub">부채비율 87.0%</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">성장성</div>
+          <div class="metric-value val-green">우수</div>
+          <div class="metric-sub">매출 연평균 +14%</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">밸류에이션</div>
+          <div class="metric-value val-orange">PER 17.8배</div>
+          <div class="metric-sub">지배기준, 적정</div>
+        </div>
+      </div>
+
+      <div class="judge-box">
+        <div class="judge-label">핵심 판단</div>
+        <div class="judge-text">매출 성장세와 안정 흑자로 삼진제약 대비 성장성 우위예요. PER 17.8배는 삼진(14.0배)보다 소폭 높지만 성장성 감안 시 합리적이에요. Bull 시나리오에서 +80% 상승 여력이 있어요. OPM 3.2%는 개선 필요하고, 화장품 M&A 효과는 DART 공시로 검증해야 해요.</div>
+      </div>
+
+      <div class="sub-label">연도별 실적</div>
+      <table class="perf-table">
+        <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>ROE</th></tr></thead>
+        <tbody>
+          <tr><td>2023</td><td>2,337</td><td>51</td><td>2.2%</td><td>확인필요</td></tr>
+          <tr><td>2024</td><td>2,711</td><td>67</td><td>2.5%</td><td>확인필요</td></tr>
+          <tr><td>2025</td><td>3,069</td><td>98</td><td>3.2%</td><td>4.5%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">토론방 신호</div>
+      <table class="talk-table">
+        <tbody>
+          <tr><td>05.14</td><td>"화장품 회사 흡수합병했고 오늘 화장품주가 상승했다" — 매출 급증 원인 추론</td></tr>
+          <tr><td>05.14</td><td>기관 수십만주 대규모 매집 언급 ("여태 이런 매집 없었다")</td></tr>
+          <tr><td>05.14</td><td>"시총 4,000억까지 달린다, 분기 매출 1,000억이면 키맞추기 간다"</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">밸류에이션 시나리오 <small style="color:#888;font-size:10px">(시총 1,330억 기준)</small></div>
+      <table class="val-table">
+        <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
+        <tbody>
+          <tr class="val-bull"><td>🟢 Bull</td><td>2026년 이익 120억, PER 20배</td><td>2,400억</td><td>+80.5%</td></tr>
+          <tr class="val-base"><td>⚪ Base</td><td>2025년 이익 75억, PER 17배</td><td>1,275억</td><td>-4.1%</td></tr>
+          <tr class="val-bear"><td>🔴 Bear</td><td>이익 감소 50억, PER 14배</td><td>700억</td><td>-47.4%</td></tr>
+        </tbody>
+      </table>
+      <div class="val-note">※ 테마 소멸 시: PER 14배 기준 1,050억(-21%). 삼진제약(PER 12배 → -27%)보다 하방 약함. 성장 지속이 핵심 전제.</div>
+
+      <div class="sub-label">코어 적합성</div>
+      <div class="core-box core-cond">⚠️ 조건부 적합 — OPM 5% 이상 개선 및 화장품 M&A 효과 확인 시 코어 편입 검토</div>
+
+      <div class="sub-label">추천 비중</div>
+      <div class="alloc-row">
+        <div class="alloc-box"><div class="alloc-label">코어</div><div class="alloc-value">0%</div></div>
+        <div class="alloc-box"><div class="alloc-label">트레이딩</div><div class="alloc-value">5%</div></div>
+      </div>
+      <div class="alloc-cond">조건: 제약 테마 지속 시. 목표가 11,500원, 손절가 9,200원. 화장품 M&A 공시 확인 후 비중 확대 검토.</div>
+
+      <div class="warn-box" style="margin-top:12px">
+        <div class="warn-label">탈락 신호</div>
+        <div class="warn-item">· OPM 2026년 3% 미만으로 하락</div>
+        <div class="warn-item">· 화장품 M&A 효과 미실현 (매출 성장 5% 미만으로 둔화)</div>
+        <div class="warn-item">· 기관 매집이 단발성으로 확인</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 삼진제약 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div class="rank-chip">3위</div>
+      <div class="stock-title-row">
+        <div class="stock-name">삼진제약</div>
+        <div class="stock-rate">+29.89%</div>
+      </div>
+      <div class="stock-meta">제약·바이오 · 23,250원 · 시총 3,096억</div>
+    </div>
+    <div class="card-body">
+      <div class="sub-label">종목 분류</div>
+      <div class="classify-badge">📈 트레이딩·옵션형 + 코어 편입 가능 — 안정 사이클 혼합형 제약주</div>
+
+      <div class="sub-label">핵심 요약</div>
+      <div class="summary-text">안정적인 중소형 제약사예요. 5년 연속 흑자, OPM 7~14% 밴드, 부채비율 47%로 재무 기반이 확인됐어요. 2024년 이익 반등(OPM 10.3%, ROE 15.0%)이 뚜렷했고 2025년은 소폭 조정(OPM 8.7%)이에요. PER 14.0배로 5종목 중 밸류에이션 최저예요. 토론방 재료는 소룩스·아리바이오 루머에 연동된 동조 급등으로 독자 재료는 없지만, 재무 기반이 확인된 이상 진입 장벽은 해소됐어요.</div>
+
+      <div class="sub-label">정량 평가</div>
+      <div class="grid2">
+        <div class="metric-box">
+          <div class="metric-label">이익 구조</div>
+          <div class="metric-value val-green">안정 사이클형</div>
+          <div class="metric-sub">5년 연속 흑자, 이익 변동성 있음</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">재무 건전성</div>
+          <div class="metric-value val-green">매우 우수</div>
+          <div class="metric-sub">부채비율 47% (추정)</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">성장성</div>
+          <div class="metric-value val-orange">완만</div>
+          <div class="metric-sub">매출 연평균 +5.4%</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">밸류에이션</div>
+          <div class="metric-value val-green">PER 14.0배</div>
+          <div class="metric-sub">2025년 순이익 221억 기준</div>
+        </div>
+      </div>
+
+      <div class="judge-box">
+        <div class="judge-label">핵심 판단</div>
+        <div class="judge-text">재무 기반 확인으로 "데이터 공백" 약점이 해소됐어요. 5년 데이터가 보여주는 이익 패턴은 순수 안정형이 아니라 사이클이 있어요(2021 고점→2023 저점→2024 반등→2025 조정). 이익 재현성은 있지만 PER을 낮게 적용하는 이유가 여기에 있어요. 소룩스 루머 의존 수급은 여전히 약점이지만, 테마 소멸 후에도 PER 14배 재무 기반이 하방을 지지해요.</div>
+      </div>
+
+      <div class="sub-label">연도별 실적</div>
+      <table class="perf-table">
+        <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>순이익(억)</th><th>ROE</th></tr></thead>
+        <tbody>
+          <tr><td>2021</td><td>2,501</td><td>339</td><td>13.6%</td><td>284</td><td>12.1%</td></tr>
+          <tr><td>2022</td><td>2,740</td><td>232</td><td>8.5%</td><td>211</td><td>7.7%</td></tr>
+          <tr><td>2023</td><td>2,921</td><td>205</td><td>7.0%</td><td>189</td><td>7.1%</td></tr>
+          <tr><td>2024</td><td>3,083</td><td>316</td><td>10.3%</td><td>392</td><td>15.0%</td></tr>
+          <tr><td>2025</td><td>3,091</td><td>268</td><td>8.7%</td><td>221</td><td>8.3%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">토론방 신호</div>
+      <table class="talk-table">
+        <tbody>
+          <tr><td>05.14</td><td>"소룩스 쩜상 후 넥스트 대장은 삼진제약" — 수급 연동 기대</td></tr>
+          <tr><td>05.14</td><td>아리바이오 장외가 기준 삼진제약 지분 가치 산정 시도 (루머성)</td></tr>
+          <tr><td>05.14</td><td>"소룩스·차백신·삼진 내일 전부 상한가" — 신뢰도 낮음</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">밸류에이션 시나리오 <small style="color:#888;font-size:10px">(시총 3,096억 기준)</small></div>
+      <table class="val-table">
+        <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
+        <tbody>
+          <tr class="val-bull"><td>🟢 Bull</td><td>2024년 수준 회복(이익 392억), PER 16배</td><td>6,272억</td><td>+102.6%</td></tr>
+          <tr class="val-base"><td>⚪ Base</td><td>2025년 수준 유지(이익 221억), PER 15배</td><td>3,315억</td><td>+7.1%</td></tr>
+          <tr class="val-bear"><td>🔴 Bear</td><td>2023년 저점 수준(이익 189억), PER 12배</td><td>2,268억</td><td>-26.7%</td></tr>
+        </tbody>
+      </table>
+      <div class="val-note">※ 테마 소멸 시: 5년 이익 최저(189억), PER 12배 기준 2,268억(-26.7%). 재무 기반이 있어 하방이 제한적이에요. 2024년 이익 사이클 고점(392억) 재현 시 현 주가 대비 2배 이상 가능.</div>
+
+      <div class="sub-label">코어 적합성</div>
+      <div class="core-box core-pass">✅ 적합 — 5년 이익 재현성 확인, 매출 완만 성장, PER 14배 안전 마진, 부채비율 47%</div>
+
+      <div class="sub-label">추천 비중</div>
+      <div class="alloc-row">
+        <div class="alloc-box"><div class="alloc-label">코어</div><div class="alloc-value">5%</div></div>
+        <div class="alloc-box"><div class="alloc-label">트레이딩</div><div class="alloc-value">3%</div></div>
+      </div>
+      <div class="alloc-cond">코어: 소룩스 테마 소멸 후 주가 안정 시 편입. 트레이딩: 제약 섹터 모멘텀 지속 구간. 목표가 26,000원, 손절가 21,000원.</div>
+
+      <div class="warn-box" style="margin-top:12px">
+        <div class="warn-label">탈락 신호</div>
+        <div class="warn-item">· 소룩스·아리바이오 루머 소멸 시 단기 수급 이탈 (재무 기반 있어 급락보다 점진적 조정)</div>
+        <div class="warn-item">· 2026년 이익이 2023년 저점(189억) 하회 — 이익 사이클 추가 하강 시</div>
+        <div class="warn-item">· 주요 품목 특허 만료 또는 규제 이슈 발생</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 한양디지텍 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div class="rank-chip">4위</div>
+      <div class="stock-title-row">
+        <div class="stock-name">한양디지텍</div>
+        <div class="stock-rate">+24.xx%</div>
+      </div>
+      <div class="stock-meta">반도체·전자부품 · 시총 1,397억</div>
+    </div>
+    <div class="card-body">
+      <div class="sub-label">종목 분류</div>
+      <div class="classify-badge">📈 트레이딩·옵션형 — 반도체 업황 후속 수혜주</div>
+
+      <div class="sub-label">핵심 요약</div>
+      <div class="summary-text">반도체 부품 유통·모듈 솔루션 기업이에요. 3년간 매출 연평균 16% 성장했고 이익률도 개선 추세예요(OPM 2.0%→3.7%). 토론방에 일본 SSD 가격 300% 폭등 TrendForce 기사 링크가 실제로 게시됐어요. 제주반도체 대비 PER 부담이 낮지만(36배) 이익률 절대값이 낮아 이익 레버리지가 제한적이에요.</div>
+
+      <div class="sub-label">정량 평가</div>
+      <div class="grid2">
+        <div class="metric-box">
+          <div class="metric-label">이익 구조</div>
+          <div class="metric-value val-green">안정형</div>
+          <div class="metric-sub">3년 연속 흑자, 개선 추세</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">재무 건전성</div>
+          <div class="metric-value val-green">양호</div>
+          <div class="metric-sub">부채비율 75.3%</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">성장성</div>
+          <div class="metric-value val-green">우수</div>
+          <div class="metric-sub">매출 연평균 +16%</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">밸류에이션</div>
+          <div class="metric-value val-orange">PER 35.8배</div>
+          <div class="metric-sub">지배기준, 다소 부담</div>
+        </div>
+      </div>
+
+      <div class="judge-box">
+        <div class="judge-label">핵심 판단</div>
+        <div class="judge-text">SSD 가격 폭등 재료는 실체가 있어요. 단 한양디지텍이 직접 수혜를 받는지 확인이 필요해요. 이익률(OPM 3.7%)이 낮아 매출 성장 대비 이익 증가 폭이 제한적이에요. 제주반도체 수급 이탈 시 동반 약세 가능성을 주의해야 해요.</div>
+      </div>
+
+      <div class="sub-label">연도별 실적</div>
+      <table class="perf-table">
+        <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>ROE</th></tr></thead>
+        <tbody>
+          <tr><td>2023</td><td>744</td><td>15</td><td>2.0%</td><td>확인필요</td></tr>
+          <tr><td>2024</td><td>921</td><td>21</td><td>2.3%</td><td>확인필요</td></tr>
+          <tr><td>2025</td><td>1,063</td><td>39</td><td>3.7%</td><td>6.8%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">토론방 신호</div>
+      <table class="talk-table">
+        <tbody>
+          <tr><td>05.14</td><td>일본 SSD 가격 300% 폭등 TrendForce 기사 링크 게시</td></tr>
+          <tr><td>05.14</td><td>"기관·외인 매집 중, 우리보다 정보 한참 빠르다"</td></tr>
+          <tr><td>05.14</td><td>한양이엔지와 시총 경쟁, 이엔지 순이익 300% 증가 비교</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">밸류에이션 시나리오 <small style="color:#888;font-size:10px">(시총 1,397억 기준)</small></div>
+      <table class="val-table">
+        <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
+        <tbody>
+          <tr class="val-bull"><td>🟢 Bull</td><td>2026년 이익 60억, PER 30배</td><td>1,800억</td><td>+28.8%</td></tr>
+          <tr class="val-base"><td>⚪ Base</td><td>2025년 이익 39억, PER 25배</td><td>975억</td><td>-30.2%</td></tr>
+          <tr class="val-bear"><td>🔴 Bear</td><td>SSD 가격 정상화, 이익 25억, PER 20배</td><td>500억</td><td>-64.2%</td></tr>
+        </tbody>
+      </table>
+      <div class="val-note">※ 테마 소멸 시: PER 20배 기준 500억(-64%). 이익률이 낮아 하방 완충력 제한적.</div>
+
+      <div class="sub-label">코어 적합성</div>
+      <div class="core-box core-fail">❌ 부적합 — OPM 3.7%로 이익 창출력 미흡. 유통 구조 특성상 해자 불명확.</div>
+
+      <div class="sub-label">추천 비중</div>
+      <div class="alloc-row">
+        <div class="alloc-box"><div class="alloc-label">코어</div><div class="alloc-value">0%</div></div>
+        <div class="alloc-box"><div class="alloc-label">트레이딩</div><div class="alloc-value">3%</div></div>
+      </div>
+      <div class="alloc-cond">조건: SSD 가격 상승 추세 지속 + 직접 수혜 확인 조건. 목표가 38,000원, 손절가 31,000원.</div>
+
+      <div class="warn-box" style="margin-top:12px">
+        <div class="warn-label">탈락 신호</div>
+        <div class="warn-item">· SSD 가격 안정화 또는 하락 전환</div>
+        <div class="warn-item">· 2026년 OPM 4% 미만 지속</div>
+        <div class="warn-item">· 제주반도체 주가 하락 전환 시 동반 이탈</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 비에이치 -->
+  <div class="stock-card">
+    <div class="card-header">
+      <div class="rank-chip">5위</div>
+      <div class="stock-title-row">
+        <div class="stock-name">비에이치</div>
+        <div class="stock-rate">+24.38%</div>
+      </div>
+      <div class="stock-meta">유통·물류 복합 · 37,500원 · 시총 12,616억</div>
+    </div>
+    <div class="card-body">
+      <div class="sub-label">종목 분류</div>
+      <div class="classify-badge">📈 트레이딩·옵션형 — 대형 복합주, 수익성 악화형</div>
+
+      <div class="sub-label">핵심 요약</div>
+      <div class="summary-text">시총 1.2조 유통·물류 복합 기업이에요. 매출 1.79조로 외형은 크지만 영업이익이 2년 연속 감소(848억→540억)하고 있어요. 비지배지분 23.7%로 지배주주 귀속 순이익은 310억, 지배기준 PER이 40.7배예요. 미중 정상회담·애플 동행 수혜 기대가 있지만 비에이치 사업과의 직접 연결이 약해요.</div>
+
+      <div class="sub-label">정량 평가</div>
+      <div class="grid2">
+        <div class="metric-box">
+          <div class="metric-label">이익 구조</div>
+          <div class="metric-value val-red">약화 중</div>
+          <div class="metric-sub">3년 OPM 하락 추세</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">재무 건전성</div>
+          <div class="metric-value val-green">양호</div>
+          <div class="metric-sub">부채비율 73.3%</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">성장성</div>
+          <div class="metric-value val-orange">정체</div>
+          <div class="metric-sub">매출 연평균 +6%</div>
+        </div>
+        <div class="metric-box">
+          <div class="metric-label">밸류에이션</div>
+          <div class="metric-value val-red">PER 40.7배 ⚠️</div>
+          <div class="metric-sub">지배기준, 고평가</div>
+        </div>
+      </div>
+      <div class="val-note" style="margin-bottom:12px">⚠️ 비지배지분 23.7% 초과: 연결 총순이익(406억) vs 지배주주 귀속(310억) 괴리 24%. PER은 반드시 지배기준(40.7배) 기준으로 판단해야 해요.</div>
+
+      <div class="judge-box">
+        <div class="judge-label">핵심 판단</div>
+        <div class="judge-text">대형주 프리미엄이 있지만 수익성 하락세가 뚜렷해요. Bull 시나리오에서도 현 주가 대비 하락(-4.9%)이 나와요. 5종목 중 투자 매력도가 가장 낮아요. 지배기준 PER 40.7배는 수익성 개선 없이 정당화 불가해요.</div>
+      </div>
+
+      <div class="sub-label">연도별 실적</div>
+      <table class="perf-table">
+        <thead><tr><th>연도</th><th>매출(억)</th><th>영업이익(억)</th><th>OPM</th><th>ROE</th></tr></thead>
+        <tbody>
+          <tr><td>2023</td><td>15,920</td><td>848</td><td>5.3%</td><td>확인필요</td></tr>
+          <tr><td>2024</td><td>17,544</td><td>871</td><td>5.0%</td><td>확인필요</td></tr>
+          <tr><td>2025</td><td>17,927</td><td>540</td><td>3.0%</td><td>4.1%</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">밸류에이션 시나리오 <small style="color:#888;font-size:10px">(시총 12,616억 기준)</small></div>
+      <table class="val-table">
+        <thead><tr><th>시나리오</th><th>가정</th><th>적정 시총</th><th>현재 대비</th></tr></thead>
+        <tbody>
+          <tr class="val-bull"><td>🟢 Bull</td><td>이익 반등 400억, PER 30배</td><td>12,000억</td><td>-4.9%</td></tr>
+          <tr class="val-base"><td>⚪ Base</td><td>2025년 수준 310억, PER 25배</td><td>7,750억</td><td>-38.6%</td></tr>
+          <tr class="val-bear"><td>🔴 Bear</td><td>추가 악화 200억, PER 18배</td><td>3,600억</td><td>-71.4%</td></tr>
+        </tbody>
+      </table>
+      <div class="val-note">※ Bull에서도 하락. 5종목 중 하방 리스크 최대.</div>
+
+      <div class="sub-label">코어 적합성</div>
+      <div class="core-box core-fail">❌ 부적합 — 이익 하락세, 비지배지분 이슈, PER 40배 과도. 코어 3조건 모두 미충족.</div>
+
+      <div class="sub-label">추천 비중</div>
+      <div class="alloc-row">
+        <div class="alloc-box"><div class="alloc-label">코어</div><div class="alloc-value">0%</div></div>
+        <div class="alloc-box"><div class="alloc-label">트레이딩</div><div class="alloc-value">2%</div></div>
+      </div>
+      <div class="alloc-cond">조건: 5종목 중 최소 비중. 미중 무역 분위기 개선 뉴스 지속 확인 필수.</div>
+
+      <div class="warn-box" style="margin-top:12px">
+        <div class="warn-label">탈락 신호</div>
+        <div class="warn-item">· 2026년 1분기 OPM 3% 미만 지속</div>
+        <div class="warn-item">· 비지배지분 비율 추가 상승</div>
+        <div class="warn-item">· 대형주 수급 이탈 시 거래량 급감</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="stock-card">
-    <div class="card-header">
-        <div class="rank-badge">2위</div>
-        <div class="stock-title">삼진제약</div>
-        <div class="stock-meta">
-            <span>제약·바이오</span>
-            <span>+29.89%</span>
-            <span>23,250원</span>
-        </div>
-    </div>
-    <div class="card-body">
-        <span class="label">종목 분류</span>
-        <div class="value-large">트레이딩·옵션형 (코어 검토 가능) — 안정 이익 제약주</div>
-        
-        <span class="label">핵심 요약</span>
-        <div class="value-large">안정적 중소형 제약사. 영업이익률 8.5%, ROE 7.9%, 부채비율 47.4%. PER 14.1배로 동종업계 대비 저평가. 제약 섹터 테마 부각 시 안전 마진 있는 단기 트레이딩 대상. 재무 데이터는 2022년 기준으로 최신 실적 확인 필요.</div>
-        
-        <span class="label">정량 평가</span>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이익 구조</div>
-                <div class="metric-value">안정형</div>
-                <div class="sub-label">영업이익률 8.5%</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">재무 건전성</div>
-                <div class="metric-value text-blue">우수</div>
-                <div class="sub-label">부채비율 47.4%</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">성장성</div>
-                <div class="metric-value text-gray">확인필요</div>
-                <div class="sub-label">2023~2025 데이터 없음</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">밸류에이션</div>
-                <div class="metric-value text-blue">PER 14.1배</div>
-                <div class="sub-label">지배기준, 저평가</div>
-            </div>
-        </div>
-        
-        <div class="judgment-box">
-            <p><strong>핵심 판단:</strong> 재무 건전성 우수 + 저PER로 제약 테마 급등 시 안전 마진 확보. 단 2022년 이후 실적 미확인으로 최근 경영 상황 점검 필요. DART에서 2023~2025 데이터 확인 후 진입 판단. 현 단계에서는 "조건부 매수 대기".</p>
-        </div>
-        
-        <span class="label">연도별 실적</span>
-        <table>
-            <tr>
-                <th>연도</th>
-                <th>매출(억)</th>
-                <th>영업이익(억)</th>
-                <th>지배순이익(억)</th>
-                <th>영업이익률</th>
-                <th>ROE</th>
-            </tr>
-            <tr>
-                <td>2022</td>
-                <td>2,740</td>
-                <td>232</td>
-                <td>219</td>
-                <td>8.5%</td>
-                <td>7.9%</td>
-            </tr>
-            <tr>
-                <td>2023</td>
-                <td colspan="5" class="text-gray">데이터 없음</td>
-            </tr>
-            <tr>
-                <td>2024</td>
-                <td colspan="5" class="text-gray">데이터 없음</td>
-            </tr>
-            <tr>
-                <td>2025</td>
-                <td colspan="5" class="text-gray">데이터 없음</td>
-            </tr>
-        </table>
-        
-        <span class="label">정성 평가</span>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이벤트드리븐</div>
-                <div class="metric-value">약</div>
-                <div class="sub-label">섹터 동조 상승</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">토론방 신호</div>
-                <div class="metric-value text-gray">미확인</div>
-                <div class="sub-label">정보 부족</div>
-            </div>
-        </div>
-        <div style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;">
-            <strong>산업 위치:</strong> 중소형 제약사, 주요 제품은 일반의약품·전문의약품. 경쟁 구조는 레드오션이나 안정적 수익 기반. 고객 종속성 낮음. 2022년 기준 이익 재현성 있으나 최근 3년 데이터 부재로 산업 내 위치 변화 여부 확인 필요.
-        </div>
-        
-        <span class="label">밸류에이션 시나리오</span>
-        <div style="font-size: 13px; color: #666; margin-bottom: 10px;">현재 시총: 3,096억원 (2026.05.14 기준)</div>
-        <table>
-            <tr>
-                <th>시나리오</th>
-                <th>가정</th>
-                <th>적정 시총</th>
-                <th>현재 대비</th>
-            </tr>
-            <tr>
-                <td>🟢 Bull</td>
-                <td>2025년 이익 250억, PER 18배</td>
-                <td>4,500억</td>
-                <td class="text-blue">+45.4%</td>
-            </tr>
-            <tr>
-                <td>⚪ Base</td>
-                <td>2022년 수준 유지(이익 219억), PER 15배</td>
-                <td>3,285억</td>
-                <td class="text-blue">+6.1%</td>
-            </tr>
-            <tr>
-                <td>🔴 Bear</td>
-                <td>이익 감소(150억), PER 12배</td>
-                <td>1,800억</td>
-                <td class="text-red">-41.9%</td>
-            </tr>
-        </table>
-        <div style="font-size: 12px; color: #1a7a45; margin-top: 8px;">
-            ※ 테마 소멸 시: 2022년 실적 기준 PER 12배 적용 시 시총 2,628억(-15%) 수준. 재무 기반 있어 하방 제한적.
-        </div>
-        
-        <span class="label">코어 적합성</span>
-        <div class="value-large text-blue">조건부 적합 — 최근 3년 실적 확인 후 재평가 필요. 2022년 기준으로는 이익 재현성·재무 건전성 양호.</div>
-        
-        <div class="warning-box">
-            <strong style="display: block; margin-bottom: 8px;">탈락 신호</strong>
-            <ul>
-                <li>2023~2025년 실적 확인 결과 이익 급감 또는 적자 전환</li>
-                <li>부채비율 100% 초과 (2022년 47.4%에서 악화 시)</li>
-                <li>주요 제품 특허 만료 또는 규제 이슈 발생</li>
-            </ul>
-        </div>
-        
-        <span class="label">추천 비중</span>
-        <div class="allocation">
-            <div class="alloc-item">
-                <div class="alloc-label">코어</div>
-                <div class="alloc-value">0%</div>
-            </div>
-            <div class="alloc-item">
-                <div class="alloc-label">트레이딩</div>
-                <div class="alloc-value">3%</div>
-            </div>
-        </div>
-        <div style="margin-top: 10px; font-size: 13px; color: #666;">
-            조건: 2023~2025 실적 확인 완료 후 진입. 목표가 26,000원(+12%), 손절가 21,000원(-10%). 제약 섹터 모멘텀 지속 시 단기 보유.
-        </div>
-    </div>
+<!-- ⑥ 간략 요약 종목 -->
+<div class="section">
+  <div class="section-label">나머지 종목 간략 요약</div>
+
+  <div class="brief-card">
+    <div class="brief-head"><span class="brief-name">SK네트웍스</span><span class="brief-rate">+29.93%</span></div>
+    <div class="brief-meta">시총 ~15,000억 | 매출 6.7조 / 영업이익 863억 / OPM 1.3% / ROE 확인필요</div>
+    <div class="brief-reason">SK그룹 AI 재편 기대. "SK에서 유일한 AI주, 업스테이지 지분 12%" 토론방 언급. 단 "내일 패대기" 경고 글 다수.</div>
+    <span class="judge-pill pill-watch">관찰 대상</span>
+    <span style="font-size:11px;color:#888;margin-left:6px">이벤트형 대형주 — AI 재편 기대는 실체이나 시총에 과대 반영 가능성</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-head"><span class="brief-name">동양고속</span><span class="brief-rate">+29.xx%</span></div>
+    <div class="brief-meta">시총 확인필요 | 영업이익 51억(2025년 흑전) / 상세 재무 확인필요</div>
+    <div class="brief-reason">강남 고터 개발 공약 수혜주로 부각. 서울시장 후보들의 공약이 직접 재료. 2025년 흑자 전환 실체 있음.</div>
+    <span class="judge-pill pill-watch">관찰 대상</span>
+    <span style="font-size:11px;color:#888;margin-left:6px">이벤트형 — 2025년 흑전 실체 있음. 천일고속보다 재무 양호.</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-head"><span class="brief-name">천일고속</span><span class="brief-rate">+29.96%</span></div>
+    <div class="brief-meta">시총 확인필요 | 매출 456억 / 영업손실 59억 / OPM -12.9% / ROE -58.7%</div>
+    <div class="brief-reason">강남 고터 개발 공약 수혜주 + 품절주 효과(유동주식 14.1%). "쩜상가에 주문하자" 수급 게임 기대감.</div>
+    <span class="judge-pill pill-danger">위험</span>
+    <span style="font-size:11px;color:#888;margin-left:6px">3년 연속 적자, 재무 기반 전무. 품절주 수급 게임. 테마 소멸 시 하방 무제한.</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-head"><span class="brief-name">아이엠바이오로직스</span><span class="brief-rate">+20%대</span></div>
+    <div class="brief-meta">시총 확인필요 | 소규모 흑자 / PER 747배 / 부채비율 2.5%</div>
+    <div class="brief-reason">1분기 마일스톤 75억 수령으로 흑자 전환. 토론방에 "일시적 상승, 마일스톤 수령일 뿐" 냉정한 평가 다수.</div>
+    <span class="judge-pill pill-caution">소형 주의</span>
+    <span style="font-size:11px;color:#888;margin-left:6px">일회성 마일스톤, 이익 재현성 없음. PER 747배 의미 없음.</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-head"><span class="brief-name">라온텍</span><span class="brief-rate">+급등</span></div>
+    <div class="brief-meta">시총 확인필요 | 3년 연속 적자 / ROE -39.3%</div>
+    <div class="brief-reason">광통신 코히런트 납품 관련 급등. "사업보고서에 코히런트가 고객사로 기재됐다"는 구체 주장 토론방 게시.</div>
+    <span class="judge-pill pill-caution">소형 주의</span>
+    <span style="font-size:11px;color:#888;margin-left:6px">적자 기업이나 납품 사실 검증 시 단독 분석 가치 있음. 진입은 사업보고서 확인 후.</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-head"><span class="brief-name">코아시아씨엠</span><span class="brief-rate">+급등</span></div>
+    <div class="brief-meta">시총 확인필요 | 2025년 흑전 / 비지배지분 68% ⚠️</div>
+    <div class="brief-reason">재료 불명확. 토론방 소음 100%. 비지배지분 68% 초과로 연결 순이익의 32%만 지배주주 귀속.</div>
+    <span class="judge-pill pill-exclude">관심 제외</span>
+    <span style="font-size:11px;color:#888;margin-left:6px">비지배지분 68% 극단적 왜곡. 분석 가치 없음.</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-head"><span class="brief-name">폴레드</span><span class="brief-rate">+300%</span></div>
+    <div class="brief-meta">시총 5,036억 | 재무 미확인</div>
+    <div class="brief-reason">신규 상장. 현대차 사내벤처 스핀오프, 아동 안전장치 기술. 따상 분위기. 토론방 "상장가에 매수 절대 금지" 경고 다수.</div>
+    <span class="judge-pill pill-danger">위험</span>
+    <span style="font-size:11px;color:#888;margin-left:6px">신규 상장 투기형. 재무 미확인 +300% 급등. 분석 불가.</span>
+  </div>
+
+  <div class="brief-card">
+    <div class="brief-head"><span class="brief-name">소룩스·차백신·라메디텍·한스바이오메드·에스에너지·메이슨캐피탈·TPC로보틱스·코스모로보틱스</span></div>
+    <div class="brief-meta">ROE -30%~-135% / 만성 적자 / 부채비율 150%~273%</div>
+    <div class="brief-reason">아리바이오 루머 연동 또는 섹터 테마 편승. 재무 부실 공통.</div>
+    <span class="judge-pill pill-exclude">관심 제외</span>
+    <span style="font-size:11px;color:#888;margin-left:6px">전부 분석 제외. 순수 투기 수급.</span>
+  </div>
 </div>
 
-<div class="stock-card">
-    <div class="card-header">
-        <div class="rank-badge">3위</div>
-        <div class="stock-title">안국약품</div>
-        <div class="stock-meta">
-            <span>제약·바이오</span>
-            <span>+29.94%</span>
-            <span>10,200원</span>
-        </div>
-    </div>
-    <div class="card-body">
-        <span class="label">종목 분류</span>
-        <div class="value-large">트레이딩·옵션형 — 성장형 제약주</div>
-        
-        <span class="label">핵심 요약</span>
-        <div class="value-large">안정 흑자 제약사. 3년간 매출 연평균 +14% 성장. 2025년 영업이익 98억, 영업이익률 3.2%. PER 17.8배로 삼진제약 대비 소폭 높으나 성장성 우위. 부채비율 87%로 건전. 단기 트레이딩 + 중기 코어 검토 가능.</div>
-        
-        <span class="label">정량 평가</span>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이익 구조</div>
-                <div class="metric-value">안정형</div>
-                <div class="sub-label">3년 연속 흑자</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">재무 건전성</div>
-                <div class="metric-value text-blue">양호</div>
-                <div class="sub-label">부채비율 87.0%</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">성장성</div>
-                <div class="metric-value text-blue">우수</div>
-                <div class="sub-label">매출 연평균 +14%</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">밸류에이션</div>
-                <div class="metric-value">PER 17.8배</div>
-                <div class="sub-label">지배기준, 적정 수준</div>
-            </div>
-        </div>
-        
-        <div class="judgment-box">
-            <p><strong>핵심 판단:</strong> 매출 성장 + 안정 흑자로 삼진제약 대비 질적 우위. PER 17.8배는 성장성 감안 시 합리적. 단 영업이익률 3.2%는 동종업계 대비 낮음(삼진제약 8.5%). 제약 테마 지속 시 단기 상승 가능하나 장기 코어로는 이익률 개선 확인 필요.</p>
-        </div>
-        
-        <span class="label">연도별 실적</span>
-        <table>
-            <tr>
-                <th>연도</th>
-                <th>매출(억)</th>
-                <th>영업이익(억)</th>
-                <th>지배순이익(억)</th>
-                <th>영업이익률</th>
-                <th>ROE</th>
-            </tr>
-            <tr>
-                <td>2023</td>
-                <td>2,337</td>
-                <td>51</td>
-                <td>13</td>
-                <td>2.2%</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2024</td>
-                <td>2,711</td>
-                <td>67</td>
-                <td>168</td>
-                <td>2.5%</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2025</td>
-                <td class="text-blue">3,069</td>
-                <td class="text-blue">98</td>
-                <td>75</td>
-                <td class="text-blue">3.2%</td>
-                <td>4.5%</td>
-            </tr>
-        </table>
-        
-        <span class="label">정성 평가</span>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이벤트드리븐</div>
-                <div class="metric-value">약</div>
-                <div class="sub-label">섹터 동조 상승</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">토론방 신호</div>
-                <div class="metric-value text-gray">미확인</div>
-                <div class="sub-label">정보 부족</div>
-            </div>
-        </div>
-        <div style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;">
-            <strong>산업 위치:</strong> 중견 제약사, 일반의약품·건강기능식품 중심. 매출 성장은 제품 라인 확대 + 유통망 강화 효과. 경쟁 구조는 레드오션이나 브랜드 인지도 있음. 고객 종속성 낮음. 영업이익률 낮은 이유는 마케팅 비용 과다로 추정.
-        </div>
-        
-        <span class="label">밸류에이션 시나리오</span>
-        <div style="font-size: 13px; color: #666; margin-bottom: 10px;">현재 시총: 1,330억원 (2026.05.14 기준)</div>
-        <table>
-            <tr>
-                <th>시나리오</th>
-                <th>가정</th>
-                <th>적정 시총</th>
-                <th>현재 대비</th>
-            </tr>
-            <tr>
-                <td>🟢 Bull</td>
-                <td>2026년 이익 120억, PER 20배</td>
-                <td>2,400억</td>
-                <td class="text-blue">+80.5%</td>
-            </tr>
-            <tr>
-                <td>⚪ Base</td>
-                <td>2025년 수준 유지(이익 75억), PER 17배</td>
-                <td>1,275억</td>
-                <td class="text-red">-4.1%</td>
-            </tr>
-            <tr>
-                <td>🔴 Bear</td>
-                <td>이익 감소(50억), PER 14배</td>
-                <td>700억</td>
-                <td class="text-red">-47.4%</td>
-            </tr>
-        </table>
-        <div style="font-size: 12px; color: #1a7a45; margin-top: 8px;">
-            ※ 테마 소멸 시: 2025년 실적 기준 PER 14배 적용 시 시총 1,050억(-21%) 수준. 삼진제약 대비 낙폭 제한은 약함.
-        </div>
-        
-        <span class="label">코어 적합성</span>
-        <div class="value-large text-blue">조건부 적합 — 영업이익률 5% 이상 개선 시 코어 편입 검토. 현 단계에서는 성장성 우수하나 수익성 개선 필요.</div>
-        
-        <div class="warning-box">
-            <strong style="display: block; margin-bottom: 8px;">탈락 신호</strong>
-            <ul>
-                <li>2026년 영업이익률 3% 미만 지속 또는 하락</li>
-                <li>매출 성장률 5% 미만으로 둔화</li>
-                <li>부채비율 120% 초과 (현 87%에서 악화 시)</li>
-            </ul>
-        </div>
-        
-        <span class="label">추천 비중</span>
-        <div class="allocation">
-            <div class="alloc-item">
-                <div class="alloc-label">코어</div>
-                <div class="alloc-value">0%</div>
-            </div>
-            <div class="alloc-item">
-                <div class="alloc-label">트레이딩</div>
-                <div class="alloc-value">5%</div>
-            </div>
-        </div>
-        <div style="margin-top: 10px; font-size: 13px; color: #666;">
-            조건: 제약 섹터 모멘텀 지속 시 단기 진입. 목표가 11,500원(+13%), 손절가 9,200원(-10%). 2026년 1분기 실적 확인 후 중기 코어 재검토.
-        </div>
-    </div>
+<!-- ⑦ 모니터링 우선순위 -->
+<div class="section">
+  <div class="section-label">모니터링 우선순위</div>
+
+  <div class="monitor-card">
+    <div class="monitor-rank">1순위</div>
+    <div class="monitor-name">제주반도체</div>
+    <div class="monitor-text">토론방에 게시된 2분기 수주잔고(5,472억)·납품 속도 데이터가 분기보고서로 검증되면 이익 지속 가능성 급등. 반도체 업황 지표와 교차 검증이 이번 주 핵심 과제. 수주 데이터 허위 확인 시 즉각 탈락.</div>
+  </div>
+
+  <div class="monitor-card">
+    <div class="monitor-rank">2순위</div>
+    <div class="monitor-name">안국약품</div>
+    <div class="monitor-text">화장품 흡수합병 DART 공시 확인 + 기관 매집 지속 여부가 코어 전환 판단의 갈림길. 제약 테마 소멸 후 재무 기반(PER 17.8배, 매출 성장)이 주가를 지지하는지 다음 주 확인 가능.</div>
+  </div>
+
+  <div class="monitor-card">
+    <div class="monitor-rank">3순위</div>
+    <div class="monitor-name">삼진제약</div>
+    <div class="monitor-text">재무 기반 확인으로 코어 후보로 재분류. 지금은 소룩스 테마 수급에 묶여 있어 단기 변동성이 크지만, 테마 소멸 후 PER 14.0배 수준에서 주가가 안정되는지가 관찰 포인트. 이익 사이클 고점(2024년 392억) 회복 여부가 코어 비중 확대 조건.</div>
+  </div>
 </div>
 
-<div class="stock-card">
-    <div class="card-header">
-        <div class="rank-badge">4위</div>
-        <div class="stock-title">비에이치</div>
-        <div class="stock-meta">
-            <span>유통·물류</span>
-            <span>+24.38%</span>
-            <span>37,500원</span>
-        </div>
+<!-- ⑧ 비교 분석 -->
+<div class="section">
+  <div class="section-label">모니터링 3종목 비교</div>
+
+  <div class="compare-card">
+    <div class="compare-head">⚖️ 제주반도체 vs 안국약품 vs 삼진제약</div>
+    <div class="compare-body">
+
+      <div class="sub-label">코어 3조건 비교</div>
+      <table class="compare-table">
+        <thead>
+          <tr><th>조건</th><th>제주반도체</th><th>안국약품</th><th>삼진제약</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>이익 재현성</strong></td>
+            <td>❌ 사이클형 — 2024년 급감 전례</td>
+            <td>✅ 3년 연속 흑자, 성장 추세</td>
+            <td>✅ 5년 연속 흑자, 이익 사이클 있으나 적자 없음</td>
+          </tr>
+          <tr>
+            <td><strong>시간 우위</strong></td>
+            <td>❌ 업황 정점 논란 — 시간이 적</td>
+            <td>✅ 매출 성장 지속 시 유리해짐</td>
+            <td>⚠️ 매출 성장 완만(+5.4%) — 이익 사이클 회복이 핵심</td>
+          </tr>
+          <tr>
+            <td><strong>변동성 견딜 이유</strong></td>
+            <td>❌ PER 65.9배 — 실적 미달 시 -70%</td>
+            <td>✅ PER 17.8배, 하방 제한적</td>
+            <td>✅ PER 14.0배, 5종목 중 최저 하방</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-label">본질적 차이</div>
+      <div class="judge-box">
+        <div class="judge-label">단독 분석에서 안 보이던 것</div>
+        <div class="judge-text">제주반도체는 셋 중 유일하게 "이미 급등이 완료된 종목"이에요. PER 65.9배는 상승 재료가 소진됐음을 의미해요. 지금 진입하면 이익 수혜가 아니라 수급 게임 참여예요.<br><br>안국약품은 셋 중 "현재 주가 기준 성장 잠재력이 가장 높은 종목"이에요. Bull 시나리오 +80%는 성장성 연장 시 도달 가능한 수치지만, 아직 OPM 3.2%라는 약점이 남아 있어요.<br><br>삼진제약은 재무 데이터 확인으로 성격이 바뀐 종목이에요. "데이터 공백 도박"에서 "코어 편입 가능한 저PER 안정주"로 재분류돼요. 단 이익 사이클 저점(2023년 189억)과 고점(2024년 392억)의 진폭이 크다는 점은 여전히 주의 포인트예요.</div>
+      </div>
+
+      <div class="sub-label">순위 배분</div>
+
+      <div class="rank-item rank-1">
+        <div><span class="rank-badge-circle">1</span><span class="rank-name">안국약품</span> — "셋 중 가장 먼저 채울 것"</div>
+        <div class="rank-reason">매출 성장성(+14%) + PER 17.8배 + 화장품 M&A 실체 확인 가능. Bull 시나리오 +80% 유일하게 현실적. OPM 개선 확인 시 코어 전환 후보. 단기 모멘텀과 중기 재평가 둘 다 가능한 종목.</div>
+      </div>
+
+      <div class="rank-item">
+        <div><span class="rank-badge-circle">2</span><span class="rank-name">삼진제약</span> — "소룩스 테마 소멸 후 코어로 편입"</div>
+        <div class="rank-reason">재무 기반 확인 완료. 5년 연속 흑자, PER 14.0배, 부채비율 47%로 코어 3조건 충족. 지금은 소룩스 루머 수급으로 단기 변동성이 크지만, 테마 소멸 후 주가 안정 시 코어 편입이 합리적. 이익 사이클 고점(392억) 회복 시 현 시총 대비 +100% 가능.</div>
+      </div>
+
+      <div class="rank-item">
+        <div><span class="rank-badge-circle">3</span><span class="rank-name">제주반도체</span> — "소규모로만 / 단기"</div>
+        <div class="rank-reason">실체 있는 재료이지만 PER 65.9배에서 이미 선반영 완료. Bull 시나리오도 -13.6% 하락. 단기 모멘텀 지속 시 5% 이내만 허용.</div>
+      </div>
+
+      <div class="sub-label" style="margin-top:14px">탈락 신호 비교</div>
+      <table class="dropout-table">
+        <thead><tr><th>종목</th><th>탈락 조건</th><th>임박도</th></tr></thead>
+        <tbody>
+          <tr><td>제주반도체</td><td>수주잔고 데이터 허위 / 1분기 QoQ 감익</td><td style="color:#b7770d">⚠️ 실적 발표 임박</td></tr>
+          <tr><td class="dropout-danger">삼진제약 ←단기 주의</td><td class="dropout-danger">소룩스 테마 소멸 시 단기 수급 이탈 — 단 재무 기반 있어 급락보다 점진적 조정</td><td class="dropout-danger">🔴 단기 변동성 주의</td></tr>
+          <tr><td>안국약품</td><td>OPM 개선 없이 3% 미만 지속 / M&A 효과 미실현</td><td style="color:#1a7a45">🟡 중간</td></tr>
+        </tbody>
+      </table>
+
+      <div class="final-box">삼진제약은 오늘 데이터 확인으로 "도박"에서 "코어 후보"로 바뀌었어요. 지금 당장은 안국약품을 먼저, 테마 소멸 후 조정이 오면 삼진제약을 코어로 채우는 순서가 맞아요.</div>
     </div>
-    <div class="card-body">
-        <span class="label">종목 분류</span>
-        <div class="value-large">트레이딩·옵션형 — 대형 복합주, 단기 모멘텀형</div>
-        
-        <span class="label">핵심 요약</span>
-        <div class="value-large">시총 1.2조 유통·물류 복합 기업. 2025년 순이익 급감(670억→310억, 지배기준). 비지배지분 23.7%로 연결 순이익(406억)과 지배주주 귀속(310억) 괴리. 지배기준 PER 40.7배로 고평가. 재무 건전하나 수익성 하락 중. 단기 테마 트레이딩 외 메리트 없음.</div>
-        
-        <span class="label">정량 평가</span>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이익 구조</div>
-                <div class="metric-value text-red">약화 중</div>
-                <div class="sub-label">2년 연속 감익</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">재무 건전성</div>
-                <div class="metric-value text-blue">양호</div>
-                <div class="sub-label">부채비율 73.3%</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">성장성</div>
-                <div class="metric-value text-gray">정체</div>
-                <div class="sub-label">매출 연평균 +6%</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">밸류에이션</div>
-                <div class="metric-value text-red">PER 40.7배</div>
-                <div class="sub-label">⚠️ 지배기준, 고평가</div>
-            </div>
-        </div>
-        
-        <div class="judgment-box">
-            <p><strong>핵심 판단:</strong> 대형주 프리미엄 있으나 수익성 하락세 뚜렷. 지배주주 귀속 순이익 기준 PER 40배는 정당화 불가. 비지배지분 23.7%는 자회사 이익이 지배주주에게 귀속되지 않음을 의미. 단기 테마 급등은 수급 왜곡이며 펀더멘털 뒷받침 없음. 코어 부적합.</p>
-        </div>
-        
-        <span class="label">연도별 실적</span>
-        <table>
-            <tr>
-                <th>연도</th>
-                <th>매출(억)</th>
-                <th>영업이익(억)</th>
-                <th>지배순이익(억)</th>
-                <th>영업이익률</th>
-                <th>ROE</th>
-            </tr>
-            <tr>
-                <td>2023</td>
-                <td>15,920</td>
-                <td>848</td>
-                <td>907</td>
-                <td>5.3%</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2024</td>
-                <td>17,544</td>
-                <td>871</td>
-                <td class="text-red">670</td>
-                <td>5.0%</td>
-                <td>-</td>
-            </tr>
-            <tr>
-                <td>2025</td>
-                <td>17,927</td>
-                <td class="text-red">540</td>
-                <td class="text-red">310</td>
-                <td class="text-red">3.0%</td>
-                <td>4.1%</td>
-            </tr>
-        </table>
-        <div style="font-size: 12px; color: #c0392b; margin-top: 8px;">
-            ⚠️ 비지배지분 비율 23.7%: 연결 순이익(406억)과 지배주주 귀속 순이익(310억) 괴리 큼. PER은 반드시 지배기준(40.7배) 확인.
-        </div>
-        
-        <span class="label">정성 평가</span>
-        <div class="grid-2">
-            <div class="metric-box">
-                <div class="metric-label">이벤트드리븐</div>
-                <div class="metric-value">약</div>
-                <div class="sub-label">테마 불명확</div>
-            </div>
-            <div class="metric-box">
-                <div class="metric-label">토론방 신호</div>
-                <div class="metric-value text-gray">미확인</div>
-                <div class="sub-label">정보 부족</div>
-            </div>
-        </div>
-        <div style="margin-top: 12px; font-size: 14px; color: #555; line-height: 1.6;">
-            <strong>산업 위치:</strong> 유통·물류·서비스 복합 사업. 주요 자회사는 편의점·외식·물류 등. 경쟁 구조는 레드오션, 고객 종속성 낮음. 2025년 이익 급감 원인은 자회사 부진으로 추정. 복합 사업 구조는 시너지보다 관리 복잡성 증가.
-        </div>
-        
-        <span class="label">밸류에이션 시나리오</span>
-        <div style="font-size: 13px; color: #666; margin-bottom
+  </div>
+</div>
+
+<!-- ⑨ 면책 -->
+<div class="footer">
+  본 자료는 공개 데이터 기반 투자 참고용이며, 투자 권유가 아닙니다. 모든 투자 판단과 책임은 본인에게 있습니다.
+</div>
+
+</body>
+</html>
