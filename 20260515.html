@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>급등주 분석 리포트 | 2026.05.15</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    background: #f5f4f0;
+    color: #1a1a1a;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* ── 히어로 ── */
+  .hero {
+    background: #1a1a2e;
+    color: #fff;
+    padding: 28px 20px 24px;
+  }
+  .hero-date {
+    font-size: 12px;
+    color: #9b99cc;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .hero-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .chip {
+    background: rgba(127,119,221,0.22);
+    color: #b0abf0;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+  }
+  .disclaimer {
+    background: rgba(255,255,255,0.06);
+    border-left: 3px solid #7f77dd;
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 11px;
+    color: #c0bfe0;
+    line-height: 1.5;
+  }
+
+  /* ── 공통 섹션 ── */
+  .section {
+    padding: 20px 16px;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #7f77dd;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e2e0da;
+  }
+
+  /* ── 카드 ── */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+
+  /* ── 테마 클러스터 ── */
+  .cluster-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .cluster-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .cluster-emoji { font-size: 20px; }
+  .cluster-name {
+    font-size: 15px;
+    font-weight: 700;
+    flex: 1;
+  }
+  .badge {
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge-real { background: #d4edda; color: #1a7a45; }
+  .badge-event { background: #fff3cd; color: #b7770d; }
+  .badge-noise { background: #fde8e8; color: #c0392b; }
+  .cluster-stocks {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 5px;
+  }
+  .cluster-desc {
+    font-size: 13px;
+    color: #333;
+    line-height: 1.55;
+  }
+
+  /* ── 1차 분리 ── */
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .split-box {
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .split-box.yes {
+    background: #f0faf4;
+    border: 1px solid #a8d5b8;
+  }
+  .split-box.no {
+    background: #fff4f4;
+    border: 1px solid #f0b8b8;
+  }
+  .split-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .split-label.yes { color: #1a7a45; }
+  .split-label.no { color: #c0392b; }
+  .split-item {
+    font-size: 12px;
+    color: #333;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .split-item:last-child { border-bottom: none; }
+
+  /* ── 상위 5 선정 ── */
+  .top5-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0ede8;
+  }
+  .top5-item:last-child { border-bottom: none; }
+  .top5-rank {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #1a1a2e;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .top5-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+  .top5-reason { font-size: 13px; color: #444; line-height: 1.5; }
+
+  /* ── 종목 리포트 카드 ── */
+  .report-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+  }
+  .report-header {
+    background: #1a1a2e;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .report-rank-badge {
+    background: #7f77dd;
+    color: #fff;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .report-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+  .report-meta {
+    font-size: 12px;
+    color: #9b99cc;
+  }
+  .report-change {
+    margin-left: auto;
+    font-size: 18px;
+    font-weight: 700;
+    color: #e74c3c;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .report-body { padding: 16px; }
+
+  /* 지표 그리드 */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .metric-box {
+    background: #f8f7f4;
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 3px;
+  }
+  .metric-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .metric-value.up { color: #c0392b; }
+  .metric-value.good { color: #1a7a45; }
+  .metric-value.warn { color: #b7770d; }
+
+  /* 핵심 판단 박스 */
+  .summary-box {
+    background: #f0eeff;
+    border-left: 4px solid #7f77dd;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #2a2850;
+  }
+
+  /* 섹션 소제목 */
+  .sub-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #7f77dd;
+    margin: 14px 0 8px;
+    letter-spacing: 0.04em;
+  }
+
+  /* 테이블 */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+  .data-table th {
+    background: #f0eeff;
+    color: #4a4880;
+    padding: 7px 8px;
+    text-align: center;
+    font-weight: 700;
+    border-bottom: 2px solid #d0cce8;
+  }
+  .data-table td {
+    padding: 7px 8px;
+    text-align: center;
+    border-bottom: 1px solid #f0ede8;
+    color: #333;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table .year-col { font-weight: 700; color: #1a1a2e; }
+
+  /* 밸류에이션 시나리오 */
+  .scenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+  .scenario-table th {
+    padding: 7px 8px;
+    font-weight: 700;
+    border-bottom: 2px solid #e8e5e0;
+    text-align: center;
+    font-size: 11px;
+    color: #666;
+  }
+  .scenario-table td {
+    padding: 8px;
+    border-bottom: 1px solid #f2efea;
+    font-size: 12px;
+    vertical-align: top;
+  }
+  .scenario-table tr:last-child td { border-bottom: none; }
+  .s-bull { background: #f0faf4; }
+  .s-base { background: #fafafa; }
+  .s-bear { background: #fff8f8; }
+  .s-icon { font-size: 14px; }
+
+  /* 주의 신호 박스 */
+  .warning-box {
+    background: #fff9ec;
+    border: 1px solid #f0d080;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+  .warning-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #b7770d;
+    margin-bottom: 8px;
+  }
+  .warning-item {
+    font-size: 12px;
+    color: #555;
+    padding: 3px 0;
+    display: flex;
+    gap: 6px;
+  }
+  .warning-num {
+    color: #b7770d;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* 추천 비중 */
+  .weight-box {
+    background: #1a1a2e;
+    border-radius: 10px;
+    padding: 12px 16px;
+    display: flex;
+    gap: 12px;
+  }
+  .weight-item {
+    flex: 1;
+    text-align: center;
+  }
+  .weight-label {
+    font-size: 11px;
+    color: #9b99cc;
+    margin-bottom: 4px;
+  }
+  .weight-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .weight-note {
+    font-size: 10px;
+    color: #7f77dd;
+    margin-top: 3px;
+  }
+  .weight-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+
+  /* 코어 적합성 */
+  .core-badge {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .core-badge.fit { background: #d4edda; color: #1a7a45; }
+  .core-badge.cond { background: #fff3cd; color: #b7770d; }
+  .core-badge.unfit { background: #fde8e8; color: #c0392b; }
+  .core-reason { font-size: 12px; color: #555; line-height: 1.55; }
+
+  /* 정성 평가 */
+  .qual-row {
+    display: flex;
+    gap: 8px;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0ede8;
+    font-size: 13px;
+  }
+  .qual-row:last-child { border-bottom: none; }
+  .qual-key {
+    color: #888;
+    flex-shrink: 0;
+    width: 90px;
+    font-size: 12px;
+  }
+  .qual-val { color: #222; }
+
+  /* 이벤트 강도 배지 */
+  .ev-strong { color: #c0392b; font-weight: 700; }
+  .ev-mid { color: #b7770d; font-weight: 700; }
+  .ev-weak { color: #888; font-weight: 700; }
+
+  /* 경고 인라인 */
+  .warn-inline {
+    color: #b7770d;
+    font-size: 11px;
+    vertical-align: middle;
+  }
+
+  /* 정보없음 */
+  .na { color: #aaa; font-style: italic; }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════ -->
+<!-- ① 히어로 헤더 -->
+<!-- ════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-date">📅 분석 날짜 | 2026.05.15 (금)</div>
+  <div class="hero-title">코스피·코스닥 급등주<br>심층 분석 리포트</div>
+  <div class="chips">
+    <span class="chip">코스피 5종목</span>
+    <span class="chip">코스닥 15종목</span>
+    <span class="chip">총 20종목 분석</span>
+    <span class="chip">네이버 토론방</span>
+    <span class="chip">DART 재무데이터</span>
+  </div>
+  <div class="disclaimer">
+    ⚠️ 본 리포트는 투자 참고 자료이며 투자 권유가 아닙니다. 모든 투자 판단과 책임은 투자자 본인에게 있습니다. 단기 급등 종목은 고위험 자산이며 원금 손실 가능성이 있습니다.
+  </div>
+</div>
+
+<!-- ════════════════════════════════════ -->
+<!-- ② 테마 클러스터 -->
+<!-- ════════════════════════════════════ -->
+<div class="section">
+  <div class="section-title">② 테마 클러스터</div>
+
+  <div class="cluster-card">
+    <div class="cluster-header">
+      <span class="cluster-emoji">🤖</span>
+      <span class="cluster-name">로봇·감속기</span>
+      <span class="badge badge-event">이벤트형</span>
+    </div>
+    <div class="cluster-stocks">📌 두산로보틱스 · 티피씨글로벌 · 아이로보틱스</div>
+    <div class="cluster-desc">엔비디아 황 회장의 로봇 AI 관련 발언 + 글로벌 로봇 붐 기대감이 공통 재료. 두산로보틱스는 협동로봇 대장주, 티피씨글로벌은 로봇 감속기 국산화 테마, 아이로보틱스는 엔비디아 납품 루머. 이벤트 실체는 두산로보틱스가 가장 명확하나 전 종목 적자 지속.</div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-header">
+      <span class="cluster-emoji">💾</span>
+      <span class="cluster-name">반도체 후공정·유통</span>
+      <span class="badge badge-real">실체형</span>
+    </div>
+    <div class="cluster-stocks">📌 에스에이엠티 · 삼지전자 · 하나마이크론</div>
+    <div class="cluster-desc">2026년 1분기 실적 어닝 서프라이즈가 공통 트리거. 에스에이엠티·삼지전자는 삼성전자 반도체 총판으로 AI 서버 수요 폭발에 따른 출하량 급증 수혜. 하나마이크론은 HBM 후공정 1Q 영업이익률 14% 구조적 질적 성장 확인.</div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-header">
+      <span class="cluster-emoji">💊</span>
+      <span class="cluster-name">건강기능식품·헬스케어</span>
+      <span class="badge badge-real">실체형</span>
+    </div>
+    <div class="cluster-stocks">📌 노바렉스 · 에스앤디 · 인피니트헬스케어 · 내츄럴엔도텍</div>
+    <div class="cluster-desc">노바렉스·에스앤디는 불닭 효과(삼양식품 OEM 수혜) + 글로벌 수출 확대로 1Q 실적 서프라이즈. 인피니트헬스케어는 AI 의료 솔루션으로 영업이익 240% 폭증. 내츄럴엔도텍은 재료 없는 노이즈 편승으로 분류 이탈.</div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-header">
+      <span class="cluster-emoji">🔧</span>
+      <span class="cluster-name">특수소재·조선 밸류체인</span>
+      <span class="badge badge-real">실체형</span>
+    </div>
+    <div class="cluster-stocks">📌 한국쉘석유 · 한선엔지니어링 · 에스앤디</div>
+    <div class="cluster-desc">한국쉘석유는 기관 대량 순매수 + 로봇·AI 윤활유 수요 루머 결합. 한선엔지니어링은 LNG선 호황 → 조선 기자재 밸류체인 수혜로 전환사채 전액 소각 공시 추가. 실적 기반이 모두 견고.</div>
+  </div>
+
+  <div class="cluster-card">
+    <div class="cluster-header">
+      <span class="cluster-emoji">🎰</span>
+      <span class="cluster-name">크립토·바이오 루머</span>
+      <span class="badge badge-noise">노이
