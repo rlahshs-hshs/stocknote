@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>급등주 분석 리포트 | 2026.05.19</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --bg: #f5f4f0;
+    --card: #ffffff;
+    --hero: #1a1a2e;
+    --text: #1a1a1a;
+    --accent: #7f77dd;
+    --up: #c0392b;
+    --warn: #b7770d;
+    --pos: #1a7a45;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --tag-bg: #f0efff;
+  }
+
+  body {
+    font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    background: var(--bg);
+    color: var(--text);
+    padding-bottom: 40px;
+  }
+
+  /* ─── 히어로 ─── */
+  .hero {
+    background: var(--hero);
+    color: #ffffff;
+    padding: 32px 20px 28px;
+  }
+  .hero-date {
+    font-size: 12px;
+    color: #a0aec0;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .hero-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .chip {
+    background: rgba(127,119,221,0.25);
+    border: 1px solid rgba(127,119,221,0.4);
+    color: #c4bfff;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+  .disclaimer {
+    background: rgba(255,255,255,0.07);
+    border-left: 3px solid #7f77dd;
+    border-radius: 4px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #a0aec0;
+    line-height: 1.5;
+  }
+
+  /* ─── 공통 섹션 ─── */
+  .section {
+    padding: 24px 16px 8px;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ─── 카드 ─── */
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  /* ─── 테마 클러스터 ─── */
+  .cluster-card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--accent);
+  }
+  .cluster-card.event { border-left-color: var(--warn); }
+  .cluster-card.noise { border-left-color: var(--muted); }
+  .cluster-card.real { border-left-color: var(--pos); }
+
+  .cluster-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .cluster-emoji { font-size: 20px; }
+  .cluster-name {
+    font-weight: 700;
+    font-size: 15px;
+    flex: 1;
+  }
+  .badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.05em;
+  }
+  .badge-event { background: #fff3cd; color: #b7770d; }
+  .badge-noise { background: #f3f4f6; color: #6b7280; }
+  .badge-real { background: #d1fae5; color: #1a7a45; }
+
+  .cluster-tickers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .ticker-pill {
+    background: var(--tag-bg);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+  .cluster-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ─── 1차 분리 ─── */
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .split-box {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .split-box.yes { border-top: 3px solid var(--pos); }
+  .split-box.no { border-top: 3px solid var(--up); }
+  .split-label {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+  .split-label.yes { color: var(--pos); }
+  .split-label.no { color: var(--up); }
+  .split-item {
+    font-size: 12px;
+    color: var(--text);
+    padding: 3px 0;
+    border-bottom: 1px solid var(--bg);
+  }
+  .split-item:last-child { border-bottom: none; }
+
+  /* ─── 상위 5 선정 이유 ─── */
+  .rank-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .rank-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .rank-1 { background: #b7860d; }
+  .rank-2 { background: #888; }
+  .rank-3 { background: #b87333; }
+  .rank-4 { background: var(--accent); }
+  .rank-5 { background: var(--pos); }
+
+  .rank-content {}
+  .rank-name { font-weight: 700; font-size: 15px; }
+  .rank-reason { font-size: 13px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+
+  /* ─── 상세 리포트 카드 ─── */
+  .report-card {
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .report-header {
+    background: var(--hero);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .report-rank {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 16px;
+    color: var(--hero);
+    flex-shrink: 0;
+  }
+  .report-header-info { flex: 1; }
+  .report-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .report-meta {
+    font-size: 12px;
+    color: #a0aec0;
+    margin-top: 3px;
+  }
+  .report-pct {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ff6b6b;
+  }
+
+  .report-body { padding: 18px; }
+
+  .report-class-badge {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+  }
+
+  .summary-box {
+    background: #f8f7ff;
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .metric-item {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .metric-label {
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .metric-value {
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 3px;
+  }
+  .metric-value.pos { color: var(--pos); }
+  .metric-value.neg { color: var(--up); }
+  .metric-value.warn { color: var(--warn); }
+  .metric-value.neutral { color: var(--text); }
+
+  .sub-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin: 16px 0 8px;
+  }
+
+  /* 실적 테이블 */
+  .perf-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+  .perf-table th {
+    background: var(--hero);
+    color: #a0aec0;
+    font-weight: 600;
+    padding: 8px 6px;
+    text-align: center;
+    font-size: 11px;
+  }
+  .perf-table td {
+    padding: 8px 6px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  .perf-table tr:last-child td { border-bottom: none; }
+  .perf-table tr:nth-child(even) td { background: #fafafa; }
+
+  /* 밸류에이션 시나리오 */
+  .scenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .scenario-table th {
+    background: #2d2d4e;
+    color: #a0aec0;
+    font-weight: 600;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 11px;
+  }
+  .scenario-table td {
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.4;
+  }
+  .scenario-table tr:last-child td { border-bottom: none; }
+  .scenario-bull td { background: #f0fdf4; }
+  .scenario-base td { background: #f8f8f8; }
+  .scenario-bear td { background: #fff5f5; }
+
+  /* 경고/신호 박스 */
+  .signal-box {
+    background: #fff8f0;
+    border: 1px solid #f0d0a0;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+  .signal-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--warn);
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .signal-item {
+    font-size: 12px;
+    color: var(--text);
+    padding: 3px 0 3px 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .signal-item::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--warn);
+    font-size: 10px;
+    top: 5px;
+  }
+
+  /* 추천 비중 */
+  .weight-row {
+    display: flex;
+    gap: 10px;
+  }
+  .weight-box {
+    flex: 1;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+  }
+  .weight-box.core {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+  }
+  .weight-box.trading {
+    background: #fef9f0;
+    border: 1px solid #fde68a;
+  }
+  .weight-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.07em;
+    margin-bottom: 4px;
+  }
+  .weight-pct {
+    font-size: 22px;
+    font-weight: 800;
+  }
+  .weight-pct.core { color: var(--pos); }
+  .weight-pct.trading { color: var(--warn); }
+  .weight-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .core-fit {
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .core-fit.yes { background: #f0fdf4; border-left: 3px solid var(--pos); }
+  .core-fit.no { background: #fff5f5; border-left: 3px solid var(--up); }
+  .core-fit.warn { background: #fff8f0; border-left: 3px solid var(--warn); }
+  .core-fit-label {
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 14px 0;
+  }
+
+  .footnote {
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .warn-inline {
+    color: var(--warn);
+    font-weight: 700;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 8px;
+    margin-right: 4px;
+  }
+  .tag-event { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+  .tag-core { background: #ecfdf5; color: #065f46; border: 1px solid #6ee7b7; }
+</style>
+</head>
+<body>
+
+<!-- ① 히어로 헤더 -->
+<div class="hero">
+  <div class="hero-date">📅 2026년 05월 19일 | 급등주 분석 리포트</div>
+  <div class="hero-title">코스피 5종목 · 코스닥 15종목<br>당일 급등주 선별 분석</div>
+  <div class="hero-chips">
+    <span class="chip">분석 종목 20개</span>
+    <span class="chip">상위 5 선정</span>
+    <span class="chip">DART 재무 기반</span>
+    <span class="chip">토론방 신호 포함</span>
+  </div>
+  <div class="disclaimer">
+    ⚠️ 본 리포트는 투자 권유가 아닌 분석 참고용입니다. 모든 투자 판단과 책임은 투자자 본인에게 있으며, 제시된 수치는 공개 정보 기반 추정치입니다.
+  </div>
+</div>
+
+<!-- ② 테마 클러스터 -->
+<div class="section">
+  <div class="section-title">② 테마 클러스터</div>
+
+  <div class="cluster-card real">
+    <div class="cluster-header">
+      <span class="cluster-emoji">🔌</span>
+      <span class="cluster-name">AI 인프라·보안·광통신</span>
+      <span class="badge badge-real">실체형</span>
+    </div>
+    <div class="cluster-tickers">
+      <span class="ticker-pill">티엠씨</span>
+      <span class="ticker-pill">아이씨티케이</span>
+      <span class="ticker-pill">엑스게이트</span>
+    </div>
+    <div class="cluster-desc">美 AI 데이터센터 광케이블 국내 최초 수주(티엠씨), MS Xbox 보안칩 양산 납품 개시(아이씨티케이) 등 검증 가능한 계약 이벤트가 중심. 엑스게이트는 연관 수혜 편입.</div>
+  </div>
+
+  <div class="cluster-card event">
+    <div class="cluster-header">
+      <span class="cluster-emoji">💊</span>
+      <span class="cluster-name">바이오·제약 계약/테마</span>
+      <span class="badge badge-event">이벤트형</span>
+    </div>
+    <div class="cluster-tickers">
+      <span class="ticker-pill">삼진제약</span>
+      <span class="ticker-pill">휴온스</span>
+      <span class="ticker-pill">녹십자엠에스</span>
+      <span class="ticker-pill">진원생명과학</span>
+    </div>
+    <div class="cluster-desc">아리바이오 판권 계약(삼진제약), 에볼라·한타 감염병 테마(휴온스·녹십자엠에스·진원생명과학). 삼진·휴온스는 실적 기반 존재, 진원은 루머 혼재.</div>
+  </div>
+
+  <div class="cluster-card event">
+    <div class="cluster-header">
+      <span class="cluster-emoji">🤖</span>
+      <span class="cluster-name">로봇·우주항공 신규상장 후광</span>
+      <span class="badge badge-event">이벤트형(투기)</span>
+    </div>
+    <div class="cluster-tickers">
+      <span class="ticker-pill">코스모로보틱스</span>
+      <span class="ticker-pill">케이피항공산업</span>
+    </div>
+    <div class="cluster-desc">신규 상장 직후 연속 상한가 투기. 재무 데이터 없음. 스페이스X 상장 일정 연동 투기성 매수. 순수 모멘텀 플레이.</div>
+  </div>
+
+  <div class="cluster-card event">
+    <div class="cluster-header">
+      <span class="cluster-emoji">🎬</span>
+      <span class="cluster-name">콘텐츠·엔터 흥행 기대</span>
+      <span class="badge badge-event">이벤트형</span>
+    </div>
+    <div class="cluster-tickers">
+      <span class="ticker-pill">콘텐트리중앙</span>
+      <span class="ticker-pill">바른손이앤에이</span>
+      <span class="ticker-pill">판타지오</span>
+    </div>
+    <div class="cluster-desc">넷플릭스 '원더풀스' 흥행(판타지오), 봉준호 영화 기대(바른손이앤에이), 콘텐트리중앙 작품 모멘텀. 3종목 모두 3년 연속 적자로 재무 하방 취약.</div>
+  </div>
+
+  <div class="cluster-card real">
+    <div class="cluster-header">
+      <span class="cluster-emoji">⚙️</span>
+      <span class="cluster-name">실적 개선 모멘텀</span>
+      <span class="badge badge-real">실체형</span>
+    </div>
+    <div class="cluster-tickers">
+      <span class="ticker-pill">한선엔지니어링</span>
+      <span class="ticker-pill">가온그룹</span>
+      <span class="ticker-pill">엠케이전자</span>
+      <span class="ticker-pill">에스디시스템</span>
+    </div>
+    <div class="cluster-desc">2025년 실적 개선 확인 종목군. 한선엔지니어링·가온그룹은 영업이익 흑자 전환 또는 급증. 단, 급등으로 밸류에이션 과도하게 확장된 상태.</div>
+  </div>
+
+  <div class="cluster-card noise">
+    <div class="cluster-header">
+      <span class="cluster-emoji">💹</span>
+      <span class="cluster-name">저가 잡주 세력 놀이</span>
+      <span class="badge badge-noise">노이즈형</span>
+    </div>
+    <div class="cluster-tickers">
+      <span class="ticker-pill">메이슨캐피탈</span>
+      <span class="ticker-pill">뷰티스킨</span>
+      <span class="ticker-pill">졸스</span>
+      <span class="ticker-pill">티웨이홀딩스</span>
+    </div>
+    <div class="cluster-desc">명확한 이벤트 없이
